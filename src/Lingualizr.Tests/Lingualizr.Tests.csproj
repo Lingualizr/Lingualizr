@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Deterministic>false</Deterministic>
+    <RootNamespace>Lingualizr.Tests</RootNamespace> <!-- Approver doesn't support this yet -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="xunit" Version="2.5.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+    <PackageReference Include="ApiApprover" Version="9.3.0" />
+    <PackageReference Include="DiffPlex" Version="1.7.1" />
+    
+    <ProjectReference Include="..\Lingualizr\Lingualizr.csproj" />
+    
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.6.133" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ApiApprover\PublicApiApprovalTest.approve_public_api.approved.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
