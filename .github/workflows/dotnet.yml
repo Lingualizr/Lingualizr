@@ -1,0 +1,67 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - release/*
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        options:
+          - os: ubuntu-latest
+            framework: net7.0
+            sdk: 7.0.x
+            sdk-preview: true
+            runtime: -x64
+            codecov: false
+          - os: macos-latest
+            framework: net7.0
+            sdk: 7.0.x
+            sdk-preview: true
+            runtime: -x64
+            codecov: false
+          - os: windows-latest
+            framework: net7.0
+            sdk: 7.0.x
+            sdk-preview: true
+            runtime: -x64
+            codecov: false
+          - os: ubuntu-latest
+            framework: net6.0
+            sdk: 6.0.x
+            runtime: -x64
+            codecov: false
+          - os: macos-latest
+            framework: net6.0
+            sdk: 6.0.x
+            runtime: -x64
+            codecov: false
+          - os: windows-latest
+            framework: net6.0
+            sdk: 6.0.x
+            runtime: -x64
+            codecov: false
+
+    runs-on: ${{matrix.options.os}}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version:  ${{matrix.options.sdk }}
+      - name: Restore dependencies
+        run: dotnet restore ./src/Humanizer.sln
+      - name: Build
+        run: dotnet build ./src/Humanizer.sln --no-restore
+      - name: Test
+        run: dotnet test ./src/Humanizer.sln --no-build --verbosity normal
