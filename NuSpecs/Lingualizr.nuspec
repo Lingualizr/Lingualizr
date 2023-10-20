@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata minClientVersion="2.12">
+    <id>Lingualizr</id>
+    <version>$version$</version>
+    <title>Lingualizr</title>
+    <authors>Mehdi Khalili, Claire Novotny</authors>
+    <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
+    <icon>logo.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Humanizer meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities</description>
+    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <license type="expression">MIT</license>
+    <repository type="$RepositoryType$" url="$RepositoryUrl$" commit="$RepositoryCommit$" />
+    <dependencies>
+      <dependency id="Lingualizr.Core.af" version="$version$" />
+      <dependency id="Lingualizr.Core.ar" version="$version$" />
+      <dependency id="Lingualizr.Core.az" version="$version$" />
+      <dependency id="Lingualizr.Core.bg" version="$version$" />
+      <dependency id="Lingualizr.Core.bn-BD" version="$version$" />
+      <dependency id="Lingualizr.Core.cs" version="$version$" />
+      <dependency id="Lingualizr.Core.da" version="$version$" />
+      <dependency id="Lingualizr.Core.de" version="$version$" />
+      <dependency id="Lingualizr.Core.el" version="$version$" />
+      <dependency id="Lingualizr.Core.es" version="$version$" />
+      <dependency id="Lingualizr.Core.fa" version="$version$" />
+      <dependency id="Lingualizr.Core.fi-FI" version="$version$" />
+      <!--<dependency id="Humanizer.Core.fil-PH" version="$version$" />-->
+      <dependency id="Lingualizr.Core.fr" version="$version$" />
+      <dependency id="Lingualizr.Core.fr-BE" version="$version$" />
+      <dependency id="Lingualizr.Core.he" version="$version$" />
+      <dependency id="Lingualizr.Core.hr" version="$version$" />
+      <dependency id="Lingualizr.Core.hu" version="$version$" />
+      <dependency id="Lingualizr.Core.hy" version="$version$" />
+      <dependency id="Lingualizr.Core.is" version="$version$" />
+      <dependency id="Lingualizr.Core.id" version="$version$" />
+      <dependency id="Lingualizr.Core.it" version="$version$" />
+      <dependency id="Lingualizr.Core.ja" version="$version$" />
+      <dependency id="Lingualizr.Core.ko-KR" version="$version$" />
+      <dependency id="Lingualizr.Core.ku" version="$version$" />
+      <dependency id="Lingualizr.Core.lv" version="$version$" />
+      <dependency id="Lingualizr.Core.ms-MY" version="$version$" />
+      <dependency id="Lingualizr.Core.mt" version="$version$" />
+      <dependency id="Lingualizr.Core.nb" version="$version$" />
+      <dependency id="Lingualizr.Core.nb-NO" version="$version$" />
+      <dependency id="Lingualizr.Core.nl" version="$version$" />
+      <dependency id="Lingualizr.Core.pl" version="$version$" />
+      <dependency id="Lingualizr.Core.pt" version="$version$" />
+      <dependency id="Lingualizr.Core.ro" version="$version$" />
+      <dependency id="Lingualizr.Core.ru" version="$version$" />
+      <dependency id="Lingualizr.Core.sk" version="$version$" />
+      <dependency id="Lingualizr.Core.sl" version="$version$" />
+      <dependency id="Lingualizr.Core.sr" version="$version$" />
+      <dependency id="Lingualizr.Core.sr-Latn" version="$version$" />
+      <dependency id="Lingualizr.Core.sv" version="$version$" />
+      <!--<dependency id="Humanizer.Core.ta" version="$version$" /> no resources yet -->
+      <dependency id="Lingualizr.Core.th-TH" version="$version$" />
+      <dependency id="Lingualizr.Core.tr" version="$version$" />
+      <dependency id="Lingualizr.Core.uk" version="$version$" />
+      <dependency id="Lingualizr.Core.uz-Cyrl-UZ" version="$version$" />
+      <dependency id="Lingualizr.Core.uz-Latn-UZ" version="$version$" />
+      <dependency id="Lingualizr.Core.vi" version="$version$" />
+      <dependency id="Lingualizr.Core.zh-CN" version="$version$" />
+      <dependency id="Lingualizr.Core.zh-Hans" version="$version$" />
+      <dependency id="Lingualizr.Core.zh-Hant" version="$version$" />
+      <dependency id="Lingualizr.Core.ku" version="$version$" />
+    </dependencies>
+  </metadata>
+  <files>  
+    <file src="..\logo.png" target="logo.png" />
+  </files>
+</package>
