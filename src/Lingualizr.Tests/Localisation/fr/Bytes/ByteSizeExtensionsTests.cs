@@ -1,4 +1,6 @@
-﻿using Humanizer;
+﻿using System.Runtime.InteropServices;
+
+using Humanizer;
 
 using Xunit;
 
@@ -58,10 +60,34 @@ namespace Lingualizr.Tests.Localisation.fr.Bytes
         [InlineData(2000, "KB", "1,95 Ko")]
         [InlineData(2123, "#.##", "2,07 Ko")]
         [InlineData(10000000, "KB", "9765,63 Ko")]
-        [InlineData(10000000, "#,##0 KB", "9\u202f766 Ko")]
-        [InlineData(10000000, "#,##0.# KB", "9\u202f765,6 Ko")]
         public void HumanizesBytes(double input, string format, string expectedValue)
         {
+            Assert.Equal(expectedValue, input.Bytes().Humanize(format));
+        }
+
+        [Theory]
+        [InlineData(10000000, "#,##0 KB", "9\u202f766 Ko")]
+        [InlineData(10000000, "#,##0.# KB", "9\u202f765,6 Ko")]
+        public void HumanizeyBytes_Mac(double input, string format, string expectedValue)
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+            
+            Assert.Equal(expectedValue, input.Bytes().Humanize(format));
+        }
+        
+        [Theory]
+        [InlineData(10000000, "#,##0 KB", "9 766 Ko")]
+        [InlineData(10000000, "#,##0.# KB", "9 765,6 Ko")]
+        public void HumanizeyBytes_Windows(double input, string format, string expectedValue)
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
+            
             Assert.Equal(expectedValue, input.Bytes().Humanize(format));
         }
 
