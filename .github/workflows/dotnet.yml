@@ -60,8 +60,8 @@ jobs:
         with:
           dotnet-version:  ${{matrix.options.sdk }}
       - name: Restore dependencies
-        run: dotnet restore ./src/Humanizer.sln
+        run: dotnet restore ./src/Lingualizr.sln
       - name: Build
-        run: dotnet build ./src/Humanizer.sln --no-restore
+        run: dotnet build ./src/Lingualizr.sln --no-restore
       - name: Test
-        run: dotnet test ./src/Humanizer.sln --no-build --verbosity normal
+        run: dotnet test ./src/Lingualizr.sln --no-build --verbosity normal
