@@ -2,7 +2,6 @@
 <package>
   <metadata minClientVersion="2.12">
     <id>Lingualizr.Core.th-TH</id>
-    <version>$version$</version>
     <title>Lingualizr Locale (th-TH)</title>
     <authors>Stefan Nikolei</authors>
     <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
