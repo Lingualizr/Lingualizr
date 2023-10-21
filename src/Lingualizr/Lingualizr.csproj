@@ -5,7 +5,6 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/Lingualizr/Lingualizr/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Lingualizr/Lingualizr</PackageProjectUrl>
     <Description>A micro-framework that turns your normal strings, type names, enum fields, date fields ETC into a human friendly format</Description>    
-    <Copyright>Copyright © .NET Foundation and Contributors</Copyright>    
     <Product>Lingualizr ($(TargetFramework))</Product>    
     <LangVersion>latest</LangVersion>
     <AssemblyName>Lingualizr</AssemblyName>

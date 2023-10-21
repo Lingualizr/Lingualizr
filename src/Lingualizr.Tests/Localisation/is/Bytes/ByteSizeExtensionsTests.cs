@@ -1,6 +1,4 @@
-﻿using Humanizer;
-
-using Xunit;
+﻿using Xunit;
 
 namespace Lingualizr.Tests.Localisation.@is.Bytes
 {

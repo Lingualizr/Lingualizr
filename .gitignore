@@ -92,8 +92,8 @@ UpgradeLog*.htm
 # local tools
 .store/
 
-src/Humanizer.Tests/ApiApprover/PublicApiApprovalTest.approve_public_api.received.txt
+src/Lingualizr.Tests/ApiApprover/PublicApiApprovalTest.approve_public_api.received.txt
 
 .DS_Store
-/samples/Humanizer.MvcSample/Humanizer.MvcSample.sln
-/src/Humanizer/Properties/launchSettings.json
+/samples/Lingualizr.MvcSample/Lingualizr.MvcSample.sln
+/src/Lingualizr/Properties/launchSettings.json

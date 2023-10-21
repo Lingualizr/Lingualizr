@@ -3,7 +3,7 @@
 using Lingualizr.Bytes;
 
 // ReSharper disable once CheckNamespace
-namespace Humanizer
+namespace Lingualizr
 {
     /// <summary>
     /// Provides extension methods for ByteSize

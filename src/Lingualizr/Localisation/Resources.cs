@@ -5,7 +5,7 @@ using System.Resources;
 namespace Lingualizr.Localisation
 {
     /// <summary>
-    /// Provides access to the resources of Humanizer
+    /// Provides access to the resources of Lingualizr
     /// </summary>
     public static class Resources
     {

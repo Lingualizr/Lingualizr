@@ -13,7 +13,7 @@ using Lingualizr.Localisation.TimeToClockNotation;
 namespace Lingualizr.Configuration
 {
     /// <summary>
-    /// Provides a configuration point for Humanizer
+    /// Provides a configuration point for Lingualizr
     /// </summary>
     public static class Configurator
     {

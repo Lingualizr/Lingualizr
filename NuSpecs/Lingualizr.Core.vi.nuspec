@@ -1,26 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata minClientVersion="2.12">
-    <id>Humanizer.Core.vi</id>
+    <id>Lingualizr.Core.vi</id>
     <version>$version$</version>
-    <title>Humanizer Locale (vi)</title>
-    <authors>Mehdi Khalili, Claire Novotny</authors>
-    <projectUrl>https://github.com/Humanizr/Humanizer</projectUrl>
+    <title>Lingualizr Locale (vi)</title>
+    <authors>Stefan Nikolei</authors>
+    <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
     <icon>logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Humanizer Locale Vietnamese (vi)</description>
-    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <description>Lingualizr Locale Vietnamese (vi)</description>
     <license type="expression">MIT</license>
     <repository type="$RepositoryType$" url="$RepositoryUrl$" commit="$RepositoryCommit$" />
     <language>vi</language>
     <dependencies>
-       <dependency id="Humanizer.Core" version="[$version$]" />
+       <dependency id="Lingualizr.Core" version="[$version$]" />
     </dependencies>
   </metadata>
   <files>
-    <file src="Humanizer\bin\Release\netstandard1.0\vi\*.*" target="lib\netstandard1.0\vi" />
-    <file src="Humanizer\bin\Release\netstandard2.0\vi\*.*" target="lib\netstandard2.0\vi" />
-    <file src="Humanizer\bin\Release\net6.0\vi\*.*" target="lib\net6.0\vi" />
+    <file src="Lingualizr\bin\Release\net6.0\vi\*.*" target="lib\net6.0\vi" />
     <file src="..\logo.png" target="logo.png" />
   </files>
 </package>

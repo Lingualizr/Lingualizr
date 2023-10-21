@@ -4,12 +4,12 @@
     <id>Lingualizr</id>
     <version>$version$</version>
     <title>Lingualizr</title>
-    <authors>Mehdi Khalili, Claire Novotny</authors>
+    <authors>Stefan Nikolei</authors>
     <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
     <icon>logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Humanizer meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities</description>
-    <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
+    <description>Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities</description>
+    <copyright>Copyright (c) Stefan Nikolei</copyright>
     <license type="expression">MIT</license>
     <repository type="$RepositoryType$" url="$RepositoryUrl$" commit="$RepositoryCommit$" />
     <dependencies>
@@ -25,7 +25,7 @@
       <dependency id="Lingualizr.Core.es" version="$version$" />
       <dependency id="Lingualizr.Core.fa" version="$version$" />
       <dependency id="Lingualizr.Core.fi-FI" version="$version$" />
-      <!--<dependency id="Humanizer.Core.fil-PH" version="$version$" />-->
+      <!--<dependency id="Lingualizr.Core.fil-PH" version="$version$" />-->
       <dependency id="Lingualizr.Core.fr" version="$version$" />
       <dependency id="Lingualizr.Core.fr-BE" version="$version$" />
       <dependency id="Lingualizr.Core.he" version="$version$" />
@@ -53,7 +53,7 @@
       <dependency id="Lingualizr.Core.sr" version="$version$" />
       <dependency id="Lingualizr.Core.sr-Latn" version="$version$" />
       <dependency id="Lingualizr.Core.sv" version="$version$" />
-      <!--<dependency id="Humanizer.Core.ta" version="$version$" /> no resources yet -->
+      <!--<dependency id="Lingualizr.Core.ta" version="$version$" /> no resources yet -->
       <dependency id="Lingualizr.Core.th-TH" version="$version$" />
       <dependency id="Lingualizr.Core.tr" version="$version$" />
       <dependency id="Lingualizr.Core.uk" version="$version$" />

@@ -1,7 +1,5 @@
 ﻿using System;
 
-using Humanizer;
-
 using Lingualizr.Bytes;
 using Lingualizr.Localisation;
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Globalization;
 
-using Humanizer;
-
 using Lingualizr.Localisation;
 
 namespace Lingualizr.Bytes
