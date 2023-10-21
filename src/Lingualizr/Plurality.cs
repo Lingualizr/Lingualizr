@@ -1,7 +1,7 @@
 namespace Lingualizr
 {
     /// <summary>
-    /// Provides hint for Humanizer as to whether a word is singular, plural or with unknown plurality
+    /// Provides hint for Lingualizr as to whether a word is singular, plural or with unknown plurality
     /// </summary>
     public enum Plurality
     {

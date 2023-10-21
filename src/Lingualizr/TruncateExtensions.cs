@@ -72,7 +72,7 @@ namespace Lingualizr
     }
 
     /// <summary>
-    /// Truncation location for humanizer
+    /// Truncation location for Lingualizr
     /// </summary>
     public enum TruncateFrom
     {

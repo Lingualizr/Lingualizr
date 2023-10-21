@@ -1,7 +1,5 @@
 ﻿using System.Runtime.InteropServices;
 
-using Humanizer;
-
 using Xunit;
 
 namespace Lingualizr.Tests.Localisation.fr.Bytes

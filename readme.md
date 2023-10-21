@@ -1,10 +1,10 @@
-﻿<p><img src="https://raw.github.com/Humanizr/Humanizer/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
+﻿<p><img src="https://raw.github.com/Lingualizr/Lingualizr/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
 
-[<img align="right" width="100px" src="https://old.dotnetfoundation.org/img/logo_big.svg" />](https://old.dotnetfoundation.org/projects/humanizer)
+[<img align="right" width="100px" src="https://old.dotnetfoundation.org/img/logo_big.svg" />](https://old.dotnetfoundation.org/projects/Lingualizr)
 
-Humanizer meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is part of the [.NET Foundation](https://www.dotnetfoundation.org/), and operates under their [code of conduct](https://www.dotnetfoundation.org/code-of-conduct). It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
+Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is part of the [.NET Foundation](https://www.dotnetfoundation.org/), and operates under their [code of conduct](https://www.dotnetfoundation.org/code-of-conduct). It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
 
-[![Join the chat at https://gitter.im/Humanizr/Humanizer](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Humanizr/Humanizer)
+[![Join the chat at https://gitter.im/Lingualizr/Lingualizr](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Lingualizr/Lingualizr)
 
 ### Table of contents
  - [Install](#install)
@@ -59,32 +59,32 @@ Humanizer meets all your .NET needs for manipulating and displaying strings, enu
  - [Icon](#icon)
 
 ## <a id="install">Install</a>
-You can install Humanizer as [a nuget package](https://nuget.org/packages/Humanizer):
+You can install Lingualizr as [a nuget package](https://nuget.org/packages/Lingualizr):
 
-**English only**: `Humanizer.Core`
+**English only**: `Lingualizr.Core`
 
-All languages: `Humanizer`
+All languages: `Lingualizr`
 
-Humanizer is a .NET Standard Class Library with support for .NET Standard 1.0+ (.Net 4.5+, UWP, Xamarin, and .NET Core).
+Lingualizr is a .NET Standard Class Library with support for .NET Standard 1.0+ (.Net 4.5+, UWP, Xamarin, and .NET Core).
 
-Also Humanizer symbols are source indexed with [SourceLink](https://github.com/dotnet/sourcelink) and are included in the package so you can step through Humanizer code while debugging your code.
+Also Lingualizr symbols are source indexed with [SourceLink](https://github.com/dotnet/sourcelink) and are included in the package so you can step through Lingualizr code while debugging your code.
 
-For pre-release builds, [Azure Artifacts feed](https://dev.azure.com/dotnet/Humanizer/_packaging?_a=feed&feed=Humanizer) is available where you can pull down CI packages from the latest codebase. The feed URL is:
+For pre-release builds, [Azure Artifacts feed](https://dev.azure.com/dotnet/Lingualizr/_packaging?_a=feed&feed=Lingualizr) is available where you can pull down CI packages from the latest codebase. The feed URL is:
 
-  - [![Humanizer package in Humanizer feed in Azure Artifacts](https://feeds.dev.azure.com/dotnet/5829eea4-55e5-4a15-ba8d-1de5daaafcea/_apis/public/Packaging/Feeds/b39738c7-8e60-4bfb-825f-29c47261a5cc/Packages/db81f806-d0b5-43a3-99f4-3d27606376b8/Badge)](https://dev.azure.com/dotnet/Humanizer/_packaging?_a=package&feed=b39738c7-8e60-4bfb-825f-29c47261a5cc&package=db81f806-d0b5-43a3-99f4-3d27606376b8&preferRelease=true) `https://pkgs.dev.azure.com/dotnet/Humanizer/_packaging/Humanizer/nuget/v3/index.json`
+  - [![Lingualizr package in Lingualizr feed in Azure Artifacts](https://feeds.dev.azure.com/dotnet/5829eea4-55e5-4a15-ba8d-1de5daaafcea/_apis/public/Packaging/Feeds/b39738c7-8e60-4bfb-825f-29c47261a5cc/Packages/db81f806-d0b5-43a3-99f4-3d27606376b8/Badge)](https://dev.azure.com/dotnet/Lingualizr/_packaging?_a=package&feed=b39738c7-8e60-4bfb-825f-29c47261a5cc&package=db81f806-d0b5-43a3-99f4-3d27606376b8&preferRelease=true) `https://pkgs.dev.azure.com/dotnet/Lingualizr/_packaging/Lingualizr/nuget/v3/index.json`
 
 ### <a id="specify-lang">Specify Languages (Optional)</a>
-New in Humanizer 2.0 is the option to choose which localization packages you wish to use. You choose which packages
-based on what NuGet package(s) you install. By default, the main `Humanizer` 2.0 package installs all supported languages
-exactly like it does in 1.x. If you're not sure, then just use the main `Humanizer` package.
+New in Lingualizr 2.0 is the option to choose which localization packages you wish to use. You choose which packages
+based on what NuGet package(s) you install. By default, the main `Lingualizr` 2.0 package installs all supported languages
+exactly like it does in 1.x. If you're not sure, then just use the main `Lingualizr` package.
 
 Here are the options:
 
-  - **All languages**: use the main `Humanizer` package. This pulls in `Humanizer.Core` and all language packages.
-  - **English**: use the `Humanizer.Core` package. Only the English language resources will be available
-  - **Specific languages**: Use the language specific packages you'd like. For example for French, use `Humanizer.Core.fr`. You can include multiple languages by installing however many language packages you want.
+  - **All languages**: use the main `Lingualizr` package. This pulls in `Lingualizr.Core` and all language packages.
+  - **English**: use the `Lingualizr.Core` package. Only the English language resources will be available
+  - **Specific languages**: Use the language specific packages you'd like. For example for French, use `Lingualizr.Core.fr`. You can include multiple languages by installing however many language packages you want.
 
-The detailed explanation for how this works is in the comments [here](https://github.com/Humanizr/Humanizer/issues/59#issuecomment-152546079).
+The detailed explanation for how this works is in the comments [here](https://github.com/Lingualizr/Lingualizr/issues/59#issuecomment-152546079).
 
 ## <a id="features">Features</a>
 
@@ -107,8 +107,8 @@ Note that a string that contains only upper case letters, and consists only of o
 "HTML".Humanize() => "HTML"
 
 // any unbroken upper case string is treated as an acronym
-"HUMANIZER".Humanize() => "HUMANIZER"
-"HUMANIZER".Transform(To.LowerCase, To.TitleCase) => "Humanizer"
+"Lingualizr".Humanize() => "Lingualizr"
+"Lingualizr".Transform(To.LowerCase, To.TitleCase) => "Lingualizr"
 ```
 
 You may also specify the desired letter casing:
@@ -237,7 +237,7 @@ You will get:
 // DescriptionAttribute is honored
 EnumUnderTest.MemberWithDescriptionAttribute.Humanize() => "Custom description"
 
-// In the absence of Description attribute string.Humanizer kicks in
+// In the absence of Description attribute string.Lingualizr kicks in
 EnumUnderTest.MemberWithoutDescriptionAttribute.Humanize() => "Member without description attribute"
 
 // Of course you can still apply letter casing
@@ -312,7 +312,7 @@ DateTime.UtcNow.AddHours(2).Humanize() => "2 hours from now"
 DateTimeOffset.UtcNow.AddHours(1).Humanize() => "an hour from now"
 ```
 
-Humanizer supports both local and UTC dates as well as dates with offset (`DateTimeOffset`). You could also provide the date you want the input date to be compared against. If null, it will use the current date as comparison base.
+Lingualizr supports both local and UTC dates as well as dates with offset (`DateTimeOffset`). You could also provide the date you want the input date to be compared against. If null, it will use the current date as comparison base.
 Also, culture to use can be specified explicitly. If it is not, current thread's current UI culture is used.
 Here is the API signature:
 
@@ -440,7 +440,7 @@ When `TimeSpan` is zero, the default behavior will return "0" plus whatever the 
 ```C#
 TimeSpan.Zero.Humanize(1) => "0 milliseconds"
 TimeSpan.Zero.Humanize(1, toWords: true) => "no time"
-TimeSpan.Zero.Humanize(1, minUnit: Humanizer.Localisation.TimeUnit.Second) => "0 seconds"
+TimeSpan.Zero.Humanize(1, minUnit: Lingualizr.Localisation.TimeUnit.Second) => "0 seconds"
 ```
 
 Using the `collectionSeparator` parameter, you can specify your own separator string:
@@ -683,7 +683,7 @@ You can combine `wordForm` argument with gender but passing this argument in whe
 ```
 
 ### <a id="fluent-date">Fluent Date</a>
-Humanizer provides a fluent API to deal with `DateTime` and `TimeSpan` as follows:
+Lingualizr provides a fluent API to deal with `DateTime` and `TimeSpan` as follows:
 
 `TimeSpan` methods:
 
@@ -754,7 +754,7 @@ someDateTime.AtMidnight()
 Obviously you could chain the methods too; e.g. `On.November.The13th.In(2010).AtNoon + 5.Minutes()`
 
 ### <a id="number-to-numbers">Number to numbers</a>
-Humanizer provides a fluent API that produces (usually big) numbers in a clearer fashion:
+Lingualizr provides a fluent API that produces (usually big) numbers in a clearer fashion:
 
 ```C#
 1.25.Billions() => 1250000000
@@ -762,7 +762,7 @@ Humanizer provides a fluent API that produces (usually big) numbers in a clearer
 ```
 
 ### <a id="number-towords">Number to words</a>
-Humanizer can change numbers to words using the `ToWords` extension:
+Lingualizr can change numbers to words using the `ToWords` extension:
 
 ```C#
 1.ToWords() => "one"
@@ -921,7 +921,7 @@ new TimeOnly(14, 30).ToClockNotation() => "duas e meia"
 ```
 
 ### <a id="roman-numerals">Roman numerals</a>
-Humanizer can change numbers to Roman numerals using the `ToRoman` extension. The numbers 1 to 10 can be expressed in Roman numerals as follows:
+Lingualizr can change numbers to Roman numerals using the `ToRoman` extension. The numbers 1 to 10 can be expressed in Roman numerals as follows:
 
 ```C#
 1.ToRoman() => "I"
@@ -948,7 +948,7 @@ Also the reverse operation using the `FromRoman` extension.
 Note that only integers smaller than 4000 can be converted to Roman numerals.
 
 ### <a id="metric-numerals">Metric numerals</a>
-Humanizer can change numbers to Metric numerals using the `ToMetric` extension. The numbers 1, 1230 and 0.1 can be expressed in Metric numerals as follows:
+Lingualizr can change numbers to Metric numerals using the `ToMetric` extension. The numbers 1, 1230 and 0.1 can be expressed in Metric numerals as follows:
 
 ```C#
 1d.ToMetric() => "1"
@@ -965,8 +965,8 @@ Also the reverse operation using the `FromMetric` extension.
 ```
 
 ### <a id="bytesize">ByteSize</a>
-Humanizer includes a port of the brilliant [ByteSize](https://github.com/omar/ByteSize) library.
-Quite a few changes and additions are made on `ByteSize` to make the interaction with `ByteSize` easier and more consistent with the Humanizer API.
+Lingualizr includes a port of the brilliant [ByteSize](https://github.com/omar/ByteSize) library.
+Quite a few changes and additions are made on `ByteSize` to make the interaction with `ByteSize` easier and more consistent with the Lingualizr API.
 Here is a few examples of how you can convert from numbers to byte sizes and between size magnitudes:
 
 ```c#
@@ -1110,7 +1110,7 @@ You can specify a format for the bytes part of the humanized output:
 ```
 
 ### <a id="heading-to-words">Heading to words</a>
-Humanizer includes methods to change a numeric heading to words. The heading can be a `double` whereas the result will be a string. You can choose whether to return a full representation of the heading (e.g. north, east, south or west), a short representation (e.g. N, E, S, W) or a unicode arrow character (e.g. ↑, →, ↓, ←).
+Lingualizr includes methods to change a numeric heading to words. The heading can be a `double` whereas the result will be a string. You can choose whether to return a full representation of the heading (e.g. north, east, south or west), a short representation (e.g. N, E, S, W) or a unicode arrow character (e.g. ↑, →, ↓, ←).
 
 ```C#
 360.ToHeading();
@@ -1153,7 +1153,7 @@ In order to retrieve a heading based on the short text representation (e.g. N, E
 ```
 
 ### <a id="tupleize">Tupleize</a>
-Humanizer can change whole numbers into their 'tuple'  using `Tupleize`. For example:
+Lingualizr can change whole numbers into their 'tuple'  using `Tupleize`. For example:
 
 ```C#
 1.Tupleize();
@@ -1167,7 +1167,7 @@ Humanizer can change whole numbers into their 'tuple'  using `Tupleize`. For exa
 The numbers 1-10, 100 and 1000 will be converted into a 'named' tuple (i.e. "single", "double" etc.). Any other number "n" will be converted to "n-tuple".
 
 ### <a id="timeunit-to-symbol">Time unit to symbol</a>
-Humanizer can translate time units to their symbols:
+Lingualizr can translate time units to their symbols:
 
 ```C#
 TimeUnit.Day.ToSymbol();
@@ -1181,9 +1181,9 @@ TimeUnit.Year.ToSymbol();
 ## <a id="mix-this-into-your-framework-to-simplify-your-life">Mix this into your framework to simplify your life</a>
 This is just a baseline and you can use this to simplify your day to day job. For example, in Asp.Net MVC we keep chucking `Display` attribute on ViewModel properties so `HtmlHelper` can generate correct labels for us; but, just like enums, in vast majority of cases we just need a space between the words in property name - so why not use `"string".Humanize` for that?!
 
-You may find an Asp.Net MVC sample [in the code](https://github.com/Humanizr/Humanizer/tree/master/src/Humanizer.MvcSample) that does that (although the project is excluded from the solution file to make the nuget package available for .Net 3.5 too).
+You may find an Asp.Net MVC sample [in the code](https://github.com/Lingualizr/Lingualizr/tree/master/src/Lingualizr.MvcSample) that does that (although the project is excluded from the solution file to make the nuget package available for .Net 3.5 too).
 
-This is achieved using a custom `DataAnnotationsModelMetadataProvider` I called [HumanizerMetadataProvider](https://github.com/Humanizr/Humanizer/blob/master/src/Humanizer.MvcSample/HumanizerMetadataProvider.cs). It is small enough to repeat here; so here we go:
+This is achieved using a custom `DataAnnotationsModelMetadataProvider` I called [LingualizrMetadataProvider](https://github.com/Lingualizr/Lingualizr/blob/master/src/Lingualizr.MvcSample/LingualizrMetadataProvider.cs). It is small enough to repeat here; so here we go:
 
 ```C#
 using System;
@@ -1192,11 +1192,11 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
-using Humanizer;
+using Lingualizr;
 
 namespace YourApp
 {
-    public class HumanizerMetadataProvider : DataAnnotationsModelMetadataProvider
+    public class LingualizrMetadataProvider : DataAnnotationsModelMetadataProvider
     {
         protected override ModelMetadata CreateMetadata(
             IEnumerable<Attribute> attributes,
@@ -1239,7 +1239,7 @@ Now you need to register this metadata provider with Asp.Net MVC.
 Make sure you use `System.Web.Mvc.ModelMetadataProviders`, and not `System.Web.ModelBinding.ModelMetadataProviders`:
 
 ```C#
-ModelMetadataProviders.Current = new HumanizerMetadataProvider();
+ModelMetadataProviders.Current = new LingualizrMetadataProvider();
 ```
 
 ... and now you can replace:
@@ -1269,7 +1269,7 @@ public class RegisterModel
 }
 ```
 
-... and the "metadata humanizer" will take care of the rest.
+... and the "metadata Lingualizr" will take care of the rest.
 
 No need to mention that if you want title casing for your labels you can chain the method with `Transform`:
 
@@ -1278,38 +1278,38 @@ modelMetadata.DisplayName = modelMetadata.PropertyName.Humanize().Transform(To.T
 ```
 
 ## <a id="known-issues">Known installation issues and workarounds</a>
-Due to a [bug](https://github.com/dotnet/cli/issues/3396) in the CLI tools, the main `Humanizer` package and it's language packages will fail to install. As temporary workaround, until that bug is fixed, use `Humanizer.xproj` instead. It contains all of the languages.
+Due to a [bug](https://github.com/dotnet/cli/issues/3396) in the CLI tools, the main `Lingualizr` package and it's language packages will fail to install. As temporary workaround, until that bug is fixed, use `Lingualizr.xproj` instead. It contains all of the languages.
 
 ## <a id="aspnet4mvc">Use in ASP.NET 4.x MVC Views</a>
-Humanizer is a Portable Class Library. There is currently [an issue](https://stackoverflow.com/questions/16675171/what-does-the-web-config-compilation-assemblies-element-do) if you try to use PCL's in an MVC view since the MVC views do not share the same build system as the regular project. You must specify all references in the `web.config` file, including ones the project system normally automatically adds.
+Lingualizr is a Portable Class Library. There is currently [an issue](https://stackoverflow.com/questions/16675171/what-does-the-web-config-compilation-assemblies-element-do) if you try to use PCL's in an MVC view since the MVC views do not share the same build system as the regular project. You must specify all references in the `web.config` file, including ones the project system normally automatically adds.
 
-If you encounter errors saying that you must add a reference to either `System.Runtime` or `System.Globalization`, this applies to you. The solution is to add the contract references to your `web.config` as listed [here](https://stackoverflow.com/a/19942274/738188). Note that this applies to any PCL you use in an MVC view, not just Humanizer.
+If you encounter errors saying that you must add a reference to either `System.Runtime` or `System.Globalization`, this applies to you. The solution is to add the contract references to your `web.config` as listed [here](https://stackoverflow.com/a/19942274/738188). Note that this applies to any PCL you use in an MVC view, not just Lingualizr.
 
 ## <a id="how-to-contribute">How to contribute?</a>
 
-Please see <a href="https://github.com/Humanizr/Humanizer/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>.
+Please see <a href="https://github.com/Lingualizr/Lingualizr/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>.
 
 ## <a id="continuous-integration">Continuous Integration from Azure DevOps</a>
-Humanizer project is built & tested continuously by Azure DevOps (more details [here](https://dev.azure.com/dotnet/Humanizer/_build?definitionId=14)). That applies to pull requests too. Shortly after you submit a PR you can check the build and test status notification on your PR. Feel free to jump in and <a href="https://github.com/Humanizr/Humanizer/blob/master/CONTRIBUTING.md">contribute</a> some green PRs!
+Lingualizr project is built & tested continuously by Azure DevOps (more details [here](https://dev.azure.com/dotnet/Lingualizr/_build?definitionId=14)). That applies to pull requests too. Shortly after you submit a PR you can check the build and test status notification on your PR. Feel free to jump in and <a href="https://github.com/Lingualizr/Lingualizr/blob/master/CONTRIBUTING.md">contribute</a> some green PRs!
 
-The current build status on the CI server is [![Build status](https://dev.azure.com/dotnet/Humanizer/_apis/build/status/Humanizer-CI?branchName=master)](https://dev.azure.com/dotnet/Humanizer/_build?definitionId=14)
+The current build status on the CI server is [![Build status](https://dev.azure.com/dotnet/Lingualizr/_apis/build/status/Lingualizr-CI?branchName=master)](https://dev.azure.com/dotnet/Lingualizr/_build?definitionId=14)
 
 ## <a id="related-projects">Related projects</a>
 Below is a list of related open source projects:
 
-### <a id="humanizer-resharper-annotations">Humanizer ReSharper Annotations</a>
-If you use ReSharper, annotations for Humanizer are available in the [Humanizer.Annotations package](https://resharper-plugins.jetbrains.com/packages/Humanizer.Annotations/), which you can obtain via the ReSharper Extension Manager.
-These annotations do not yet cover the entire library, but [pull requests are always welcome!](https://github.com/enduracode/humanizer-annotations).
+### <a id="Lingualizr-resharper-annotations">Lingualizr ReSharper Annotations</a>
+If you use ReSharper, annotations for Lingualizr are available in the [Lingualizr.Annotations package](https://resharper-plugins.jetbrains.com/packages/Lingualizr.Annotations/), which you can obtain via the ReSharper Extension Manager.
+These annotations do not yet cover the entire library, but [pull requests are always welcome!](https://github.com/enduracode/Lingualizr-annotations).
 
-### <a id="powershell-humanizer">PowerShell Humanizer</a>
-[PowerShell Humanizer](https://github.com/dfinke/PowerShellHumanizer) is a PowerShell module that wraps Humanizer.
+### <a id="powershell-Lingualizr">PowerShell Lingualizr</a>
+[PowerShell Lingualizr](https://github.com/dfinke/PowerShellLingualizr) is a PowerShell module that wraps Lingualizr.
 
-### <a id="humanizerjvm">Humanizer JVM</a>
-[Humanizer.jvm](https://github.com/MehdiK/Humanizer.jvm) is an adaptation of the Humanizer framework for .Net which is made for the jvm and is written in Kotlin.
-Humanizer.jvm meets all your jvm needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities.
+### <a id="Lingualizrjvm">Lingualizr JVM</a>
+[Lingualizr.jvm](https://github.com/MehdiK/Lingualizr.jvm) is an adaptation of the Lingualizr framework for .Net which is made for the jvm and is written in Kotlin.
+Lingualizr.jvm meets all your jvm needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities.
 
-### <a id="humanizernode">Humanizer.node</a>
-[Humanizer.node](https://github.com/fakoua/humanizer.node) is a TypeScript port of the Humanizer framework.
+### <a id="Lingualizrnode">Lingualizr.node</a>
+[Lingualizr.node](https://github.com/fakoua/Lingualizr.node) is a TypeScript port of the Lingualizr framework.
 
 ## <a id="main-contributors">Main contributors</a>
  - Mehdi Khalili ([@MehdiKhalili](https://twitter.com/MehdiKhalili))
@@ -1318,7 +1318,7 @@ Humanizer.jvm meets all your jvm needs for manipulating and displaying strings, 
  - Max Malook ([@mexx](https://github.com/mexx))
 
 ## <a id="license">License</a>
-Humanizer is released under the MIT License. See the [bundled LICENSE](https://github.com/Humanizr/Humanizer/blob/master/LICENSE) file for details.
+Lingualizr is released under the MIT License. See the [bundled LICENSE](https://github.com/Lingualizr/Lingualizr/blob/master/LICENSE) file for details.
 
 ## <a id="icon">Icon</a>
 Icon created by [Tyrone Rieschiek](https://twitter.com/Inkventive)

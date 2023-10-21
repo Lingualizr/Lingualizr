@@ -1,7 +1,5 @@
 ﻿using System.Globalization;
 
-using Humanizer;
-
 using Lingualizr.Bytes;
 
 using Xunit;
