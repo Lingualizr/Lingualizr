@@ -10,7 +10,11 @@
     <AssemblyName>Lingualizr</AssemblyName>
     <RootNamespace>Lingualizr</RootNamespace>
     <PackageId>Lingualizr</PackageId>
-  </PropertyGroup>  
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <MinVerMinimumMajorMinor>1.0</MinVerMinimumMajorMinor>
+  </PropertyGroup>
   
   <ItemGroup>
     <None Update="FluentDate\InDate.Months.tt">
@@ -36,8 +40,5 @@
     <None Update="FluentDate\InDate.SomeTimeFrom.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="InDate.SomeTimeFrom.cs" />
     <Compile Update="FluentDate\InDate.SomeTimeFrom.cs" DesignTime="True" AutoGen="True" DependentUpon="InDate.SomeTimeFrom.tt" />
   </ItemGroup>  
-   
-  <ItemGroup>
-    <PackageReference Update="Nerdbank.GitVersioning" Version="3.6.133" />
-  </ItemGroup>
+  
 </Project>
