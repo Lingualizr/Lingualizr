@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords
 {
@@ -112,7 +113,7 @@ namespace Lingualizr.Localisation.NumberToWords
             return string.Join(" ", parts.ToArray());
         }
 
-        private static bool ExceptionNumbersToWords(int number, out string words)
+        private static bool ExceptionNumbersToWords(int number, [NotNullWhen(true)] out string? words)
         {
             return OrdinalExceptions.TryGetValue(number, out words);
         }

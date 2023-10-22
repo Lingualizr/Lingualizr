@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
     <Deterministic>false</Deterministic>
     <RootNamespace>Lingualizr.Tests</RootNamespace> <!-- Approver doesn't support this yet -->
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="xunit" Version="2.5.2" />

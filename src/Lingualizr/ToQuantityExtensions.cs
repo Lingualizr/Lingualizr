@@ -45,7 +45,7 @@ namespace Lingualizr
         /// "process".ToQuantity(1200, ShowQuantityAs.Words) => "one thousand two hundred processes"
         /// </example>
         /// <returns></returns>
-        public static string ToQuantity(this string input, int quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric)
+        public static string? ToQuantity(this string input, int quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric)
         {
             return input.ToQuantity(quantity, showQuantityAs, format: null, formatProvider: null);
         }
@@ -63,7 +63,7 @@ namespace Lingualizr
         /// "request".ToQuantity(1, format: "N0") => "1 request"
         /// </example>
         /// <returns></returns>
-        public static string ToQuantity(this string input, int quantity, string format, IFormatProvider formatProvider = null)
+        public static string? ToQuantity(this string input, int quantity, string format, IFormatProvider? formatProvider = null)
         {
             return input.ToQuantity(quantity, showQuantityAs: ShowQuantityAs.Numeric, format: format, formatProvider: formatProvider);
         }
@@ -82,7 +82,7 @@ namespace Lingualizr
         /// "process".ToQuantity(1200, ShowQuantityAs.Words) => "one thousand two hundred processes"
         /// </example>
         /// <returns></returns>
-        public static string ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric)
+        public static string? ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric)
         {
             return input.ToQuantity(quantity, showQuantityAs, format: null, formatProvider: null);
         }
@@ -100,12 +100,12 @@ namespace Lingualizr
         /// "request".ToQuantity(1, format: "N0") => "1 request"
         /// </example>
         /// <returns></returns>
-        public static string ToQuantity(this string input, long quantity, string format, IFormatProvider formatProvider = null)
+        public static string? ToQuantity(this string input, long quantity, string format, IFormatProvider? formatProvider = null)
         {
             return input.ToQuantity(quantity, showQuantityAs: ShowQuantityAs.Numeric, format: format, formatProvider: formatProvider);
         }
 
-        private static string ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric, string format = null, IFormatProvider formatProvider = null)
+        private static string? ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric, string? format = null, IFormatProvider? formatProvider = null)
         {
             var transformedInput = quantity == 1
                 ? input.Singularize(inputIsKnownToBePlural: false)
@@ -137,7 +137,7 @@ namespace Lingualizr
         /// "request".ToQuantity(1.0, format: "N0") => "1 request"
         /// </example>
         /// <returns></returns>
-        public static string ToQuantity(this string input, double quantity, string format = null, IFormatProvider formatProvider = null)
+        public static string ToQuantity(this string input, double quantity, string? format = null, IFormatProvider? formatProvider = null)
         {
             var transformedInput = quantity == 1
                 ? input.Singularize(inputIsKnownToBePlural: false)

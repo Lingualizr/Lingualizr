@@ -13,7 +13,7 @@ namespace Lingualizr.DateTimeHumanizeStrategy
         /// <summary>
         /// Calculates the distance of time in words between two provided dates used for DateOnly.Humanize
         /// </summary>
-        string Humanize(DateOnly input, DateOnly comparisonBase, CultureInfo culture);
+        string Humanize(DateOnly input, DateOnly comparisonBase, CultureInfo? culture);
     }
 }
 

@@ -51,7 +51,7 @@ namespace Lingualizr.Bytes
         /// <param name="format">The string format to use for the number of bytes</param>
         /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
         /// <returns></returns>
-        public string Humanize(string format, TimeUnit timeUnit = TimeUnit.Second, CultureInfo culture = null)
+        public string Humanize(string? format, TimeUnit timeUnit = TimeUnit.Second, CultureInfo? culture = null)
         {
             var displayInterval = timeUnit switch
             {

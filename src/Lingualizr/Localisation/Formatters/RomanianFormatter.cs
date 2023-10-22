@@ -23,7 +23,7 @@ namespace Lingualizr.Localisation.Formatters
 
         protected override string Format(string resourceKey, int number, bool toWords = false)
         {
-            var format = Resources.GetResource(GetResourceKey(resourceKey, number), _romanianCulture);
+            var format = Resources.GetResource(GetResourceKey(resourceKey, number), _romanianCulture) ?? string.Empty;
             var preposition = ShouldUsePreposition(number)
                                      ? UnitPreposition
                                      : string.Empty;

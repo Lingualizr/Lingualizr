@@ -10,7 +10,7 @@ namespace Lingualizr.Localisation.NumberToWords
         private static readonly string[] UnitsMasculine = { "אפס", "אחד", "שניים", "שלושה", "ארבעה", "חמישה", "שישה", "שבעה", "שמונה", "תשעה", "עשרה" };
         private static readonly string[] TensUnit = { "עשר", "עשרים", "שלושים", "ארבעים", "חמישים", "שישים", "שבעים", "שמונים", "תשעים" };
 
-        private readonly CultureInfo _culture;
+        private readonly CultureInfo? _culture;
 
         private class DescriptionAttribute : Attribute
         {
@@ -32,7 +32,7 @@ namespace Lingualizr.Localisation.NumberToWords
             Billions = 1000000000
         }
 
-        public HebrewNumberToWordsConverter(CultureInfo culture)
+        public HebrewNumberToWordsConverter(CultureInfo? culture)
             : base(GrammaticalGender.Feminine)
         {
             _culture = culture;

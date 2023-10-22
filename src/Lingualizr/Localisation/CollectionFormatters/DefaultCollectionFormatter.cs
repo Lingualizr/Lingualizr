@@ -18,12 +18,12 @@ namespace Lingualizr.Localisation.CollectionFormatters
             return Humanize(collection, o => o?.ToString(), DefaultSeparator);
         }
 
-        public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter)
+        public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string?> objectFormatter)
         {
             return Humanize(collection, objectFormatter, DefaultSeparator);
         }
 
-        public string Humanize<T>(IEnumerable<T> collection, Func<T, object> objectFormatter)
+        public string Humanize<T>(IEnumerable<T> collection, Func<T, object?> objectFormatter)
         {
             return Humanize(collection, objectFormatter, DefaultSeparator);
         }
@@ -33,7 +33,7 @@ namespace Lingualizr.Localisation.CollectionFormatters
             return Humanize(collection, o => o?.ToString(), separator);
         }
 
-        public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter, string separator)
+        public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string?> objectFormatter, string separator)
         {
             if (collection == null)
             {
@@ -50,7 +50,7 @@ namespace Lingualizr.Localisation.CollectionFormatters
                 separator);
         }
 
-        public string Humanize<T>(IEnumerable<T> collection, Func<T, object> objectFormatter, string separator)
+        public string Humanize<T>(IEnumerable<T> collection, Func<T, object?> objectFormatter, string separator)
         {
             if (collection == null)
             {
@@ -67,7 +67,7 @@ namespace Lingualizr.Localisation.CollectionFormatters
                 separator);
         }
 
-        private string HumanizeDisplayStrings(IEnumerable<string> strings, string separator)
+        private string HumanizeDisplayStrings(IEnumerable<string?> strings, string separator)
         {
             var itemsArray = strings
                 .Select(item => item == null ? string.Empty : item.Trim())

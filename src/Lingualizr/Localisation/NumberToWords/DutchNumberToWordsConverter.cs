@@ -16,11 +16,11 @@ namespace Lingualizr.Localisation.NumberToWords
 
         private class Fact
         {
-            public long Value { get; set; }
-            public string Name { get; set; }
-            public string Prefix { get; set; }
-            public string Postfix { get; set; }
-            public bool DisplayOneUnit { get; set; }
+            public required long Value { get; init; }
+            public required string Name { get; init; }
+            public required string Prefix { get; init; }
+            public required string Postfix { get; init; }
+            public bool DisplayOneUnit { get; init; }
         }
 
         private static readonly Fact[] Hunderds =

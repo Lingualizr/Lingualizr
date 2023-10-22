@@ -18,8 +18,8 @@ namespace Lingualizr.Tests
     {
         private readonly Lazy<CultureInfo> culture;
         private readonly Lazy<CultureInfo> uiCulture;
-        private CultureInfo originalCulture;
-        private CultureInfo originalUICulture;
+        private CultureInfo? originalCulture;
+        private CultureInfo? originalUICulture;
 
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Lingualizr.Tests
         /// <param name="methodUnderTest">The method under test</param>
         public override void After(MethodInfo methodUnderTest)
         {
-            CultureInfo.CurrentCulture = originalCulture;
-            CultureInfo.CurrentUICulture = originalUICulture;
+            CultureInfo.CurrentCulture = originalCulture!;
+            CultureInfo.CurrentUICulture = originalUICulture!;
         }
     }
 }

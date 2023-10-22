@@ -486,7 +486,7 @@ namespace Lingualizr
         /// <param name="input"></param>
         /// <param name="format">The string format to use</param>
         /// <returns></returns>
-        public static string Humanize(this ByteSize input, string format = null)
+        public static string Humanize(this ByteSize input, string? format = null)
         {
             return string.IsNullOrWhiteSpace(format) ? input.ToString() : input.ToString(format);
         }
@@ -509,7 +509,7 @@ namespace Lingualizr
         /// <param name="format">The string format to use</param>
         /// <param name="formatProvider">The format provider to use</param>
         /// <returns></returns>
-        public static string Humanize(this ByteSize input, string format, IFormatProvider formatProvider)
+        public static string Humanize(this ByteSize input, string? format, IFormatProvider? formatProvider)
         {
             return string.IsNullOrWhiteSpace(format) ? input.ToString(formatProvider) : input.ToString(format, formatProvider);
         }

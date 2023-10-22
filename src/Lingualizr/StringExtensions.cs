@@ -13,9 +13,9 @@ namespace Lingualizr
         /// <param name="format">string format</param>
         /// <param name="args">arguments</param>
         /// <returns></returns>
-        public static string FormatWith(this string format, params object[] args)
+        public static string FormatWith(this string? format, params object?[] args)
         {
-            return string.Format(format, args);
+            return string.Format(format!, args);
         }
 
         /// <summary>

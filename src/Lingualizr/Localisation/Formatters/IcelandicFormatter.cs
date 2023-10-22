@@ -15,7 +15,7 @@ namespace Lingualizr.Localisation.Formatters
         }
         public override string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)
         {
-            return base.DataUnitHumanize(dataUnit, count, toSymbol)?.TrimEnd('s');
+            return base.DataUnitHumanize(dataUnit, count, toSymbol).TrimEnd('s');
         }
         protected override string Format(string resourceKey, int number, bool toWords = false)
         {

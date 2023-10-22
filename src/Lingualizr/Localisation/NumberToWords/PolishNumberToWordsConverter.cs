@@ -36,9 +36,9 @@ namespace Lingualizr.Localisation.NumberToWords
 
         private const long MaxPossibleDivisor = 1_000_000_000_000_000_000;
 
-        private readonly CultureInfo _culture;
+        private readonly CultureInfo? _culture;
 
-        public PolishNumberToWordsConverter(CultureInfo culture)
+        public PolishNumberToWordsConverter(CultureInfo? culture)
         {
             _culture = culture;
         }

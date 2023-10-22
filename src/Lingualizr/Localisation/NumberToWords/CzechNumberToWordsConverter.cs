@@ -18,9 +18,9 @@ namespace Lingualizr.Localisation.NumberToWords
         private static readonly string[] UnitsNeuterOverride = { "jedno", "dvě" };
         private static readonly string[] UnitsIntraOverride = { "jedna", "dva" };
 
-        private readonly CultureInfo _culture;
+        private readonly CultureInfo? _culture;
 
-        public CzechNumberToWordsConverter(CultureInfo culture)
+        public CzechNumberToWordsConverter(CultureInfo? culture)
         {
             _culture = culture;
         }

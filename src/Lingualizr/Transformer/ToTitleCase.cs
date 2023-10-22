@@ -12,7 +12,7 @@ namespace Lingualizr.Transformer
             return Transform(input, null);
         }
 
-        public string Transform(string input, CultureInfo culture)
+        public string Transform(string input, CultureInfo? culture)
         {
             culture ??= CultureInfo.CurrentCulture;
 

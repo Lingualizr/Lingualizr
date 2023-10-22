@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords
 {
@@ -60,7 +61,7 @@ namespace Lingualizr.Localisation.NumberToWords
              return NumberToText(number / 10000000).Trim() + " crore " + NumberToText(number % 10000000);             
          }
 
-        private static bool ExceptionNumbersToWords(long number, out string words)
+        private static bool ExceptionNumbersToWords(long number, [NotNullWhen(true)] out string? words)
         {
             return OrdinalExceptions.TryGetValue(number, out words);
         }

@@ -16,11 +16,11 @@ namespace Lingualizr.Localisation.NumberToWords
         private const string AndSplit = "og";
         private class Fact
         {
-            public long Power { get; set; }
-            public GrammaticalGender Gender { get; set; }
-            public string Plural { get; set; }
-            public string Single { get; set; }
-            public string OrdinalPrefix { get; set; }
+            public required long Power { get; set; }
+            public required GrammaticalGender Gender { get; set; }
+            public required string Plural { get; set; }
+            public required string Single { get; set; }
+            public required string OrdinalPrefix { get; set; }
         }
         private static readonly Dictionary<int, Fact> PowerOfTenMap = new()
         {
@@ -37,7 +37,7 @@ namespace Lingualizr.Localisation.NumberToWords
             (((number <= 20) || (number % 10 == 0) && (number < 100)) || (number % 100 == 0));
         private static string GetOrdinalEnding(GrammaticalGender gender) =>
             gender == GrammaticalGender.Masculine ? "i" : "a";
-        private static void GetUnits(ICollection<string> builder, long number, GrammaticalGender gender)
+        private static void GetUnits(ICollection<string?> builder, long number, GrammaticalGender gender)
         {
             if (number is > 0 and < 5)
             {
@@ -55,7 +55,7 @@ namespace Lingualizr.Localisation.NumberToWords
                 builder.Add(UnitsMap[number]);
             }
         }
-        private static void CollectOrdinalParts(ICollection<string> builder, int threeDigitPart, Fact conversionRule, GrammaticalGender partGender, GrammaticalGender ordinalGender)
+        private static void CollectOrdinalParts(ICollection<string?> builder, int threeDigitPart, Fact conversionRule, GrammaticalGender partGender, GrammaticalGender ordinalGender)
         {
             var hundreds = threeDigitPart / 100;
             var hundredRemainder = threeDigitPart % 100;
@@ -120,9 +120,9 @@ namespace Lingualizr.Localisation.NumberToWords
                 builder.Add(conversionRule.OrdinalPrefix + GetOrdinalEnding(ordinalGender));
             }
         }
-        private static string CollectOrdinalPartsUnderAHundred(int number, GrammaticalGender gender)
+        private static string? CollectOrdinalPartsUnderAHundred(int number, GrammaticalGender gender)
         {
-            string returnValue = null;
+            string? returnValue = null;
             if (number is >= 0 and < 20)
             {
                 if (number == 2)
@@ -146,7 +146,7 @@ namespace Lingualizr.Localisation.NumberToWords
             }
             return returnValue;
         }
-        private static void CollectParts(IList<string> parts, ref long number, ref bool needsAnd, Fact rule)
+        private static void CollectParts(IList<string?> parts, ref long number, ref bool needsAnd, Fact rule)
         {
             var remainder = number / rule.Power;
             if (remainder > 0)
@@ -161,7 +161,7 @@ namespace Lingualizr.Localisation.NumberToWords
                 needsAnd = true;
             }
         }
-        private static void CollectPart(ICollection<string> parts, long number, Fact rule)
+        private static void CollectPart(ICollection<string?> parts, long number, Fact rule)
         {
             if (number == 1)
             {
@@ -173,7 +173,7 @@ namespace Lingualizr.Localisation.NumberToWords
                 parts.Add(rule.Plural);
             }
         }
-        private static void CollectPartUnderOneThousand(ICollection<string> builder, long number, GrammaticalGender gender)
+        private static void CollectPartUnderOneThousand(ICollection<string?> builder, long number, GrammaticalGender gender)
         {
             var hundreds = number / 100;
             var hundredRemainder = number % 100;
@@ -213,7 +213,7 @@ namespace Lingualizr.Localisation.NumberToWords
                 GetUnits(builder, hundredRemainder, gender);
             }
         }
-        private static void CollectOrdinal(IList<string> parts, ref int number, ref bool needsAnd, Fact rule, GrammaticalGender gender)
+        private static void CollectOrdinal(IList<string?> parts, ref int number, ref bool needsAnd, Fact rule, GrammaticalGender gender)
         {
             var remainder = number / rule.Power;
             if (remainder > 0)
@@ -254,7 +254,7 @@ namespace Lingualizr.Localisation.NumberToWords
                 return UnitsMap[number];
             }
 
-            var parts = new List<string>();
+            var parts = new List<string?>();
             if (number < 0)
             {
                 parts.Add("mínus");
@@ -285,7 +285,7 @@ namespace Lingualizr.Localisation.NumberToWords
             {
                 return UnitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
             }
-            var parts = new List<string>();
+            var parts = new List<string?>();
             var needsAnd = false;
 
             CollectOrdinal(parts, ref number, ref needsAnd, PowerOfTenMap[12], gender);

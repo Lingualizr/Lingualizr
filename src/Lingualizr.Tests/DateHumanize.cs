@@ -13,7 +13,7 @@ namespace Lingualizr.Tests
     {
         private static readonly object LockObject = new object();
 
-        private static void VerifyWithCurrentDate(string expectedString, TimeSpan deltaFromNow, CultureInfo culture)
+        private static void VerifyWithCurrentDate(string expectedString, TimeSpan deltaFromNow, CultureInfo? culture)
         {
             var utcNow = DateTime.UtcNow;
             var localNow = DateTime.Now;
@@ -22,7 +22,7 @@ namespace Lingualizr.Tests
             VerifyWithDate(expectedString, deltaFromNow, culture, localNow, utcNow);
         }
 
-        private static void VerifyWithDateInjection(string expectedString, TimeSpan deltaFromNow, CultureInfo culture)
+        private static void VerifyWithDateInjection(string expectedString, TimeSpan deltaFromNow, CultureInfo? culture)
         {
             var utcNow = new DateTime(2013, 6, 20, 9, 58, 22, DateTimeKind.Utc);
             var now = new DateTime(2013, 6, 20, 11, 58, 22, DateTimeKind.Local);
@@ -30,7 +30,7 @@ namespace Lingualizr.Tests
             VerifyWithDate(expectedString, deltaFromNow, culture, now, utcNow);
         }
 
-        private static void VerifyWithDate(string expectedString, TimeSpan deltaFromBase, CultureInfo culture, DateTime baseDate, DateTime baseDateUtc)
+        private static void VerifyWithDate(string expectedString, TimeSpan deltaFromBase, CultureInfo? culture, DateTime baseDate, DateTime baseDateUtc)
         {
             Assert.Equal(expectedString, baseDateUtc.Add(deltaFromBase).Humanize(utcDate: true, dateToCompareAgainst: baseDateUtc, culture: culture));
             Assert.Equal(expectedString, baseDate.Add(deltaFromBase).Humanize(false, baseDate, culture: culture));
@@ -40,7 +40,7 @@ namespace Lingualizr.Tests
             Assert.Equal(expectedString, baseDate.Add(deltaFromBase).Humanize(null, baseDate, culture: culture));
         }
 
-        public static void Verify(string expectedString, int unit, TimeUnit timeUnit, Tense tense, double? precision = null, CultureInfo culture = null, DateTime? baseDate = null, DateTime? baseDateUtc = null)
+        public static void Verify(string expectedString, int unit, TimeUnit timeUnit, Tense tense, double? precision = null, CultureInfo? culture = null, DateTime? baseDate = null, DateTime? baseDateUtc = null)
         {
             // We lock this as these tests can be multi-threaded and we're setting a static
             lock (LockObject)
@@ -94,7 +94,7 @@ namespace Lingualizr.Tests
                 }
                 else
                 {
-                    VerifyWithDate(expectedString, deltaFromNow, culture, baseDate.Value, baseDateUtc.Value);
+                    VerifyWithDate(expectedString, deltaFromNow, culture, baseDate.Value, baseDateUtc!.Value);
                 }
             }
         }

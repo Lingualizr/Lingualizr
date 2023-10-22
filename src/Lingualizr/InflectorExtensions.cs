@@ -38,7 +38,7 @@ namespace Lingualizr
         /// <param name="word">Word to be pluralized</param>
         /// <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
         /// <returns></returns>
-        public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
+        public static string? Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
             return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
         }

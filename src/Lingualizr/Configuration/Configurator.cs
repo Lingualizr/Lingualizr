@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 
@@ -95,7 +96,7 @@ namespace Lingualizr.Configuration
         /// The formatter to be used
         /// </summary>
         /// <param name="culture">The culture to retrieve formatter for. Null means that current thread's UI culture should be used.</param>
-        internal static IFormatter GetFormatter(CultureInfo culture)
+        internal static IFormatter GetFormatter(CultureInfo? culture)
         {
             return Formatters.ResolveForCulture(culture);
         }
@@ -104,7 +105,7 @@ namespace Lingualizr.Configuration
         /// The converter to be used
         /// </summary>
         /// <param name="culture">The culture to retrieve number to words converter for. Null means that current thread's UI culture should be used.</param>
-        internal static INumberToWordsConverter GetNumberToWordsConverter(CultureInfo culture)
+        internal static INumberToWordsConverter GetNumberToWordsConverter(CultureInfo? culture)
         {
             return NumberToWordsConverters.ResolveForCulture(culture);
         }
@@ -199,7 +200,8 @@ namespace Lingualizr.Configuration
         /// <summary>
         /// A predicate function for description property of attribute to use for Enum.Humanize
         /// </summary>
-        public static Func<PropertyInfo, bool> EnumDescriptionPropertyLocator
+        [NotNull]
+        public static Func<PropertyInfo, bool>? EnumDescriptionPropertyLocator
         {
             get { return _enumDescriptionPropertyLocator; }
             set { _enumDescriptionPropertyLocator = value ?? DefaultEnumDescriptionPropertyLocator; }

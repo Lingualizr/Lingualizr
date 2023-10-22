@@ -99,7 +99,7 @@ namespace Lingualizr
         /// </code>
         /// </example>
         /// <returns>A number after a conversion from a Metric representation.</returns>
-        public static double FromMetric(this string input)
+        public static double FromMetric(this string? input)
         {
             input = CleanRepresentation(input);
             return BuildNumber(input, input[input.Length - 1]);
@@ -227,7 +227,7 @@ namespace Lingualizr
         /// </summary>
         /// <param name="input">Metric representation to clean</param>
         /// <returns>A cleaned representation</returns>
-        private static string CleanRepresentation(string input)
+        private static string CleanRepresentation(string? input)
         {
             if (input == null)
             {
@@ -387,13 +387,13 @@ namespace Lingualizr
 
         private struct UnitPrefix
         {
-            private readonly string _longScaleWord;
+            private readonly string? _longScaleWord;
 
             public string Name { get; }
             public string ShortScaleWord { get; }
             public string LongScaleWord => _longScaleWord ?? ShortScaleWord;
 
-            public UnitPrefix(string name, string shortScaleWord, string longScaleWord = null)
+            public UnitPrefix(string name, string shortScaleWord, string? longScaleWord = null)
             {
                 Name = name;
                 ShortScaleWord = shortScaleWord;

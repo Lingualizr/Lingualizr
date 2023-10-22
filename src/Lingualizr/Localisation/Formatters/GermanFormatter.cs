@@ -10,7 +10,7 @@
         /// <inheritdoc />
         public override string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)
         {
-            return base.DataUnitHumanize(dataUnit, count, toSymbol)?.TrimEnd('s');
+            return base.DataUnitHumanize(dataUnit, count, toSymbol).TrimEnd('s');
         }
     }
 }

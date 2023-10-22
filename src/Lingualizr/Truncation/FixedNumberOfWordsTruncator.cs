@@ -8,7 +8,7 @@ namespace Lingualizr.Truncation
     /// </summary>
     internal class FixedNumberOfWordsTruncator : ITruncator
     {
-        public string Truncate(string value, int length, string truncationString, TruncateFrom truncateFrom = TruncateFrom.Right)
+        public string? Truncate(string? value, int length, string? truncationString, TruncateFrom truncateFrom = TruncateFrom.Right)
         {
             if (value == null)
             {
@@ -20,7 +20,7 @@ namespace Lingualizr.Truncation
                 return value;
             }
 
-            var numberOfWords = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries).Count();
+            var numberOfWords = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Count();
             if (numberOfWords <= length)
             {
                 return value;
@@ -31,7 +31,7 @@ namespace Lingualizr.Truncation
                 : TruncateFromRight(value, length, truncationString);
         }
 
-        private static string TruncateFromRight(string value, int length, string truncationString)
+        private static string TruncateFromRight(string value, int length, string? truncationString)
         {
             var lastCharactersWasWhiteSpace = true;
             var numberOfWordsProcessed = 0;
@@ -59,7 +59,7 @@ namespace Lingualizr.Truncation
             return value + truncationString;
         }
 
-        private static string TruncateFromLeft(string value, int length, string truncationString)
+        private static string TruncateFromLeft(string value, int length, string? truncationString)
         {
             var lastCharactersWasWhiteSpace = true;
             var numberOfWordsProcessed = 0;

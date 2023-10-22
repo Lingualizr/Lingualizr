@@ -7,7 +7,7 @@ namespace Lingualizr.Tests
 {
     public class SomeClass
     {
-        public string SomeString;
+        public string? SomeString;
         public int SomeInt;
         public override string ToString()
         {
@@ -107,7 +107,7 @@ namespace Lingualizr.Tests
         [Fact]
         public void HumanizeHandlesNullItemsWithoutAnException()
         {
-            Assert.Null(Record.Exception(() => new object[] { null, null }.Humanize()));
+            Assert.Null(Record.Exception(() => new object?[] { null, null }.Humanize()));
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace Lingualizr.Tests
         [Fact]
         public void HumanizeHandlesNullObjectDisplayFormatterReturnsWithoutAnException()
         {
-            Assert.Null(Record.Exception(() => new[] { "A", "B", "C" }.Humanize(_ => (object)null)));
+            Assert.Null(Record.Exception(() => new[] { "A", "B", "C" }.Humanize(_ => (object?)null)));
         }
 
         [Fact]

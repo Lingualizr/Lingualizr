@@ -23,7 +23,7 @@ namespace Lingualizr
         /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
         /// and using the default separator for the current culture.
         /// </summary>
-        public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string> displayFormatter)
+        public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string?> displayFormatter)
         {
             if (displayFormatter == null)
             {
@@ -37,7 +37,7 @@ namespace Lingualizr
         /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
         /// and using the default separator for the current culture.
         /// </summary>
-        public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object> displayFormatter)
+        public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object?> displayFormatter)
         {
             if (displayFormatter == null)
             {

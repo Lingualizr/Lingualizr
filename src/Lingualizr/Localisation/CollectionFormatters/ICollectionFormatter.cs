@@ -16,12 +16,12 @@ namespace Lingualizr.Localisation.CollectionFormatters
         /// <summary>
         /// Formats the collection for display, calling <paramref name="objectFormatter"/> on each element.
         /// </summary>
-        string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter);
+        string Humanize<T>(IEnumerable<T> collection, Func<T, string?> objectFormatter);
 
         /// <summary>
         /// Formats the collection for display, calling <paramref name="objectFormatter"/> on each element.
         /// </summary>
-        string Humanize<T>(IEnumerable<T> collection, Func<T, object> objectFormatter);
+        string Humanize<T>(IEnumerable<T> collection, Func<T, object?> objectFormatter);
 
         /// <summary>
         /// Formats the collection for display, calling ToString() on each object

@@ -9,9 +9,9 @@ namespace Lingualizr.Localisation.NumberToWords
         private static readonly string[] UnitsMap = { "nula", "jedan", "dva", "tri", "četiri", "pet", "šest", "sedam", "osam", "devet", "deset", "jedanaest", "dvanaest", "trinaest", "četrnaest", "petnaest", "šestnaest", "sedemnaest", "osemnaest", "devetnaest" };
         private static readonly string[] TensMap = { "nula", "deset", "dvadeset", "trideset", "četrdeset", "petdeset", "šestdeset", "sedamdeset", "osamdeset", "devetdeset" };
 
-        private readonly CultureInfo _culture;
+        private readonly CultureInfo? _culture;
 
-        public SerbianNumberToWordsConverter(CultureInfo culture)
+        public SerbianNumberToWordsConverter(CultureInfo? culture)
         {
             _culture = culture;
         }

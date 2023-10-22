@@ -68,7 +68,7 @@ namespace Lingualizr.Bytes
 
         public string LargestWholeNumberSymbol => GetLargestWholeNumberSymbol();
 
-        public string GetLargestWholeNumberSymbol(IFormatProvider provider = null)
+        public string GetLargestWholeNumberSymbol(IFormatProvider? provider = null)
         {
             var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
@@ -103,7 +103,7 @@ namespace Lingualizr.Bytes
 
         public string LargestWholeNumberFullWord => GetLargestWholeNumberFullWord();
 
-        public string GetLargestWholeNumberFullWord(IFormatProvider provider = null)
+        public string GetLargestWholeNumberFullWord(IFormatProvider? provider = null)
         {
             var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
@@ -224,7 +224,7 @@ namespace Lingualizr.Bytes
             return ToString(NumberFormatInfo.CurrentInfo);
         }
 
-        public string ToString(IFormatProvider provider)
+        public string ToString(IFormatProvider? provider)
         {
             if (provider == null)
                 provider = CultureInfo.CurrentCulture;
@@ -237,12 +237,12 @@ namespace Lingualizr.Bytes
             return ToString(format, NumberFormatInfo.CurrentInfo);
         }
 
-        public string ToString(string format, IFormatProvider provider)
+        public string ToString(string? format, IFormatProvider? provider)
         {
             return ToString(format, provider, toSymbol: true);
         }
 
-        private string ToString(string format, IFormatProvider provider, bool toSymbol)
+        private string ToString(string? format, IFormatProvider? provider, bool toSymbol)
         {
             if (format == null)
                 format = "G";
@@ -319,12 +319,12 @@ namespace Lingualizr.Bytes
         /// tera) used is the largest metric prefix such that the corresponding 
         /// value is greater than or equal to one.
         /// </summary>
-        public string ToFullWords(string format = null, IFormatProvider provider = null)
+        public string ToFullWords(string? format = null, IFormatProvider? provider = null)
         {
             return ToString(format, provider, toSymbol: false);
         }
 
-        public override bool Equals(object value)
+        public override bool Equals(object? value)
         {
             if (value == null)
             {
@@ -354,7 +354,7 @@ namespace Lingualizr.Bytes
             return Bits.GetHashCode();
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
             if (obj == null)
             {
@@ -469,12 +469,12 @@ namespace Lingualizr.Bytes
             return b1.Bits >= b2.Bits;
         }
 
-        public static bool TryParse(string s, out ByteSize result)
+        public static bool TryParse(string? s, out ByteSize result)
         {
             return TryParse(s, null, out result);
         }
 
-        public static bool TryParse(string s, IFormatProvider formatProvider, out ByteSize result)
+        public static bool TryParse(string? s, IFormatProvider? formatProvider, out ByteSize result)
         {
             // Arg checking
             if (string.IsNullOrWhiteSpace(s))
@@ -573,7 +573,7 @@ namespace Lingualizr.Bytes
             return true;
         }
 
-        private static NumberFormatInfo GetNumberFormatInfo(IFormatProvider formatProvider)
+        private static NumberFormatInfo GetNumberFormatInfo(IFormatProvider? formatProvider)
         {
             if (formatProvider is NumberFormatInfo numberFormat)
                 return numberFormat;
@@ -583,12 +583,12 @@ namespace Lingualizr.Bytes
             return culture.NumberFormat;
         }
 
-        public static ByteSize Parse(string s)
+        public static ByteSize Parse(string? s)
         {
             return Parse(s, null);
         }
 
-        public static ByteSize Parse(string s, IFormatProvider formatProvider)
+        public static ByteSize Parse(string? s, IFormatProvider? formatProvider)
         {
             if (s == null)
             {

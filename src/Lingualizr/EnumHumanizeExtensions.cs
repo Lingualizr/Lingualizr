@@ -64,7 +64,7 @@ namespace Lingualizr
         }
 
         // I had to add this method because PCL doesn't have DescriptionAttribute & I didn't want two versions of the code & thus the reflection
-        private static string GetCustomDescription(MemberInfo memberInfo)
+        private static string? GetCustomDescription(MemberInfo memberInfo)
         {
             var attrs = memberInfo.GetCustomAttributes(true);
 
@@ -100,7 +100,7 @@ namespace Lingualizr
                         .FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
                 if (descriptionProperty != null)
                 {
-                    return descriptionProperty.GetValue(attr, null).ToString();
+                    return descriptionProperty.GetValue(attr, null)?.ToString();
                 }
             }
 

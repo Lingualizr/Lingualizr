@@ -9,11 +9,11 @@ namespace Lingualizr.Localisation.NumberToWords
 
         private class Fact
         {
-            public int Value { get; set; }
-            public string Name { get; set; }
-            public string Prefix { get; set; }
-            public string Postfix { get; set; }
-            public bool DisplayOneUnit { get; set; }
+            public required int Value { get; set; }
+            public required string Name { get; set; }
+            public required string Prefix { get; set; }
+            public required string Postfix { get; set; }
+            public required bool DisplayOneUnit { get; set; }
             public GrammaticalGender Gender { get; set; } = GrammaticalGender.Neuter;
         }
 
