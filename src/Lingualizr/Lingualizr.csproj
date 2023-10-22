@@ -10,12 +10,44 @@
     <AssemblyName>Lingualizr</AssemblyName>
     <RootNamespace>Lingualizr</RootNamespace>
     <PackageId>Lingualizr</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <MinVerMinimumMajorMinor>1.0</MinVerMinimumMajorMinor>
   </PropertyGroup>
   
+  <!-- Common NuGet package settings. -->
+  
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionPrefix Condition="'$(packageversion)' != ''">$(PackageVersion)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
+    <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
+  </PropertyGroup>
+
+  <!-- Deterministic settings. CI only .-->
+  
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <!--MinVer Properties for versioning. CI only-->
+  
+  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerVerbosity>normal</MinVerVerbosity>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Update="FluentDate\InDate.Months.tt">
       <LastGenOutput>InDate.Months.cs</LastGenOutput>
