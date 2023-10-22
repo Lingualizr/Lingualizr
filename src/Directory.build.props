@@ -9,6 +9,15 @@
   </PropertyGroup>
 
 
+  <!-- Common NuGet package settings. -->
+  <PropertyGroup>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionPrefix Condition="'$(packageversion)' != ''">$(PackageVersion)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
   <PropertyGroup>
     <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
     <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
