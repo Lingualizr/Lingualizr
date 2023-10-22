@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">  
   <PropertyGroup>  
     <Authors>Stefan Nikolei</Authors>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Lingualizr/Lingualizr/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://raw.githubusercontent.com/Lingualizr/Lingualizr/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/Lingualizr/Lingualizr</PackageProjectUrl>
     <Description>A micro-framework that turns your normal strings, type names, enum fields, date fields ETC into a human friendly format</Description>    
     <Product>Lingualizr ($(TargetFramework))</Product>    

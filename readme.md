@@ -1,16 +1,13 @@
 ﻿<p><img src="https://raw.github.com/Lingualizr/Lingualizr/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
 
-[<img align="right" width="100px" src="https://old.dotnetfoundation.org/img/logo_big.svg" />](https://old.dotnetfoundation.org/projects/Lingualizr)
+[<img align="right" width="100px" src="https://old.dotnetfoundation.org/img/logo_big.svg" />]
 
-Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is part of the [.NET Foundation](https://www.dotnetfoundation.org/), and operates under their [code of conduct](https://www.dotnetfoundation.org/code-of-conduct). It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
-
-[![Join the chat at https://gitter.im/Lingualizr/Lingualizr](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Lingualizr/Lingualizr)
+Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
 
 ### Table of contents
  - [Install](#install)
    - [Specifying Languages (Optional)](#specify-lang)
    - [Known Installation Issues](#known-issues)
-   - [Use in ASP.NET 4.x MVC Views](#aspnet4mvc)
  - [Features](#features)
    - [Humanize String](#humanize-string)
    - [Dehumanize String](#dehumanize-string)
@@ -61,30 +58,13 @@ Lingualizr meets all your .NET needs for manipulating and displaying strings, en
 ## <a id="install">Install</a>
 You can install Lingualizr as [a nuget package](https://nuget.org/packages/Lingualizr):
 
-**English only**: `Lingualizr.Core`
-
 All languages: `Lingualizr`
 
-Lingualizr is a .NET Standard Class Library with support for .NET Standard 1.0+ (.Net 4.5+, UWP, Xamarin, and .NET Core).
+Lingualizr is a .NET 6.0 Class Library.
 
 Also Lingualizr symbols are source indexed with [SourceLink](https://github.com/dotnet/sourcelink) and are included in the package so you can step through Lingualizr code while debugging your code.
 
-For pre-release builds, [Azure Artifacts feed](https://dev.azure.com/dotnet/Lingualizr/_packaging?_a=feed&feed=Lingualizr) is available where you can pull down CI packages from the latest codebase. The feed URL is:
-
-  - [![Lingualizr package in Lingualizr feed in Azure Artifacts](https://feeds.dev.azure.com/dotnet/5829eea4-55e5-4a15-ba8d-1de5daaafcea/_apis/public/Packaging/Feeds/b39738c7-8e60-4bfb-825f-29c47261a5cc/Packages/db81f806-d0b5-43a3-99f4-3d27606376b8/Badge)](https://dev.azure.com/dotnet/Lingualizr/_packaging?_a=package&feed=b39738c7-8e60-4bfb-825f-29c47261a5cc&package=db81f806-d0b5-43a3-99f4-3d27606376b8&preferRelease=true) `https://pkgs.dev.azure.com/dotnet/Lingualizr/_packaging/Lingualizr/nuget/v3/index.json`
-
-### <a id="specify-lang">Specify Languages (Optional)</a>
-New in Lingualizr 2.0 is the option to choose which localization packages you wish to use. You choose which packages
-based on what NuGet package(s) you install. By default, the main `Lingualizr` 2.0 package installs all supported languages
-exactly like it does in 1.x. If you're not sure, then just use the main `Lingualizr` package.
-
-Here are the options:
-
-  - **All languages**: use the main `Lingualizr` package. This pulls in `Lingualizr.Core` and all language packages.
-  - **English**: use the `Lingualizr.Core` package. Only the English language resources will be available
-  - **Specific languages**: Use the language specific packages you'd like. For example for French, use `Lingualizr.Core.fr`. You can include multiple languages by installing however many language packages you want.
-
-The detailed explanation for how this works is in the comments [here](https://github.com/Lingualizr/Lingualizr/issues/59#issuecomment-152546079).
+For pre-release builds, [Feedz feed](https://f.feedz.io/lingualizr/lingualizr/nuget/index.json) is available where you can pull down CI packages from the latest codebase. The feed URL is:
 
 ## <a id="features">Features</a>
 
@@ -1177,113 +1157,6 @@ TimeUnit.Week.ToSymbol();
 TimeUnit.Year.ToSymbol();
 // y
 ```
-
-## <a id="mix-this-into-your-framework-to-simplify-your-life">Mix this into your framework to simplify your life</a>
-This is just a baseline and you can use this to simplify your day to day job. For example, in Asp.Net MVC we keep chucking `Display` attribute on ViewModel properties so `HtmlHelper` can generate correct labels for us; but, just like enums, in vast majority of cases we just need a space between the words in property name - so why not use `"string".Humanize` for that?!
-
-You may find an Asp.Net MVC sample [in the code](https://github.com/Lingualizr/Lingualizr/tree/master/src/Lingualizr.MvcSample) that does that (although the project is excluded from the solution file to make the nuget package available for .Net 3.5 too).
-
-This is achieved using a custom `DataAnnotationsModelMetadataProvider` I called [LingualizrMetadataProvider](https://github.com/Lingualizr/Lingualizr/blob/master/src/Lingualizr.MvcSample/LingualizrMetadataProvider.cs). It is small enough to repeat here; so here we go:
-
-```C#
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web.Mvc;
-using Lingualizr;
-
-namespace YourApp
-{
-    public class LingualizrMetadataProvider : DataAnnotationsModelMetadataProvider
-    {
-        protected override ModelMetadata CreateMetadata(
-            IEnumerable<Attribute> attributes,
-            Type containerType,
-            Func<object> modelAccessor,
-            Type modelType,
-            string propertyName)
-        {
-            var propertyAttributes = attributes.ToList();
-            var modelMetadata = base.CreateMetadata(propertyAttributes, containerType, modelAccessor, modelType, propertyName);
-
-            if (IsTransformRequired(modelMetadata, propertyAttributes))
-                modelMetadata.DisplayName = modelMetadata.PropertyName.Humanize();
-
-            return modelMetadata;
-        }
-
-        private static bool IsTransformRequired(ModelMetadata modelMetadata, IList<Attribute> propertyAttributes)
-        {
-            if (string.IsNullOrEmpty(modelMetadata.PropertyName))
-                return false;
-
-            if (propertyAttributes.OfType<DisplayNameAttribute>().Any())
-                return false;
-
-            if (propertyAttributes.OfType<DisplayAttribute>().Any())
-                return false;
-
-            return true;
-        }
-    }
-}
-```
-
-This class calls the base class to extract the metadata and then, if required, humanizes the property name.
-It is checking if the property already has a `DisplayName` or `Display` attribute on it in which case the metadata provider will just honor the attribute and leave the property alone.
-For other properties it will Humanize the property name. That is all.
-
-Now you need to register this metadata provider with Asp.Net MVC.
-Make sure you use `System.Web.Mvc.ModelMetadataProviders`, and not `System.Web.ModelBinding.ModelMetadataProviders`:
-
-```C#
-ModelMetadataProviders.Current = new LingualizrMetadataProvider();
-```
-
-... and now you can replace:
-
-```C#
-public class RegisterModel
-{
-    [Display(Name = "User name")]
-    public string UserName { get; set; }
-
-    [Display(Name = "Email address")]
-    public string EmailAddress { get; set; }
-
-    [Display(Name = "Confirm password")]
-    public string ConfirmPassword { get; set; }
-}
-```
-
-with:
-
-```C#
-public class RegisterModel
-{
-    public string UserName { get; set; }
-    public string EmailAddress { get; set; }
-    public string ConfirmPassword { get; set; }
-}
-```
-
-... and the "metadata Lingualizr" will take care of the rest.
-
-No need to mention that if you want title casing for your labels you can chain the method with `Transform`:
-
-```C#
-modelMetadata.DisplayName = modelMetadata.PropertyName.Humanize().Transform(To.TitleCase);
-```
-
-## <a id="known-issues">Known installation issues and workarounds</a>
-Due to a [bug](https://github.com/dotnet/cli/issues/3396) in the CLI tools, the main `Lingualizr` package and it's language packages will fail to install. As temporary workaround, until that bug is fixed, use `Lingualizr.xproj` instead. It contains all of the languages.
-
-## <a id="aspnet4mvc">Use in ASP.NET 4.x MVC Views</a>
-Lingualizr is a Portable Class Library. There is currently [an issue](https://stackoverflow.com/questions/16675171/what-does-the-web-config-compilation-assemblies-element-do) if you try to use PCL's in an MVC view since the MVC views do not share the same build system as the regular project. You must specify all references in the `web.config` file, including ones the project system normally automatically adds.
-
-If you encounter errors saying that you must add a reference to either `System.Runtime` or `System.Globalization`, this applies to you. The solution is to add the contract references to your `web.config` as listed [here](https://stackoverflow.com/a/19942274/738188). Note that this applies to any PCL you use in an MVC view, not just Lingualizr.
 
 ## <a id="how-to-contribute">How to contribute?</a>
 

@@ -42,6 +42,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -61,27 +63,13 @@ jobs:
     if: (github.event_name == 'push')
 
     steps:
-      - name: Git Config
-        shell: bash
-        run: |
-          git config --global core.autocrlf false
-
       - name: Git Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: recursive
 
       - name: NuGet Install
         uses: NuGet/setup-nuget@v1
-
-      - name: NuGet Setup Cache
-        uses: actions/cache@v3
-        id: nuget-cache
-        with:
-          path: ~/.nuget
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.props', '**/*.targets') }}
-          restore-keys: ${{ runner.os }}-nuget-
 
       - name: DotNet Pack
         shell: pwsh
