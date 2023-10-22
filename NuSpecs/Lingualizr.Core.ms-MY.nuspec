@@ -11,7 +11,7 @@
     <license type="expression">MIT</license>
     <language>ms-MY</language>
     <dependencies>
-       <dependency id="Lingualizr.Core" version="[$version$]" />
+       <dependency id="Lingualizr.Core"  />
     </dependencies>
   </metadata>
   <files>
