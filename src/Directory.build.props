@@ -37,23 +37,5 @@
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerVerbosity>detailed</MinVerVerbosity>
   </PropertyGroup>
-
-  <!-- Package references and additional files which are consumed by src projects. CI Only -->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub"
-                      Version="1.1.1"
-                      PrivateAssets="All"
-                      IsImplicitlyDefined="true" />
-
-    <PackageReference Include="MinVer"
-                      PrivateAssets="All"
-                      Version="4.1.0"
-                      IsImplicitlyDefined="true"/>
-
-    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
   
   </Project>
