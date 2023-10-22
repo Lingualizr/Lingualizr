@@ -83,7 +83,7 @@ jobs:
         with:
           fetch-depth: 0
 
-     - name: NuGet Install
+      - name: NuGet Install
         uses: NuGet/setup-nuget@v1
 
       - name: DotNet Pack
