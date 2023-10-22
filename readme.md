@@ -501,9 +501,6 @@ Normally you would call `Pluralize` on a singular word but if you're unsure abou
 "string".Pluralize(inputIsKnownToBeSingular: false) => "strings"
 ```
 
-
-The overload of `Pluralize` with `plurality` argument is obsolete and was removed in version 2.0.
-
 #### <a id="singularize">Singularize</a>
 `Singularize` singularizes the provided input while taking irregular and uncountable words into consideration:
 
