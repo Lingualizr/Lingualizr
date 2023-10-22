@@ -2,6 +2,7 @@
 <package>
   <metadata minClientVersion="2.12">
     <id>Lingualizr.Core.ms-MY</id>
+    <version>$packageversion$</version>
     <title>Lingualizr Locale (ms-MY)</title>
     <authors>Stefan Nikolei</authors>
     <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
@@ -11,7 +12,7 @@
     <license type="expression">MIT</license>
     <language>ms-MY</language>
     <dependencies>
-       <dependency id="Lingualizr.Core"  />
+       <dependency id="Lingualizr.Core" version="[$packageversion$]" />
     </dependencies>
   </metadata>
   <files>

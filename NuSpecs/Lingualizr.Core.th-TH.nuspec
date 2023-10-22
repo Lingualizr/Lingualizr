@@ -2,6 +2,7 @@
 <package>
   <metadata minClientVersion="2.12">
     <id>Lingualizr.Core.th-TH</id>
+    <version>$packageversion$</version>
     <title>Lingualizr Locale (th-TH)</title>
     <authors>Stefan Nikolei</authors>
     <projectUrl>https://github.com/Lingualizr/Lingualizr</projectUrl>
@@ -11,7 +12,7 @@
     <license type="expression">MIT</license>
     <language>th-TH</language>
     <dependencies>
-       <dependency id="Lingualizr.Core"  />
+       <dependency id="Lingualizr.Core" version="[$packageversion$]" />
     </dependencies>
   </metadata>
   <files>
