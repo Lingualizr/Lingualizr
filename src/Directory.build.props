@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <!-- Deterministic settings. CI only .-->
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <PropertyGroup>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
@@ -33,13 +33,13 @@
   </PropertyGroup>
 
   <!--MinVer Properties for versioning. CI only-->
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <PropertyGroup>
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerVerbosity>normal</MinVerVerbosity>
   </PropertyGroup>
 
   <!-- Package references and additional files which are consumed by src projects. CI Only -->
-  <ItemGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub"
                       Version="1.1.1"
                       PrivateAssets="All"
@@ -51,6 +51,4 @@
                       IsImplicitlyDefined="true"/>
   </ItemGroup>
   
-
-
   </Project>
