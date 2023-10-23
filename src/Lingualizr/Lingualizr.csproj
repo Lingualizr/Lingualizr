@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>    
     <Authors>Stefan Nikolei</Authors>
-    <PackageLicense>https://raw.githubusercontent.com/Lingualizr/Lingualizr/master/LICENSE</PackageLicense>
+    <PackageLicense>https://raw.githubusercontent.com/Lingualizr/Lingualizr/main/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/Lingualizr/Lingualizr</PackageProjectUrl>
     <Description>A micro-framework that turns your normal strings, type names, enum fields, date fields ETC into a human friendly format</Description>    
     <Product>Lingualizr ($(TargetFramework))</Product>    

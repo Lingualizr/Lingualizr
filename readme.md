@@ -1,13 +1,9 @@
-﻿<p><img src="https://raw.github.com/Lingualizr/Lingualizr/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
-
-[<img align="right" width="100px" src="https://old.dotnetfoundation.org/img/logo_big.svg" />]
+﻿<p><img src="https://raw.github.com/Lingualizr/Lingualizr/main/logo.png" alt="Logo" style="max-width:100%;" /></p>
 
 Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
 
 ### Table of contents
  - [Install](#install)
-   - [Specifying Languages (Optional)](#specify-lang)
-   - [Known Installation Issues](#known-issues)
  - [Features](#features)
    - [Humanize String](#humanize-string)
    - [Dehumanize String](#dehumanize-string)
@@ -43,15 +39,7 @@ Lingualizr meets all your .NET needs for manipulating and displaying strings, en
    - [Heading to words](#heading-to-words)
    - [Tupleize](#tupleize)
    - [Time unit to symbol](#timeunit-to-symbol)
- - [Mix this into your framework to simplify your life](#mix-this-into-your-framework-to-simplify-your-life) -
  - [How to contribute?](#how-to-contribute)
- - [Continuous Integration from AppVeyor](#continuous-integration)
- - [Related Projects](#related-projects)
-   - [Humanizer ReSharper Annotations](#humanizer-resharper-annotations)
-   - [PowerShell Humanizer](#powershell-humanizer)
-   - [Humanizer JVM](#humanizerjvm)
-   - [Humanizer.node](#humanizernode)
- - [Main contributors](#main-contributors)
  - [License](#license)
  - [Icon](#icon)
 
@@ -1157,38 +1145,10 @@ TimeUnit.Year.ToSymbol();
 
 ## <a id="how-to-contribute">How to contribute?</a>
 
-Please see <a href="https://github.com/Lingualizr/Lingualizr/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>.
-
-## <a id="continuous-integration">Continuous Integration from Azure DevOps</a>
-Lingualizr project is built & tested continuously by Azure DevOps (more details [here](https://dev.azure.com/dotnet/Lingualizr/_build?definitionId=14)). That applies to pull requests too. Shortly after you submit a PR you can check the build and test status notification on your PR. Feel free to jump in and <a href="https://github.com/Lingualizr/Lingualizr/blob/master/CONTRIBUTING.md">contribute</a> some green PRs!
-
-The current build status on the CI server is [![Build status](https://dev.azure.com/dotnet/Lingualizr/_apis/build/status/Lingualizr-CI?branchName=master)](https://dev.azure.com/dotnet/Lingualizr/_build?definitionId=14)
-
-## <a id="related-projects">Related projects</a>
-Below is a list of related open source projects:
-
-### <a id="Lingualizr-resharper-annotations">Lingualizr ReSharper Annotations</a>
-If you use ReSharper, annotations for Lingualizr are available in the [Lingualizr.Annotations package](https://resharper-plugins.jetbrains.com/packages/Lingualizr.Annotations/), which you can obtain via the ReSharper Extension Manager.
-These annotations do not yet cover the entire library, but [pull requests are always welcome!](https://github.com/enduracode/Lingualizr-annotations).
-
-### <a id="powershell-Lingualizr">PowerShell Lingualizr</a>
-[PowerShell Lingualizr](https://github.com/dfinke/PowerShellLingualizr) is a PowerShell module that wraps Lingualizr.
-
-### <a id="Lingualizrjvm">Lingualizr JVM</a>
-[Lingualizr.jvm](https://github.com/MehdiK/Lingualizr.jvm) is an adaptation of the Lingualizr framework for .Net which is made for the jvm and is written in Kotlin.
-Lingualizr.jvm meets all your jvm needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities.
-
-### <a id="Lingualizrnode">Lingualizr.node</a>
-[Lingualizr.node](https://github.com/fakoua/Lingualizr.node) is a TypeScript port of the Lingualizr framework.
-
-## <a id="main-contributors">Main contributors</a>
- - Mehdi Khalili ([@MehdiKhalili](https://twitter.com/MehdiKhalili))
- - Claire Novotny ([@clairernovotny](https://twitter.com/clairernovotny))
- - Alexander I. Zaytsev ([@hazzik](https://github.com/hazzik))
- - Max Malook ([@mexx](https://github.com/mexx))
+Please see <a href="https://github.com/Lingualizr/Lingualizr/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.
 
 ## <a id="license">License</a>
-Lingualizr is released under the MIT License. See the [bundled LICENSE](https://github.com/Lingualizr/Lingualizr/blob/master/LICENSE) file for details.
+Lingualizr is released under the MIT License. See the [bundled LICENSE](https://github.com/Lingualizr/Lingualizr/blob/main/LICENSE) file for details.
 
 ## <a id="icon">Icon</a>
 Icon created by [Tyrone Rieschiek](https://twitter.com/Inkventive)
