@@ -11,6 +11,7 @@
     <RootNamespace>Lingualizr</RootNamespace>
     <PackageId>Lingualizr</PackageId>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
@@ -38,7 +39,6 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
   <!--MinVer Properties for versioning. CI only-->
