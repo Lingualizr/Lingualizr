@@ -1,19 +1,18 @@
 ﻿using System.Globalization;
 
-namespace Lingualizr.Transformer
+namespace Lingualizr.Transformer;
+
+internal class ToUpperCase : ICulturedStringTransformer
 {
-    internal class ToUpperCase : ICulturedStringTransformer
+    public string Transform(string input)
     {
-        public string Transform(string input)
-        {
-            return Transform(input, null);
-        }
+        return Transform(input, null);
+    }
 
-        public string Transform(string input, CultureInfo culture)
-        {
-            culture ??= CultureInfo.CurrentCulture;
+    public string Transform(string input, CultureInfo culture)
+    {
+        culture ??= CultureInfo.CurrentCulture;
 
-            return culture.TextInfo.ToUpper(input);
-        }
+        return culture.TextInfo.ToUpper(input);
     }
 }

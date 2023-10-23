@@ -1,21 +1,20 @@
-﻿namespace Lingualizr
+﻿namespace Lingualizr;
+
+/// <summary>
+/// Definite and Indefinite English Articles
+/// </summary>
+public enum EnglishArticles
 {
     /// <summary>
-    /// Definite and Indefinite English Articles
+    /// A
     /// </summary>
-    public enum EnglishArticles
-    {
-        /// <summary>
-        /// A
-        /// </summary>
-        A,
-        /// <summary>
-        /// An
-        /// </summary>
-        An,
-        /// <summary>
-        /// The
-        /// </summary>
-        The
-    }
+    A,
+    /// <summary>
+    /// An
+    /// </summary>
+    An,
+    /// <summary>
+    /// The
+    /// </summary>
+    The
 }

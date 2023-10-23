@@ -1,24 +1,23 @@
-﻿namespace Lingualizr.Localisation.Ordinalizers
+﻿namespace Lingualizr.Localisation.Ordinalizers;
+
+internal class FrenchOrdinalizer : DefaultOrdinalizer
 {
-    internal class FrenchOrdinalizer : DefaultOrdinalizer
+    public override string Convert(int number, string numberString)
     {
-        public override string Convert(int number, string numberString)
-        {
-            return Convert(number, numberString, GrammaticalGender.Masculine);
-        }
+        return Convert(number, numberString, GrammaticalGender.Masculine);
+    }
 
-        public override string Convert(int number, string numberString, GrammaticalGender gender)
+    public override string Convert(int number, string numberString, GrammaticalGender gender)
+    {
+        if (number == 1)
         {
-            if (number == 1)
+            if (gender == GrammaticalGender.Feminine)
             {
-                if (gender == GrammaticalGender.Feminine)
-                {
-                    return numberString + "ère";
-                }
-                return numberString + "er";
+                return numberString + "ère";
             }
-
-            return numberString + "ème";
+            return numberString + "er";
         }
+
+        return numberString + "ème";
     }
 }

@@ -1,34 +1,33 @@
 ﻿using Lingualizr.Localisation.GrammaticalNumber;
 
-namespace Lingualizr.Localisation.Formatters
+namespace Lingualizr.Localisation.Formatters;
+
+internal class UkrainianFormatter : DefaultFormatter
 {
-    internal class UkrainianFormatter : DefaultFormatter
+    public UkrainianFormatter()
+        : base("uk")
     {
-        public UkrainianFormatter()
-            : base("uk")
+    }
+
+    protected override string GetResourceKey(string resourceKey, int number)
+    {
+        var grammaticalNumber = RussianGrammaticalNumberDetector.Detect(number);
+        var suffix = GetSuffix(grammaticalNumber);
+        return resourceKey + suffix;
+    }
+
+    private string GetSuffix(RussianGrammaticalNumber grammaticalNumber)
+    {
+        if (grammaticalNumber == RussianGrammaticalNumber.Singular)
         {
+            return "_Singular";
         }
 
-        protected override string GetResourceKey(string resourceKey, int number)
+        if (grammaticalNumber == RussianGrammaticalNumber.Paucal)
         {
-            var grammaticalNumber = RussianGrammaticalNumberDetector.Detect(number);
-            var suffix = GetSuffix(grammaticalNumber);
-            return resourceKey + suffix;
+            return "_Paucal";
         }
 
-        private string GetSuffix(RussianGrammaticalNumber grammaticalNumber)
-        {
-            if (grammaticalNumber == RussianGrammaticalNumber.Singular)
-            {
-                return "_Singular";
-            }
-
-            if (grammaticalNumber == RussianGrammaticalNumber.Paucal)
-            {
-                return "_Paucal";
-            }
-
-            return "";
-        }
+        return "";
     }
 }

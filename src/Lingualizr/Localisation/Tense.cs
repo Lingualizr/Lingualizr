@@ -1,18 +1,17 @@
-﻿namespace Lingualizr.Localisation
+﻿namespace Lingualizr.Localisation;
+
+/// <summary>
+/// Enumerates the possible time references; past or future.
+/// </summary>
+public enum Tense
 {
     /// <summary>
-    /// Enumerates the possible time references; past or future.
+    /// Indicates the future.
     /// </summary>
-    public enum Tense
-    {
-        /// <summary>
-        /// Indicates the future.
-        /// </summary>
-        Future,
+    Future,
 
-        /// <summary>
-        /// Indicates the past.
-        /// </summary>
-        Past
-    }
+    /// <summary>
+    /// Indicates the past.
+    /// </summary>
+    Past
 }

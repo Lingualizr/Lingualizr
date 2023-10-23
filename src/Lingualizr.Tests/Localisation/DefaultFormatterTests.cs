@@ -2,19 +2,18 @@
 
 using Xunit;
 
-namespace Lingualizr.Tests.Localisation
+namespace Lingualizr.Tests.Localisation;
+
+public class DefaultFormatterTests
 {
-    public class DefaultFormatterTests
+
+    [Fact]
+    [UseCulture("iv")]
+    public void HandlesNotImplementedCollectionFormattersGracefully()
     {
+        var a = new[] { DateTime.UtcNow, DateTime.UtcNow.AddDays(10) };
+        var b = a.Humanize();
 
-        [Fact]
-        [UseCulture("iv")]
-        public void HandlesNotImplementedCollectionFormattersGracefully()
-        {
-            var a = new[] { DateTime.UtcNow, DateTime.UtcNow.AddDays(10) };
-            var b = a.Humanize();
-
-            Assert.Equal(a[0] + " & " + a[1], b);
-        }
+        Assert.Equal(a[0] + " & " + a[1], b);
     }
 }

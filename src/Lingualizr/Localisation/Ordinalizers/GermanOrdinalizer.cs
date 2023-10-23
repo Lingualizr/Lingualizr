@@ -1,10 +1,9 @@
-﻿namespace Lingualizr.Localisation.Ordinalizers
+﻿namespace Lingualizr.Localisation.Ordinalizers;
+
+internal class GermanOrdinalizer : DefaultOrdinalizer
 {
-    internal class GermanOrdinalizer : DefaultOrdinalizer
+    public override string Convert(int number, string numberString)
     {
-        public override string Convert(int number, string numberString)
-        {
-            return numberString + ".";
-        }
+        return numberString + ".";
     }
 }

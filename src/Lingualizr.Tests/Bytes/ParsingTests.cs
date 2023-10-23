@@ -27,144 +27,143 @@ using Lingualizr.Bytes;
 
 using Xunit;
 
-namespace Lingualizr.Tests.Bytes
+namespace Lingualizr.Tests.Bytes;
+
+[UseCulture("en")]
+public class ParsingTests
 {
-    [UseCulture("en")]
-    public class ParsingTests
+
+    [Fact]
+    public void Parse()
     {
+        Assert.Equal(ByteSize.FromKilobytes(1020), ByteSize.Parse("1020KB"));
+    }
 
-        [Fact]
-        public void Parse()
+    [Fact]
+    public void TryParseReturnsFalseOnNull()
+    {
+        Assert.False(ByteSize.TryParse(null, out var result));
+        Assert.Equal(default, result);
+    }
+
+    [Fact]
+    public void TryParse()
+    {
+        var resultBool = ByteSize.TryParse("1020KB", out var resultByteSize);
+
+        Assert.True(resultBool);
+        Assert.Equal(ByteSize.FromKilobytes(1020), resultByteSize);
+    }
+
+    [Theory]
+    [InlineData("2000.01KB", "")] // Invariant
+    [InlineData("2,000.01KB", "")]
+    [InlineData("+2000.01KB", "")]
+    [InlineData("2000.01KB", "en")]
+    [InlineData("2,000.01KB", "en")]
+    [InlineData("+2000.01KB", "en")]
+    [InlineData("2000,01KB", "de")]
+    [InlineData("2.000,01KB", "de")]
+    [InlineData("+2000,01KB", "de")]
+    public void TryParseWithCultureInfo(string value, string cultureName)
+    {
+        var culture = new CultureInfo(cultureName);
+
+        Assert.True(ByteSize.TryParse(value, culture, out var resultByteSize));
+        Assert.Equal(ByteSize.FromKilobytes(2000.01), resultByteSize);
+
+        Assert.Equal(resultByteSize, ByteSize.Parse(value, culture));
+    }
+
+    [Fact]
+    public void TryParseWithNumberFormatInfo()
+    {
+        var numberFormat = new NumberFormatInfo
         {
-            Assert.Equal(ByteSize.FromKilobytes(1020), ByteSize.Parse("1020KB"));
-        }
+            NumberDecimalSeparator = "_",
+            NumberGroupSeparator = ";",
+            NegativeSign = "−", // proper minus, not hyphen-minus
+        };
 
-        [Fact]
-        public void TryParseReturnsFalseOnNull()
-        {
-            Assert.False(ByteSize.TryParse(null, out var result));
-            Assert.Equal(default, result);
-        }
+        var value = "−2;000_01KB";
 
-        [Fact]
-        public void TryParse()
-        {
-            var resultBool = ByteSize.TryParse("1020KB", out var resultByteSize);
+        Assert.True(ByteSize.TryParse(value, numberFormat, out var resultByteSize));
+        Assert.Equal(ByteSize.FromKilobytes(-2000.01), resultByteSize);
 
-            Assert.True(resultBool);
-            Assert.Equal(ByteSize.FromKilobytes(1020), resultByteSize);
-        }
+        Assert.Equal(resultByteSize, ByteSize.Parse(value, numberFormat));
+    }
 
-        [Theory]
-        [InlineData("2000.01KB", "")] // Invariant
-        [InlineData("2,000.01KB", "")]
-        [InlineData("+2000.01KB", "")]
-        [InlineData("2000.01KB", "en")]
-        [InlineData("2,000.01KB", "en")]
-        [InlineData("+2000.01KB", "en")]
-        [InlineData("2000,01KB", "de")]
-        [InlineData("2.000,01KB", "de")]
-        [InlineData("+2000,01KB", "de")]
-        public void TryParseWithCultureInfo(string value, string cultureName)
-        {
-            var culture = new CultureInfo(cultureName);
+    [Fact]
+    public void ParseDecimalMegabytes()
+    {
+        Assert.Equal(ByteSize.FromMegabytes(100.5), ByteSize.Parse("100.5MB"));
+    }
 
-            Assert.True(ByteSize.TryParse(value, culture, out var resultByteSize));
-            Assert.Equal(ByteSize.FromKilobytes(2000.01), resultByteSize);
+    [Theory]
+    [InlineData("")]
+    [InlineData(" ")]
+    [InlineData("\t")]
+    [InlineData("Unexpected Value")]
+    [InlineData("1000")]
+    [InlineData(" 1000 ")]
+    [InlineData("KB")]
+    [InlineData("1000.5b")] // Partial bits
+    [InlineData("1000KBB")] // Bad suffix
+    public void TryParseReturnsFalseOnBadValue(string input)
+    {
+        var resultBool = ByteSize.TryParse(input, out var resultByteSize);
 
-            Assert.Equal(resultByteSize, ByteSize.Parse(value, culture));
-        }
+        Assert.False(resultBool);
+        Assert.Equal(new ByteSize(), resultByteSize);
 
-        [Fact]
-        public void TryParseWithNumberFormatInfo()
-        {
-            var numberFormat = new NumberFormatInfo
-            {
-                NumberDecimalSeparator = "_",
-                NumberGroupSeparator = ";",
-                NegativeSign = "−", // proper minus, not hyphen-minus
-            };
+        Assert.Throws<FormatException>(() => { ByteSize.Parse(input); });
+    }
 
-            var value = "−2;000_01KB";
+    [Fact]
+    public void TryParseWorksWithLotsOfSpaces()
+    {
+        Assert.Equal(ByteSize.FromKilobytes(100), ByteSize.Parse(" 100 KB "));
+    }
 
-            Assert.True(ByteSize.TryParse(value, numberFormat, out var resultByteSize));
-            Assert.Equal(ByteSize.FromKilobytes(-2000.01), resultByteSize);
+    [Fact]
+    public void ParseThrowsOnNull()
+    {
+        Assert.Throws<ArgumentNullException>(() => { ByteSize.Parse(null); });
+    }
 
-            Assert.Equal(resultByteSize, ByteSize.Parse(value, numberFormat));
-        }
+    [Fact]
+    public void ParseBits()
+    {
+        Assert.Equal(ByteSize.FromBits(1), ByteSize.Parse("1b"));
+    }
 
-        [Fact]
-        public void ParseDecimalMegabytes()
-        {
-            Assert.Equal(ByteSize.FromMegabytes(100.5), ByteSize.Parse("100.5MB"));
-        }
+    [Fact]
+    public void ParseBytes()
+    {
+        Assert.Equal(ByteSize.FromBytes(1), ByteSize.Parse("1B"));
+    }
 
-        [Theory]
-        [InlineData("")]
-        [InlineData(" ")]
-        [InlineData("\t")]
-        [InlineData("Unexpected Value")]
-        [InlineData("1000")]
-        [InlineData(" 1000 ")]
-        [InlineData("KB")]
-        [InlineData("1000.5b")] // Partial bits
-        [InlineData("1000KBB")] // Bad suffix
-        public void TryParseReturnsFalseOnBadValue(string input)
-        {
-            var resultBool = ByteSize.TryParse(input, out var resultByteSize);
+    [Fact]
+    public void ParseKilobytes()
+    {
+        Assert.Equal(ByteSize.FromKilobytes(1020), ByteSize.Parse("1020KB"));
+    }
 
-            Assert.False(resultBool);
-            Assert.Equal(new ByteSize(), resultByteSize);
+    [Fact]
+    public void ParseMegabytes()
+    {
+        Assert.Equal(ByteSize.FromMegabytes(1000), ByteSize.Parse("1000MB"));
+    }
 
-            Assert.Throws<FormatException>(() => { ByteSize.Parse(input); });
-        }
+    [Fact]
+    public void ParseGigabytes()
+    {
+        Assert.Equal(ByteSize.FromGigabytes(805), ByteSize.Parse("805GB"));
+    }
 
-        [Fact]
-        public void TryParseWorksWithLotsOfSpaces()
-        {
-            Assert.Equal(ByteSize.FromKilobytes(100), ByteSize.Parse(" 100 KB "));
-        }
-
-        [Fact]
-        public void ParseThrowsOnNull()
-        {
-            Assert.Throws<ArgumentNullException>(() => { ByteSize.Parse(null); });
-        }
-
-        [Fact]
-        public void ParseBits()
-        {
-            Assert.Equal(ByteSize.FromBits(1), ByteSize.Parse("1b"));
-        }
-
-        [Fact]
-        public void ParseBytes()
-        {
-            Assert.Equal(ByteSize.FromBytes(1), ByteSize.Parse("1B"));
-        }
-
-        [Fact]
-        public void ParseKilobytes()
-        {
-            Assert.Equal(ByteSize.FromKilobytes(1020), ByteSize.Parse("1020KB"));
-        }
-
-        [Fact]
-        public void ParseMegabytes()
-        {
-            Assert.Equal(ByteSize.FromMegabytes(1000), ByteSize.Parse("1000MB"));
-        }
-
-        [Fact]
-        public void ParseGigabytes()
-        {
-            Assert.Equal(ByteSize.FromGigabytes(805), ByteSize.Parse("805GB"));
-        }
-
-        [Fact]
-        public void ParseTerabytes()
-        {
-            Assert.Equal(ByteSize.FromTerabytes(100), ByteSize.Parse("100TB"));
-        }
+    [Fact]
+    public void ParseTerabytes()
+    {
+        Assert.Equal(ByteSize.FromTerabytes(100), ByteSize.Parse("100TB"));
     }
 }

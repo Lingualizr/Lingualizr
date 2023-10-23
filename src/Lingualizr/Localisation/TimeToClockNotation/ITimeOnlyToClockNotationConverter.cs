@@ -2,21 +2,20 @@
 
 using System;
 
-namespace Lingualizr.Localisation.TimeToClockNotation
+namespace Lingualizr.Localisation.TimeToClockNotation;
+
+/// <summary>
+/// The interface used to localise the ToClockNotation method.
+/// </summary>
+public interface ITimeOnlyToClockNotationConverter
 {
     /// <summary>
-    /// The interface used to localise the ToClockNotation method.
+    /// Converts the time to Clock Notation 
     /// </summary>
-    public interface ITimeOnlyToClockNotationConverter
-    {
-        /// <summary>
-        /// Converts the time to Clock Notation 
-        /// </summary>
-        /// <param name="time"></param>
-        /// <param name="roundToNearestFive"></param>
-        /// <returns></returns>
-        string Convert(TimeOnly time, ClockNotationRounding roundToNearestFive);
-    }
+    /// <param name="time"></param>
+    /// <param name="roundToNearestFive"></param>
+    /// <returns></returns>
+    string Convert(TimeOnly time, ClockNotationRounding roundToNearestFive);
 }
 
 #endif

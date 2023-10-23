@@ -13,42 +13,41 @@ using DiffPlex.DiffBuilder.Model;
 
 using Xunit.Abstractions;
 
-namespace Lingualizr.Tests.ApiApprover
+namespace Lingualizr.Tests.ApiApprover;
+
+public class DiffPlexReporter : IApprovalFailureReporter
 {
-    public class DiffPlexReporter : IApprovalFailureReporter
+    public static readonly DiffPlexReporter Instance = new DiffPlexReporter();
+
+    public ITestOutputHelper Output { get; set; }
+
+    public void Report(string approved, string received)
     {
-        public static readonly DiffPlexReporter Instance = new DiffPlexReporter();
+        var approvedText = File.Exists(approved) ? File.ReadAllText(approved) : string.Empty;
+        var receivedText = File.ReadAllText(received);
 
-        public ITestOutputHelper Output { get; set; }
+        var diffBuilder = new InlineDiffBuilder(new Differ());
+        var diff = diffBuilder.BuildDiffModel(approvedText, receivedText);
 
-        public void Report(string approved, string received)
+        foreach (var line in diff.Lines)
         {
-            var approvedText = File.Exists(approved) ? File.ReadAllText(approved) : string.Empty;
-            var receivedText = File.ReadAllText(received);
-
-            var diffBuilder = new InlineDiffBuilder(new Differ());
-            var diff = diffBuilder.BuildDiffModel(approvedText, receivedText);
-
-            foreach (var line in diff.Lines)
+            if (line.Type == ChangeType.Unchanged)
             {
-                if (line.Type == ChangeType.Unchanged)
-                {
-                    continue;
-                }
-
-                var prefix = "  ";
-                switch (line.Type)
-                {
-                    case ChangeType.Inserted:
-                        prefix = "+ ";
-                        break;
-                    case ChangeType.Deleted:
-                        prefix = "- ";
-                        break;
-                }
-
-                Output.WriteLine("{0}{1}", prefix, line.Text);
+                continue;
             }
+
+            var prefix = "  ";
+            switch (line.Type)
+            {
+                case ChangeType.Inserted:
+                    prefix = "+ ";
+                    break;
+                case ChangeType.Deleted:
+                    prefix = "- ";
+                    break;
+            }
+
+            Output.WriteLine("{0}{1}", prefix, line.Text);
         }
     }
 }

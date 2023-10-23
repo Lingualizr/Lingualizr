@@ -1,21 +1,20 @@
 ﻿using System;
 
-namespace Lingualizr.Localisation
-{
-    /// <summary>
-    /// 
-    /// </summary>
-    public partial class ResourceKeys
-    {
-        private const string Single = "Single";
-        private const string Multiple = "Multiple";
+namespace Lingualizr.Localisation;
 
-        private static void ValidateRange(int count)
+/// <summary>
+/// 
+/// </summary>
+public partial class ResourceKeys
+{
+    private const string Single = "Single";
+    private const string Multiple = "Multiple";
+
+    private static void ValidateRange(int count)
+    {
+        if (count < 0)
         {
-            if (count < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count));
-            }
+            throw new ArgumentOutOfRangeException(nameof(count));
         }
     }
 }

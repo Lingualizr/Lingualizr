@@ -2,27 +2,26 @@
 
 using System;
 
-namespace Lingualizr.Localisation.DateToOrdinalWords
+namespace Lingualizr.Localisation.DateToOrdinalWords;
+
+/// <summary>
+/// The interface used to localise the ToOrdinalWords method.
+/// </summary>
+public interface IDateOnlyToOrdinalWordConverter
 {
     /// <summary>
-    /// The interface used to localise the ToOrdinalWords method.
+    /// Converts the date to Ordinal Words 
     /// </summary>
-    public interface IDateOnlyToOrdinalWordConverter
-    {
-        /// <summary>
-        /// Converts the date to Ordinal Words 
-        /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        string Convert(DateOnly date);
+    /// <param name="date"></param>
+    /// <returns></returns>
+    string Convert(DateOnly date);
 
-        /// <summary>
-        /// Converts the date to Ordinal Words using the provided grammatical case
-        /// </summary>
-        /// <param name="date"></param>
-        /// <param name="grammaticalCase"></param>
-        /// <returns></returns>
-        string Convert(DateOnly date, GrammaticalCase grammaticalCase);
-    }
+    /// <summary>
+    /// Converts the date to Ordinal Words using the provided grammatical case
+    /// </summary>
+    /// <param name="date"></param>
+    /// <param name="grammaticalCase"></param>
+    /// <returns></returns>
+    string Convert(DateOnly date, GrammaticalCase grammaticalCase);
 }
 #endif

@@ -1,39 +1,37 @@
-﻿namespace Lingualizr.Localisation.Ordinalizers
-{
+﻿namespace Lingualizr.Localisation.Ordinalizers;
 
-    internal class RomanianOrdinalizer : DefaultOrdinalizer
+internal class RomanianOrdinalizer : DefaultOrdinalizer
+{
+    public override string Convert(int number, string numberString)
     {
-        public override string Convert(int number, string numberString)
+        return Convert(number, numberString, GrammaticalGender.Masculine);
+    }
+
+    public override string Convert(int number, string numberString, GrammaticalGender gender)
+    {
+        // No ordinal for 0 (zero) in Romanian.
+        if (number == 0)
         {
-            return Convert(number, numberString, GrammaticalGender.Masculine);
+            return "0";
         }
 
-        public override string Convert(int number, string numberString, GrammaticalGender gender)
+        // Exception from the rule.
+        if (number == 1)
         {
-            // No ordinal for 0 (zero) in Romanian.
-            if (number == 0)
-            {
-                return "0";
-            }
-
-            // Exception from the rule.
-            if (number == 1)
-            {
-                if (gender == GrammaticalGender.Feminine)
-                {
-                    return "prima"; // întâia
-                }
-
-                return "primul"; // întâiul
-            }
-
             if (gender == GrammaticalGender.Feminine)
             {
-                return string.Format("a {0}-a", numberString);
+                return "prima"; // întâia
             }
 
-            return string.Format("al {0}-lea", numberString);
-
+            return "primul"; // întâiul
         }
+
+        if (gender == GrammaticalGender.Feminine)
+        {
+            return string.Format("a {0}-a", numberString);
+        }
+
+        return string.Format("al {0}-lea", numberString);
+
     }
 }

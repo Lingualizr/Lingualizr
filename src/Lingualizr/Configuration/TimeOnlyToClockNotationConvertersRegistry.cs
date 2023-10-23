@@ -2,16 +2,15 @@
 
 using Lingualizr.Localisation.TimeToClockNotation;
 
-namespace Lingualizr.Configuration
+namespace Lingualizr.Configuration;
+
+internal class TimeOnlyToClockNotationConvertersRegistry : LocaliserRegistry<ITimeOnlyToClockNotationConverter>
 {
-    internal class TimeOnlyToClockNotationConvertersRegistry : LocaliserRegistry<ITimeOnlyToClockNotationConverter>
+    public TimeOnlyToClockNotationConvertersRegistry() : base(new DefaultTimeOnlyToClockNotationConverter())
     {
-        public TimeOnlyToClockNotationConvertersRegistry() : base(new DefaultTimeOnlyToClockNotationConverter())
-        {
-            Register("pt-BR", new BrazilianPortugueseTimeOnlyToClockNotationConverter());
-            Register("fr", new FrTimeOnlyToClockNotationConverter());
-            Register("es", new EsTimeOnlyToClockNotationConverter());
-        }
+        Register("pt-BR", new BrazilianPortugueseTimeOnlyToClockNotationConverter());
+        Register("fr", new FrTimeOnlyToClockNotationConverter());
+        Register("es", new EsTimeOnlyToClockNotationConverter());
     }
 }
 

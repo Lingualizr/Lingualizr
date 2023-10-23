@@ -1,6 +1,5 @@
-﻿namespace Lingualizr.Localisation.NumberToWords
+﻿namespace Lingualizr.Localisation.NumberToWords;
+
+internal class FrenchSwissNumberToWordsConverter : FrenchNumberToWordsConverterBase
 {
-    internal class FrenchSwissNumberToWordsConverter : FrenchNumberToWordsConverterBase
-    {
-    }
 }
