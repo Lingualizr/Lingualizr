@@ -1,5 +1,7 @@
 ﻿<p><img src="https://raw.github.com/Lingualizr/Lingualizr/main/logo.png" alt="Logo" style="max-width:100%;" /></p>
 
+ [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Lingualizr_Lingualizr&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Lingualizr_Lingualizr)
+
 Lingualizr meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities. It is licensed under the [MIT](https://opensource.org/licenses/MIT) (an OSI approved license).
 
 ### Table of contents
