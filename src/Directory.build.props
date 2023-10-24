@@ -1,13 +1,13 @@
 <Project>
+  
+  <Import Project="Analyzer.props" />
+
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <CodeAnalysisRuleSet>../Lingualizr.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-
-
-
   
   </Project>
