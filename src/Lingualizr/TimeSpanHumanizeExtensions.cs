@@ -179,7 +179,7 @@ public static class TimeSpanHumanizeExtensions
             }
             catch
             {
-                //To be implemented so that TimeSpanHumanize method accepts double type as unit
+                // To be implemented so that TimeSpanHumanize method accepts double type as unit
                 return 0;
             }
         }

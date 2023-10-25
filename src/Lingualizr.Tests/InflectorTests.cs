@@ -1,25 +1,25 @@
-﻿//The Inflector class was cloned from Inflector (https://github.com/srkirkland/Inflector)
+﻿// The Inflector class was cloned from Inflector (https://github.com/srkirkland/Inflector)
 
-//The MIT License (MIT)
+// The MIT License (MIT)
 
-//Copyright (c) 2013 Scott Kirkland
+// Copyright (c) 2013 Scott Kirkland
 
-//Permission is hereby granted, free of charge, to any person obtaining a copy of
-//this software and associated documentation files (the "Software"), to deal in
-//the Software without restriction, including without limitation the rights to
-//use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-//the Software, and to permit persons to whom the Software is furnished to do so,
-//subject to the following conditions:
+// Permission is hereby granted, free of charge, to any person obtaining a copy of
+// this software and associated documentation files (the "Software"), to deal in
+// the Software without restriction, including without limitation the rights to
+// use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+// the Software, and to permit persons to whom the Software is furnished to do so,
+// subject to the following conditions:
 
-//The above copyright notice and this permission notice shall be included in all
-//copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 
-//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-//FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-//COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-//IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-//CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+// COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+// IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -84,7 +84,7 @@ public class InflectorTests
         Assert.Equal(input, input.Singularize());
     }
 
-    //Uppercases individual words and removes some characters
+    // Uppercases individual words and removes some characters
     [Theory]
     [InlineData("some title", "Some Title")]
     [InlineData("some-title", "Some Title")]
@@ -147,7 +147,7 @@ public class InflectorTests
         Assert.Equal(expectedOutput, input.Camelize());
     }
 
-    //Makes an underscored lowercase string
+    // Makes an underscored lowercase string
     [Theory]
     [InlineData("SomeTitle", "some_title")]
     [InlineData("someTitle", "some_title")]
@@ -378,23 +378,23 @@ internal class PluralTestSource : IEnumerable<object[]>
         yield return new object[] { "roomie", "roomies" };
         yield return new object[] { "smoothie", "smoothies" };
 
-        //Issue #789
+        // Issue #789
         yield return new object[] { "cache", "caches" };
 
-        //Issue #975, added by Alex Boutin
+        // Issue #975, added by Alex Boutin
         yield return new object[] { "ex", "exes" };
         yield return new object[] { string.Empty, string.Empty };
 
-        //Issue #1100
+        // Issue #1100
         yield return new object[] { "doe", "does" };
         yield return new object[] { "hoe", "hoes" };
         yield return new object[] { "toe", "toes" };
         yield return new object[] { "woe", "woes" };
 
-        //Issue #1132
+        // Issue #1132
         yield return new object[] { "metadata", "metadata" };
 
-        //Issue #1154
+        // Issue #1154
         yield return new object[] { "a", "as" };
         yield return new object[] { "A", "As" };
         yield return new object[] { "s", "ss" };

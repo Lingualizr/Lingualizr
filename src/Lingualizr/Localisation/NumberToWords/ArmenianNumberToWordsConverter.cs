@@ -144,10 +144,10 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var toWords = string.Join(" ", parts.ToArray());
 
-        //if (isOrdinal)
-        //{
+        // if (isOrdinal)
+        // {
         //    toWords = RemoveOnePrefix(toWords);
-        //}
+        // }
 
         return toWords;
     }

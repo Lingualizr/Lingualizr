@@ -81,7 +81,7 @@ public class DateHumanizeDefaultStrategyTests
     [InlineData(40, "2 days from now")]
     public void HoursFromNowNotTomorrow(int hours, string expected)
     {
-        //Only test with injected date, as results are dependent on time of day
+        // Only test with injected date, as results are dependent on time of day
         var utcNow = new DateTime(2014, 6, 28, 9, 58, 22, DateTimeKind.Utc);
         var now = new DateTime(2014, 6, 28, 9, 58, 22, DateTimeKind.Local);
 

@@ -89,10 +89,10 @@ public static class Vocabularies
         _default.AddIrregular("database", "databases");
         _default.AddIrregular("zombie", "zombies");
         _default.AddIrregular("personnel", "personnel");
-        //Fix #789
+        // Fix #789
         _default.AddIrregular("cache", "caches");
 
-        //Fix 975
+        // Fix 975
         _default.AddIrregular("ex", "exes", matchEnding: false);
         _default.AddIrregular("is", "are", matchEnding: false);
         _default.AddIrregular("that", "those", matchEnding: false);
@@ -143,7 +143,7 @@ public static class Vocabularies
         _default.AddUncountable("means");
         _default.AddUncountable("mail");
 
-        //Fix 1132
+        // Fix 1132
         _default.AddUncountable("metadata");
 
         return _default;

@@ -110,7 +110,7 @@ internal class CroatianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        //TODO: In progress
+        // TODO: In progress
         return number.ToString(_culture);
     }
 

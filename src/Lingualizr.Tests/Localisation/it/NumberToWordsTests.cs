@@ -29,9 +29,9 @@ public class NumberToWordsTests
     [InlineData(1000000000, "un miliardo")]
     [InlineData(2000000000, "due miliardi")]
     [InlineData(2147483647, "due miliardi centoquarantasette milioni quattrocentoottantatremilaseicentoquarantasette")]  // int.MaxValue
-    //[InlineData(9000000000, "nove miliardi")]  // int = System.Int32, fixed in API, is not big enough
-    //[InlineData(10000000000, "dieci miliardi")]  // int = System.Int32, fixed in API, is not big enough
-    //[InlineData(100000000000, "cento miliardi")]  // int = System.Int32, fixed in API, is not big enough
+    // [InlineData(9000000000, "nove miliardi")]  // int = System.Int32, fixed in API, is not big enough
+    // [InlineData(10000000000, "dieci miliardi")]  // int = System.Int32, fixed in API, is not big enough
+    // [InlineData(100000000000, "cento miliardi")]  // int = System.Int32, fixed in API, is not big enough
     [InlineData(101, "centouno")]
     [InlineData(1001, "milleuno")]
     [InlineData(10001, "diecimilauno")]

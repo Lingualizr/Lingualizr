@@ -77,7 +77,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
 
         if (number > 0)
         {
-            //if (parts.Count != 0)
+            // if (parts.Count != 0)
             //    parts.Add("en");
 
             if (number < 20)
