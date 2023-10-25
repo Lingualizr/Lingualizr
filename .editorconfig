@@ -239,6 +239,7 @@ csharp_space_between_parentheses = false
 csharp_space_between_square_brackets = false
 
 
+dotnet_diagnostic.SA1012.severity = error
 dotnet_diagnostic.SA1028.severity = error
 dotnet_diagnostic.SA1101.severity = none
 dotnet_diagnostic.SA1200.severity = none

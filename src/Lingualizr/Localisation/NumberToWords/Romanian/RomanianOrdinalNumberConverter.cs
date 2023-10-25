@@ -9,15 +9,15 @@ internal class RomanianOrdinalNumberConverter
     /// </summary>
     private readonly Dictionary<int, string> _ordinalsUnder10 = new Dictionary<int, string>
     {
-        {1, "primul|prima"},
-        {2, "doilea|doua"},
-        {3, "treilea|treia"},
-        {4, "patrulea|patra"},
-        {5, "cincilea|cincea"},
-        {6, "șaselea|șasea"},
-        {7, "șaptelea|șaptea"},
-        {8, "optulea|opta"},
-        {9, "nouălea|noua"},
+        { 1, "primul|prima"},
+        { 2, "doilea|doua"},
+        { 3, "treilea|treia"},
+        { 4, "patrulea|patra"},
+        { 5, "cincilea|cincea"},
+        { 6, "șaselea|șasea"},
+        { 7, "șaptelea|șaptea"},
+        { 8, "optulea|opta"},
+        { 9, "nouălea|noua"},
     };
 
     private readonly string _femininePrefix = "a";

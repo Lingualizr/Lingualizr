@@ -18,7 +18,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
     };
 
     private static readonly string[] TensMap =
-        {"zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin"};
+        { "zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin"};
 
     private static readonly string[] HundredsMap =
     {

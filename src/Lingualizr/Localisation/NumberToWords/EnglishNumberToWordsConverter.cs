@@ -10,14 +10,14 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
     {
-        {1, "first"},
-        {2, "second"},
-        {3, "third"},
-        {4, "fourth"},
-        {5, "fifth"},
-        {8, "eighth"},
-        {9, "ninth"},
-        {12, "twelfth"},
+        { 1, "first"},
+        { 2, "second"},
+        { 3, "third"},
+        { 4, "fourth"},
+        { 5, "fifth"},
+        { 8, "eighth"},
+        { 9, "ninth"},
+        { 12, "twelfth"},
     };
 
     public override string Convert(long number)

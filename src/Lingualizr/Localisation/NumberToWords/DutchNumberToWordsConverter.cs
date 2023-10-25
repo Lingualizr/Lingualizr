@@ -25,13 +25,13 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] Hunderds =
     {
-        new Fact {Value = 1_000_000_000_000_000_000L, Name = "triljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 1_000_000_000_000_000L,     Name = "biljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 1_000_000_000_000L,         Name = "biljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 1000000000,                 Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 1000000,                    Name = "miljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 1000,                       Name = "duizend", Prefix = "",  Postfix = " ", DisplayOneUnit = false},
-        new Fact {Value = 100,                        Name = "honderd", Prefix = "",  Postfix = "",  DisplayOneUnit = false}
+        new Fact { Value = 1_000_000_000_000_000_000L, Name = "triljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
+        new Fact { Value = 1_000_000_000_000_000L,     Name = "biljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
+        new Fact { Value = 1_000_000_000_000L,         Name = "biljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
+        new Fact { Value = 1000000000,                 Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
+        new Fact { Value = 1000000,                    Name = "miljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true},
+        new Fact { Value = 1000,                       Name = "duizend", Prefix = "",  Postfix = " ", DisplayOneUnit = false},
+        new Fact { Value = 100,                        Name = "honderd", Prefix = "",  Postfix = "",  DisplayOneUnit = false}
     };
 
     public override string Convert(long input)
@@ -103,9 +103,9 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<string, string> OrdinalExceptions = new Dictionary<string, string>
     {
-        {"een", "eerste"},
-        {"drie", "derde"},
-        {"miljoen", "miljoenste"},
+        { "een", "eerste"},
+        { "drie", "derde"},
+        { "miljoen", "miljoenste"},
     };
 
     private static readonly char[] EndingCharForSte = { 't', 'g', 'd' };

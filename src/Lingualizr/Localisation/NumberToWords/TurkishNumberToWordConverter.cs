@@ -9,26 +9,26 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<char, string> OrdinalSuffix = new Dictionary<char, string>
     {
-        {'ı', "ıncı"},
-        {'i', "inci"},
-        {'u', "uncu"},
-        {'ü', "üncü"},
-        {'o', "uncu"},
-        {'ö', "üncü"},
-        {'e', "inci"},
-        {'a', "ıncı"},
+        { 'ı', "ıncı"},
+        { 'i', "inci"},
+        { 'u', "uncu"},
+        { 'ü', "üncü"},
+        { 'o', "uncu"},
+        { 'ö', "üncü"},
+        { 'e', "inci"},
+        { 'a', "ıncı"},
     };
 
     private static readonly Dictionary<char, string> TupleSuffix = new Dictionary<char, string>
     {
-        {'ı', "lı"},
-        {'i', "li"},
-        {'u', "lu"},
-        {'ü', "lü"},
-        {'o', "lu"},
-        {'ö', "lü"},
-        {'e', "li"},
-        {'a', "lı"},
+        { 'ı', "lı"},
+        { 'i', "li"},
+        { 'u', "lu"},
+        { 'ü', "lü"},
+        { 'o', "lu"},
+        { 'ö', "lü"},
+        { 'e', "li"},
+        { 'a', "lı"},
     };
 
 

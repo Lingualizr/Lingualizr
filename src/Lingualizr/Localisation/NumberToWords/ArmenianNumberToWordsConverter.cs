@@ -10,11 +10,11 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
     {
-        {0, "զրոյական"},
-        {1, "առաջին"},
-        {2, "երկրորդ"},
-        {3, "երրորդ"},
-        {4, "չորրորդ"}
+        { 0, "զրոյական"},
+        { 1, "առաջին"},
+        { 2, "երկրորդ"},
+        { 3, "երրորդ"},
+        { 4, "չորրորդ"}
     };
 
     public override string Convert(long number)
