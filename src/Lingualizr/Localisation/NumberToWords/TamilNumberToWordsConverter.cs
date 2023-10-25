@@ -217,7 +217,6 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         number %= 10000000;
         return local_word;
-
     }
 
     private static string GetThousandsValue(ref long number)
@@ -233,7 +232,6 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
                 local_word += "ஓரா";
             else if (num_above_10 % 10 > 1)
                 local_word += ThousandsMap[(num_above_10 % 10) - 1];
-
         }
         else
             local_word += ThousandsMap[(number / 1000) - 1];

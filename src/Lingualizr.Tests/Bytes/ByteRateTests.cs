@@ -76,5 +76,4 @@ public class ByteRateTests
             dummyRate.Humanize(units);
         });
     }
-
 }

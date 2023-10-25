@@ -214,7 +214,6 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 }
 
                 builder.Add(TensMap[tens]);
-
             }
         }
         else if (hundredRemainder != 0)

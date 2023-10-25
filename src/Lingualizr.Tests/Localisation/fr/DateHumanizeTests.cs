@@ -114,5 +114,4 @@ public class DateHumanizeTests
     {
         DateHumanize.Verify(expected, years, TimeUnit.Year, Tense.Future);
     }
-
 }

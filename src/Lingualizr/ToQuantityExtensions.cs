@@ -144,7 +144,6 @@ public static class ToQuantityExtensions
             : input.Pluralize(inputIsKnownToBeSingular: false);
 
         return string.Format(formatProvider, "{0} {1}", quantity.ToString(format, formatProvider), transformedInput);
-
     }
 
     /// <summary>

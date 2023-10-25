@@ -54,6 +54,5 @@ internal class NumberToWordsConverterRegistry : LocaliserRegistry<INumberToWords
         Register("lv", new LatvianNumberToWordsConverter());
         Register("ko-KR", new KoreanNumberToWordsConverter());
         Register("en-IN", new IndianNumberToWordsConverter());
-
     }
 }

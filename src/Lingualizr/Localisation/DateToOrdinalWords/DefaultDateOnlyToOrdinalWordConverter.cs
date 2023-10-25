@@ -16,7 +16,6 @@ internal class DefaultDateOnlyToOrdinalWordConverter : IDateOnlyToOrdinalWordCon
     {
         return Convert(date);
     }
-
 }
 
 #endif

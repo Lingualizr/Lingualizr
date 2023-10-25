@@ -74,5 +74,4 @@ public class EnumHumanizeTests
     {
         Assert.Equal(EnumTestsResources.MemberWithLocalizedDisplayAttribute, EnumUnderTest.MemberWithLocalizedDisplayAttribute.Humanize());
     }
-
 }

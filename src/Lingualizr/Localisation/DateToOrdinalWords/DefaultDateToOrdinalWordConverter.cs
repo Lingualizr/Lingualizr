@@ -14,5 +14,4 @@ internal class DefaultDateToOrdinalWordConverter : IDateToOrdinalWordConverter
     {
         return Convert(date);
     }
-
 }

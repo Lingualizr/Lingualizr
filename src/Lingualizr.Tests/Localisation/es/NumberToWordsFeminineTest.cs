@@ -21,5 +21,4 @@ public class NumberToWordsFeminineTests
     {
         Assert.Equal(expected, number.ToWords(GrammaticalGender.Feminine));
     }
-
 }

@@ -64,7 +64,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         if (number / 10 > 0 && number / 10 < 10)
         {
             return GetTwoDigigOrdinal(number);
-
         }
 
         if (number / 100 > 0 && number / 100 < 10)
@@ -147,7 +146,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         return thousandsString;
-
     }
 
     private string ConvertImpl(long number, bool returnPluralized)

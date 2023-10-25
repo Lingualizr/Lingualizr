@@ -32,6 +32,5 @@ internal class RomanianOrdinalizer : DefaultOrdinalizer
         }
 
         return string.Format("al {0}-lea", numberString);
-
     }
 }

@@ -238,6 +238,5 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         }
 
         return $"{GetHundreds(thousands, true, usePrefixMapForLowerValueDigits, gender)} {plural}";
-
     }
 }

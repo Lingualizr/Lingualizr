@@ -52,7 +52,6 @@ internal class ToTitleCase : ICulturedStringTransformer
              !prepositions.Contains(wordToConvert)))
         {
             replacement = culture.TextInfo.ToUpper(wordToConvert[0]) + culture.TextInfo.ToLower(wordToConvert.Remove(0, 1));
-
         }
         else
         {
