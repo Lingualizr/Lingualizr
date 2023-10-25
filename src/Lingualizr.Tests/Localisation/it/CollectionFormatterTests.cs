@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.it;
 [UseCulture("it")]
 public class CollectionFormatterTests
 {
-
     [Fact]
     public void OneItem()
     {

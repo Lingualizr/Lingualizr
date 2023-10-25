@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.uk_UA;
 [UseCulture("uk-UA")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0-й")]
     [InlineData("1", "1-й")]

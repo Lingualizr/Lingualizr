@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.hr;
 [UseCulture("hr-HR")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "1 godina")]

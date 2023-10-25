@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.uk_UA;
 [UseCulture("uk-UA")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "один рік")]

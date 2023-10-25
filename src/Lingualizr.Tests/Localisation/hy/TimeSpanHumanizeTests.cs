@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.hy;
 [UseCulture("hy")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(366, "մեկ տարի")]

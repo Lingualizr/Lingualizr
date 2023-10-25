@@ -9,7 +9,6 @@ namespace Lingualizr.FluentDate;
 /// </summary>
 public partial class InDate
 {
-
     /// <summary>
     /// </summary>
     public static class One

@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.nl;
 [UseCulture("nl")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0")]
     [InlineData("1", "1e")]

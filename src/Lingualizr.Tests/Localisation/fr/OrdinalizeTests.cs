@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.fr;
 [UseCulture("fr")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0ème")]
     [InlineData("1", "1er")]

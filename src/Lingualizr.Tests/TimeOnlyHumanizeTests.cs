@@ -12,7 +12,6 @@ namespace Lingualizr.Tests;
 [UseCulture("en-US")]
 public class TimeOnlyHumanizeTests
 {
-
     [Fact]
     public void DefaultStrategy_SameTime()
     {

@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.zh_HK;
 [UseCulture("zh-HK")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [InlineData(366, "1 年")]
     [InlineData(731, "2 年")]

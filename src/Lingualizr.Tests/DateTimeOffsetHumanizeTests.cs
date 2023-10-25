@@ -10,7 +10,6 @@ namespace Lingualizr.Tests;
 [UseCulture("en-US")]
 public class DateTimeOffsetHumanizeTests
 {
-
     [Fact]
     public void DefaultStrategy_SameOffset()
     {

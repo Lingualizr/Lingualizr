@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.sr_Latn;
 [UseCulture("sr-Latn")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "1 godina")]

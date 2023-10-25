@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.ja;
 [UseCulture("ja")]
 public class DateHumanizeTests
 {
-
     [Theory]
     [InlineData(1, "1 秒前")]
     [InlineData(2, "2 秒前")]

@@ -14,7 +14,6 @@ namespace Lingualizr.Tests.Localisation.ro_Ro;
 [UseCulture("ro-RO")]
 public class TimeSpanHumanizerTests
 {
-
     [Theory]
     [InlineData(1, "1 milisecundă")]
     [InlineData(14, "14 milisecunde")]

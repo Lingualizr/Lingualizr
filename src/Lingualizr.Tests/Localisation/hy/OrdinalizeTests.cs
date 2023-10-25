@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.hy;
 [UseCulture("hy")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0-րդ")]
     [InlineData("1", "1-ին")]

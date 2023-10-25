@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.mt;
 [UseCulture("mt")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "żero")]
     [InlineData(1, "wieħed")]

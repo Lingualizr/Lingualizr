@@ -5,7 +5,6 @@ namespace Lingualizr.FluentDate;
 
 public partial class In
 {
-
     /// <summary>
     /// Returns 1st of January of the current year
     /// </summary>

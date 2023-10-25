@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.nb_NO;
 [UseCulture("nb-NO")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(366, "1 år")]

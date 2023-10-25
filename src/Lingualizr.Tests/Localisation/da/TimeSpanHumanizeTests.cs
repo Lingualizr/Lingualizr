@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.da;
 [UseCulture("da-DK")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(366, "et år")]

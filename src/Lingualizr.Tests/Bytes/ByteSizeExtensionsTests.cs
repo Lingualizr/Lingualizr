@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Bytes;
 [UseCulture("en")]
 public class ByteSizeExtensionsTests
 {
-
     [Fact]
     public void ByteTerabytes()
     {

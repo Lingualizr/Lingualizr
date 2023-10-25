@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.uz_Latn_UZ;
 [UseCulture("uz-Latn-UZ")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "nol")]
     [InlineData(1, "bir")]

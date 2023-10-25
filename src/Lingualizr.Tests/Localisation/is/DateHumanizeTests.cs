@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.@is;
 [UseCulture("is")]
 public class DateHumanizeTests
 {
-
     [Theory]
     [InlineData(2, "fyrir 2 dögum")]
     [InlineData(1, "í gær")]

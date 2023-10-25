@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.es;
 [UseCulture("es-ES")]
 public class DateHumanizeTests
 {
-
     [Theory]
     [InlineData(1, "hace un segundo")]
     [InlineData(2, "hace 2 segundos")]

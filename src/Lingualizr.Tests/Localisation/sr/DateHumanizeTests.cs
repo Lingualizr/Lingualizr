@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.sr;
 [UseCulture("sr")]
 public class DateHumanizeDefaultStrategyTests
 {
-
     [Theory]
     [InlineData(1, "пре секунд")]
     [InlineData(10, "пре 10 секунди")]

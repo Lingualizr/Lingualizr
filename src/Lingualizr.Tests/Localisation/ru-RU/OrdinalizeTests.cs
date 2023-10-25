@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.ru_RU;
 [UseCulture("ru-RU")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0-й")]
     [InlineData("1", "1-й")]

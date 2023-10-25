@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.@is;
 [UseCulture("is")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0.")]
     [InlineData("1", "1.")]

@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.pt_BR;
 [UseCulture("pt-BR")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(1, "um")]
     [InlineData(2, "dois")]

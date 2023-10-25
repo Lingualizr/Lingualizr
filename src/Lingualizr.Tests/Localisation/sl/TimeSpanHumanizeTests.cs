@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.sl;
 [UseCulture("sl-SI")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "1 leto")]

@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.sk;
 [UseCulture("sk-SK")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "1 rok")]

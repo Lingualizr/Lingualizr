@@ -32,7 +32,6 @@ namespace Lingualizr.Tests.Bytes;
 [UseCulture("en")]
 public class ParsingTests
 {
-
     [Fact]
     public void Parse()
     {

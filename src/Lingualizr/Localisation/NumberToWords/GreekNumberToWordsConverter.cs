@@ -105,7 +105,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string GetThreeDigitOrdinal(int number)
     {
-
         var hundrends = number / 100;
 
         if (!ΟrdinalMap.TryGetValue(hundrends*100, out var hundrentsString)) return string.Empty;
@@ -125,7 +124,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string GetFourDigitOrdinal(int number)
     {
-
         var thousands = number / 1000;
 
         if (!ΟrdinalMap.TryGetValue(thousands*1000, out var thousandsString)) return string.Empty;

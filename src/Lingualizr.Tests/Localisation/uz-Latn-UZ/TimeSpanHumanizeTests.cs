@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.uz_Latn_UZ;
 [UseCulture("uz-Latn-UZ")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(366, "1 yil")]

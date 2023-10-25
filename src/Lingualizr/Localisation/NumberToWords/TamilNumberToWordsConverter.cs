@@ -221,7 +221,6 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetThousandsValue(ref long number)
     {
-
         var num_above_10 = number / 1000;
         var local_word = string.Empty;
         if (num_above_10 >= 20)

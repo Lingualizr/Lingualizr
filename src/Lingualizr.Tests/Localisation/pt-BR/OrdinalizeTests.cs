@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.pt_BR;
 [UseCulture("pt-BR")]
 public class OrdinalizeTests
 {
-
     [Theory]
     [InlineData("0", "0")]
     [InlineData("1", "1º")]

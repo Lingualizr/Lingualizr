@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.zh_Hans;
 [UseCulture("zh-Hans")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(366, "1 年")]

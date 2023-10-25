@@ -12,7 +12,6 @@ namespace Lingualizr.Tests.Localisation.ro_Ro;
 [UseCulture("ro-RO")]
 public class DateHumanizeTests
 {
-
     [Theory]
     [InlineData(3, "acum 3 ore")]
     [InlineData(20, "acum 20 de ore")]

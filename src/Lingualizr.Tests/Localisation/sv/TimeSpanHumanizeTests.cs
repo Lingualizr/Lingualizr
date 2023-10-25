@@ -9,7 +9,6 @@ namespace Lingualizr.Tests.Localisation.sv;
 [UseCulture("sv-SE")]
 public class TimeSpanHumanizeTests
 {
-
     [Theory]
     [InlineData(1, "1 millisekund")]
     [InlineData(2, "2 millisekunder")]

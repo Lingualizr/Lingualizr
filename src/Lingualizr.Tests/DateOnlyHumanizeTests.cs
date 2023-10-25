@@ -12,7 +12,6 @@ namespace Lingualizr.Tests;
 [UseCulture("en-US")]
 public class DateOnlyHumanizeTests
 {
-
     [Fact]
     public void DefaultStrategy_SameDate()
     {

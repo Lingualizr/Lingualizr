@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.bg;
 [UseCulture("bg")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "нула")]
     [InlineData(1, "един")]

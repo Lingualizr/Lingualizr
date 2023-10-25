@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.nb;
 [UseCulture("nb")]
 public class DateHumanizeTests
 {
-
     [Theory]
     [InlineData(-2, "2 dager siden")]
     [InlineData(-1, "i går")]

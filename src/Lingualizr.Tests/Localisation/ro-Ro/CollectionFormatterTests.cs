@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.ro_Ro;
 [UseCulture("ro-RO")]
 public class CollectionFormatterTests
 {
-
     [Fact]
     public void OneItem()
     {

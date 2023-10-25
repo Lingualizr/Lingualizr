@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.af;
 [UseCulture("af")]
 public class AfrikaansNumberToWordsTests
 {
-
     [InlineData(1, "een")]
     [InlineData(10, "tien")]
     [InlineData(11, "elf")]

@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.sl;
 [UseCulture("sl-SI")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "nič")]
     [InlineData(1, "ena")]

@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.it;
 [UseCulture("it")]
 public class OrdinalizerTests
 {
-
     [Theory]
     [InlineData(0, "0")]  // No ordinal for 0 in italian (neologism apart)
     [InlineData(1, "1°")]

@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.ro_Ro;
 [UseCulture("ro-RO")]
 public class OrdinalizerTests
 {
-
     [Theory]
     [InlineData(0, "0")]  // No ordinal for 0 (zero) in Romanian.
     [InlineData(1, "primul")]

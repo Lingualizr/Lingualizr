@@ -5,7 +5,6 @@ namespace Lingualizr.Localisation.NumberToWords.Romanian;
 
 internal class RomanianCardinalNumberConverter
 {
-
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9 for 9.
     /// </summary>
@@ -116,7 +115,6 @@ internal class RomanianCardinalNumberConverter
 
         for (var i = 0; i < _threeDigitParts.Count; i++)
         {
-
             var currentSet = (ThreeDigitSets)Enum.ToObject(typeof(ThreeDigitSets), i);
 
             var partToString = GetNextPartConverter(currentSet);

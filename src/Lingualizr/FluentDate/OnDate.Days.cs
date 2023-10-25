@@ -9,7 +9,6 @@ namespace Lingualizr.FluentDate;
 /// </summary>
 public partial class OnDate
 {
-
     /// <summary>
     /// Provides fluent date accessors for January
     /// </summary>

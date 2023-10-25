@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.fi_FI;
 [UseCulture("fi-FI")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "nolla")]
     [InlineData(1, "yksi")]

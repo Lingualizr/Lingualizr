@@ -4,7 +4,6 @@ namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 internal class DefaultDateToOrdinalWordConverter : IDateToOrdinalWordConverter
 {
-
     public virtual string Convert(DateTime date)
     {
         return date.Day.Ordinalize() + date.ToString(" MMMM yyyy");

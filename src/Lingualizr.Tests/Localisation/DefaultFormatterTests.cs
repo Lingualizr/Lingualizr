@@ -6,7 +6,6 @@ namespace Lingualizr.Tests.Localisation;
 
 public class DefaultFormatterTests
 {
-
     [Fact]
     [UseCulture("iv")]
     public void HandlesNotImplementedCollectionFormattersGracefully()

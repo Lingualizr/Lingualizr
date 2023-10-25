@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.es;
 [UseCulture("es-ES")]
 public class NumberToWordsFeminineTests
 {
-
     [Theory]
     [InlineData(1, "una")]
     [InlineData(21, "veintiuna")]

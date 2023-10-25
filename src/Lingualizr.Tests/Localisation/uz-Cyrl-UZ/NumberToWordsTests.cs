@@ -5,7 +5,6 @@ namespace Lingualizr.Tests.Localisation.uz_Cyrl_UZ;
 [UseCulture("uz-Cyrl-UZ")]
 public class NumberToWordsTests
 {
-
     [Theory]
     [InlineData(0, "нол")]
     [InlineData(1, "бир")]

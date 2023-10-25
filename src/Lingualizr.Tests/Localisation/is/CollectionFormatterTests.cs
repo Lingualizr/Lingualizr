@@ -7,7 +7,6 @@ namespace Lingualizr.Tests.Localisation.@is;
 [UseCulture("is")]
 public class CollectionFormatterTests
 {
-
     [Fact]
     public void OneItem()
     {
