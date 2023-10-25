@@ -18,7 +18,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         { 5, "femte" },
         { 6, "sjette" },
         { 11, "ellevte" },
-        { 12, "tolvte" }
+        { 12, "tolvte" },
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)

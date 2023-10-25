@@ -35,7 +35,7 @@ internal class DefaultTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotatio
             50 => $"ten to {(normalizedHour + 1).ToWords()}",
             55 => $"five to {(normalizedHour + 1).ToWords()}",
             60 => $"{(normalizedHour + 1).ToWords()} o'clock",
-            _ => $"{normalizedHour.ToWords()} {normalizedMinutes.ToWords()}"
+            _ => $"{normalizedHour.ToWords()} {normalizedMinutes.ToWords()}",
         };
     }
 }

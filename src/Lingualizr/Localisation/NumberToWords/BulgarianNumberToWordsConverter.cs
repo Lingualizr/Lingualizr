@@ -9,32 +9,32 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         "нула", "един", "две", "три", "четири", "пет", "шест", "седем", "осем", "девет", "десет", "единадесет",
         "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет", "осемнадесет",
-        "деветнадесет"
+        "деветнадесет",
     };
 
     private static readonly string[] TensMap =
     {
         "нула", "десет", "двадесет", "тридесет", "четиридесет", "петдесет", "шестдесет", "седемдесет",
-        "осемдесет", "деветдесет"
+        "осемдесет", "деветдесет",
     };
 
     private static readonly string[] HundredsMap =
     {
         "нула", "сто", "двеста", "триста", "четиристотин", "петстотин", "шестстотин", "седемстотин",
-        "осемстотин", "деветстотин"
+        "осемстотин", "деветстотин",
     };
 
     private static readonly string[] HundredsOrdinalMap =
     {
         String.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
-        "деветстот"
+        "деветстот",
     };
 
     private static readonly string[] UnitsOrdinal =
     {
         string.Empty, "първ", "втор", "трет", "четвърт", "пет", "шест", "седм", "осм", "девeт", "десeт",
         "единадесет", "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет",
-        "осемнадесет", "деветнадесет"
+        "осемнадесет", "деветнадесет",
     };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
@@ -163,7 +163,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
                 GrammaticalGender.Masculine => string.Empty,
                 GrammaticalGender.Feminine => "а",
                 GrammaticalGender.Neuter => "о",
-                _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
         }
 
@@ -174,7 +174,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
                 GrammaticalGender.Masculine => "и",
                 GrammaticalGender.Feminine => "а",
                 GrammaticalGender.Neuter => "о",
-                _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
         }
         else
@@ -184,7 +184,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
                 GrammaticalGender.Masculine => "ен",
                 GrammaticalGender.Feminine => "на",
                 GrammaticalGender.Neuter => "но",
-                _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
         }
     }

@@ -18,7 +18,7 @@ public enum HeadingStyle
     /// <summary>
     /// Returns the full format
     /// </summary>
-    Full
+    Full,
 }
 
 /// <summary>

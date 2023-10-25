@@ -32,7 +32,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         { 9,     new Fact { Power = 1000000000             , Single = "einn milljarður",   Plural = "milljarðar",  OrdinalPrefix = "milljarðast",  Gender = GrammaticalGender.Masculine } },
         { 12,    new Fact { Power = 1000000000000          , Single = "ein billjón",       Plural = "billjónir",   OrdinalPrefix = "billjónast",   Gender = GrammaticalGender.Feminine  } },
         { 15,    new Fact { Power = 1000000000000000       , Single = "einn billjarður",   Plural = "billjarðar",  OrdinalPrefix = "billjarðast",  Gender = GrammaticalGender.Masculine } },
-        { 18,    new Fact { Power = 1000000000000000000    , Single = "ein trilljón",      Plural = "trilljónir",  OrdinalPrefix = "trilljónast",  Gender = GrammaticalGender.Feminine  } }
+        { 18,    new Fact { Power = 1000000000000000000    , Single = "ein trilljón",      Plural = "trilljónir",  OrdinalPrefix = "trilljónast",  Gender = GrammaticalGender.Feminine  } },
     };
     private static bool IsAndSplitNeeded(int number) =>
         (((number <= 20) || (number % 10 == 0) && (number < 100)) || (number % 100 == 0));
@@ -47,7 +47,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 GrammaticalGender.Masculine => MasculineUnitsMap[number],
                 GrammaticalGender.Neuter => NeuterUnitsMap[number],
                 GrammaticalGender.Feminine => FeminineUnitsMap[number],
-                _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
             builder.Add(genderedForm);
         }
@@ -76,7 +76,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                     GrammaticalGender.Masculine => hundredPrefix + "asti",
                     GrammaticalGender.Neuter => hundredPrefix + "asta",
                     GrammaticalGender.Feminine => hundredPrefix + "asta",
-                    _ => throw new ArgumentOutOfRangeException(nameof(partGender))
+                    _ => throw new ArgumentOutOfRangeException(nameof(partGender)),
                 };
                 builder.Add(genderedFormWithPostfix);
             }
@@ -139,7 +139,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                     GrammaticalGender.Masculine => "annar",
                     GrammaticalGender.Feminine => "önnur",
                     GrammaticalGender.Neuter => "annað",
-                    _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                    _ => throw new ArgumentOutOfRangeException(nameof(gender)),
                 };
             }
             else

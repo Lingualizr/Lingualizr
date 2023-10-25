@@ -29,7 +29,7 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
             { (long)Math.Pow(10, 6), n => string.Format("{0} میلیون", Convert(n)) },
             { (long)Math.Pow(10, 3), n => string.Format("{0} هزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => FarsiHundredsMap[n] }
+            { (long)Math.Pow(10, 2), n => FarsiHundredsMap[n] },
         };
 
         var parts = new List<string>();

@@ -67,7 +67,7 @@ public class CollectionHumanizeTests
     {
         new SomeClass { SomeInt = 1, SomeString = "One" },
         new SomeClass { SomeInt = 2, SomeString = "Two" },
-        new SomeClass { SomeInt = 3, SomeString = "Three" }
+        new SomeClass { SomeInt = 3, SomeString = "Three" },
     };
 
     [Fact]

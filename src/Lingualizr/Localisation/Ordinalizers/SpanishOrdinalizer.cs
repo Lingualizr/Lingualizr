@@ -21,7 +21,7 @@ internal class SpanishOrdinalizer : DefaultOrdinalizer
         {
             { GrammaticalGender.Feminine, ".ª" },
             { GrammaticalGender.Masculine, GetWordForm(number, wordForm) },
-            { GrammaticalGender.Neuter, GetWordForm(number, wordForm) }
+            { GrammaticalGender.Neuter, GetWordForm(number, wordForm) },
         };
 
         // N/A in Spanish

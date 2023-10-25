@@ -16,7 +16,7 @@ internal class FrTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
         {
             00 => GetHourExpression(time.Hour),
             60 => GetHourExpression(time.Hour + 1),
-            _ => $"{GetHourExpression(time.Hour)} {normalizedMinutes.ToWords(GrammaticalGender.Feminine)}"
+            _ => $"{GetHourExpression(time.Hour)} {normalizedMinutes.ToWords(GrammaticalGender.Feminine)}",
         };
 
         static string GetHourExpression(int hour)
@@ -25,7 +25,7 @@ internal class FrTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
             {
                 0 => "minuit",
                 12 => "midi",
-                _ => hour.ToWords(GrammaticalGender.Feminine) + (hour > 1 ? " heures" : " heure")
+                _ => hour.ToWords(GrammaticalGender.Feminine) + (hour > 1 ? " heures" : " heure"),
             };
         }
     }

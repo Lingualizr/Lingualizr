@@ -23,7 +23,7 @@ public enum ShowQuantityAs
     /// Incidates that the quantity will be included in the output, formatted as
     /// words (e.g. 123 => "one hundred and twenty three").
     /// </summary>
-    Words
+    Words,
 }
 
 /// <summary>

@@ -13,5 +13,5 @@ public enum OnNoMatch
     /// <summary>
     /// If set to ReturnsNull the method returns null instead of throwing an exception
     /// </summary>
-    ReturnsNull
+    ReturnsNull,
 }

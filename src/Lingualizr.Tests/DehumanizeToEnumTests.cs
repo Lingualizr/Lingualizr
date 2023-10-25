@@ -189,6 +189,6 @@ public class DehumanizeToEnumTests
     private enum DummyEnum
     {
         First,
-        Second
+        Second,
     }
 }

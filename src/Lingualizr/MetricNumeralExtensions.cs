@@ -49,7 +49,7 @@ public static class MetricNumeralExtensions
     private static readonly List<char>[] Symbols =
     {
         new List<char> { 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' },
-        new List<char> { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y' }
+        new List<char> { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y' },
     };
 
     /// <summary>
@@ -80,7 +80,7 @@ public static class MetricNumeralExtensions
         { 'f', new UnitPrefix("femto", "quadrillionth", "billiardth") },
         { 'a', new UnitPrefix("atto", "quintillionth", "trillionth") },
         { 'z', new UnitPrefix("zepto", "sextillionth", "trilliardth") },
-        { 'y', new UnitPrefix("yocto", "septillionth", "quadrillionth") }
+        { 'y', new UnitPrefix("yocto", "septillionth", "quadrillionth") },
     };
 
     /// <summary>

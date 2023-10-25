@@ -25,7 +25,7 @@ public enum EnumUnderTest
     [Display(Description = "MemberWithLocalizedDisplayAttribute", ResourceType = typeof(EnumTestsResources))]
     MemberWithLocalizedDisplayAttribute,
     [Display(Name = EnumTestsResources.MemberWithDisplayAttributeWithoutDescription)]
-    MemberWithDisplayAttributeWithoutDescription
+    MemberWithDisplayAttributeWithoutDescription,
 }
 
 public class EnumTestsResources

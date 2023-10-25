@@ -108,7 +108,7 @@ internal class ItalianOrdinalNumberCruncher
         "sest",
         "settim",
         "ottav",
-        "non"
+        "non",
     };
 
     protected static int _lengthOf10AsCardinal = "dieci".Length;
