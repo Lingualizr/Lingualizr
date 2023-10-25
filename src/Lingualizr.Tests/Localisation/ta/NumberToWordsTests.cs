@@ -38,7 +38,6 @@ public class NumberToWordsTests
 
     [InlineData(41, "நாற்பத்தி ஒன்று")]
 
-
     [InlineData(50, "ஐம்பது")]
     [InlineData(60, "அறுபது")]
     [InlineData(64, "அறுபத்து நான்கு")]
@@ -115,6 +114,5 @@ public class NumberToWordsTests
     {
         Assert.Equal(expected, number.ToWords(GrammaticalGender.Feminine));
     }
-
 
 }

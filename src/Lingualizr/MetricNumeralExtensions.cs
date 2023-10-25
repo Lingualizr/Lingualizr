@@ -130,7 +130,6 @@ public static class MetricNumeralExtensions
         return ((double)input).ToMetric(hasSpace, useSymbol, decimals);
     }
 
-
     /// <summary>
     /// Converts a number into a valid and Human-readable Metric representation.
     /// </summary>

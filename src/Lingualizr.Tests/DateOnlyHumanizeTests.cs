@@ -69,7 +69,6 @@ public class DateOnlyHumanizeTests
         Assert.Equal(expectedResult, actualResult);
     }
 
-
     [Fact]
     public void Never()
     {

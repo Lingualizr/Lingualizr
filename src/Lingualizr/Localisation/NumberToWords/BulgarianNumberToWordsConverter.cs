@@ -24,13 +24,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         "осемстотин", "деветстотин"
     };
 
-
     private static readonly string[] HundredsOrdinalMap =
     {
         String.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
         "деветстот"
     };
-
 
     private static readonly string[] UnitsOrdinal =
     {
@@ -55,7 +53,6 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             return isOrdinal ? "нулев" + GetEndingForGender(gender, input) : "нула";
         }
-
 
         var parts = new List<string>();
 
@@ -123,7 +120,6 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             input %= 100;
         }
 
-
         if (input > 19)
         {
             parts.Add(TensMap[input / 10]);
@@ -146,7 +142,6 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             parts.Insert(parts.Count - 1, "и");
         }
-
 
         if (isOrdinal && !string.IsNullOrWhiteSpace(lastOrdinalSubstitution))
             parts[parts.Count - 1] = lastOrdinalSubstitution;

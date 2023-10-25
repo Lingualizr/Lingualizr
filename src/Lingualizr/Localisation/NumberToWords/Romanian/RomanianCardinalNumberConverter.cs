@@ -303,7 +303,6 @@ internal class RomanianCardinalNumberConverter
         return ThreeDigitSetConverter(number, gender, true);
     }
 
-
     /// <summary>
     /// Converts a thousands three-digit number to text.
     /// </summary>

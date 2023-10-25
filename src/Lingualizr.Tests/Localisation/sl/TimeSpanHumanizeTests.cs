@@ -77,7 +77,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, TimeSpan.FromMinutes(minutes).Humanize());
     }
 
-
     [Theory]
     [InlineData(1, "1 sekunda")]
     [InlineData(2, "2 sekundi")]

@@ -21,7 +21,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year));
     }
 
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(31, "1 maand")]

@@ -21,7 +21,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year));
     }
 
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(31, "1 mese")]

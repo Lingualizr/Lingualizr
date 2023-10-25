@@ -43,7 +43,6 @@ public class TimeOnlyHumanizeTests
         Assert.Equal(expectedResult, actualResult);
     }
 
-
     [Fact]
     public void TestNever()
     {

@@ -110,7 +110,6 @@ public class DateHumanizeTests
         DateHumanize.Verify(expected, years, TimeUnit.Year, Tense.Future);
     }
 
-
     [Theory]
     [InlineData(0, "núna")]
     public void RightNow(int seconds, string expected)

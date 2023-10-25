@@ -49,7 +49,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         { 1000, "χιλιοστός" }
     };
 
-
     public override string Convert(long number)
     {
         return ConvertImpl(number, false);
@@ -80,7 +79,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return string.Empty;
     }
-
 
     private string GetOneDigitOrdinal(int number)
     {

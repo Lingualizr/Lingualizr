@@ -53,7 +53,6 @@ public class NumberToWordsTests
         Assert.Equal(expected, number.ToWords());
     }
 
-
     [Theory]
     [InlineData(0, "нулев")]
     [InlineData(1, "първи")]
@@ -123,7 +122,6 @@ public class NumberToWordsTests
     {
         Assert.Equal(expected, number.ToOrdinalWords(GrammaticalGender.Feminine));
     }
-
 
     [Theory]
     [InlineData(0, "нулево")]

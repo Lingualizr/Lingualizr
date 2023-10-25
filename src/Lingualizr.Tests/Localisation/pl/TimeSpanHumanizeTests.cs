@@ -85,7 +85,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, TimeSpan.FromDays(number * 7).Humanize());
     }
 
-
     [Theory]
     [Trait("Translation", "Google")]
     [InlineData(31, "1 miesiąc")]
