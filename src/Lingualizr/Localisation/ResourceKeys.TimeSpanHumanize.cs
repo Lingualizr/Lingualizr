@@ -30,7 +30,7 @@ public partial class ResourceKeys
                 return Zero;
             }
 
-            return TimeSpanFormat.FormatWith(count == 1 ? Single : Multiple, unit, count == 1 ? "" : "s");
+            return TimeSpanFormat.FormatWith(count == 1 ? Single : Multiple, unit, count == 1 ? string.Empty : "s");
         }
     }
 }

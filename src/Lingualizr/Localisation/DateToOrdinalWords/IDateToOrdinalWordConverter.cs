@@ -8,7 +8,7 @@ namespace Lingualizr.Localisation.DateToOrdinalWords;
 public interface IDateToOrdinalWordConverter
 {
     /// <summary>
-    /// Converts the date to Ordinal Words 
+    /// Converts the date to Ordinal Words
     /// </summary>
     /// <param name="date"></param>
     /// <returns></returns>

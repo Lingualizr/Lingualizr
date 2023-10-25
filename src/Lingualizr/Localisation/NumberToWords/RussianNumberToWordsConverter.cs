@@ -18,7 +18,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {
         if (input == 0)
-        { 
+        {
             return "ноль";
         }
 
@@ -37,7 +37,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
         CollectParts(parts, ref input, 1000, GrammaticalGender.Feminine, "тысяча", "тысячи", "тысяч");
 
         if (input > 0)
-        { 
+        {
             CollectPartsUnderOneThousand(parts, input, gender);
         }
 
@@ -47,7 +47,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
     public override string ConvertToOrdinal(int input, GrammaticalGender gender)
     {
         if (input == 0)
-        { 
+        {
             return "нулев" + GetEndingForGender(gender, input);
         }
 
@@ -169,7 +169,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(number == 1 ? "одно" : UnitsOrdinalPrefixes[number]);
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     private static void CollectParts(ICollection<string> parts, ref long number, long divisor, GrammaticalGender gender, params string[] forms)

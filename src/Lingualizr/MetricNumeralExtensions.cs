@@ -64,23 +64,23 @@ public static class MetricNumeralExtensions
     /// </remarks>
     private static readonly Dictionary<char, UnitPrefix> UnitPrefixes = new Dictionary<char, UnitPrefix>
     {
-        {'Y', new UnitPrefix("yotta", "septillion", "quadrillion")}, 
-        {'Z', new UnitPrefix("zetta", "sextillion", "trilliard")}, 
-        {'E', new UnitPrefix("exa", "quintillion", "trillion")}, 
-        {'P', new UnitPrefix("peta", "quadrillion", "billiard")},
-        {'T', new UnitPrefix("tera", "trillion", "billion")}, 
-        {'G', new UnitPrefix("giga", "billion", "milliard")}, 
-        {'M', new UnitPrefix("mega", "million")}, 
-        {'k', new UnitPrefix("kilo", "thousand")}, 
+        { 'Y', new UnitPrefix("yotta", "septillion", "quadrillion") },
+        { 'Z', new UnitPrefix("zetta", "sextillion", "trilliard") },
+        { 'E', new UnitPrefix("exa", "quintillion", "trillion") },
+        { 'P', new UnitPrefix("peta", "quadrillion", "billiard") },
+        { 'T', new UnitPrefix("tera", "trillion", "billion") },
+        { 'G', new UnitPrefix("giga", "billion", "milliard") },
+        { 'M', new UnitPrefix("mega", "million") },
+        { 'k', new UnitPrefix("kilo", "thousand") },
 
-        {'m', new UnitPrefix("milli", "thousandth")}, 
-        {'μ', new UnitPrefix("micro", "millionth")}, 
-        {'n', new UnitPrefix("nano", "billionth", "milliardth")}, 
-        {'p', new UnitPrefix("pico", "trillionth", "billionth")}, 
-        {'f', new UnitPrefix("femto", "quadrillionth", "billiardth")}, 
-        {'a', new UnitPrefix("atto", "quintillionth", "trillionth")}, 
-        {'z', new UnitPrefix("zepto", "sextillionth", "trilliardth")}, 
-        {'y', new UnitPrefix("yocto", "septillionth", "quadrillionth")}
+        { 'm', new UnitPrefix("milli", "thousandth") },
+        { 'μ', new UnitPrefix("micro", "millionth") },
+        { 'n', new UnitPrefix("nano", "billionth", "milliardth") },
+        { 'p', new UnitPrefix("pico", "trillionth", "billionth") },
+        { 'f', new UnitPrefix("femto", "quadrillionth", "billiardth") },
+        { 'a', new UnitPrefix("atto", "quintillionth", "trillionth") },
+        { 'z', new UnitPrefix("zepto", "sextillionth", "trilliardth") },
+        { 'y', new UnitPrefix("yocto", "septillionth", "quadrillionth") }
     };
 
     /// <summary>
@@ -181,11 +181,13 @@ public static class MetricNumeralExtensions
         {
             formats = MetricNumeralFormats.WithSpace;
         }
+
         if (!useSymbol)
         {
             formats = formats.HasValue ? formats | MetricNumeralFormats.UseName
                 : MetricNumeralFormats.UseName;
         }
+
         return ToMetric(input, formats, decimals);
     }
 
@@ -301,6 +303,7 @@ public static class MetricNumeralExtensions
         {
             representation += " ";
         }
+
         return representation;
     }
 
@@ -336,21 +339,24 @@ public static class MetricNumeralExtensions
     /// <returns>A symbol, a symbol's name, a symbol's short scale word or a symbol's long scale word</returns>
     private static string GetUnitText(char symbol, MetricNumeralFormats? formats)
     {
-        if (formats.HasValue 
+        if (formats.HasValue
             && formats.Value.HasFlag(MetricNumeralFormats.UseName))
         {
             return UnitPrefixes[symbol].Name;
         }
-        if (formats.HasValue 
+
+        if (formats.HasValue
             && formats.Value.HasFlag(MetricNumeralFormats.UseShortScaleWord))
         {
             return UnitPrefixes[symbol].ShortScaleWord;
         }
-        if (formats.HasValue 
+
+        if (formats.HasValue
             && formats.Value.HasFlag(MetricNumeralFormats.UseLongScaleWord))
         {
             return UnitPrefixes[symbol].LongScaleWord;
         }
+
         return symbol.ToString();
     }
 

@@ -10,8 +10,8 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
     {
-        {1, "yhdes" },
-        {2, "kahdes" }
+        { 1, "yhdes" },
+        { 2, "kahdes" }
     };
 
     public override string Convert(long input)
@@ -20,6 +20,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number < 0)
@@ -85,7 +86,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             parts.Add(UnitsMap[number]);
         }
 
-        return string.Join("", parts).Trim();
+        return string.Join(string.Empty, parts).Trim();
     }
 
     private string GetOrdinalUnit(int number, bool useExceptions)
@@ -109,25 +110,25 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if ((number / 1000000000) > 0)
         {
-            parts.Add(string.Format("{0}miljardis", (number / 1000000000) == 1 ? "" : ToOrdinal(number / 1000000000, true)));
+            parts.Add(string.Format("{0}miljardis", (number / 1000000000) == 1 ? string.Empty : ToOrdinal(number / 1000000000, true)));
             number %= 1000000000;
         }
 
         if ((number / 1000000) > 0)
         {
-            parts.Add(string.Format("{0}miljoonas", (number / 1000000) == 1 ? "" : ToOrdinal(number / 1000000, true)));
+            parts.Add(string.Format("{0}miljoonas", (number / 1000000) == 1 ? string.Empty : ToOrdinal(number / 1000000, true)));
             number %= 1000000;
         }
 
         if ((number / 1000) > 0)
         {
-            parts.Add(string.Format("{0}tuhannes", (number / 1000) == 1 ? "" : ToOrdinal(number / 1000, true)));
+            parts.Add(string.Format("{0}tuhannes", (number / 1000) == 1 ? string.Empty : ToOrdinal(number / 1000, true)));
             number %= 1000;
         }
 
         if ((number / 100) > 0)
         {
-            parts.Add(string.Format("{0}sadas", (number / 100) == 1 ? "" : ToOrdinal(number / 100, true)));
+            parts.Add(string.Format("{0}sadas", (number / 100) == 1 ? string.Empty : ToOrdinal(number / 100, true)));
             number %= 100;
         }
 
@@ -146,7 +147,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             parts.Add(GetOrdinalUnit(number, useExceptions));
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     public override string ConvertToOrdinal(int number)

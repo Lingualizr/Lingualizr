@@ -9,26 +9,26 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<char, string> OrdinalSuffix = new Dictionary<char, string>
     {
-        {'ı', "ıncı"},
-        {'i', "inci"},
-        {'u', "uncu"},
-        {'ü', "üncü"},
-        {'o', "uncu"},
-        {'ö', "üncü"},
-        {'e', "inci"},
-        {'a', "ıncı"},
+        { 'ı', "ıncı" },
+        { 'i', "inci" },
+        { 'u', "uncu" },
+        { 'ü', "üncü" },
+        { 'o', "uncu" },
+        { 'ö', "üncü" },
+        { 'e', "inci" },
+        { 'a', "ıncı" },
     };
 
     private static readonly Dictionary<char, string> TupleSuffix = new Dictionary<char, string>
     {
-        {'ı', "lı"},
-        {'i', "li"},
-        {'u', "lu"},
-        {'ü', "lü"},
-        {'o', "lu"},
-        {'ö', "lü"},
-        {'e', "li"},
-        {'a', "lı"},
+        { 'ı', "lı" },
+        { 'i', "li" },
+        { 'u', "lu" },
+        { 'ü', "lü" },
+        { 'o', "lu" },
+        { 'ö', "lü" },
+        { 'e', "li" },
+        { 'a', "lı" },
     };
 
 
@@ -80,14 +80,14 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
         var thousand = (number / 1000);
         if (thousand > 0)
         {
-            parts.Add(string.Format("{0} bin", thousand > 1 ? Convert(thousand) : "").Trim());
+            parts.Add(string.Format("{0} bin", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
             number %= 1000;
         }
 
         var hundred = (number / 100);
         if (hundred > 0)
         {
-            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : "").Trim());
+            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
             number %= 100;
         }
 

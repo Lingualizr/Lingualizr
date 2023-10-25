@@ -18,7 +18,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
     };
 
     private static readonly string[] TensMap =
-        {"zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin"};
+        { "zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin" };
 
     private static readonly string[] HundredsMap =
     {
@@ -76,21 +76,25 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         {
             return $"id-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("s"))
         {
             return $"is-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("t"))
         {
             return $"it-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("e"))
         {
             return $"l-{Convert(number, gender)}";
         }
+
         return $"il-{Convert(number, gender)}";
     }
-        
+
     private static string GetTens(long value, bool usePrefixMap, bool usePrefixMapForLowerDigits, GrammaticalGender gender)
     {
         if (value == 1 && gender == GrammaticalGender.Feminine)

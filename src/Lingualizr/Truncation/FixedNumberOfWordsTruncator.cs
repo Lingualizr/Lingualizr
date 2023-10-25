@@ -56,6 +56,7 @@ internal class FixedNumberOfWordsTruncator : ITruncator
                 lastCharactersWasWhiteSpace = false;
             }
         }
+
         return value + truncationString;
     }
 
@@ -84,6 +85,7 @@ internal class FixedNumberOfWordsTruncator : ITruncator
                 lastCharactersWasWhiteSpace = false;
             }
         }
+
         return truncationString + value;
     }
 }

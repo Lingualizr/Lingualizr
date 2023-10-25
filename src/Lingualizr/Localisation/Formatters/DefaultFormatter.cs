@@ -99,7 +99,7 @@ public class DefaultFormatter : IFormatter
     private string GetResourceForTimeSpan(TimeUnit unit, int count, bool toWords = false)
     {
         var resourceKey = ResourceKeys.TimeSpanHumanize.GetResourceKey(unit, count, toWords);
-        return count == 1 ? Format(resourceKey + (toWords ? "_Words" : "")) : Format(resourceKey, count, toWords);
+        return count == 1 ? Format(resourceKey + (toWords ? "_Words" : string.Empty)) : Format(resourceKey, count, toWords);
     }
 
     /// <summary>
@@ -154,7 +154,7 @@ public class DefaultFormatter : IFormatter
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="resourceKey"></param>
     /// <returns></returns>

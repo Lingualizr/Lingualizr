@@ -123,7 +123,7 @@ public static class ToQuantityExtensions
 
         return string.Format("{0} {1}", quantity.ToWords(), transformedInput);
     }
-        
+
     /// <summary>
     /// Prefixes the provided word with the number and accordingly pluralizes or singularizes the word
     /// </summary>

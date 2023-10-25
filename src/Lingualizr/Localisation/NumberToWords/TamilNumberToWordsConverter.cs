@@ -14,14 +14,14 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
     {
-        {1, "முதலாவது"},
-        {2, "இரண்டாவது"},
-        {3, "மூன்றாவது"},
-        {4, "நான்காவது"},
-        {5, "ஐந்தாவது"},
-        {8, "எட்டாவது"},
-        {9, "ஒன்பதாவது"},
-        {12, "பனிரெண்டாவது"},
+        { 1, "முதலாவது" },
+        { 2, "இரண்டாவது" },
+        { 3, "மூன்றாவது" },
+        { 4, "நான்காவது" },
+        { 5, "ஐந்தாவது" },
+        { 8, "எட்டாவது" },
+        { 9, "ஒன்பதாவது" },
+        { 12, "பனிரெண்டாவது" },
     };
 
     public override string Convert(long number)
@@ -110,8 +110,8 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
-        var local_word = "";
-        if (number < 20) 
+        var local_word = string.Empty;
+        if (number < 20)
             local_word = GetUnitValue(number, isOrdinal);
         else if ((number >= 20) && (number <= 99))
         {
@@ -119,13 +119,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             var quot = number / 10;
             if ((number % 10) > 0)
             {
-                if (quot == 9) 
+                if (quot == 9)
                     lastPart += "ற்றி ";
                 else if (quot == 7 || quot == 8 || quot == 4)
                     lastPart += "த்தி ";
                 else
                     lastPart += "த்து ";
-                    
+
                 if (!isThousand) lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
             }
             else if (number % 10 == 0)
@@ -150,12 +150,14 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
             local_word = lastPart;
         }
+
         return local_word;
     }
+
     private static string GetLakhsValue(ref long number, bool isOrdinal)
     {
         var num_above_10 = number / 100000;
-        var local_word = "";
+        var local_word = string.Empty;
         if (num_above_10 >= 20)
         {
             local_word = GetTensValue(num_above_10, false, false);
@@ -173,9 +175,10 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         number %= 100000;
         return local_word;
     }
+
     private static string GetCroresValue(ref long number)
     {
-        var local_word = "";
+        var local_word = string.Empty;
         var num_above_10 = number / 10000000;
         var str_crore = "கோடி";
 
@@ -190,6 +193,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += GetThousandsValue(ref num_above_10);
             local_word += " ";
         }
+
         if (num_above_10 > 99 && num_above_10 <= 999)
         {
             local_word += GetHundredsValue(ref num_above_10);
@@ -207,7 +211,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         local_word = local_word.TrimEnd() + " " + str_crore;
         if (number % 10000000 == 0 || number % 100000000 == 0)
-            local_word += "";
+            local_word += string.Empty;
         else
             local_word += "யே";
 
@@ -215,11 +219,12 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         return local_word;
 
     }
+
     private static string GetThousandsValue(ref long number)
     {
 
         var num_above_10 = number / 1000;
-        var local_word = "";
+        var local_word = string.Empty;
         if (num_above_10 >= 20)
         {
             local_word = GetTensValue(num_above_10, false, true);
@@ -234,7 +239,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += ThousandsMap[(number / 1000) - 1];
 
         number %= 1000;
-            
+
         if (number > 0)
             local_word = local_word + "யிரத்து";
         else
@@ -242,9 +247,10 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return local_word;
     }
+
     private static string GetHundredsValue(ref long number)
     {
-        string local_word = "";
+        string local_word = string.Empty;
 
         {
             local_word = HundredsMap[(number / 100) - 1];

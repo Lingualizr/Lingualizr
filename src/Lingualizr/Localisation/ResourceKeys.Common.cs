@@ -3,7 +3,7 @@
 namespace Lingualizr.Localisation;
 
 /// <summary>
-/// 
+///
 /// </summary>
 public partial class ResourceKeys
 {

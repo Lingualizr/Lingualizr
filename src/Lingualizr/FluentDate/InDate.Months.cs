@@ -1,4 +1,4 @@
-﻿ 
+﻿
 #if NET6_0_OR_GREATER
 
 using System;
@@ -7,7 +7,7 @@ namespace Lingualizr.FluentDate;
 
 public partial class InDate
 {
-   
+
     /// <summary>
     /// Returns 1st of January of the current year
     /// </summary>
@@ -23,7 +23,7 @@ public partial class InDate
     {
         return new DateOnly(year, 1, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of February of the current year
     /// </summary>
@@ -39,7 +39,7 @@ public partial class InDate
     {
         return new DateOnly(year, 2, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of March of the current year
     /// </summary>
@@ -55,7 +55,7 @@ public partial class InDate
     {
         return new DateOnly(year, 3, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of April of the current year
     /// </summary>
@@ -71,7 +71,7 @@ public partial class InDate
     {
         return new DateOnly(year, 4, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of May of the current year
     /// </summary>
@@ -87,7 +87,7 @@ public partial class InDate
     {
         return new DateOnly(year, 5, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of June of the current year
     /// </summary>
@@ -103,7 +103,7 @@ public partial class InDate
     {
         return new DateOnly(year, 6, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of July of the current year
     /// </summary>
@@ -119,7 +119,7 @@ public partial class InDate
     {
         return new DateOnly(year, 7, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of August of the current year
     /// </summary>
@@ -135,7 +135,7 @@ public partial class InDate
     {
         return new DateOnly(year, 8, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of September of the current year
     /// </summary>
@@ -151,7 +151,7 @@ public partial class InDate
     {
         return new DateOnly(year, 9, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of October of the current year
     /// </summary>
@@ -167,7 +167,7 @@ public partial class InDate
     {
         return new DateOnly(year, 10, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of November of the current year
     /// </summary>
@@ -183,7 +183,7 @@ public partial class InDate
     {
         return new DateOnly(year, 11, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of December of the current year
     /// </summary>

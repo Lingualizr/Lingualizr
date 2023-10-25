@@ -72,10 +72,10 @@ public class ByteSizeExtensionsTests
         {
             return;
         }
-            
+
         Assert.Equal(expectedValue, input.Bytes().Humanize(format));
     }
-        
+
     [Theory]
     [InlineData(10000000, "#,##0 KB", "9 766 Ko", Skip = "Problems on CI Windows runs locally")]
     [InlineData(10000000, "#,##0.# KB", "9 765,6 Ko", Skip = "Problems on CI Windows runs locally")]
@@ -85,7 +85,7 @@ public class ByteSizeExtensionsTests
         {
             return;
         }
-            
+
         Assert.Equal(expectedValue, input.Bytes().Humanize(format));
     }
 

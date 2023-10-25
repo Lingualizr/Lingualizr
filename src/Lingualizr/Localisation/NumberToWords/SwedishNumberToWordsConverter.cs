@@ -19,18 +19,19 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] Hunderds =
     {
-        new Fact {Value = 1000000000, Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine},
-        new Fact {Value = 1000000,    Name = "miljon", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine},
-        new Fact {Value = 1000,       Name = "tusen", Prefix = " ",  Postfix = " ", DisplayOneUnit = true},
-        new Fact {Value = 100,        Name = "hundra", Prefix = "",  Postfix = "",  DisplayOneUnit = false}
+        new Fact { Value = 1000000000, Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
+        new Fact { Value = 1000000,    Name = "miljon", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
+        new Fact { Value = 1000,       Name = "tusen", Prefix = " ",  Postfix = " ", DisplayOneUnit = true },
+        new Fact { Value = 100,        Name = "hundra", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false }
     };
-         
+
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {
         if (input > Int32.MaxValue || input < Int32.MinValue)
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number == 0)
@@ -43,7 +44,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("minus {0}", Convert(-number, gender));
         }
 
-        var word = "";
+        var word = string.Empty;
 
         foreach (var m in Hunderds)
         {
@@ -107,6 +108,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return word;
     }
+
     public override string Convert(long input)
     {
         return Convert(input, GrammaticalGender.Neuter);
@@ -139,7 +141,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = "";
+        var word = string.Empty;
 
         if (number < 0)
         {

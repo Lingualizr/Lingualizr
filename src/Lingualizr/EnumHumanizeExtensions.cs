@@ -82,6 +82,7 @@ public static class EnumHumanizeExtensions
                         return executedMethod.ToString();
                     }
                 }
+
                 var methodGetName = attrType.GetRuntimeMethod(DisplayAttributeGetNameMethodName, new Type[0]);
                 if (methodGetName != null)
                 {
@@ -91,6 +92,7 @@ public static class EnumHumanizeExtensions
                         return executedMethod.ToString();
                     }
                 }
+
                 return null;
             }
 

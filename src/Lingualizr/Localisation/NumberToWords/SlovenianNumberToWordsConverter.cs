@@ -22,6 +22,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
         if (number == 0)
         {
@@ -104,7 +105,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     public override string ConvertToOrdinal(int number)

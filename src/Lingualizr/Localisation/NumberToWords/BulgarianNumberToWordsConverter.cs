@@ -65,7 +65,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             input = -input;
         }
 
-        string lastOrdinalSubstitution = "";
+        string lastOrdinalSubstitution = string.Empty;
 
         if ((input / 1000000000000) > 0)
         {
@@ -165,7 +165,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             return gender switch
             {
-                GrammaticalGender.Masculine => "",
+                GrammaticalGender.Masculine => string.Empty,
                 GrammaticalGender.Feminine => "а",
                 GrammaticalGender.Neuter => "о",
                 _ => throw new ArgumentOutOfRangeException(nameof(gender))

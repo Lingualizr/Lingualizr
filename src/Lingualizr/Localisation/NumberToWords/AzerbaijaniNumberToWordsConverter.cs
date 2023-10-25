@@ -10,15 +10,15 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
 
     private static readonly Dictionary<char, string> OrdinalSuffix = new Dictionary<char, string>
     {
-        {'ı', "ıncı"},
-        {'i', "inci"},
-        {'u', "uncu"},
-        {'ü', "üncü"},
-        {'o', "uncu"},
-        {'ö', "üncü"},
-        {'e', "inci"},
-        {'a', "ıncı"},
-        {'ə', "inci"},
+        { 'ı', "ıncı" },
+        { 'i', "inci" },
+        { 'u', "uncu" },
+        { 'ü', "üncü" },
+        { 'o', "uncu" },
+        { 'ö', "üncü" },
+        { 'e', "inci" },
+        { 'a', "ıncı" },
+        { 'ə', "inci" },
     };
 
     public override string Convert(long input)
@@ -27,6 +27,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
         if (number == 0)
         {
@@ -55,14 +56,14 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
         var thousand = (number / 1000);
         if (thousand > 0)
         {
-            parts.Add(string.Format("{0} min", thousand > 1 ? Convert(thousand) : "").Trim());
+            parts.Add(string.Format("{0} min", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
             number %= 1000;
         }
 
         var hundred = (number / 100);
         if (hundred > 0)
         {
-            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : "").Trim());
+            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
             number %= 100;
         }
 

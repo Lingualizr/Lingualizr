@@ -84,7 +84,7 @@ public class InflectorTests
         Assert.Equal(input, input.Singularize());
     }
 
-    //Uppercases individual words and removes some characters 
+    //Uppercases individual words and removes some characters
     [Theory]
     [InlineData("some title", "Some Title")]
     [InlineData("some-title", "Some Title")]
@@ -384,7 +384,7 @@ internal class PluralTestSource : IEnumerable<object[]>
 
         //Issue #975, added by Alex Boutin
         yield return new object[] { "ex", "exes" };
-        yield return new object[] { "", "" };
+        yield return new object[] { string.Empty, string.Empty };
 
         //Issue #1100
         yield return new object[] { "doe", "does" };

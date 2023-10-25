@@ -44,6 +44,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number < 0)

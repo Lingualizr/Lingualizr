@@ -110,7 +110,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
         }
 
-        var toWords = string.Join("", parts.ToArray());
+        var toWords = string.Join(string.Empty, parts.ToArray());
 
         if (isSpecial)
         {

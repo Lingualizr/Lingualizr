@@ -22,6 +22,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number == 0)
@@ -106,7 +107,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             }
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     public override string ConvertToOrdinal(int number)

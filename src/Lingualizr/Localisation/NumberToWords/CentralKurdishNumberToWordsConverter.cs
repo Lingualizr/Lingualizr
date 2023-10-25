@@ -29,12 +29,12 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
         var kurdishGroupsMap = new Dictionary<long, Func<long, string>>
         {
-            {(long)Math.Pow(10, 15), n => string.Format("{0} کوادریلیۆن", Convert(n)) },
-            {(long)Math.Pow(10, 12), n => string.Format("{0} تریلیۆن", Convert(n)) },
-            {(long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
-            {(long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
-            {(long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
-            {(long)Math.Pow(10, 2), n => KurdishHundredsMap[n]}
+            { (long)Math.Pow(10, 15), n => string.Format("{0} کوادریلیۆن", Convert(n)) },
+            { (long)Math.Pow(10, 12), n => string.Format("{0} تریلیۆن", Convert(n)) },
+            { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
+            { (long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
+            { (long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
+            { (long)Math.Pow(10, 2), n => KurdishHundredsMap[n] }
         };
 
         var parts = new List<string>();

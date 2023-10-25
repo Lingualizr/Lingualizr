@@ -63,7 +63,7 @@ public static class TimeSpanHumanizeExtensions
 
         foreach (var timeUnitType in timeUnitsEnumTypes)
         {
-            var timepart = GetTimeUnitPart(timeUnitType,timespan, maxUnit, minUnit, cultureFormatter, toWords); 
+            var timepart = GetTimeUnitPart(timeUnitType,timespan, maxUnit, minUnit, cultureFormatter, toWords);
 
             if (timepart != null || firstValueFound)
             {
@@ -71,12 +71,14 @@ public static class TimeSpanHumanizeExtensions
                 timeParts.Add(timepart);
             }
         }
+
         if (IsContainingOnlyNullValue(timeParts))
         {
             var noTimeValueCultureFormatted = toWords ? cultureFormatter.TimeSpanHumanize_Zero()
                 : cultureFormatter.TimeSpanHumanize(minUnit, 0, toWords);
             timeParts = CreateTimePartsWithNoTimeValue(noTimeValueCultureFormatted);
         }
+
         return timeParts;
     }
 
@@ -93,6 +95,7 @@ public static class TimeSpanHumanizeExtensions
             var numberOfTimeUnits = GetTimeUnitNumericalValue(timeUnitToGet, timespan, maximumTimeUnit);
             return BuildFormatTimePart(cultureFormatter, timeUnitToGet, numberOfTimeUnits, toWords);
         }
+
         return null;
     }
 
@@ -146,6 +149,7 @@ public static class TimeSpanHumanizeExtensions
         {
             return timespan.Days / _daysInAWeek;
         }
+
         return 0;
     }
 
@@ -155,11 +159,13 @@ public static class TimeSpanHumanizeExtensions
         {
             return timespan.Days;
         }
+
         if (timespan.Days < _daysInAMonth || maximumTimeUnit == TimeUnit.Week)
         {
             var remainingDays = timespan.Days % _daysInAWeek;
             return remainingDays;
         }
+
         return (int)(timespan.Days % _daysInAMonth);
     }
 
@@ -177,6 +183,7 @@ public static class TimeSpanHumanizeExtensions
                 return 0;
             }
         }
+
         return timeNumberOfUnits;
     }
 
