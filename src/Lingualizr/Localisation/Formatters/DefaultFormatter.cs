@@ -154,7 +154,7 @@ public class DefaultFormatter : IFormatter
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="resourceKey"></param>
     /// <returns></returns>

@@ -99,7 +99,7 @@ public class NumberToWordsTests
     {
         Assert.Equal(expected, number.ToWords());
     }
-        
+
     [Theory]
     [InlineData(1, "waħda")]
     [InlineData(1001, "elf u waħda")]
@@ -109,7 +109,7 @@ public class NumberToWordsTests
     {
         Assert.Equal(expected, number.ToWords(GrammaticalGender.Feminine));
     }
-        
+
     [Theory]
     [InlineData(0, "żero")]
     [InlineData(1, "wieħed")]

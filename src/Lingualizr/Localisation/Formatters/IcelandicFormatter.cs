@@ -38,7 +38,7 @@ internal class IcelandicFormatter : DefaultFormatter
             _ => GrammaticalGender.Feminine
         };
 
-        return toWords ? 
+        return toWords ?
             resourceString.FormatWith(number.ToWords(unitGender, _localCulture)) :
             resourceString.FormatWith(number);
     }

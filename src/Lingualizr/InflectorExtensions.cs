@@ -71,7 +71,7 @@ public static class InflectorExtensions
     /// <param name="input"></param>
     /// <returns></returns>
     public static string Pascalize(this string input)
-    {   
+    {
         return Regex.Replace(input, "(?:^|_| +)(.)", match => match.Groups[1].Value.ToUpper());
     }
 

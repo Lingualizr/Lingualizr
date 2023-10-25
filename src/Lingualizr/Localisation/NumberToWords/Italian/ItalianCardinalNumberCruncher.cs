@@ -41,7 +41,7 @@ internal class ItalianCardinalNumberCruncher
     protected ThreeDigitSets _nextSet;
 
     /// <summary>
-    /// Splits a number into a sequence of three-digits numbers, starting 
+    /// Splits a number into a sequence of three-digits numbers, starting
     /// from units, then thousands, millions, and so on.
     /// </summary>
     /// <param name="number">The number to split.</param>
@@ -149,7 +149,7 @@ internal class ItalianCardinalNumberCruncher
         {
             // just append units text, with some corner cases
 
-            // truncate tens last vowel before 'uno' (1) and 'otto' (8)                    
+            // truncate tens last vowel before 'uno' (1) and 'otto' (8)
             if (units == 1 || units == 8)
             {
                 words = words.Remove(words.Length - 1);

@@ -84,7 +84,7 @@ public class InflectorTests
         Assert.Equal(input, input.Singularize());
     }
 
-    //Uppercases individual words and removes some characters 
+    //Uppercases individual words and removes some characters
     [Theory]
     [InlineData("some title", "Some Title")]
     [InlineData("some-title", "Some Title")]

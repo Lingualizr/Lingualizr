@@ -22,7 +22,7 @@ public enum HeadingStyle
 }
 
 /// <summary>
-/// Contains extensions to transform a number indicating a heading into the 
+/// Contains extensions to transform a number indicating a heading into the
 /// textual representation of the heading.
 /// </summary>
 public static class HeadingExtensions
@@ -33,7 +33,7 @@ public static class HeadingExtensions
     // https://stackoverflow.com/a/7490772/1720761
     /// <summary>
     /// Returns a textual representation of the heading.
-    /// 
+    ///
     /// This representation has a maximum deviation of 11.25 degrees.
     /// </summary>
     /// <returns>A textual representation of the heading</returns>
@@ -57,7 +57,7 @@ public static class HeadingExtensions
 
     /// <summary>
     /// Returns a char arrow indicating the heading.
-    /// 
+    ///
     /// This representation has a maximum deviation of 22.5 degrees.
     /// </summary>
     /// <returns>The heading arrow.</returns>
@@ -112,7 +112,7 @@ public static class HeadingExtensions
     public static double FromHeadingArrow(this char heading)
     {
         var index = Array.IndexOf(headingArrows, heading);
-            
+
         if (index == -1)
         {
             return -1;

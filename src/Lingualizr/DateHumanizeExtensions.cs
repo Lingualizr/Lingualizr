@@ -90,7 +90,7 @@ public static class DateHumanizeExtensions
     /// <returns>distance of time in words</returns>
     public static string Humanize(this DateOnly input, DateOnly? dateToCompareAgainst = null, CultureInfo culture = null)
     {
-        var comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateOnly.FromDateTime(DateTime.UtcNow);                        
+        var comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateOnly.FromDateTime(DateTime.UtcNow);
 
         return Configurator.DateOnlyHumanizeStrategy.Humanize(input, comparisonBase, culture);
     }

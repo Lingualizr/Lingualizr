@@ -10,7 +10,7 @@ namespace Lingualizr.Localisation.TimeToClockNotation;
 public interface ITimeOnlyToClockNotationConverter
 {
     /// <summary>
-    /// Converts the time to Clock Notation 
+    /// Converts the time to Clock Notation
     /// </summary>
     /// <param name="time"></param>
     /// <param name="roundToNearestFive"></param>

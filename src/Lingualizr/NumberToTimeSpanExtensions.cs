@@ -8,7 +8,7 @@ namespace Lingualizr;
 public static class NumberToTimeSpanExtensions
 {
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -18,7 +18,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -28,7 +28,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -38,7 +38,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -48,7 +48,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -58,7 +58,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -68,7 +68,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -78,7 +78,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -88,7 +88,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5) 
+    /// 5.Milliseconds() == TimeSpan.FromMilliseconds(5)
     /// </summary>
     /// <param name="ms"></param>
     /// <returns></returns>
@@ -98,7 +98,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -108,7 +108,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -118,7 +118,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -128,7 +128,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -138,7 +138,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -148,7 +148,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -158,7 +158,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -168,7 +168,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -178,7 +178,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 5.Seconds() == TimeSpan.FromSeconds(5) 
+    /// 5.Seconds() == TimeSpan.FromSeconds(5)
     /// </summary>
     /// <param name="seconds"></param>
     /// <returns></returns>
@@ -188,7 +188,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -198,7 +198,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -208,7 +208,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -218,7 +218,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -228,7 +228,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -238,7 +238,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -248,7 +248,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -258,7 +258,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
@@ -268,7 +268,7 @@ public static class NumberToTimeSpanExtensions
     }
 
     /// <summary>
-    /// 4.Minutes() == TimeSpan.FromMinutes(4) 
+    /// 4.Minutes() == TimeSpan.FromMinutes(4)
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>

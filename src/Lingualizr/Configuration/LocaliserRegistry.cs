@@ -33,7 +33,7 @@ public class LocaliserRegistry<TLocaliser>
     }
 
     /// <summary>
-    /// Gets the localiser for the current thread's UI culture 
+    /// Gets the localiser for the current thread's UI culture
     /// </summary>
     public TLocaliser ResolveForUiCulture()
     {
@@ -41,7 +41,7 @@ public class LocaliserRegistry<TLocaliser>
     }
 
     /// <summary>
-    /// Gets the localiser for the specified culture 
+    /// Gets the localiser for the specified culture
     /// </summary>
     /// <param name="culture">The culture to retrieve localiser for. If not specified, current thread's UI culture is used.</param>
     public TLocaliser ResolveForCulture(CultureInfo culture)
@@ -50,7 +50,7 @@ public class LocaliserRegistry<TLocaliser>
     }
 
     /// <summary>
-    /// Registers the localiser for the culture provided 
+    /// Registers the localiser for the culture provided
     /// </summary>
     public void Register(string localeCode, TLocaliser localiser)
     {

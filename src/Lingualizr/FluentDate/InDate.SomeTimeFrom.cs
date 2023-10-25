@@ -1,4 +1,4 @@
-﻿ 
+﻿
 #if NET6_0_OR_GREATER
 
 using System;
@@ -9,7 +9,7 @@ namespace Lingualizr.FluentDate;
 /// </summary>
 public partial class InDate
 {
-   
+
     /// <summary>
     /// </summary>
     public static class One
@@ -110,7 +110,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(1));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Two
@@ -211,7 +211,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(2));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Three
@@ -312,7 +312,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(3));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Four
@@ -413,7 +413,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(4));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Five
@@ -514,7 +514,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(5));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Six
@@ -615,7 +615,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(6));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Seven
@@ -716,7 +716,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(7));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Eight
@@ -817,7 +817,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(8));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Nine
@@ -918,7 +918,7 @@ public partial class InDate
             return DateOnly.FromDateTime(date.AddYears(9));
         }
     }
-     
+
     /// <summary>
     /// </summary>
     public static class Ten

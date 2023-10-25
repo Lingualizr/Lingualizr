@@ -94,7 +94,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 
         return $"il-{Convert(number, gender)}";
     }
-        
+
     private static string GetTens(long value, bool usePrefixMap, bool usePrefixMapForLowerDigits, GrammaticalGender gender)
     {
         if (value == 1 && gender == GrammaticalGender.Feminine)

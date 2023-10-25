@@ -1,11 +1,11 @@
-﻿ 
+﻿
 using System;
 
 namespace Lingualizr.FluentDate;
 
 public partial class In
 {
-   
+
     /// <summary>
     /// Returns 1st of January of the current year
     /// </summary>
@@ -21,7 +21,7 @@ public partial class In
     {
         return new DateTime(year, 1, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of February of the current year
     /// </summary>
@@ -37,7 +37,7 @@ public partial class In
     {
         return new DateTime(year, 2, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of March of the current year
     /// </summary>
@@ -53,7 +53,7 @@ public partial class In
     {
         return new DateTime(year, 3, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of April of the current year
     /// </summary>
@@ -69,7 +69,7 @@ public partial class In
     {
         return new DateTime(year, 4, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of May of the current year
     /// </summary>
@@ -85,7 +85,7 @@ public partial class In
     {
         return new DateTime(year, 5, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of June of the current year
     /// </summary>
@@ -101,7 +101,7 @@ public partial class In
     {
         return new DateTime(year, 6, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of July of the current year
     /// </summary>
@@ -117,7 +117,7 @@ public partial class In
     {
         return new DateTime(year, 7, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of August of the current year
     /// </summary>
@@ -133,7 +133,7 @@ public partial class In
     {
         return new DateTime(year, 8, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of September of the current year
     /// </summary>
@@ -149,7 +149,7 @@ public partial class In
     {
         return new DateTime(year, 9, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of October of the current year
     /// </summary>
@@ -165,7 +165,7 @@ public partial class In
     {
         return new DateTime(year, 10, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of November of the current year
     /// </summary>
@@ -181,7 +181,7 @@ public partial class In
     {
         return new DateTime(year, 11, 1);
     }
-     
+
     /// <summary>
     /// Returns 1st of December of the current year
     /// </summary>

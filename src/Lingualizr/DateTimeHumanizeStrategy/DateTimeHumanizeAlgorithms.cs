@@ -72,7 +72,7 @@ internal static class DateTimeHumanizeAlgorithms
             days += 1;
         }
 
-        // month calculation 
+        // month calculation
         if (days >= 30 * precision & days <= 31)
         {
             months = 1;
@@ -213,7 +213,7 @@ internal static class DateTimeHumanizeAlgorithms
         }
 
         if (ts.TotalHours < 48)
-        {   
+        {
             return formatter.DateHumanize(TimeUnit.Day, tense, days);
         }
 

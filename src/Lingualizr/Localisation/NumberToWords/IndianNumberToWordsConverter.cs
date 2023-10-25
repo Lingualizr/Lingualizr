@@ -32,7 +32,7 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
         var result = NumberToText(number).Trim();
         return result;
     }
-       
+
     public string NumberToText( long number)
     {
         if (number < 0)
@@ -57,7 +57,7 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
             return NumberToText(number / 100000) + "lakh " + NumberToText(number % 100000);
         if (number <= 19999999)
             return "one crore " + NumberToText(number % 10000000);
-        return NumberToText(number / 10000000).Trim() + " crore " + NumberToText(number % 10000000);             
+        return NumberToText(number / 10000000).Trim() + " crore " + NumberToText(number % 10000000);
     }
 
     private static bool ExceptionNumbersToWords(long number, out string words)

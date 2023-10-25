@@ -111,7 +111,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
         var local_word = "";
-        if (number < 20) 
+        if (number < 20)
             local_word = GetUnitValue(number, isOrdinal);
         else if ((number >= 20) && (number <= 99))
         {
@@ -119,13 +119,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             var quot = number / 10;
             if ((number % 10) > 0)
             {
-                if (quot == 9) 
+                if (quot == 9)
                     lastPart += "ற்றி ";
                 else if (quot == 7 || quot == 8 || quot == 4)
                     lastPart += "த்தி ";
                 else
                     lastPart += "த்து ";
-                    
+
                 if (!isThousand) lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
             }
             else if (number % 10 == 0)
@@ -239,7 +239,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += ThousandsMap[(number / 1000) - 1];
 
         number %= 1000;
-            
+
         if (number > 0)
             local_word = local_word + "யிரத்து";
         else
