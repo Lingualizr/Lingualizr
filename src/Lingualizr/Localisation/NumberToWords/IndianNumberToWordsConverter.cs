@@ -6,14 +6,14 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
     {
-        { 1, "first"},
-        { 2, "second"},
-        { 3, "third"},
-        { 4, "fourth"},
-        { 5, "fifth"},
-        { 8, "eighth"},
-        { 9, "ninth"},
-        { 12, "twelfth"},
+        { 1, "first" },
+        { 2, "second" },
+        { 3, "third" },
+        { 4, "fourth" },
+        { 5, "fifth" },
+        { 8, "eighth" },
+        { 9, "ninth" },
+        { 12, "twelfth" },
     };
     private static readonly string[] Tillnineteen =  { "one", "two", "three", "four", "five", "six", "seven", "eight",
         "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",

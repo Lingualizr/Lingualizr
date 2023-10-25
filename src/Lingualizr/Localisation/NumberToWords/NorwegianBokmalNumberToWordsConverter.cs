@@ -10,15 +10,15 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
 
     private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
     {
-        { 0, "nullte"},
-        { 1, "første"},
-        { 2, "andre"},
-        { 3, "tredje"},
-        { 4, "fjerde"},
-        { 5, "femte"},
-        { 6, "sjette"},
-        { 11, "ellevte"},
-        { 12, "tolvte"}
+        { 0, "nullte" },
+        { 1, "første" },
+        { 2, "andre" },
+        { 3, "tredje" },
+        { 4, "fjerde" },
+        { 5, "femte" },
+        { 6, "sjette" },
+        { 11, "ellevte" },
+        { 12, "tolvte" }
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)

@@ -14,14 +14,14 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
     {
-        { 1, "முதலாவது"},
-        { 2, "இரண்டாவது"},
-        { 3, "மூன்றாவது"},
-        { 4, "நான்காவது"},
-        { 5, "ஐந்தாவது"},
-        { 8, "எட்டாவது"},
-        { 9, "ஒன்பதாவது"},
-        { 12, "பனிரெண்டாவது"},
+        { 1, "முதலாவது" },
+        { 2, "இரண்டாவது" },
+        { 3, "மூன்றாவது" },
+        { 4, "நான்காவது" },
+        { 5, "ஐந்தாவது" },
+        { 8, "எட்டாவது" },
+        { 9, "ஒன்பதாவது" },
+        { 12, "பனிரெண்டாவது" },
     };
 
     public override string Convert(long number)

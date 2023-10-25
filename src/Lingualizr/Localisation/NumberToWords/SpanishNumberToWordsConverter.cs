@@ -15,7 +15,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         "septingentésim", "octingentésim", "noningentésim" };
 
     private static readonly string[] OrdinalsRootMap = { "" , "primer", "segund", "tercer", "cuart", "quint", "sext",
-        "séptim", "octav", "noven"};
+        "séptim", "octav", "noven" };
 
     private static readonly string[] TensMap = {
         "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
@@ -35,7 +35,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] UnitsMap = {
         "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce",
         "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte", "veintiuno",
-        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"};
+        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve" };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {

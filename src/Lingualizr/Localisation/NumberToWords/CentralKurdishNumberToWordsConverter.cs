@@ -34,7 +34,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
             { (long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
             { (long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => KurdishHundredsMap[n]}
+            { (long)Math.Pow(10, 2), n => KurdishHundredsMap[n] }
         };
 
         var parts = new List<string>();
