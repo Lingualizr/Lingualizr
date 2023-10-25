@@ -25,6 +25,7 @@ internal class ToTitleCase : ICulturedStringTransformer
             {
                 result = ReplaceWithTitleCase(word, result, culture, firstWord);
             }
+
             firstWord = false;
         }
 
@@ -58,6 +59,7 @@ internal class ToTitleCase : ICulturedStringTransformer
         {
             replacement = culture.TextInfo.ToLower(wordToConvert);
         }
+
         return source.Substring(0, word.Index) + replacement + source.Substring(word.Index + word.Length);
     }
 }

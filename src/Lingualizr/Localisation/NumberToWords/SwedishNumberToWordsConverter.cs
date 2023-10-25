@@ -31,6 +31,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number == 0)
@@ -107,6 +108,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return word;
     }
+
     public override string Convert(long input)
     {
         return Convert(input, GrammaticalGender.Neuter);

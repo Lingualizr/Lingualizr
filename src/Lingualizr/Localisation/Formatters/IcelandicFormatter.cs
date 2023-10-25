@@ -13,10 +13,12 @@ internal class IcelandicFormatter : DefaultFormatter
     {
         _localCulture = new CultureInfo(LocaleCode);
     }
+
     public override string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)
     {
         return base.DataUnitHumanize(dataUnit, count, toSymbol)?.TrimEnd('s');
     }
+
     protected override string Format(string resourceKey, int number, bool toWords = false)
     {
         var resourceString = Resources.GetResource(GetResourceKey(resourceKey, number), _localCulture);
@@ -25,6 +27,7 @@ internal class IcelandicFormatter : DefaultFormatter
         {
             throw new ArgumentException($@"The resource object with key '{resourceKey}' was not found", nameof(resourceKey));
         }
+
         var words = resourceString.Split(' ');
 
         var unitGender = words.Last() switch

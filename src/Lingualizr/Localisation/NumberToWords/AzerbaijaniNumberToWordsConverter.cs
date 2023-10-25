@@ -27,6 +27,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
         if (number == 0)
         {

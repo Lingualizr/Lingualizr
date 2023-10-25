@@ -66,6 +66,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number == 0)

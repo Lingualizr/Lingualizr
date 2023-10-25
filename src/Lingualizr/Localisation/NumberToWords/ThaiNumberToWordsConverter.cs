@@ -21,16 +21,19 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
             Textreturn += Convert(numbermoney / 1000000) + "ล้าน";
             numbermoney %= 1000000;
         }
+
         if ((numbermoney / 100000) > 0)
         {
             Textreturn += Convert(numbermoney / 100000) + "แสน";
             numbermoney %= 100000;
         }
+
         if ((numbermoney / 10000) > 0)
         {
             Textreturn += Convert(numbermoney / 10000) + "หมื่น";
             numbermoney %= 10000;
         }
+
         if ((numbermoney / 1000) > 0)
         {
             Textreturn += Convert(numbermoney / 1000) + "พัน";

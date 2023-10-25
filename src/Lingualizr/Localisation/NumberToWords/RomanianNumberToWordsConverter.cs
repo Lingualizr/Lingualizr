@@ -12,6 +12,7 @@ internal class RomanianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var converter = new RomanianCardinalNumberConverter();
         return converter.Convert((int)number, gender);
     }

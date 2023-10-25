@@ -28,6 +28,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
         {
             throw new NotImplementedException();
         }
+
         return Convert((int)number, false);
     }
 

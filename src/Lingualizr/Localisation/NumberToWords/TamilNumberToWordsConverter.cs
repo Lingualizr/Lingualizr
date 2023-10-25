@@ -150,8 +150,10 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
             local_word = lastPart;
         }
+
         return local_word;
     }
+
     private static string GetLakhsValue(ref long number, bool isOrdinal)
     {
         var num_above_10 = number / 100000;
@@ -173,6 +175,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         number %= 100000;
         return local_word;
     }
+
     private static string GetCroresValue(ref long number)
     {
         var local_word = "";
@@ -190,6 +193,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += GetThousandsValue(ref num_above_10);
             local_word += " ";
         }
+
         if (num_above_10 > 99 && num_above_10 <= 999)
         {
             local_word += GetHundredsValue(ref num_above_10);
@@ -215,6 +219,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         return local_word;
 
     }
+
     private static string GetThousandsValue(ref long number)
     {
 
@@ -242,6 +247,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return local_word;
     }
+
     private static string GetHundredsValue(ref long number)
     {
         string local_word = "";

@@ -158,6 +158,7 @@ public class Vocabulary
                 break;
             }
         }
+
         return result != null ? MatchUpperCase(word, result) : result;
     }
 

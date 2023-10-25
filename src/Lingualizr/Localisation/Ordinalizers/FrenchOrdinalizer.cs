@@ -15,6 +15,7 @@ internal class FrenchOrdinalizer : DefaultOrdinalizer
             {
                 return numberString + "ère";
             }
+
             return numberString + "er";
         }
 

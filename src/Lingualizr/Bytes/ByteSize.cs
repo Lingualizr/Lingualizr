@@ -548,6 +548,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
                 { // Bytes
                     result = FromBytes(number);
                 }
+
                 break;
 
             case KilobyteSymbol:

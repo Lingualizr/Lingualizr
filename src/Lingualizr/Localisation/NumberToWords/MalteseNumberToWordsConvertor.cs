@@ -76,18 +76,22 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         {
             return $"id-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("s"))
         {
             return $"is-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("t"))
         {
             return $"it-{Convert(number, gender)}";
         }
+
         if (ordinal.StartsWith("e"))
         {
             return $"l-{Convert(number, gender)}";
         }
+
         return $"il-{Convert(number, gender)}";
     }
         

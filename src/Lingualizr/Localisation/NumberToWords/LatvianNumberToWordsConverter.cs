@@ -31,6 +31,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 millionPart = Convert(number / 1000000, GrammaticalGender.Masculine) + " miljoni";
             }
+
             number %= 1000000;
             parts.Add(millionPart);
         }
@@ -50,6 +51,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 thousandsPart = Convert(number / 1000, GrammaticalGender.Masculine) + " tūkstoši";
             }
+
             parts.Add(thousandsPart);
             number %= 1000;
         }
@@ -69,6 +71,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 hundredsPart = Convert(number / 100, GrammaticalGender.Masculine) + " simti";
             }
+
             parts.Add(hundredsPart);
             number %= 100;
         }
@@ -116,6 +119,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 millionPart = Convert(number / 1000000, GrammaticalGender.Masculine) + " miljon" + GetOrdinalEndingForGender(gender);
             }
+
             number %= 1000000;
             parts.Add(millionPart);
         }
@@ -145,6 +149,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
                     thousandsPart = Convert(number / 1000, GrammaticalGender.Masculine) + " tūkstoši";
                 }
             }
+
             parts.Add(thousandsPart);
             number %= 1000;
         }
@@ -167,6 +172,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
                     hundredsPart = Convert(number / 100, GrammaticalGender.Masculine) + " simti";
                 }
             }
+
             parts.Add(hundredsPart);
             number %= 100;
         }
@@ -178,6 +184,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 tensPart += GetOrdinalEndingForGender(gender);
             }
+
             parts.Add(tensPart);
             number %= 10;
         }
@@ -198,10 +205,12 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 return "ais";
             }
+
             case GrammaticalGender.Feminine:
             {
                 return "ā";
             }
+
             default:
                 throw new ArgumentOutOfRangeException(nameof(gender));
         }

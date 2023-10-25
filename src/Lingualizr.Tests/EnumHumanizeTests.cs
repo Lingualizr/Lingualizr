@@ -63,6 +63,7 @@ public class EnumHumanizeTests
     {
         Assert.Equal(EnumTestsResources.MemberWithDisplayAttribute, EnumUnderTest.MemberWithDisplayAttribute.Humanize());
     }
+
     [Fact]
     public void HandlesDisplayAttributeWithNoDescription()
     {

@@ -11,8 +11,8 @@ public static class EnglishArticle
     /// <summary>
     /// Removes the prefixed article and appends it to the same string.
     /// </summary>
-    /// <param name="items">The input array of strings</param>
-    /// <returns>Sorted string array</returns>
+    /// <param name="items">The input array of strings.</param>
+    /// <returns>Sorted string array.</returns>
     public static string[] AppendArticlePrefix(string[] items)
     {
         if (items.Length == 0)
@@ -37,6 +37,7 @@ public static class EnglishArticle
                 transformed[i] = items[i].Trim();
             }
         }
+
         Array.Sort(transformed);
         return transformed;
     }
@@ -44,8 +45,8 @@ public static class EnglishArticle
     /// <summary>
     /// Removes the previously appended article and prepends it to the same string.
     /// </summary>
-    /// <param name="appended">Sorted string array</param>
-    /// <returns>String array</returns>
+    /// <param name="appended">Sorted string array.</param>
+    /// <returns>String array.</returns>
     public static string[] PrependArticleSuffix(string[] appended)
     {
         var inserted = new string[appended.Length];
@@ -95,6 +96,7 @@ public static class EnglishArticle
                 inserted[i] = appended[i];
             }
         }
+
         return inserted;
     }
 

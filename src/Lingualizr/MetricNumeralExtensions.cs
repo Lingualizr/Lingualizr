@@ -181,11 +181,13 @@ public static class MetricNumeralExtensions
         {
             formats = MetricNumeralFormats.WithSpace;
         }
+
         if (!useSymbol)
         {
             formats = formats.HasValue ? formats | MetricNumeralFormats.UseName
                 : MetricNumeralFormats.UseName;
         }
+
         return ToMetric(input, formats, decimals);
     }
 
@@ -301,6 +303,7 @@ public static class MetricNumeralExtensions
         {
             representation += " ";
         }
+
         return representation;
     }
 
@@ -341,16 +344,19 @@ public static class MetricNumeralExtensions
         {
             return UnitPrefixes[symbol].Name;
         }
+
         if (formats.HasValue 
             && formats.Value.HasFlag(MetricNumeralFormats.UseShortScaleWord))
         {
             return UnitPrefixes[symbol].ShortScaleWord;
         }
+
         if (formats.HasValue 
             && formats.Value.HasFlag(MetricNumeralFormats.UseLongScaleWord))
         {
             return UnitPrefixes[symbol].LongScaleWord;
         }
+
         return symbol.ToString();
     }
 

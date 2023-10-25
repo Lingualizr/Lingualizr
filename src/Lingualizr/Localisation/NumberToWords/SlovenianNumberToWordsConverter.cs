@@ -22,6 +22,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
         if (number == 0)
         {

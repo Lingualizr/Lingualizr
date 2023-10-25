@@ -94,6 +94,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
                 {
                     gender = GrammaticalGender.Masculine;
                 }
+
                 CollectPartsUnderThousand(parts, multiplier, gender);
             }
 
@@ -161,6 +162,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             return PowersOfThousandMap[power][genitiveIndex];
         }
+
         return PowersOfThousandMap[power][pluralIndex];
     }
 }

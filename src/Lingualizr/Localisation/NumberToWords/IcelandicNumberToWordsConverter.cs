@@ -22,6 +22,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         public string Single { get; set; }
         public string OrdinalPrefix { get; set; }
     }
+
     private static readonly Dictionary<int, Fact> PowerOfTenMap = new()
     {
         {0,     new Fact{Power = 0                      , Single = string.Empty,        Plural = string.Empty,  OrdinalPrefix = string.Empty,   Gender = GrammaticalGender.Neuter    }},
@@ -55,6 +56,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             builder.Add(UnitsMap[number]);
         }
     }
+
     private static void CollectOrdinalParts(ICollection<string> builder, int threeDigitPart, Fact conversionRule, GrammaticalGender partGender, GrammaticalGender ordinalGender)
     {
         var hundreds = threeDigitPart / 100;
@@ -83,6 +85,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 builder.Add(hundredPrefix);
             }
         }
+
         if (decade >= 20)
         {
             if (units != 0)
@@ -97,6 +100,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 {
                     builder.Add(AndSplit);
                 }
+
                 builder.Add(CollectOrdinalPartsUnderAHundred(decade, partGender));
             }
         }
@@ -106,6 +110,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 builder.Add(AndSplit);
             }
+
             if (hasThousand)
             {
                 GetUnits(builder, hundredRemainder, conversionRule.Gender);
@@ -115,11 +120,13 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 builder.Add(CollectOrdinalPartsUnderAHundred(hundredRemainder, partGender));
             }
         }
+
         if (hasThousand)
         {
             builder.Add(conversionRule.OrdinalPrefix + GetOrdinalEnding(ordinalGender));
         }
     }
+
     private static string CollectOrdinalPartsUnderAHundred(int number, GrammaticalGender gender)
     {
         string returnValue = null;
@@ -144,8 +151,10 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             returnValue = TensOrdinalPrefixes[number / 10] + GetOrdinalEnding(gender);
         }
+
         return returnValue;
     }
+
     private static void CollectParts(IList<string> parts, ref long number, ref bool needsAnd, Fact rule)
     {
         var remainder = number / rule.Power;
@@ -158,9 +167,11 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 parts.Insert(prevLen, AndSplit);
             }
+
             needsAnd = true;
         }
     }
+
     private static void CollectPart(ICollection<string> parts, long number, Fact rule)
     {
         if (number == 1)
@@ -173,6 +184,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(rule.Plural);
         }
     }
+
     private static void CollectPartUnderOneThousand(ICollection<string> builder, long number, GrammaticalGender gender)
     {
         var hundreds = number / 100;
@@ -200,6 +212,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 {
                     builder.Add(AndSplit);
                 }
+
                 builder.Add(TensMap[tens]);
 
             }
@@ -210,9 +223,11 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 builder.Add(AndSplit);
             }
+
             GetUnits(builder, hundredRemainder, gender);
         }
     }
+
     private static void CollectOrdinal(IList<string> parts, ref int number, ref bool needsAnd, Fact rule, GrammaticalGender gender)
     {
         var remainder = number / rule.Power;
@@ -244,9 +259,11 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                     parts.Insert(prevLen, AndSplit);
                 }
             }
+
             needsAnd = true;
         }
     }
+
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
         if (number == 0)
@@ -275,16 +292,20 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 parts.Add(AndSplit);
             }
+
             CollectPartUnderOneThousand(parts, number, gender);
         }
+
         return string.Join(" ", parts);
     }
+
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
         if (number == 0)
         {
             return UnitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
         }
+
         var parts = new List<string>();
         var needsAnd = false;
 
@@ -299,8 +320,10 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 parts.Add(AndSplit);
             }
+
             CollectOrdinalParts(parts, number, PowerOfTenMap[0], gender, gender);
         }
+
         return string.Join(" ", parts);
     }
 }

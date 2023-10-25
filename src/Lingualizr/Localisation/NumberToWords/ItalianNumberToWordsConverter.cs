@@ -12,6 +12,7 @@ internal class ItalianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             throw new NotImplementedException();
         }
+
         var number = (int)input;
 
         if (number < 0)
