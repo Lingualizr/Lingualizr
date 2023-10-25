@@ -9,10 +9,12 @@ public enum EnglishArticles
     /// A
     /// </summary>
     A,
+
     /// <summary>
     /// An
     /// </summary>
     An,
+
     /// <summary>
     /// The
     /// </summary>

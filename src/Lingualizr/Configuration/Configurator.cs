@@ -28,6 +28,7 @@ public static class Configurator
     }
 
     private static readonly LocaliserRegistry<IFormatter> _formatters = new FormatterRegistry();
+
     /// <summary>
     /// A registry of formatters used to format strings based on the current locale
     /// </summary>
@@ -37,6 +38,7 @@ public static class Configurator
     }
 
     private static readonly LocaliserRegistry<INumberToWordsConverter> _numberToWordsConverters = new NumberToWordsConverterRegistry();
+
     /// <summary>
     /// A registry of number to words converters used to localise ToWords and ToOrdinalWords methods
     /// </summary>
@@ -46,6 +48,7 @@ public static class Configurator
     }
 
     private static readonly LocaliserRegistry<IOrdinalizer> _ordinalizers = new OrdinalizerRegistry();
+
     /// <summary>
     /// A registry of ordinalizers used to localise Ordinalize method
     /// </summary>
@@ -55,6 +58,7 @@ public static class Configurator
     }
 
     private static readonly LocaliserRegistry<IDateToOrdinalWordConverter> _dateToOrdinalWordConverters = new DateToOrdinalWordsConverterRegistry();
+
     /// <summary>
     /// A registry of ordinalizers used to localise Ordinalize method
     /// </summary>
@@ -65,6 +69,7 @@ public static class Configurator
 
 #if NET6_0_OR_GREATER
     private static readonly LocaliserRegistry<IDateOnlyToOrdinalWordConverter> _dateOnlyToOrdinalWordConverters = new DateOnlyToOrdinalWordsConverterRegistry();
+
     /// <summary>
     /// A registry of ordinalizers used to localise Ordinalize method
     /// </summary>
@@ -74,6 +79,7 @@ public static class Configurator
     }
 
     private static readonly LocaliserRegistry<ITimeOnlyToClockNotationConverter> _timeOnlyToClockNotationConverters = new TimeOnlyToClockNotationConvertersRegistry();
+
     /// <summary>
     /// A registry of time to clock notation converters used to localise ToClockNotation methods
     /// </summary>
@@ -153,6 +159,7 @@ public static class Configurator
 #endif
 
     private static IDateTimeHumanizeStrategy _dateTimeHumanizeStrategy = new DefaultDateTimeHumanizeStrategy();
+
     /// <summary>
     /// The strategy to be used for DateTime.Humanize
     /// </summary>
@@ -163,6 +170,7 @@ public static class Configurator
     }
 
     private static IDateTimeOffsetHumanizeStrategy _dateTimeOffsetHumanizeStrategy = new DefaultDateTimeOffsetHumanizeStrategy();
+
     /// <summary>
     /// The strategy to be used for DateTimeOffset.Humanize
     /// </summary>
@@ -174,6 +182,7 @@ public static class Configurator
 
 #if NET6_0_OR_GREATER
     private static IDateOnlyHumanizeStrategy _dateOnlyHumanizeStrategy = new DefaultDateOnlyHumanizeStrategy();
+
     /// <summary>
     /// The strategy to be used for DateOnly.Humanize
     /// </summary>
@@ -184,6 +193,7 @@ public static class Configurator
     }
 
     private static ITimeOnlyHumanizeStrategy _timeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
+
     /// <summary>
     /// The strategy to be used for TimeOnly.Humanize
     /// </summary>
@@ -196,6 +206,7 @@ public static class Configurator
 
     private static readonly Func<PropertyInfo, bool> DefaultEnumDescriptionPropertyLocator = p => p.Name == "Description";
     private static Func<PropertyInfo, bool> _enumDescriptionPropertyLocator = DefaultEnumDescriptionPropertyLocator;
+
     /// <summary>
     /// A predicate function for description property of attribute to use for Enum.Humanize
     /// </summary>

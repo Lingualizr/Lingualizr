@@ -31,6 +31,7 @@ public static class HeadingExtensions
     internal static readonly char[] headingArrows = { '↑', '↗', '→', '↘', '↓', '↙', '←', '↖' };
 
     // https://stackoverflow.com/a/7490772/1720761
+
     /// <summary>
     /// Returns a textual representation of the heading.
     ///

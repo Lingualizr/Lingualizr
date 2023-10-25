@@ -134,6 +134,7 @@ internal static class DateTimeHumanizeAlgorithms
     }
 
     // http://stackoverflow.com/questions/11/how-do-i-calculate-relative-time
+
     /// <summary>
     /// Calculates the distance of time in words between two provided dates
     /// </summary>

@@ -9,10 +9,12 @@ public enum Plurality
     /// The word is singular
     /// </summary>
     Singular,
+
     /// <summary>
     /// The word is plural
     /// </summary>
     Plural,
+
     /// <summary>
     /// I am unsure of the plurality
     /// </summary>
