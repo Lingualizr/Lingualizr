@@ -13,5 +13,5 @@ public enum ClockNotationRounding
     /// <summary>
     /// Round time to nearest five minutes
     /// </summary>
-    NearestFiveMinutes
+    NearestFiveMinutes,
 }

@@ -74,7 +74,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(toWords: true));
     }
 
-
     [Theory]
     [InlineData(1, "1 Tag")]
     [InlineData(2, "2 Tage")]
@@ -122,7 +121,6 @@ public class TimeSpanHumanizeTests
     {
         Assert.Equal(expected, TimeSpan.FromMinutes(minutes).Humanize(toWords: true));
     }
-
 
     [Theory]
     [InlineData(1, "1 Sekunde")]

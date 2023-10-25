@@ -16,5 +16,5 @@ public enum EnglishArticles
     /// <summary>
     /// The
     /// </summary>
-    The
+    The,
 }

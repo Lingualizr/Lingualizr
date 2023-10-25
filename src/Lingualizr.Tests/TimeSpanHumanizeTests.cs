@@ -109,7 +109,6 @@ public class TimeSpanHumanizeTests
         Assert.Equal(expected, actual);
     }
 
-
     [Theory]
     [InlineData(135, "2 minutes")]
     [InlineData(60, "1 minute")]

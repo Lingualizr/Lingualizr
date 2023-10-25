@@ -33,5 +33,5 @@ public enum DataUnit
     /// <summary>
     /// Terrabyte
     /// </summary>
-    Terabyte
+    Terabyte,
 }

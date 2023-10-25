@@ -20,7 +20,7 @@ internal class RomanianCardinalNumberConverter
         "șase",
         "șapte",
         "opt",
-        "nouă"
+        "nouă",
     };
 
     /// <summary>
@@ -37,7 +37,7 @@ internal class RomanianCardinalNumberConverter
         "șaisprezece",
         "șaptesprezece",
         "optsprezece",
-        "nouăsprezece"
+        "nouăsprezece",
     };
 
     /// <summary>
@@ -54,7 +54,7 @@ internal class RomanianCardinalNumberConverter
         "șaizeci",
         "șaptezeci",
         "optzeci",
-        "nouăzeci"
+        "nouăzeci",
     };
 
     private readonly string _feminineSingular = "o";
@@ -92,7 +92,7 @@ internal class RomanianCardinalNumberConverter
         /// <summary>
         /// Three-digits set beyond 999 billions, from 1'000'000'000'000 onward.
         /// </summary>
-        More = 4
+        More = 4,
     }
 
     public string Convert(int number, GrammaticalGender gender)
@@ -302,7 +302,6 @@ internal class RomanianCardinalNumberConverter
     {
         return ThreeDigitSetConverter(number, gender, true);
     }
-
 
     /// <summary>
     /// Converts a thousands three-digit number to text.

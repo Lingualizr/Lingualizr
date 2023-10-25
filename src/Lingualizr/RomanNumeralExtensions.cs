@@ -29,7 +29,7 @@ public static class RomanNumeralExtensions
             { "IX", 9 },
             { "V",  5 },
             { "IV", 4 },
-            { "I",  1 }
+            { "I",  1 },
         };
 
     private static readonly Regex ValidRomanNumeral =

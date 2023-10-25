@@ -46,9 +46,8 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         { 700, "εφτακοσιοστός" },
         { 800, "οχτακοσιοστός" },
         { 900, "εννιακοσιοστός" },
-        { 1000, "χιλιοστός" }
+        { 1000, "χιλιοστός" },
     };
-
 
     public override string Convert(long number)
     {
@@ -80,7 +79,6 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         return string.Empty;
     }
-
 
     private string GetOneDigitOrdinal(int number)
     {

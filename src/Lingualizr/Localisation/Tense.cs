@@ -13,5 +13,5 @@ public enum Tense
     /// <summary>
     /// Indicates the past.
     /// </summary>
-    Past
+    Past,
 }

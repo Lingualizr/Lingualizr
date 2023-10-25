@@ -249,7 +249,7 @@ internal class ItalianCardinalNumberCruncher
         "sei",
         "sette",
         "otto",
-        "nove"
+        "nove",
     };
 
     /// <summary>
@@ -266,7 +266,7 @@ internal class ItalianCardinalNumberCruncher
         "sessanta",
         "settanta",
         "ottanta",
-        "novanta"
+        "novanta",
     };
 
     /// <summary>
@@ -283,7 +283,7 @@ internal class ItalianCardinalNumberCruncher
         "sedici",
         "diciassette",
         "diciotto",
-        "diciannove"
+        "diciannove",
     };
 
     /// <summary>
@@ -300,7 +300,7 @@ internal class ItalianCardinalNumberCruncher
         "seicento",
         "settecento",
         "ottocento",
-        "novecento"
+        "novecento",
     };
 
     /// <summary>
@@ -331,6 +331,6 @@ internal class ItalianCardinalNumberCruncher
         /// <summary>
         /// Three-digits set beyond 999 billions, from 1'000'000'000'000 onward.
         /// </summary>
-        More
+        More,
     }
 }

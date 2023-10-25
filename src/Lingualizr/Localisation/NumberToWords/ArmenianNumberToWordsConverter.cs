@@ -14,7 +14,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
         { 1, "առաջին" },
         { 2, "երկրորդ" },
         { 3, "երրորդ" },
-        { 4, "չորրորդ" }
+        { 4, "չորրորդ" },
     };
 
     public override string Convert(long number)

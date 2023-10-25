@@ -16,5 +16,5 @@ public enum Plurality
     /// <summary>
     /// I am unsure of the plurality
     /// </summary>
-    CouldBeEither
+    CouldBeEither,
 }

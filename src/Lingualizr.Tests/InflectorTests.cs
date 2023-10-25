@@ -147,7 +147,6 @@ public class InflectorTests
         Assert.Equal(expectedOutput, input.Camelize());
     }
 
-
     //Makes an underscored lowercase string
     [Theory]
     [InlineData("SomeTitle", "some_title")]

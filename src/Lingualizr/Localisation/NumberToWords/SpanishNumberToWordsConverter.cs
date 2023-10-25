@@ -8,34 +8,34 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
     private static readonly string[] HundredsRootMap = {
         "cero", "ciento", "doscient", "trescient", "cuatrocient", "quinient", "seiscient", "setecient",
-        "ochocient", "novecient" };
+        "ochocient", "novecient", };
 
     private static readonly string[] HundredthsRootMap = {
         string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim",
-        "septingentésim", "octingentésim", "noningentésim" };
+        "septingentésim", "octingentésim", "noningentésim", };
 
     private static readonly string[] OrdinalsRootMap = { string.Empty , "primer", "segund", "tercer", "cuart", "quint", "sext",
-        "séptim", "octav", "noven" };
+        "séptim", "octav", "noven", };
 
     private static readonly string[] TensMap = {
-        "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+        "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa", };
 
     private static readonly string[] TenthsRootMap = {
         string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim",
-        "octogésim", "nonagésim" };
+        "octogésim", "nonagésim", };
 
     private static readonly string[] ThousandthsRootMap = {
         string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim",
-        "sietemilésim", "ochomilésim", "nuevemilésim" };
+        "sietemilésim", "ochomilésim", "nuevemilésim", };
 
     private static readonly string[] TupleMap = {
         "cero veces", "una vez", "doble", "triple", "cuádruple", "quíntuple", "séxtuple", "séptuple", "óctuple",
-        "nonuplo", "décuplo", "undécuplo", "duodécuplo", "terciodécuplo" };
+        "nonuplo", "décuplo", "undécuplo", "duodécuplo", "terciodécuplo", };
 
     private static readonly string[] UnitsMap = {
         "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce",
         "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte", "veintiuno",
-        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve" };
+        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve", };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {
@@ -241,7 +241,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         var genderedOne = new Dictionary<GrammaticalGender, string>()
         {
             { GrammaticalGender.Feminine, "una" },
-            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" }
+            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" },
         };
 
         genderedOne.Add(GrammaticalGender.Neuter, genderedOne[GrammaticalGender.Masculine]);
@@ -253,7 +253,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         var genderedtwentyOne = new Dictionary<GrammaticalGender, string>()
         {
             { GrammaticalGender.Feminine, "veintiuna" },
-            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" }
+            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" },
         };
 
         genderedtwentyOne.Add(GrammaticalGender.Neuter, genderedtwentyOne[GrammaticalGender.Masculine]);
@@ -294,7 +294,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             { "trillón", oneTrillion },
             { "billón", oneBillion },
-            { "millón", oneMillion }
+            { "millón", oneMillion },
         };
 
         foreach (var numberAndWord in numbersAndWordsDict)

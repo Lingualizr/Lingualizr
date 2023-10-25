@@ -13,6 +13,6 @@ public enum TimeUnit
     Day,
     Week,
     Month,
-    Year
+    Year,
 }
 #pragma warning restore 1591

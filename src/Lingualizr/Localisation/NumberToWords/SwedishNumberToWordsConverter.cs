@@ -22,7 +22,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         new Fact { Value = 1000000000, Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
         new Fact { Value = 1000000,    Name = "miljon", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
         new Fact { Value = 1000,       Name = "tusen", Prefix = " ",  Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 100,        Name = "hundra", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false }
+        new Fact { Value = 100,        Name = "hundra", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false },
     };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)

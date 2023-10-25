@@ -75,7 +75,7 @@ public class ResourceKeyTests
                 new object[] { 5, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Week, Tense.Past, count: 0) },
                 new object[] { 6, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Month, Tense.Past, count: 0) },
                 new object[] { 7, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Year, Tense.Past, count: 0) },
-                new object[] { 8, "DateHumanize_Now", ResourceKeys.DateHumanize.Now }
+                new object[] { 8, "DateHumanize_Now", ResourceKeys.DateHumanize.Now },
             };
         }
     }
@@ -118,7 +118,7 @@ public class ResourceKeyTests
                 new object[] { 5, "TimeSpanHumanize_MultipleDays", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Day, 0) },
                 new object[] { 6, "TimeSpanHumanize_MultipleWeeks", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Week, 0) },
                 new object[] { 7, "TimeSpanHumanize_MultipleMonths", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Month, 0) },
-                new object[] { 8, "TimeSpanHumanize_MultipleYears", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Year, 0) }
+                new object[] { 8, "TimeSpanHumanize_MultipleYears", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Year, 0) },
             };
         }
     }

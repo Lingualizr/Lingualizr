@@ -11,7 +11,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
     {
         { 1, "yhdes" },
-        { 2, "kahdes" }
+        { 2, "kahdes" },
     };
 
     public override string Convert(long input)

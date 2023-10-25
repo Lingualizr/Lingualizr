@@ -30,7 +30,7 @@ internal class BrazilianPortugueseTimeOnlyToClockNotationConverter : ITimeOnlyTo
             50 => $"dez para as {(normalizedHour + 1).ToWords(GrammaticalGender.Feminine)}",
             55 => $"cinco para as {(normalizedHour + 1).ToWords(GrammaticalGender.Feminine)}",
             60 => $"{(normalizedHour + 1).ToWords(GrammaticalGender.Feminine)} em ponto",
-            _ => $"{normalizedHour.ToWords(GrammaticalGender.Feminine)} e {normalizedMinutes.ToWords()}"
+            _ => $"{normalizedHour.ToWords(GrammaticalGender.Feminine)} e {normalizedMinutes.ToWords()}",
         };
     }
 }

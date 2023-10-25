@@ -20,7 +20,6 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     private CultureInfo originalCulture;
     private CultureInfo originalUICulture;
 
-
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with
     /// <paramref name="culture" />
@@ -68,7 +67,6 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     {
         originalCulture = CultureInfo.CurrentCulture;
         originalUICulture = CultureInfo.CurrentUICulture;
-
 
         CultureInfo.CurrentCulture = Culture;
         CultureInfo.CurrentUICulture = UICulture;

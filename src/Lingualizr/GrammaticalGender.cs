@@ -16,5 +16,5 @@ public enum GrammaticalGender
     /// <summary>
     /// Indicates neuter grammatical gender
     /// </summary>
-    Neuter
+    Neuter,
 }

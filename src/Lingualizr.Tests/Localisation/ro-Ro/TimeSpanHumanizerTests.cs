@@ -84,7 +84,6 @@ public class TimeSpanHumanizerTests
         Assert.Equal(expected, actual);
     }
 
-
     [Theory]
     [Trait("Translation", "Native speaker")]
     [InlineData(31, "1 lună")]

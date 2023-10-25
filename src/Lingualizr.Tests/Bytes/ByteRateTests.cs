@@ -61,8 +61,6 @@ public class ByteRateTests
         Assert.Equal(expectedValue, text);
     }
 
-
-
     [Theory]
     [InlineData(TimeUnit.Millisecond)]
     [InlineData(TimeUnit.Day)]

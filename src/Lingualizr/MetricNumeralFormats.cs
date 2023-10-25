@@ -26,5 +26,5 @@ public enum MetricNumeralFormats
     /// <summary>
     /// Include a space after the numeral.
     /// </summary>
-    WithSpace = 8
+    WithSpace = 8,
 }

@@ -8,20 +8,20 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
     private static readonly string[] HundredsMap =
     {
-        "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset"
+        "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset",
     };
 
     private static readonly string[] TensMap =
     {
         "zero", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt",
-        "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"
+        "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt",
     };
 
     private static readonly string[] UnitsMap =
     {
         "zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć",
         "jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście",
-        "osiemnaście", "dziewiętnaście"
+        "osiemnaście", "dziewiętnaście",
     };
 
     private static readonly string[][] PowersOfThousandMap =
@@ -31,7 +31,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         new [] { "miliard", "miliardy", "miliardów" },
         new [] { "bilion", "biliony", "bilionów" },
         new [] { "biliard", "biliardy", "biliardów" },
-        new [] { "trylion", "tryliony", "trylionów" }
+        new [] { "trylion", "tryliony", "trylionów" },
     };
 
     private const long MaxPossibleDivisor = 1_000_000_000_000_000_000;
@@ -132,7 +132,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
                 GrammaticalGender.Masculine => "jeden",
                 GrammaticalGender.Feminine => "jedna",
                 GrammaticalGender.Neuter => "jedno",
-                _ => throw new ArgumentOutOfRangeException(nameof(gender))
+                _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
             parts.Add(genderedForm);
         }

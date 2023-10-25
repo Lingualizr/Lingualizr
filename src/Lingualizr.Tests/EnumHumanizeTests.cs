@@ -11,7 +11,6 @@ public class EnumHumanizeTests
         Assert.Equal(EnumTestsResources.MemberWithDescriptionAttribute, EnumUnderTest.MemberWithDescriptionAttribute.Humanize());
     }
 
-
     [Fact]
     public void HonorsDescriptionAttributeSubclasses()
     {

@@ -4,5 +4,5 @@ internal enum RussianGrammaticalNumber
 {
     Singular,
     Paucal,
-    Plural
+    Plural,
 }

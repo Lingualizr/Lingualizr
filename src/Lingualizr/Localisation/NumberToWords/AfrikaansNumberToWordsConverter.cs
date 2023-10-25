@@ -19,7 +19,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
         { 10, "tiende" },
         { 14, "veertiende" },
         { 17, "sewentiende" },
-        { 19, "negentiende" }
+        { 19, "negentiende" },
     };
 
     public override string Convert(long number)

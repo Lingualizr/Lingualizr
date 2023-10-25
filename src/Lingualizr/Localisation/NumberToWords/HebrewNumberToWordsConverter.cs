@@ -29,7 +29,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         [Description("מיליון")]
         Millions = 1000000,
         [Description("מיליארד")]
-        Billions = 1000000000
+        Billions = 1000000000,
     }
 
     public HebrewNumberToWordsConverter(CultureInfo culture)

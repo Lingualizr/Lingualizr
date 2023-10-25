@@ -35,7 +35,7 @@ internal class IcelandicFormatter : DefaultFormatter
             var x when x.StartsWith("mán") => GrammaticalGender.Masculine,
             var x when x.StartsWith("dag") => GrammaticalGender.Masculine,
             var x when x.StartsWith("ár") => GrammaticalGender.Neuter,
-            _ => GrammaticalGender.Feminine
+            _ => GrammaticalGender.Feminine,
         };
 
         return toWords ?
