@@ -28,6 +28,6 @@ internal class RussianFormatter : DefaultFormatter
             return "_Paucal";
         }
 
-        return "";
+        return string.Empty;
     }
 }

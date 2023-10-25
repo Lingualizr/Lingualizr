@@ -28,6 +28,6 @@ internal class UkrainianFormatter : DefaultFormatter
             return "_Paucal";
         }
 
-        return "";
+        return string.Empty;
     }
 }

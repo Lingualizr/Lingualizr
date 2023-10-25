@@ -99,7 +99,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
                 }
                 else if ((number % 10) == 0)
                 {
-                    lastPart = string.Format("{0}{1}{2}", parts.Count > 0 ? "en " : "", lastPart, isOrdinal ? "ste" : "");
+                    lastPart = string.Format("{0}{1}{2}", parts.Count > 0 ? "en " : string.Empty, lastPart, isOrdinal ? "ste" : string.Empty);
                 }
                 else if (isOrdinal)
                 {

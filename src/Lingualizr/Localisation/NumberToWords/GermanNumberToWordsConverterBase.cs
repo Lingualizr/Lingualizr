@@ -64,7 +64,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
             }
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)
@@ -98,7 +98,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
 
         parts.Add(GetEndingForGender(gender));
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     private void CollectParts(ICollection<string> parts, ref long number, long divisor, bool addSpaceBeforeNextPart, string pluralFormat, string singular)

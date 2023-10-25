@@ -16,6 +16,6 @@ public static class StringDehumanizeExtensions
     public static string Dehumanize(this string input)
     {
         var pascalizedWords = input.Split(' ').Select(word => word.Humanize().Pascalize());
-        return string.Join("", pascalizedWords).Replace(" ", "");
+        return string.Join(string.Empty, pascalizedWords).Replace(" ", string.Empty);
     }
 }

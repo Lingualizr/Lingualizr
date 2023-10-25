@@ -6,7 +6,7 @@ namespace Lingualizr.Localisation.CollectionFormatters;
 
 internal class DefaultCollectionFormatter : ICollectionFormatter
 {
-    protected string DefaultSeparator = "";
+    protected string DefaultSeparator = string.Empty;
 
     public DefaultCollectionFormatter(string defaultSeparator)
     {
@@ -78,7 +78,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
 
         if (count == 0)
         {
-            return "";
+            return string.Empty;
         }
 
         if (count == 1)

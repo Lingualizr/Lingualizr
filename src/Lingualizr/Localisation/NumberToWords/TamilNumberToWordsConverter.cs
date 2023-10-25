@@ -110,7 +110,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
-        var local_word = "";
+        var local_word = string.Empty;
         if (number < 20)
             local_word = GetUnitValue(number, isOrdinal);
         else if ((number >= 20) && (number <= 99))
@@ -157,7 +157,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static string GetLakhsValue(ref long number, bool isOrdinal)
     {
         var num_above_10 = number / 100000;
-        var local_word = "";
+        var local_word = string.Empty;
         if (num_above_10 >= 20)
         {
             local_word = GetTensValue(num_above_10, false, false);
@@ -178,7 +178,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetCroresValue(ref long number)
     {
-        var local_word = "";
+        var local_word = string.Empty;
         var num_above_10 = number / 10000000;
         var str_crore = "கோடி";
 
@@ -211,7 +211,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         local_word = local_word.TrimEnd() + " " + str_crore;
         if (number % 10000000 == 0 || number % 100000000 == 0)
-            local_word += "";
+            local_word += string.Empty;
         else
             local_word += "யே";
 
@@ -224,7 +224,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
 
         var num_above_10 = number / 1000;
-        var local_word = "";
+        var local_word = string.Empty;
         if (num_above_10 >= 20)
         {
             local_word = GetTensValue(num_above_10, false, true);
@@ -250,7 +250,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetHundredsValue(ref long number)
     {
-        string local_word = "";
+        string local_word = string.Empty;
 
         {
             local_word = HundredsMap[(number / 100) - 1];

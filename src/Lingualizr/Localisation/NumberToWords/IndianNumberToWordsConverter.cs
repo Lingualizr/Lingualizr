@@ -38,15 +38,15 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
         if (number < 0)
             return "(Negative) " + NumberToText(-number);
         if (number == 0)
-            return "";
+            return string.Empty;
         if (number <= 19)
             return Tillnineteen[number - 1] + " ";
         if (number <= 99)
             return Tens[number / 10 - 2] + " " + NumberToText(number % 10);
         if (number <= 199)
-            return ("one hundred " + ((number % 100) > 0 ? "and " : "") + NumberToText(number % 100)).Trim();
+            return ("one hundred " + ((number % 100) > 0 ? "and " : string.Empty) + NumberToText(number % 100)).Trim();
         if (number <= 999)
-            return NumberToText(number / 100) + "hundred " + ((number % 100) > 0 ? "and " : "") + NumberToText(number % 100);
+            return NumberToText(number / 100) + "hundred " + ((number % 100) > 0 ? "and " : string.Empty) + NumberToText(number % 100);
         if (number <= 1999)
             return "one thousand " + NumberToText(number % 1000);
         if (number <= 99999)

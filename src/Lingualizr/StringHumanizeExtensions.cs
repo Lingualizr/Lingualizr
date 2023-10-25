@@ -32,7 +32,7 @@ public static class StringHumanizeExtensions
                 ? match.Value
                 : match.Value.ToLower()));
 
-        if (result.Replace(" ", "").ToCharArray().All(c => char.IsUpper(c)) &&
+        if (result.Replace(" ", string.Empty).ToCharArray().All(c => char.IsUpper(c)) &&
             result.Contains(" "))
         {
             result = result.ToLower();

@@ -47,7 +47,7 @@ public static class Vocabularies
         _default.AddPlural("(alumn|alg|larv|vertebr)a$", "$1ae");
         _default.AddPlural("(criteri|phenomen)on$", "$1a");
 
-        _default.AddSingular("s$", "");
+        _default.AddSingular("s$", string.Empty);
         _default.AddSingular("(n)ews$", "$1ews");
         _default.AddSingular("([dti])a$", "$1um");
         _default.AddSingular("(analy|ba|diagno|parenthe|progno|synop|the|ellip|empha|neuro|oa|paraly)ses$", "$1sis");

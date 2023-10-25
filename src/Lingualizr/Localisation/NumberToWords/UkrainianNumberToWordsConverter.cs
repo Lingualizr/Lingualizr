@@ -168,7 +168,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(number == 1 ? "одно" : UnitsOrdinalPrefixes[number]);
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     private static void CollectParts(ICollection<string> parts, ref long number, long divisor, GrammaticalGender gender, params string[] forms)

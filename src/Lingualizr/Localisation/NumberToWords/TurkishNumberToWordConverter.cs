@@ -80,14 +80,14 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
         var thousand = (number / 1000);
         if (thousand > 0)
         {
-            parts.Add(string.Format("{0} bin", thousand > 1 ? Convert(thousand) : "").Trim());
+            parts.Add(string.Format("{0} bin", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
             number %= 1000;
         }
 
         var hundred = (number / 100);
         if (hundred > 0)
         {
-            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : "").Trim());
+            parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
             number %= 100;
         }
 

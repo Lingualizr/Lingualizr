@@ -4,7 +4,7 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     public override string Convert(long numbermoney)
     {
-        var Textreturn = "";
+        var Textreturn = string.Empty;
         if (numbermoney == 0)
         {
             return "ศูนย์";
@@ -48,9 +48,9 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (numbermoney > 0)
         {
-            if (Textreturn != "")
+            if (Textreturn != string.Empty)
             {
-                Textreturn += "";
+                Textreturn += string.Empty;
             }
 
             var unitsMap = new[] { "ศูนย์", "หนึ่ง", "สอง", "สาม", "สี่", "ห้า", "หก", "เจ็ด", "เเปด", "เก้า", "สิบ", "สิบเอ็ด", "สิบสอง", "สิบสาม", "สิบสี่", "สิบห้า", "สิบหก", "สิบเจ็ด", "สิบเเปด", "สิบเก้า" };
@@ -65,7 +65,7 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
                 Textreturn += tensMap[numbermoney / 10];
                 if ((numbermoney % 10) > 0)
                 {
-                    Textreturn += "" + unitsMap[numbermoney % 10];
+                    Textreturn += string.Empty + unitsMap[numbermoney % 10];
                 }
             }
         }

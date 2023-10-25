@@ -30,8 +30,8 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         new Fact { Value = 1_000_000_000_000L,         Name = "biljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
         new Fact { Value = 1000000000,                 Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
         new Fact { Value = 1000000,                    Name = "miljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1000,                       Name = "duizend", Prefix = "",  Postfix = " ", DisplayOneUnit = false },
-        new Fact { Value = 100,                        Name = "honderd", Prefix = "",  Postfix = "",  DisplayOneUnit = false }
+        new Fact { Value = 1000,                       Name = "duizend", Prefix = string.Empty,  Postfix = " ", DisplayOneUnit = false },
+        new Fact { Value = 100,                        Name = "honderd", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false }
     };
 
     public override string Convert(long input)
@@ -48,7 +48,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("min {0}", Convert(-number));
         }
 
-        var word = "";
+        var word = string.Empty;
 
         foreach (var m in Hunderds)
         {

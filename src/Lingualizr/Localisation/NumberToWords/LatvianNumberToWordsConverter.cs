@@ -22,7 +22,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 1000000) > 0)
         {
-            var millionPart = "";
+            var millionPart = string.Empty;
             if (number == 1000000)
             {
                 millionPart = "miljons";
@@ -38,7 +38,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 1000) > 0)
         {
-            var thousandsPart = "";
+            var thousandsPart = string.Empty;
             if (number == 1000)
             {
                 thousandsPart = "tūkstotis";
@@ -58,7 +58,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 100) > 0)
         {
-            var hundredsPart = "";
+            var hundredsPart = string.Empty;
             if (number == 100)
             {
                 hundredsPart = parts.Contains("tūkstoš") ? "viens simts" : "simts";
@@ -110,7 +110,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 1000000) > 0)
         {
-            var millionPart = "";
+            var millionPart = string.Empty;
             if (number == 1000000)
             {
                 millionPart = "miljon" + GetOrdinalEndingForGender(gender);
@@ -126,7 +126,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 1000) > 0)
         {
-            var thousandsPart = "";
+            var thousandsPart = string.Empty;
             if ((number % 1000) == 0)
             {
                 if (number == 1000)
@@ -156,7 +156,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((number / 100) > 0)
         {
-            var hundredsPart = "";
+            var hundredsPart = string.Empty;
             if ((number % 100) == 0)
             {
                 hundredsPart = HundredsMap[(number / 100)] + GetOrdinalEndingForGender(gender);
@@ -231,7 +231,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
                     return "i";
                 }
 
-                return "";
+                return string.Empty;
             case GrammaticalGender.Feminine:
                 if (number == 1)
                 {
@@ -243,7 +243,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
                     return "as";
                 }
 
-                return "";
+                return string.Empty;
             default:
                 throw new ArgumentOutOfRangeException(nameof(gender));
         }

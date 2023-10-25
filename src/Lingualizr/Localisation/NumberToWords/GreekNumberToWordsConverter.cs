@@ -8,13 +8,13 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private readonly string[] UnitsMap = { "μηδέν", "ένα", "δύο", "τρείς", "τέσσερις", "πέντε", "έξι", "επτά", "οκτώ", "εννέα", "δέκα", "έντεκα", "δώδεκα" };
 
-    private readonly string[] TensMap = { "", "δέκα", "είκοσι", "τριάντα", "σαράντα", "πενήντα", "εξήντα", "εβδομήντα", "ογδόντα", "ενενήντα" };
+    private readonly string[] TensMap = { string.Empty, "δέκα", "είκοσι", "τριάντα", "σαράντα", "πενήντα", "εξήντα", "εβδομήντα", "ογδόντα", "ενενήντα" };
 
-    private readonly string[] TensNoDiacriticsMap = { "", "δεκα", "εικοσι", "τριαντα", "σαραντα", "πενηντα", "εξηντα", "εβδομηντα", "ογδοντα", "ενενηντα" };
+    private readonly string[] TensNoDiacriticsMap = { string.Empty, "δεκα", "εικοσι", "τριαντα", "σαραντα", "πενηντα", "εξηντα", "εβδομηντα", "ογδοντα", "ενενηντα" };
 
-    private readonly string[] HundredMap = { "", "εκατό", "διακόσια", "τριακόσια", "τετρακόσια", "πεντακόσια", "εξακόσια", "επτακόσια", "οκτακόσια", "εννιακόσια" };
+    private readonly string[] HundredMap = { string.Empty, "εκατό", "διακόσια", "τριακόσια", "τετρακόσια", "πεντακόσια", "εξακόσια", "επτακόσια", "οκτακόσια", "εννιακόσια" };
 
-    private readonly string[] HundredsMap = { "", "εκατόν", "διακόσιες", "τριακόσιες", "τετρακόσιες", "πεντακόσιες", "εξακόσιες", "επτακόσιες", "οκτακόσιες", "Εενιακόσιες" };
+    private readonly string[] HundredsMap = { string.Empty, "εκατόν", "διακόσιες", "τριακόσιες", "τετρακόσιες", "πεντακόσιες", "εξακόσιες", "επτακόσιες", "οκτακόσιες", "Εενιακόσιες" };
 
     private static readonly Dictionary<long, string> ΟrdinalMap = new()
     {
@@ -179,7 +179,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return ConvertIntBTR(number);
         }
 
-        return "";
+        return string.Empty;
     }
 
     private string ConvertIntΒ13(long number, bool returnPluralized)
@@ -206,7 +206,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string ConvertIntBT(long number, bool returnPluralized)
     {
-        var result = "";
+        var result = string.Empty;
 
         if (number / 100 == 1)
         {

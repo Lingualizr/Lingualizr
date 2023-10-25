@@ -7,7 +7,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
 
     private static readonly string[] NumberVerbalPairs =
     {
-        "", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"
+        string.Empty, "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"
     };
 
     public override string Convert(long number)

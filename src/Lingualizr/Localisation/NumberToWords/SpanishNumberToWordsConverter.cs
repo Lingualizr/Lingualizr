@@ -11,21 +11,21 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         "ochocient", "novecient" };
 
     private static readonly string[] HundredthsRootMap = {
-        "", "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim",
+        string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim",
         "septingentésim", "octingentésim", "noningentésim" };
 
-    private static readonly string[] OrdinalsRootMap = { "" , "primer", "segund", "tercer", "cuart", "quint", "sext",
+    private static readonly string[] OrdinalsRootMap = { string.Empty , "primer", "segund", "tercer", "cuart", "quint", "sext",
         "séptim", "octav", "noven" };
 
     private static readonly string[] TensMap = {
         "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
 
     private static readonly string[] TenthsRootMap = {
-        "", "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim",
+        string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim",
         "octogésim", "nonagésim" };
 
     private static readonly string[] ThousandthsRootMap = {
-        "", "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim",
+        string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim",
         "sietemilésim", "ochomilésim", "nuevemilésim" };
 
     private static readonly string[] TupleMap = {
@@ -322,7 +322,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
     private string ConvertRoundBillionths(int number, GrammaticalGender gender)
     {
         var cardinalPart = Convert(number / 1_000_000, WordForm.Abbreviation, gender);
-        var sep = number == 1_000_000_000 ? "" : " ";
+        var sep = number == 1_000_000_000 ? string.Empty : " ";
         var ordinalPart = ConvertToOrdinal(1_000_000, gender);
         return cardinalPart + sep + ordinalPart;
     }
@@ -341,7 +341,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
                 if (number == 21000)
                 {
                     wordPart = wordPart
-                        .Replace("a", "")
+                        .Replace("a", string.Empty)
                         .Replace("ú", "u");
                 }
 

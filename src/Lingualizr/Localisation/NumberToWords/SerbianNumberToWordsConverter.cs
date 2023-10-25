@@ -105,7 +105,7 @@ internal class SerbianNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
         }
 
-        return string.Join("", parts);
+        return string.Join(string.Empty, parts);
     }
 
     public override string ConvertToOrdinal(int number)
