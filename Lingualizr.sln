@@ -30,7 +30,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{45A3DBE6-51C
 		src\CodeCoverage.runsettings = src\CodeCoverage.runsettings
 		src\Directory.build.props = src\Directory.build.props
 		src\global.json = src\global.json
-		src\Lingualizr.ruleset = src\Lingualizr.ruleset
 	EndProjectSection
 EndProject
 Global
