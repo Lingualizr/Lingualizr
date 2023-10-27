@@ -254,5 +254,6 @@ dotnet_diagnostic.SA1508.severity = error
 dotnet_diagnostic.SA1513.severity = error
 dotnet_diagnostic.SA1514.severity = error
 dotnet_diagnostic.SA1518.severity = error
+dotnet_diagnostic.SA1600.severity = suggestion
 dotnet_diagnostic.SA1629.severity = none
 dotnet_diagnostic.SA1633.severity = none
