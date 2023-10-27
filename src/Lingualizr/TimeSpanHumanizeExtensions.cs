@@ -63,7 +63,7 @@ public static class TimeSpanHumanizeExtensions
 
         foreach (var timeUnitType in timeUnitsEnumTypes)
         {
-            var timepart = GetTimeUnitPart(timeUnitType,timespan, maxUnit, minUnit, cultureFormatter, toWords);
+            var timepart = GetTimeUnitPart(timeUnitType, timespan, maxUnit, minUnit, cultureFormatter, toWords);
 
             if (timepart != null || firstValueFound)
             {

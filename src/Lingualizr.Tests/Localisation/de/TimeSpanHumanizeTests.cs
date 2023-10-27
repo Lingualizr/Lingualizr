@@ -28,7 +28,7 @@ public class TimeSpanHumanizeTests
     [InlineData(4018, "elf Jahre")]
     public void YearsToWords(int days, string expected)
     {
-        Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year,toWords:true));
+        Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year, toWords:true));
     }
 
     [Theory]
@@ -50,7 +50,7 @@ public class TimeSpanHumanizeTests
     [InlineData(335, "elf Monate")]
     public void MonthsToWords(int days, string expected)
     {
-        Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year,toWords:true));
+        Assert.Equal(expected, TimeSpan.FromDays(days).Humanize(maxUnit: TimeUnit.Year, toWords:true));
     }
 
     [Theory]

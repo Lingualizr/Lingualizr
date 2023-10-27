@@ -447,9 +447,9 @@ public class TimeSpanHumanizeTests
 
     [Theory]
     [InlineData(31 * 4, 1, "en-US", "four months")]
-    [InlineData(236,2,"ar", "سبعة أشهر, اثنان و عشرون يوم")]
-    [InlineData(321, 2,"es", "diez meses, dieciséis días")]
-    public void CanSpecifyCultureExplicitlyToWords(int days, int precision,string culture, string expected)
+    [InlineData(236, 2, "ar", "سبعة أشهر, اثنان و عشرون يوم")]
+    [InlineData(321, 2, "es", "diez meses, dieciséis días")]
+    public void CanSpecifyCultureExplicitlyToWords(int days, int precision, string culture, string expected)
     {
         var timeSpan = new TimeSpan(days, 0, 0, 0);
         var actual = timeSpan.Humanize(precision: precision, culture: new CultureInfo(culture), maxUnit: TimeUnit.Year, toWords: true);

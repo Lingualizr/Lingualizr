@@ -14,7 +14,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim",
         "septingentésim", "octingentésim", "noningentésim", };
 
-    private static readonly string[] OrdinalsRootMap = { string.Empty , "primer", "segund", "tercer", "cuart", "quint", "sext",
+    private static readonly string[] OrdinalsRootMap = { string.Empty, "primer", "segund", "tercer", "cuart", "quint", "sext",
         "séptim", "octav", "noven", };
 
     private static readonly string[] TensMap = {

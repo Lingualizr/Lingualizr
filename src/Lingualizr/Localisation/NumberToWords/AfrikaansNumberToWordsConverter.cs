@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Lingualizr.Localisation.NumberToWords;
@@ -24,7 +24,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
 
     public override string Convert(long number)
     {
-        if (number > Int32.MaxValue || number < Int32.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }

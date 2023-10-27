@@ -45,7 +45,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 
         if (input < 1000000000)
         {
-            return GetMillions(input, gender) + (negativeNumber ? " inqas minn żero" : String.Empty);
+            return GetMillions(input, gender) + (negativeNumber ? " inqas minn żero" : string.Empty);
         }
 
         var billions = input / 1000000000;
@@ -60,7 +60,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return billionsText;
         }
 
-        return $"{billionsText} u {millionsText}" + (negativeNumber ? " inqas minn żero" : String.Empty);
+        return $"{billionsText} u {millionsText}" + (negativeNumber ? " inqas minn żero" : string.Empty);
     }
 
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)

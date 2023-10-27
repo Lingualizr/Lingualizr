@@ -26,7 +26,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static readonly string[] HundredsOrdinalMap =
     {
-        String.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
+        string.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
         "деветстот",
     };
 
