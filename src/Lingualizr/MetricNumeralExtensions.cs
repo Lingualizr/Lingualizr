@@ -296,7 +296,11 @@ public static class MetricNumeralExtensions
     {
         var exponent = (int)Math.Floor(Math.Log10(Math.Abs(input)) / 3);
 
-        if (!exponent.Equals(0)) return BuildMetricRepresentation(input, exponent, formats, decimals);
+        if (!exponent.Equals(0))
+        {
+            return BuildMetricRepresentation(input, exponent, formats, decimals);
+        }
+
         var representation = decimals.HasValue ? Math.Round(input, decimals.Value).ToString() : input.ToString();
         if ((formats & MetricNumeralFormats.WithSpace) == MetricNumeralFormats.WithSpace)
         {
@@ -395,7 +399,9 @@ public static class MetricNumeralExtensions
         private readonly string _longScaleWord;
 
         public string Name { get; }
+
         public string ShortScaleWord { get; }
+
         public string LongScaleWord => _longScaleWord ?? ShortScaleWord;
 
         public UnitPrefix(string name, string shortScaleWord, string longScaleWord = null)

@@ -114,7 +114,9 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         number = Math.Abs(number);
 
         if (number < TupleMap.Length)
+        {
             return TupleMap[number];
+        }
 
         return Convert(number) + " veces";
     }

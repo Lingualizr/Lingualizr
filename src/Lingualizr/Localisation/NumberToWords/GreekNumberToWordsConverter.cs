@@ -81,21 +81,34 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string GetOneDigitOrdinal(int number)
     {
-        if (!ΟrdinalMap.TryGetValue(number, out var output)) return string.Empty;
+        if (!ΟrdinalMap.TryGetValue(number, out var output))
+        {
+            return string.Empty;
+        }
 
         return output;
     }
 
     private string GetTwoDigigOrdinal(int number)
     {
-        if (number == 11) return "ενδέκατος";
-        if (number == 12) return "δωδέκατος";
+        if (number == 11)
+        {
+            return "ενδέκατος";
+        }
+
+        if (number == 12)
+        {
+            return "δωδέκατος";
+        }
 
         var decades = number / 10;
 
-        if (!ΟrdinalMap.TryGetValue(decades*10, out var decadesString)) return string.Empty;
+        if (!ΟrdinalMap.TryGetValue(decades*10, out var decadesString))
+        {
+            return string.Empty;
+        }
 
-        if(number -decades*10 > 0)
+        if (number -decades*10 > 0)
         {
             return decadesString + " " + GetOneDigitOrdinal(number - decades * 10);
         }
@@ -107,7 +120,10 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         var hundrends = number / 100;
 
-        if (!ΟrdinalMap.TryGetValue(hundrends*100, out var hundrentsString)) return string.Empty;
+        if (!ΟrdinalMap.TryGetValue(hundrends*100, out var hundrentsString))
+        {
+            return string.Empty;
+        }
 
         if (number - hundrends*100> 10)
         {
@@ -126,7 +142,10 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         var thousands = number / 1000;
 
-        if (!ΟrdinalMap.TryGetValue(thousands*1000, out var thousandsString)) return string.Empty;
+        if (!ΟrdinalMap.TryGetValue(thousands*1000, out var thousandsString))
+        {
+            return string.Empty;
+        }
 
         if (number - thousands * 1000 > 100)
         {

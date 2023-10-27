@@ -60,10 +60,15 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     public const string Terabyte = "terabyte";
 
     public long Bits { get; private set; }
+
     public double Bytes { get; private set; }
+
     public double Kilobytes { get; private set; }
+
     public double Megabytes { get; private set; }
+
     public double Gigabytes { get; private set; }
+
     public double Terabytes { get; private set; }
 
     public string LargestWholeNumberSymbol => GetLargestWholeNumberSymbol();
@@ -227,7 +232,9 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     public string ToString(IFormatProvider provider)
     {
         if (provider == null)
+        {
             provider = CultureInfo.CurrentCulture;
+        }
 
         return string.Format(provider, "{0:0.##} {1}", LargestWholeNumberValue, GetLargestWholeNumberSymbol(provider));
     }
@@ -245,13 +252,19 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     private string ToString(string format, IFormatProvider provider, bool toSymbol)
     {
         if (format == null)
+        {
             format = "G";
+        }
 
         if (provider == null)
+        {
             provider = CultureInfo.CurrentCulture;
+        }
 
         if (format == "G")
+        {
             format = "0.##";
+        }
 
         if (!format.Contains("#") && !format.Contains("0"))
         {
@@ -577,7 +590,9 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     private static NumberFormatInfo GetNumberFormatInfo(IFormatProvider formatProvider)
     {
         if (formatProvider is NumberFormatInfo numberFormat)
+        {
             return numberFormat;
+        }
 
         var culture = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
 

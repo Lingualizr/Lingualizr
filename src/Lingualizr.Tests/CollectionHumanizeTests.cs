@@ -9,6 +9,7 @@ public class SomeClass
 {
     public string SomeString;
     public int SomeInt;
+
     public override string ToString()
     {
         return "ToString";

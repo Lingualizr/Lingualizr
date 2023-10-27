@@ -17,9 +17,13 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
     private class Fact
     {
         public long Value { get; set; }
+
         public string Name { get; set; }
+
         public string Prefix { get; set; }
+
         public string Postfix { get; set; }
+
         public bool DisplayOneUnit { get; set; }
     }
 

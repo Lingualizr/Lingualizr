@@ -78,7 +78,9 @@ public class DefaultFormatter : IFormatter
         var resourceValue = Format(resourceKey);
 
         if (!toSymbol && count > 1)
+        {
             resourceValue += 's';
+        }
 
         return resourceValue;
     }

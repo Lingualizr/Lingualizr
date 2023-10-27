@@ -8,6 +8,7 @@ internal class IcelandicFormatter : DefaultFormatter
 {
     private const string LocaleCode = "is";
     private readonly CultureInfo _localCulture;
+
     public IcelandicFormatter()
         : base(LocaleCode)
     {

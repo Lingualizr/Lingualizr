@@ -115,7 +115,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(HundredsMap[(int)input / 100]);
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = HundredsOrdinalMap[(int)input / 100] + GetEndingForGender(gender, input);
+            }
 
             input %= 100;
         }
@@ -125,7 +127,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(TensMap[input / 10]);
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = TensMap[(int)input / 10] + GetEndingForGender(gender, input);
+            }
 
             input %= 10;
         }
@@ -135,7 +139,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(UnitsMap[input]);
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = UnitsOrdinal[input] + GetEndingForGender(gender, input);
+            }
         }
 
         if (parts.Count > 1)
@@ -144,7 +150,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         }
 
         if (isOrdinal && !string.IsNullOrWhiteSpace(lastOrdinalSubstitution))
+        {
             parts[parts.Count - 1] = lastOrdinalSubstitution;
+        }
 
         return string.Join(" ", parts);
     }

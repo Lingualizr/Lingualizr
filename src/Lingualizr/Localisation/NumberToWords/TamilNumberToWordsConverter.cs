@@ -37,10 +37,14 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     private string ConvertImpl(long number, bool isOrdinal)
     {
         if (number == 0)
+        {
             return GetUnitValue(0, isOrdinal);
+        }
 
         if (number < 0)
+        {
             return string.Format("கழித்தல் {0}", Convert(-number));
+        }
 
         var parts = new List<string>();
 
@@ -74,23 +78,41 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         //    number %= 1000000;
         // }
 
-        if ((number / 10000000) > 0) parts.Add(GetCroresValue(ref number));
+        if ((number / 10000000) > 0)
+        {
+            parts.Add(GetCroresValue(ref number));
+        }
 
-        if ((number / 100000) > 0) parts.Add(GetLakhsValue(ref number, isOrdinal));
+        if ((number / 100000) > 0)
+        {
+            parts.Add(GetLakhsValue(ref number, isOrdinal));
+        }
 
-        if ((number / 1000) > 0) parts.Add(GetThousandsValue(ref number));
+        if ((number / 1000) > 0)
+        {
+            parts.Add(GetThousandsValue(ref number));
+        }
 
-        if ((number / 100) > 0) parts.Add(GetHundredsValue(ref number));
+        if ((number / 100) > 0)
+        {
+            parts.Add(GetHundredsValue(ref number));
+        }
 
         if (number > 0)
+        {
             parts.Add(GetTensValue(number, isOrdinal));
+        }
         else if (isOrdinal)
+        {
             parts[parts.Count - 1] += "வது";
+        }
 
         var toWords = string.Join(" ", parts.ToArray());
 
         if (isOrdinal)
+        {
             toWords = RemoveOnePrefix(toWords);
+        }
 
         return toWords;
     }
@@ -100,9 +122,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         if (isOrdinal)
         {
             if (ExceptionNumbersToWords(number, out var exceptionString))
+            {
                 return exceptionString;
+            }
             else
+            {
                 return UnitsMap[number] + "வது";
+            }
         }
         else
             return UnitsMap[number];
@@ -120,29 +146,46 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             if ((number % 10) > 0)
             {
                 if (quot == 9)
+                {
                     lastPart += "ற்றி ";
+                }
                 else if (quot == 7 || quot == 8 || quot == 4)
+                {
                     lastPart += "த்தி ";
+                }
                 else
+                {
                     lastPart += "த்து ";
+                }
 
-                if (!isThousand) lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
+                if (!isThousand)
+                {
+                    lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
+                }
             }
             else if (number % 10 == 0)
             {
                 if (isThousand)
                 {
                     if (quot == 9)
+                    {
                         lastPart += "றா";
+                    }
                     else
+                    {
                         lastPart += "தா";
+                    }
                 }
                 else
                 {
                     if (quot == 9)
+                    {
                         lastPart += "று";
+                    }
                     else
+                    {
                         lastPart += "து";
+                    }
                 }
             }
             else if (isOrdinal)
@@ -168,9 +211,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         else local_word += GetTensValue((number / 100000), isOrdinal) + " " + LakhsMap[0];
 
         if (number % 1000000 == 0 || number % 100000 == 0)
+        {
             local_word += "ம்";
+        }
         else
+        {
             local_word += "த்து";
+        }
 
         number %= 100000;
         return local_word;
@@ -211,9 +258,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         local_word = local_word.TrimEnd() + " " + str_crore;
         if (number % 10000000 == 0 || number % 100000000 == 0)
+        {
             local_word += string.Empty;
+        }
         else
+        {
             local_word += "யே";
+        }
 
         number %= 10000000;
         return local_word;
@@ -228,9 +279,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word = GetTensValue(num_above_10, false, true);
 
             if (num_above_10 % 10 == 1)
+            {
                 local_word += "ஓரா";
+            }
             else if (num_above_10 % 10 > 1)
+            {
                 local_word += ThousandsMap[(num_above_10 % 10) - 1];
+            }
         }
         else
             local_word += ThousandsMap[(number / 1000) - 1];
@@ -238,9 +293,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         number %= 1000;
 
         if (number > 0)
+        {
             local_word = local_word + "யிரத்து";
+        }
         else
+        {
             local_word = local_word + "யிரம்";
+        }
 
         return local_word;
     }
@@ -254,9 +313,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             if (number / 100 == 9)
             {
                 if (number % 100 == 0)
+                {
                     local_word += "ம்";
+                }
                 else
+                {
                     local_word += "த்து";
+                }
             }
             else if (number % 100 >= 1)
                 local_word += "ற்று";
@@ -273,7 +336,9 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         // one hundred => hundredth
         if (toWords.StartsWith("one", StringComparison.Ordinal))
+        {
             toWords = toWords.Remove(0, 4);
+        }
 
         return toWords;
     }

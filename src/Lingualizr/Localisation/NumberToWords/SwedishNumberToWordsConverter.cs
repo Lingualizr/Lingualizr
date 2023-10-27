@@ -10,10 +10,15 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
     private class Fact
     {
         public int Value { get; set; }
+
         public string Name { get; set; }
+
         public string Prefix { get; set; }
+
         public string Postfix { get; set; }
+
         public bool DisplayOneUnit { get; set; }
+
         public GrammaticalGender Gender { get; set; } = GrammaticalGender.Neuter;
     }
 

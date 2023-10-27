@@ -40,6 +40,7 @@ public class EnumTestsResources
     public const string MemberWithoutDescriptionAttributeLowerCase = "member without description attribute";
     public const string MemberWithDisplayAttribute = "Description from Display attribute";
     public const string MemberWithDisplayAttributeWithoutDescription = "Displayattribute without description";
+
     public static string MemberWithLocalizedDisplayAttribute { get { return "Localized description from Display attribute"; } }
 }
 

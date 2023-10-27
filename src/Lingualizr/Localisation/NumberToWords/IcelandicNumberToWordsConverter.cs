@@ -14,12 +14,17 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] UnitsOrdinalPrefixes = { "núllt", "fyrst", string.Empty, "þriðj", "fjórð", "fimmt", "sjött", "sjöund", "áttund", "níund", "tíund", "elleft", "tólft", "þrettánd", "fjórtánd", "fimmtánd", "sextánd", "sautjánd", "átjánd", "nítjánd" };
     private static readonly string[] TensOrdinalPrefixes = { string.Empty, "tíund", "tuttugast", "þrítugast", "fertugast", "fimmtugast", "sextugast", "sjötugast", "áttugast", "nítugast" };
     private const string AndSplit = "og";
+
     private class Fact
     {
         public long Power { get; set; }
+
         public GrammaticalGender Gender { get; set; }
+
         public string Plural { get; set; }
+
         public string Single { get; set; }
+
         public string OrdinalPrefix { get; set; }
     }
 
@@ -34,10 +39,13 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         { 15,    new Fact { Power = 1000000000000000       , Single = "einn billjarður",   Plural = "billjarðar",  OrdinalPrefix = "billjarðast",  Gender = GrammaticalGender.Masculine } },
         { 18,    new Fact { Power = 1000000000000000000    , Single = "ein trilljón",      Plural = "trilljónir",  OrdinalPrefix = "trilljónast",  Gender = GrammaticalGender.Feminine  } },
     };
+
     private static bool IsAndSplitNeeded(int number) =>
         (((number <= 20) || (number % 10 == 0) && (number < 100)) || (number % 100 == 0));
+
     private static string GetOrdinalEnding(GrammaticalGender gender) =>
         gender == GrammaticalGender.Masculine ? "i" : "a";
+
     private static void GetUnits(ICollection<string> builder, long number, GrammaticalGender gender)
     {
         if (number is > 0 and < 5)

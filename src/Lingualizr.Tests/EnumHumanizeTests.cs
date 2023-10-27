@@ -16,6 +16,7 @@ public class EnumHumanizeTests
     {
         Assert.Equal("Overridden " + EnumTestsResources.MemberWithDescriptionAttributeSubclass, EnumUnderTest.MemberWithDescriptionAttributeSubclass.Humanize());
     }
+
 #endif
     [Fact]
     public void HonorsAnyAttributeWithDescriptionStringProperty()

@@ -45,6 +45,7 @@ internal static class DateTimeHumanizeAlgorithms
 
         return PrecisionHumanize(ts, tense, precision, culture);
     }
+
 #endif
     private static string PrecisionHumanize(TimeSpan ts, Tense tense, double precision, CultureInfo culture)
     {
