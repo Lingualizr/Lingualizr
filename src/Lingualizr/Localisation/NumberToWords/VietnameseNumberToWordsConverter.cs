@@ -44,8 +44,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
             return string.Format(
                     "{0} tỉ {1}",
                     ConvertImpl(number / OneBillion),
-                    ConvertImpl(number % OneBillion, isGreaterThanOneHundred: true)
-                )
+                    ConvertImpl(number % OneBillion, isGreaterThanOneHundred: true))
                 .TrimEnd();
         }
 
@@ -54,8 +53,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
             return string.Format(
                     "{0} triệu {1}",
                     ConvertImpl(number / OneMillion),
-                    ConvertImpl(number % OneMillion, isGreaterThanOneHundred: true)
-                )
+                    ConvertImpl(number % OneMillion, isGreaterThanOneHundred: true))
                 .TrimEnd();
         }
 
@@ -64,8 +62,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
             return string.Format(
                     "{0} nghìn {1}",
                     ConvertImpl(number / 1000),
-                    ConvertImpl(number % 1000, isGreaterThanOneHundred: true)
-                )
+                    ConvertImpl(number % 1000, isGreaterThanOneHundred: true))
                 .TrimEnd();
         }
 
@@ -74,8 +71,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
             return string.Format(
                     "{0} trăm {1}",
                     _numberVerbalPairs[number / 100],
-                    ConvertImpl(number % 100, isGreaterThanOneHundred: true)
-                )
+                    ConvertImpl(number % 100, isGreaterThanOneHundred: true))
                 .TrimEnd();
         }
 
@@ -84,8 +80,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
             return string.Format(
                     "{0} mươi {1}",
                     _numberVerbalPairs[number / 10],
-                    ConvertImpl(number % 10, hasTens: true)
-                )
+                    ConvertImpl(number % 10, hasTens: true))
                 .TrimEnd();
         }
 

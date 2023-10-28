@@ -51,8 +51,7 @@ internal class JapaneseNumberToWordsConverter : GenderlessNumberToWordsConverter
                               + UnitsMap1[n2] + (n2 == 0 ? string.Empty : UnitsMap2[2])
                               + UnitsMap1[n1] + (n1 == 0 ? string.Empty : UnitsMap2[1])
                               + (n0 == 1 ? "一" : UnitsMap1[n0])
-                              + (groupNumber == 0 ? string.Empty : UnitsMap3[groupLevel])
-            );
+                              + (groupNumber == 0 ? string.Empty : UnitsMap3[groupLevel]));
 
             groupLevel++;
         }
