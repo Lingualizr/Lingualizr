@@ -29,8 +29,8 @@ public class NumberToWordsTests
     [InlineData(10000000, "kymmenenmiljoonaa")]
     [InlineData(100000000, "satamiljoonaa")]
     [InlineData(1000000000, "miljardi")]
-    [InlineData(2147483647, "kaksimiljardia sataneljäkymmentäseitsemänmiljoonaa neljäsataakahdeksankymmentäkolmetuhatta kuusisataaneljäkymmentäseitsemän")]  // int.MaxValue
-    [InlineData(-2147483647, "miinus kaksimiljardia sataneljäkymmentäseitsemänmiljoonaa neljäsataakahdeksankymmentäkolmetuhatta kuusisataaneljäkymmentäseitsemän")]  // int.MinValue + 1
+    [InlineData(2147483647, "kaksimiljardia sataneljäkymmentäseitsemänmiljoonaa neljäsataakahdeksankymmentäkolmetuhatta kuusisataaneljäkymmentäseitsemän")] // int.MaxValue
+    [InlineData(-2147483647, "miinus kaksimiljardia sataneljäkymmentäseitsemänmiljoonaa neljäsataakahdeksankymmentäkolmetuhatta kuusisataaneljäkymmentäseitsemän")] // int.MinValue + 1
     public void ToWords(int number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

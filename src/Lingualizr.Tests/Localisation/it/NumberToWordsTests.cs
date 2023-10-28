@@ -5,63 +5,39 @@ namespace Lingualizr.Tests.Localisation.it;
 [UseCulture("it")]
 public class NumberToWordsTests
 {
-    [Theory]
-    [InlineData(0, "zero")]
-    [InlineData(1, "uno")]
-    [InlineData(-1, "meno uno")]
-    [InlineData(3, "tre")]
-    [InlineData(10, "dieci")]
-    [InlineData(11, "undici")]
-    [InlineData(21, "ventuno")]
-    [InlineData(38, "trentotto")]
-    [InlineData(122, "centoventidue")]
-    [InlineData(3501, "tremilacinquecentouno")]
-    [InlineData(-3501, "meno tremilacinquecentouno")]
-    [InlineData(100, "cento")]
-    [InlineData(1000, "mille")]
-    [InlineData(2000, "duemila")]
-    [InlineData(10000, "diecimila")]
-    [InlineData(100000, "centomila")]
-    [InlineData(1000000, "un milione")]
-    [InlineData(5000000, "cinque milioni")]
-    [InlineData(10000000, "dieci milioni")]
-    [InlineData(100000000, "cento milioni")]
-    [InlineData(1000000000, "un miliardo")]
-    [InlineData(2000000000, "due miliardi")]
-    [InlineData(2147483647, "due miliardi centoquarantasette milioni quattrocentoottantatremilaseicentoquarantasette")]  // int.MaxValue
+    [Theory, InlineData(0, "zero"), InlineData(1, "uno"), InlineData(-1, "meno uno"), InlineData(3, "tre"),
+     InlineData(10, "dieci"), InlineData(11, "undici"), InlineData(21, "ventuno"), InlineData(38, "trentotto"),
+     InlineData(122, "centoventidue"), InlineData(3501, "tremilacinquecentouno"),
+     InlineData(-3501, "meno tremilacinquecentouno"), InlineData(100, "cento"), InlineData(1000, "mille"),
+     InlineData(2000, "duemila"), InlineData(10000, "diecimila"), InlineData(100000, "centomila"),
+     InlineData(1000000, "un milione"), InlineData(5000000, "cinque milioni"), InlineData(10000000, "dieci milioni"),
+     InlineData(100000000, "cento milioni"), InlineData(1000000000, "un miliardo"),
+     InlineData(2000000000, "due miliardi"),
+     InlineData(2147483647, "due miliardi centoquarantasette milioni quattrocentoottantatremilaseicentoquarantasette"),
+     InlineData(101, "centouno"), InlineData(1001, "milleuno"), InlineData(10001, "diecimilauno"),
+     InlineData(100001, "centomilauno"), InlineData(1000001, "un milione uno"),
+     InlineData(10000001, "dieci milioni uno"), InlineData(100000001, "cento milioni uno"),
+     InlineData(1000000001, "un miliardo uno"), InlineData(111, "centoundici"), InlineData(1111, "millecentoundici"),
+     InlineData(111111, "centoundicimilacentoundici"), InlineData(1111101, "un milione centoundicimilacentouno"),
+     InlineData(1111111, "un milione centoundicimilacentoundici"),
+     InlineData(11111111, "undici milioni centoundicimilacentoundici"),
+     InlineData(111111111, "centoundici milioni centoundicimilacentoundici"),
+     InlineData(1101111101, "un miliardo centouno milioni centoundicimilacentouno"),
+     InlineData(1111111111, "un miliardo centoundici milioni centoundicimilacentoundici"),
+     InlineData(8100, "ottomilacento"), InlineData(43, "quarantatré"), InlineData(123, "centoventitré"),
+     InlineData(1234, "milleduecentotrentaquattro"), InlineData(12345, "dodicimilatrecentoquarantacinque"),
+     InlineData(123456, "centoventitremilaquattrocentocinquantasei"),
+     InlineData(1234567, "un milione duecentotrentaquattromilacinquecentosessantasette"),
+     InlineData(12345678, "dodici milioni trecentoquarantacinquemilaseicentosettantotto"),
+     InlineData(123456789, "centoventitré milioni quattrocentocinquantaseimilasettecentoottantanove"),
+     InlineData(1234567890, "un miliardo duecentotrentaquattro milioni cinquecentosessantasettemilaottocentonovanta"),
+     InlineData(1999, "millenovecentonovantanove"), InlineData(2014, "duemilaquattordici"),
+     InlineData(2048, "duemilaquarantotto")]
+    // int.MaxValue
     // [InlineData(9000000000, "nove miliardi")]  // int = System.Int32, fixed in API, is not big enough
     // [InlineData(10000000000, "dieci miliardi")]  // int = System.Int32, fixed in API, is not big enough
     // [InlineData(100000000000, "cento miliardi")]  // int = System.Int32, fixed in API, is not big enough
-    [InlineData(101, "centouno")]
-    [InlineData(1001, "milleuno")]
-    [InlineData(10001, "diecimilauno")]
-    [InlineData(100001, "centomilauno")]
-    [InlineData(1000001, "un milione uno")]
-    [InlineData(10000001, "dieci milioni uno")]
-    [InlineData(100000001, "cento milioni uno")]
-    [InlineData(1000000001, "un miliardo uno")]
-    [InlineData(111, "centoundici")]
-    [InlineData(1111, "millecentoundici")]
-    [InlineData(111111, "centoundicimilacentoundici")]
-    [InlineData(1111101, "un milione centoundicimilacentouno")]
-    [InlineData(1111111, "un milione centoundicimilacentoundici")]
-    [InlineData(11111111, "undici milioni centoundicimilacentoundici")]
-    [InlineData(111111111, "centoundici milioni centoundicimilacentoundici")]
-    [InlineData(1101111101, "un miliardo centouno milioni centoundicimilacentouno")]
-    [InlineData(1111111111, "un miliardo centoundici milioni centoundicimilacentoundici")]
-    [InlineData(8100, "ottomilacento")]
-    [InlineData(43, "quarantatré")]  // Ref. http://dizionari.corriere.it/dizionario-si-dice/V/ventitre.shtml
-    [InlineData(123, "centoventitré")]
-    [InlineData(1234, "milleduecentotrentaquattro")]
-    [InlineData(12345, "dodicimilatrecentoquarantacinque")]
-    [InlineData(123456, "centoventitremilaquattrocentocinquantasei")]
-    [InlineData(1234567, "un milione duecentotrentaquattromilacinquecentosessantasette")]
-    [InlineData(12345678, "dodici milioni trecentoquarantacinquemilaseicentosettantotto")]
-    [InlineData(123456789, "centoventitré milioni quattrocentocinquantaseimilasettecentoottantanove")]
-    [InlineData(1234567890, "un miliardo duecentotrentaquattro milioni cinquecentosessantasettemilaottocentonovanta")]
-    [InlineData(1999, "millenovecentonovantanove")]
-    [InlineData(2014, "duemilaquattordici")]
-    [InlineData(2048, "duemilaquarantotto")]
+    // Ref. http://dizionari.corriere.it/dizionario-si-dice/V/ventitre.shtml
     public void ToWords(int number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

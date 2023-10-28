@@ -138,17 +138,17 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeRemovesEmptyItemsByDefault()
     {
-        Assert.Equal("A and C", new[] { "A", " ", "C" }.Humanize(dummyFormatter));
+        Assert.Equal("A and C", new[] { "A", " ", "C" }.Humanize(_dummyFormatter));
     }
 
     [Fact]
     public void HumanizeTrimsItemsByDefault()
     {
-        Assert.Equal("A, B, and C", new[] { "A", "  B  ", "C" }.Humanize(dummyFormatter));
+        Assert.Equal("A, B, and C", new[] { "A", "  B  ", "C" }.Humanize(_dummyFormatter));
     }
 
     /// <summary>
     /// Use the dummy formatter to ensure tests are testing formatter output rather than input
     /// </summary>
-    private static readonly Func<string, string> dummyFormatter = input => input;
+    private static readonly Func<string, string> _dummyFormatter = input => input;
 }

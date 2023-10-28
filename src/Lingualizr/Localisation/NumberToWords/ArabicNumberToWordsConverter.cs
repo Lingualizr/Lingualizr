@@ -6,15 +6,15 @@ namespace Lingualizr.Localisation.NumberToWords;
 internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 {
     private static readonly string[] _groups = { "مئة", "ألف", "مليون", "مليار", "تريليون", "كوادريليون", "كوينتليون", "سكستيليون" };
-    private static readonly string[] AppendedGroups = { string.Empty, "ألفاً", "مليوناً", "ملياراً", "تريليوناً", "كوادريليوناً", "كوينتليوناً", "سكستيليوناً" };
-    private static readonly string[] PluralGroups = { string.Empty, "آلاف", "ملايين", "مليارات", "تريليونات", "كوادريليونات", "كوينتليونات", "سكستيليونات" };
-    private static readonly string[] OnesGroup = { string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر" };
-    private static readonly string[] TensGroup = { string.Empty, "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون" };
-    private static readonly string[] HundredsGroup = { string.Empty, "مئة", "مئتان", "ثلاث مئة", "أربع مئة", "خمس مئة", "ست مئة", "سبع مئة", "ثمان مئة", "تسع مئة" };
-    private static readonly string[] AppendedTwos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونلن" };
-    private static readonly string[] Twos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونان" };
+    private static readonly string[] _appendedGroups = { string.Empty, "ألفاً", "مليوناً", "ملياراً", "تريليوناً", "كوادريليوناً", "كوينتليوناً", "سكستيليوناً" };
+    private static readonly string[] _pluralGroups = { string.Empty, "آلاف", "ملايين", "مليارات", "تريليونات", "كوادريليونات", "كوينتليونات", "سكستيليونات" };
+    private static readonly string[] _onesGroup = { string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر" };
+    private static readonly string[] _tensGroup = { string.Empty, "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون" };
+    private static readonly string[] _hundredsGroup = { string.Empty, "مئة", "مئتان", "ثلاث مئة", "أربع مئة", "خمس مئة", "ست مئة", "سبع مئة", "ثمان مئة", "تسع مئة" };
+    private static readonly string[] _appendedTwos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونلن" };
+    private static readonly string[] _twos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونان" };
 
-    private static readonly string[] FeminineOnesGroup = { string.Empty, "واحدة", "اثنتان", "ثلاث", "أربع", "خمس", "ست", "سبع", "ثمان", "تسع", "عشر", "إحدى عشرة", "اثنتا عشرة", "ثلاث عشرة", "أربع عشرة", "خمس عشرة", "ست عشرة", "سبع عشرة", "ثمان عشرة", "تسع عشرة" };
+    private static readonly string[] _feminineOnesGroup = { string.Empty, "واحدة", "اثنتان", "ثلاث", "أربع", "خمس", "ست", "سبع", "ثمان", "تسع", "عشر", "إحدى عشرة", "اثنتا عشرة", "ثلاث عشرة", "أربع عشرة", "خمس عشرة", "ست عشرة", "سبع عشرة", "ثمان عشرة", "تسع عشرة" };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
@@ -44,11 +44,11 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 if (tens == 0 && hundreds == 2)
                 {
-                    process = AppendedTwos[0];
+                    process = _appendedTwos[0];
                 }
                 else
                 {
-                    process = HundredsGroup[hundreds];
+                    process = _hundredsGroup[hundreds];
                 }
             }
 
@@ -60,11 +60,11 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                     {
                         if (number == 2000 || number == 2000000 || number == 2000000000)
                         {
-                            process = AppendedTwos[groupLevel];
+                            process = _appendedTwos[groupLevel];
                         }
                         else
                         {
-                            process = Twos[groupLevel];
+                            process = _twos[groupLevel];
                         }
                     }
                     else
@@ -80,7 +80,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                         }
                         else
                         {
-                            process += gender == GrammaticalGender.Feminine && groupLevel == 0 ? FeminineOnesGroup[tens] : OnesGroup[tens];
+                            process += gender == GrammaticalGender.Feminine && groupLevel == 0 ? _feminineOnesGroup[tens] : _onesGroup[tens];
                         }
                     }
                 }
@@ -96,7 +96,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                             process += " و ";
                         }
 
-                        process += gender == GrammaticalGender.Feminine ? FeminineOnesGroup[ones] : OnesGroup[ones];
+                        process += gender == GrammaticalGender.Feminine ? _feminineOnesGroup[ones] : _onesGroup[ones];
                     }
 
                     if (process != string.Empty)
@@ -104,7 +104,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                         process += " و ";
                     }
 
-                    process += TensGroup[tens];
+                    process += _tensGroup[tens];
                 }
             }
 
@@ -123,11 +123,11 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                         {
                             if (groupNumber >= 3 && groupNumber <= 10)
                             {
-                                result = string.Format("{0} {1}", PluralGroups[groupLevel], result);
+                                result = string.Format("{0} {1}", _pluralGroups[groupLevel], result);
                             }
                             else
                             {
-                                result = string.Format("{0} {1}", result != string.Empty ? AppendedGroups[groupLevel] : _groups[groupLevel], result);
+                                result = string.Format("{0} {1}", result != string.Empty ? _appendedGroups[groupLevel] : _groups[groupLevel], result);
                             }
                         }
                         else
@@ -146,7 +146,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         return result.Trim();
     }
 
-    private static readonly Dictionary<string, string> OrdinalExceptions = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string>
     {
         { "واحد", "الحادي" },
         { "أحد", "الحادي" },
@@ -162,7 +162,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         { "عشرة", "العاشر" },
     };
 
-    private static readonly Dictionary<string, string> FeminineOrdinalExceptions = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> _feminineOrdinalExceptions = new Dictionary<string, string>
     {
         { "واحدة", "الحادية" },
         { "إحدى", "الحادية" },
@@ -218,7 +218,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number <= 10)
         {
-            var ordinals = gender == GrammaticalGender.Feminine ? FeminineOrdinalExceptions : OrdinalExceptions;
+            var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
             foreach (var kv in ordinals.Where(kv => word.EndsWith(kv.Key)))
             {
                 // replace word with exception
@@ -236,7 +236,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                 var newPart = part;
                 var oldPart = part;
 
-                var ordinals = gender == GrammaticalGender.Feminine ? FeminineOrdinalExceptions : OrdinalExceptions;
+                var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
                 foreach (var kv in ordinals.Where(kv => oldPart.EndsWith(kv.Key)))
                 {
                     // replace word with exception

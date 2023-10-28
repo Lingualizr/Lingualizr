@@ -264,8 +264,8 @@ public class TimeSpanHumanizeTests
     }
 
     [Theory]
-    [InlineData((long)366 * 24 * 60 * 60 * 1000, "12 meses", TimeUnit.Month)]
-    [InlineData((long)6 * 7 * 24 * 60 * 60 * 1000, "6 semanas", TimeUnit.Week)]
+    [InlineData(366L * 24 * 60 * 60 * 1000, "12 meses", TimeUnit.Month)]
+    [InlineData(6L * 7 * 24 * 60 * 60 * 1000, "6 semanas", TimeUnit.Week)]
     [InlineData(7 * 24 * 60 * 60 * 1000, "7 días", TimeUnit.Day)]
     [InlineData(24 * 60 * 60 * 1000, "24 horas", TimeUnit.Hour)]
     [InlineData(60 * 60 * 1000, "60 minutos", TimeUnit.Minute)]

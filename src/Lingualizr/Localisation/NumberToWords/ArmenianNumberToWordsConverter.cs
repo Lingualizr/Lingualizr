@@ -41,7 +41,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number == long.MinValue)
         {
-            return  "մինուս ինը քվինտիլիոն " +
+            return "մինուս ինը քվինտիլիոն " +
                     "երկու հարյուր քսաներեք կվադրիլիոն " +
                     "երեք հարյուր յոթանասուներկու տրիլիոն " +
                     "երեսունվեց միլիարդ " +

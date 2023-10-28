@@ -5,7 +5,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "nul", "een", "twee", "drie", "vier", "vyf", "ses", "sewe", "agt", "nege", "tien", "elf", "twaalf", "dertien", "veertien", "vyftien", "sestien", "sewentien", "agtien", "negentien" };
+    private static readonly string[] _unitsMap = { "nul", "een", "twee", "drie", "vier", "vyf", "ses", "sewe", "agt", "nege", "tien", "elf", "twaalf", "dertien", "veertien", "vyftien", "sestien", "sewentien", "agtien", "negentien" };
     private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
 
     private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
@@ -138,12 +138,12 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
             else
             {
-                return UnitsMap[number] + "de";
+                return _unitsMap[number] + "de";
             }
         }
         else
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
     }
 

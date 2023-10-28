@@ -6,7 +6,7 @@ namespace Lingualizr.Tests.Localisation.ro_Ro;
 public class OrdinalizerTests
 {
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData(0, "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData(1, "primul")]
     [InlineData(2, "al 2-lea")]
     [InlineData(3, "al 3-lea")]
@@ -17,7 +17,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData("0", "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData("1", "primul")]
     [InlineData("2", "al 2-lea")]
     [InlineData("3", "al 3-lea")]
@@ -28,7 +28,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData(0, "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData(1, "primul")]
     [InlineData(2, "al 2-lea")]
     [InlineData(3, "al 3-lea")]
@@ -39,7 +39,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData("0", "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData("1", "primul")]
     [InlineData("2", "al 2-lea")]
     [InlineData("3", "al 3-lea")]
@@ -50,7 +50,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData(0, "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData(1, "prima")]
     [InlineData(2, "a 2-a")]
     [InlineData(10, "a 10-a")]
@@ -60,7 +60,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 (zero) in Romanian.
+    [InlineData("0", "0")] // No ordinal for 0 (zero) in Romanian.
     [InlineData("1", "prima")]
     [InlineData("2", "a 2-a")]
     [InlineData("10", "a 10-a")]

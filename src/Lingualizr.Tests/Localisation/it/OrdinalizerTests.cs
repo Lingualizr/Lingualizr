@@ -6,7 +6,7 @@ namespace Lingualizr.Tests.Localisation.it;
 public class OrdinalizerTests
 {
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData(0, "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData(1, "1°")]
     [InlineData(11, "11°")]
     [InlineData(111, "111°")]
@@ -16,7 +16,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData("0", "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData("1", "1°")]
     [InlineData("11", "11°")]
     [InlineData("111", "111°")]
@@ -26,7 +26,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData(0, "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData(1, "1°")]
     [InlineData(11, "11°")]
     [InlineData(111, "111°")]
@@ -36,7 +36,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData("0", "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData("1", "1°")]
     [InlineData("11", "11°")]
     [InlineData("111", "111°")]
@@ -46,7 +46,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData(0, "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData(0, "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData(1, "1ª")]
     [InlineData(11, "11ª")]
     [InlineData(111, "111ª")]
@@ -56,7 +56,7 @@ public class OrdinalizerTests
     }
 
     [Theory]
-    [InlineData("0", "0")]  // No ordinal for 0 in italian (neologism apart)
+    [InlineData("0", "0")] // No ordinal for 0 in italian (neologism apart)
     [InlineData("1", "1ª")]
     [InlineData("11", "11ª")]
     [InlineData("111", "111ª")]
