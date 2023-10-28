@@ -73,20 +73,20 @@ public static class EnumHumanizeExtensions
             var attrType = attr.GetType();
             if (attrType.FullName == DisplayAttributeTypeName)
             {
-                var methodGetDescription = attrType.GetRuntimeMethod(DisplayAttributeGetDescriptionMethodName, new Type[0]);
+                var methodGetDescription = attrType.GetRuntimeMethod(DisplayAttributeGetDescriptionMethodName, Array.Empty<Type>());
                 if (methodGetDescription != null)
                 {
-                    var executedMethod = methodGetDescription.Invoke(attr, new object[0]);
+                    var executedMethod = methodGetDescription.Invoke(attr, Array.Empty<object>());
                     if (executedMethod != null)
                     {
                         return executedMethod.ToString();
                     }
                 }
 
-                var methodGetName = attrType.GetRuntimeMethod(DisplayAttributeGetNameMethodName, new Type[0]);
+                var methodGetName = attrType.GetRuntimeMethod(DisplayAttributeGetNameMethodName, Array.Empty<Type>());
                 if (methodGetName != null)
                 {
-                    var executedMethod = methodGetName.Invoke(attr, new object[0]);
+                    var executedMethod = methodGetName.Invoke(attr, Array.Empty<object>());
                     if (executedMethod != null)
                     {
                         return executedMethod.ToString();

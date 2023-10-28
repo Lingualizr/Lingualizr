@@ -269,6 +269,7 @@ dotnet_diagnostic.CA1813.severity = none
 dotnet_diagnostic.CA1820.severity = error
 dotnet_diagnostic.CA1821.severity = error
 dotnet_diagnostic.CA1822.severity = error
+dotnet_diagnostic.CA1825.severity = error
 dotnet_diagnostic.CA1847.severity = error
 dotnet_diagnostic.CA1900.severity = error
 dotnet_diagnostic.CA1901.severity = error
@@ -371,3 +372,5 @@ dotnet_diagnostic.SA1629.severity = none
 dotnet_diagnostic.SA1633.severity = none
 dotnet_diagnostic.SA1642.severity = none
 dotnet_diagnostic.SA1649.severity = none
+
+dotnet_diagnostic.S2292.severity = error

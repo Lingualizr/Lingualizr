@@ -158,50 +158,27 @@ public static class Configurator
     }
 #endif
 
-    private static IDateTimeHumanizeStrategy _dateTimeHumanizeStrategy = new DefaultDateTimeHumanizeStrategy();
-
     /// <summary>
     /// The strategy to be used for DateTime.Humanize
     /// </summary>
-    public static IDateTimeHumanizeStrategy DateTimeHumanizeStrategy
-    {
-        get { return _dateTimeHumanizeStrategy; }
-        set { _dateTimeHumanizeStrategy = value; }
-    }
-
-    private static IDateTimeOffsetHumanizeStrategy _dateTimeOffsetHumanizeStrategy = new DefaultDateTimeOffsetHumanizeStrategy();
+    public static IDateTimeHumanizeStrategy DateTimeHumanizeStrategy { get; set; } = new DefaultDateTimeHumanizeStrategy();
 
     /// <summary>
     /// The strategy to be used for DateTimeOffset.Humanize
     /// </summary>
-    public static IDateTimeOffsetHumanizeStrategy DateTimeOffsetHumanizeStrategy
-    {
-        get { return _dateTimeOffsetHumanizeStrategy; }
-        set { _dateTimeOffsetHumanizeStrategy = value; }
-    }
+    public static IDateTimeOffsetHumanizeStrategy DateTimeOffsetHumanizeStrategy { get; set; } = new DefaultDateTimeOffsetHumanizeStrategy();
 
 #if NET6_0_OR_GREATER
-    private static IDateOnlyHumanizeStrategy _dateOnlyHumanizeStrategy = new DefaultDateOnlyHumanizeStrategy();
 
     /// <summary>
     /// The strategy to be used for DateOnly.Humanize
     /// </summary>
-    public static IDateOnlyHumanizeStrategy DateOnlyHumanizeStrategy
-    {
-        get { return _dateOnlyHumanizeStrategy; }
-        set { _dateOnlyHumanizeStrategy = value; }
-    }
-
-    private static ITimeOnlyHumanizeStrategy _timeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
+    public static IDateOnlyHumanizeStrategy DateOnlyHumanizeStrategy { get; set; } = new DefaultDateOnlyHumanizeStrategy();
 
     /// <summary>
     /// The strategy to be used for TimeOnly.Humanize
     /// </summary>
-    public static ITimeOnlyHumanizeStrategy TimeOnlyHumanizeStrategy
-    {
-        get { return _timeOnlyHumanizeStrategy; }
-        set { _timeOnlyHumanizeStrategy = value; }
-    }
+    public static ITimeOnlyHumanizeStrategy TimeOnlyHumanizeStrategy { get; set; } = new DefaultTimeOnlyHumanizeStrategy();
 #endif
 
     private static readonly Func<PropertyInfo, bool> _defaultEnumDescriptionPropertyLocator = p => p.Name == "Description";

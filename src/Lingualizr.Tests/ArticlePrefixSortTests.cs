@@ -16,7 +16,7 @@ public class ArticlePrefixSortTests
     [Fact]
     public void An_Empty_String_Array_Throws_ArgumentOutOfRangeException()
     {
-        string[] items = { };
+        var items = Array.Empty<string>();
         void action() => EnglishArticle.AppendArticlePrefix(items);
         Assert.Throws<ArgumentOutOfRangeException>(action);
     }
