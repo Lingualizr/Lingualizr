@@ -79,7 +79,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return string.Empty;
     }
 
-    private string GetOneDigitOrdinal(int number)
+    private static string GetOneDigitOrdinal(int number)
     {
         if (!ΟrdinalMap.TryGetValue(number, out var output))
         {
@@ -89,7 +89,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return output;
     }
 
-    private string GetTwoDigigOrdinal(int number)
+    private static string GetTwoDigigOrdinal(int number)
     {
         if (number == 11)
         {
@@ -103,12 +103,12 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var decades = number / 10;
 
-        if (!ΟrdinalMap.TryGetValue(decades*10, out var decadesString))
+        if (!ΟrdinalMap.TryGetValue(decades * 10, out var decadesString))
         {
             return string.Empty;
         }
 
-        if (number -decades*10 > 0)
+        if (number - decades * 10 > 0)
         {
             return decadesString + " " + GetOneDigitOrdinal(number - decades * 10);
         }
@@ -116,40 +116,40 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return decadesString;
     }
 
-    private string GetThreeDigitOrdinal(int number)
+    private static string GetThreeDigitOrdinal(int number)
     {
         var hundrends = number / 100;
 
-        if (!ΟrdinalMap.TryGetValue(hundrends*100, out var hundrentsString))
+        if (!ΟrdinalMap.TryGetValue(hundrends * 100, out var hundrentsString))
         {
             return string.Empty;
         }
 
-        if (number - hundrends*100> 10)
+        if (number - hundrends * 100 > 10)
         {
-            return hundrentsString + " " + GetTwoDigigOrdinal(number - hundrends*100);
+            return hundrentsString + " " + GetTwoDigigOrdinal(number - hundrends * 100);
         }
 
         if(number - hundrends * 100 > 0)
         {
-            return hundrentsString + " " + GetOneDigitOrdinal(number - hundrends*100);
+            return hundrentsString + " " + GetOneDigitOrdinal(number - hundrends * 100);
         }
 
         return hundrentsString;
     }
 
-    private string GetFourDigitOrdinal(int number)
+    private static string GetFourDigitOrdinal(int number)
     {
         var thousands = number / 1000;
 
-        if (!ΟrdinalMap.TryGetValue(thousands*1000, out var thousandsString))
+        if (!ΟrdinalMap.TryGetValue(thousands * 1000, out var thousandsString))
         {
             return string.Empty;
         }
 
         if (number - thousands * 1000 > 100)
         {
-            return thousandsString + " " + GetThreeDigitOrdinal(number - thousands*1000);
+            return thousandsString + " " + GetThreeDigitOrdinal(number - thousands * 1000);
         }
 
         if (number - thousands * 1000 > 10)

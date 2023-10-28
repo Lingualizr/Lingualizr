@@ -137,7 +137,7 @@ internal class RomanianCardinalNumberConverter
     /// </summary>
     /// <param name="number">The number to split.</param>
     /// <returns>The sequence of three-digit numbers.</returns>
-    private List<int> SplitEveryThreeDigits(int number)
+    private static List<int> SplitEveryThreeDigits(int number)
     {
         var parts = new List<int>();
         var rest = number;
@@ -226,17 +226,17 @@ internal class RomanianCardinalNumberConverter
         if (tensAndUnits <= 9)
         {
             // simple case for units, under 10
-            words += " " + getPartByGender(_units[tensAndUnits], gender);
+            words += " " + GetPartByGender(_units[tensAndUnits], gender);
         }
         else if (tensAndUnits <= 19)
         {
             // special case for 'teens', from 10 to 19
-            words += " " + getPartByGender(_teensUnder20NumberToText[tensAndUnits - 10], gender);
+            words += " " + GetPartByGender(_teensUnder20NumberToText[tensAndUnits - 10], gender);
         }
         else
         {
             // exception for zero
-            var unitsText = units == 0 ? string.Empty : " " + (_joinGroups + " " + getPartByGender(_units[units], gender));
+            var unitsText = units == 0 ? string.Empty : " " + (_joinGroups + " " + GetPartByGender(_units[units], gender));
 
             words += unitsText;
         }
@@ -244,7 +244,7 @@ internal class RomanianCardinalNumberConverter
         return words;
     }
 
-    private string getPartByGender(string multiGenderPart, GrammaticalGender gender)
+    private static string GetPartByGender(string multiGenderPart, GrammaticalGender gender)
     {
         if (multiGenderPart.Contains("|"))
         {
@@ -269,7 +269,7 @@ internal class RomanianCardinalNumberConverter
         }
     }
 
-    private bool IsAbove20(int number)
+    private static bool IsAbove20(int number)
     {
         return number >= 20;
     }
@@ -286,7 +286,7 @@ internal class RomanianCardinalNumberConverter
         }
         else
         {
-            return getPartByGender(_units[hundreds], GrammaticalGender.Feminine) + " sute";
+            return GetPartByGender(_units[hundreds], GrammaticalGender.Feminine) + " sute";
         }
     }
 

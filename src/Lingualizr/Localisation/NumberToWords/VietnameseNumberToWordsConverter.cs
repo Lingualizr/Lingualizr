@@ -5,7 +5,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
     private const int OneBillion = 1000000000;
     private const int OneMillion = 1000000;
 
-    private static readonly string[] NumberVerbalPairs =
+    private static readonly string[] _numberVerbalPairs =
     {
         string.Empty, "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín",
     };
@@ -73,7 +73,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
         {
             return string.Format(
                     "{0} trăm {1}",
-                    NumberVerbalPairs[number / 100],
+                    _numberVerbalPairs[number / 100],
                     ConvertImpl(number % 100, isGreaterThanOneHundred: true)
                 )
                 .TrimEnd();
@@ -83,7 +83,7 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
         {
             return string.Format(
                     "{0} mươi {1}",
-                    NumberVerbalPairs[number / 10],
+                    _numberVerbalPairs[number / 10],
                     ConvertImpl(number % 10, hasTens: true)
                 )
                 .TrimEnd();
@@ -121,9 +121,9 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
 
         if (number > 0 && isGreaterThanOneHundred && !hasTens)
         {
-            return $"linh {NumberVerbalPairs[number]}";
+            return $"linh {_numberVerbalPairs[number]}";
         }
 
-        return NumberVerbalPairs[number];
+        return _numberVerbalPairs[number];
     }
 }

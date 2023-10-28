@@ -5,10 +5,10 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "нол", "бир", "икки", "уч", "тўрт", "беш", "олти", "етти", "саккиз", "тўққиз" };
-    private static readonly string[] TensMap = { "нол", "ўн", "йигирма", "ўттиз", "қирқ", "эллик", "олтмиш", "етмиш", "саксон", "тўқсон" };
+    private static readonly string[] _unitsMap = { "нол", "бир", "икки", "уч", "тўрт", "беш", "олти", "етти", "саккиз", "тўққиз" };
+    private static readonly string[] _tensMap = { "нол", "ўн", "йигирма", "ўттиз", "қирқ", "эллик", "олтмиш", "етмиш", "саксон", "тўқсон" };
 
-    private static readonly string[] OrdinalSuffixes = new string[] { "инчи", "нчи" };
+    private static readonly string[] _ordinalSuffixes = new string[] { "инчи", "нчи" };
 
     public override string Convert(long input)
     {
@@ -30,7 +30,7 @@ internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
     {
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (checkForHoundredRule && number == 100)
@@ -68,13 +68,13 @@ internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
 
         if ((number / 10) > 0)
         {
-            sb.AppendFormat("{0} ", TensMap[number / 10]);
+            sb.AppendFormat("{0} ", _tensMap[number / 10]);
             number %= 10;
         }
 
         if (number > 0)
         {
-            sb.AppendFormat("{0} ", UnitsMap[number]);
+            sb.AppendFormat("{0} ", _unitsMap[number]);
         }
 
         return sb.ToString().Trim();
@@ -95,6 +95,6 @@ internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
             i = 1;
         }
 
-        return string.Format("{0}{1}", word, OrdinalSuffixes[i]);
+        return string.Format("{0}{1}", word, _ordinalSuffixes[i]);
     }
 }

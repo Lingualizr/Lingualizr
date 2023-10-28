@@ -75,7 +75,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
         return string.Format("{0}{1}", word, IsVowel(word[word.Length - 1]) ? "یەم" : "ەم");
     }
 
-    private bool IsVowel(char c)
+    private static bool IsVowel(char c)
     {
         return c == 'ا' ||
                c == 'ێ' ||

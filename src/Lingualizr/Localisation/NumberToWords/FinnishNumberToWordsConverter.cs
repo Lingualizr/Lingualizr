@@ -89,7 +89,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return string.Join(string.Empty, parts).Trim();
     }
 
-    private string GetOrdinalUnit(int number, bool useExceptions)
+    private static string GetOrdinalUnit(int number, bool useExceptions)
     {
         if (useExceptions && OrdinalExceptions.ContainsKey(number))
         {

@@ -75,7 +75,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         var power = PowersOfThousandMap.Length - 1;
         while (divisor > 0)
         {
-            var multiplier = (int) Math.Abs(number / divisor);
+            var multiplier = (int)Math.Abs(number / divisor);
             if (divisor > 1)
             {
                 if (multiplier > 1)

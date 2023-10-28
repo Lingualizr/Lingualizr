@@ -9,7 +9,7 @@ namespace Lingualizr.Localisation;
 /// </summary>
 public static class Resources
 {
-    private static readonly ResourceManager ResourceManager = new ResourceManager("Lingualizr.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+    private static readonly ResourceManager _resourceManager = new ResourceManager("Lingualizr.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
 
     /// <summary>
     /// Returns the value of the specified string resource
@@ -19,6 +19,6 @@ public static class Resources
     /// <returns>The value of the resource localized for the specified culture.</returns>
     public static string GetResource(string resourceKey, CultureInfo culture = null)
     {
-        return ResourceManager.GetString(resourceKey, culture);
+        return _resourceManager.GetString(resourceKey, culture);
     }
 }

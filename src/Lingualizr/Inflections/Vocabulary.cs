@@ -167,7 +167,7 @@ public class Vocabulary
         return _uncountables.Contains(word.ToLower());
     }
 
-    private string MatchUpperCase(string word, string replacement)
+    private static string MatchUpperCase(string word, string replacement)
     {
         return char.IsUpper(word[0]) && char.IsLower(replacement[0]) ? char.ToUpper(replacement[0]) + replacement.Substring(1) : replacement;
     }

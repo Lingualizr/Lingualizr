@@ -7,13 +7,13 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] HundredsMap = { "нуль", "сто", "двісті", "триста", "чотириста", "п'ятсот", "шістсот", "сімсот", "вісімсот", "дев'ятсот" };
-    private static readonly string[] TensMap = { "нуль", "десять", "двадцять", "тридцять", "сорок", "п'ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев'яносто" };
-    private static readonly string[] UnitsMap = { "нуль", "один", "два", "три", "чотири", "п'ять", "шість", "сім", "вісім", "дев'ять", "десять", "одинадцять", "дванадцять", "тринадцять", "чотирнадцять", "п'ятнадцять", "шістнадцять", "сімнадцять", "вісімнадцять", "дев'ятнадцять" };
-    private static readonly string[] UnitsOrdinalPrefixes = { string.Empty, string.Empty, "двох", "трьох", "чотирьох", "п'яти", "шести", "семи", "восьми", "дев'яти", "десяти", "одинадцяти", "дванадцяти", "тринадцяти", "чотирнадцяти", "п'ятнадцяти", "шістнадцяти", "сімнадцяти", "вісімнадцяти", "дев'ятнадцяти", "двадцяти" };
-    private static readonly string[] TensOrdinalPrefixes = { string.Empty, "десяти", "двадцяти", "тридцяти", "сорока", "п'ятдесяти", "шістдесяти", "сімдесяти", "вісімдесяти", "дев'яносто" };
-    private static readonly string[] TensOrdinal = { string.Empty, "десят", "двадцят", "тридцят", "сороков", "п'ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев'яност" };
-    private static readonly string[] UnitsOrdinal = { "нульов", "перш", "друг", "трет", "четверт", "п'ят", "шост", "сьом", "восьм", "дев'ят", "десят", "одинадцят", "дванадцят", "тринадцят", "чотирнадцят", "п'ятнадцят", "шістнадцят", "сімнадцят", "вісімнадцят", "дев'ятнадцят" };
+    private static readonly string[] _hundredsMap = { "нуль", "сто", "двісті", "триста", "чотириста", "п'ятсот", "шістсот", "сімсот", "вісімсот", "дев'ятсот" };
+    private static readonly string[] _tensMap = { "нуль", "десять", "двадцять", "тридцять", "сорок", "п'ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев'яносто" };
+    private static readonly string[] _unitsMap = { "нуль", "один", "два", "три", "чотири", "п'ять", "шість", "сім", "вісім", "дев'ять", "десять", "одинадцять", "дванадцять", "тринадцять", "чотирнадцять", "п'ятнадцять", "шістнадцять", "сімнадцять", "вісімнадцять", "дев'ятнадцять" };
+    private static readonly string[] _unitsOrdinalPrefixes = { string.Empty, string.Empty, "двох", "трьох", "чотирьох", "п'яти", "шести", "семи", "восьми", "дев'яти", "десяти", "одинадцяти", "дванадцяти", "тринадцяти", "чотирнадцяти", "п'ятнадцяти", "шістнадцяти", "сімнадцяти", "вісімнадцяти", "дев'ятнадцяти", "двадцяти" };
+    private static readonly string[] _tensOrdinalPrefixes = { string.Empty, "десяти", "двадцяти", "тридцяти", "сорока", "п'ятдесяти", "шістдесяти", "сімдесяти", "вісімдесяти", "дев'яносто" };
+    private static readonly string[] _tensOrdinal = { string.Empty, "десят", "двадцят", "тридцят", "сороков", "п'ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев'яност" };
+    private static readonly string[] _unitsOrdinal = { "нульов", "перш", "друг", "трет", "четверт", "п'ят", "шост", "сьом", "восьм", "дев'ят", "десят", "одинадцят", "дванадцят", "тринадцят", "чотирнадцят", "п'ятнадцят", "шістнадцят", "сімнадцят", "вісімнадцят", "дев'ятнадцят" };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {
@@ -70,11 +70,11 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             number %= 100;
             if (number == 0)
             {
-                parts.Add(UnitsOrdinalPrefixes[hundreds] + "сот" + ending);
+                parts.Add(_unitsOrdinalPrefixes[hundreds] + "сот" + ending);
             }
             else
             {
-                parts.Add(HundredsMap[hundreds]);
+                parts.Add(_hundredsMap[hundreds]);
             }
         }
 
@@ -85,17 +85,17 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             number %= 10;
             if (number == 0)
             {
-                parts.Add(TensOrdinal[tens] + ending);
+                parts.Add(_tensOrdinal[tens] + ending);
             }
             else
             {
-                parts.Add(TensMap[tens]);
+                parts.Add(_tensMap[tens]);
             }
         }
 
         if (number > 0)
         {
-            parts.Add(UnitsOrdinal[number] + GetEndingForGender(gender, number));
+            parts.Add(_unitsOrdinal[number] + GetEndingForGender(gender, number));
         }
 
         return string.Join(" ", parts);
@@ -107,13 +107,13 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             var hundreds = number / 100;
             number %= 100;
-            parts.Add(HundredsMap[hundreds]);
+            parts.Add(_hundredsMap[hundreds]);
         }
 
         if (number >= 20)
         {
             var tens = number / 10;
-            parts.Add(TensMap[tens]);
+            parts.Add(_tensMap[tens]);
             number %= 10;
         }
 
@@ -133,7 +133,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else if (number < 20)
             {
-                parts.Add(UnitsMap[number]);
+                parts.Add(_unitsMap[number]);
             }
         }
     }
@@ -148,7 +148,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             number %= 100;
             if (hundreds != 1)
             {
-                parts.Add(UnitsOrdinalPrefixes[hundreds] + "сот");
+                parts.Add(_unitsOrdinalPrefixes[hundreds] + "сот");
             }
             else
             {
@@ -160,12 +160,12 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             var tens = number / 10;
             number %= 10;
-            parts.Add(TensOrdinalPrefixes[tens]);
+            parts.Add(_tensOrdinalPrefixes[tens]);
         }
 
         if (number > 0)
         {
-            parts.Add(number == 1 ? "одно" : UnitsOrdinalPrefixes[number]);
+            parts.Add(number == 1 ? "одно" : _unitsOrdinalPrefixes[number]);
         }
 
         return string.Join(string.Empty, parts);

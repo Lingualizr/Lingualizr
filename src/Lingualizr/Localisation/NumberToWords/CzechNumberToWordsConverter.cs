@@ -53,7 +53,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
         return number.ToString(_culture);
     }
 
-    private string UnitByGender(long number, GrammaticalGender? gender)
+    private static string UnitByGender(long number, GrammaticalGender? gender)
     {
         if (number != 1 && number != 2)
         {
@@ -70,7 +70,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
         };
     }
 
-    private void CollectLessThanThousand(List<string> parts, long number, GrammaticalGender? gender)
+    private static void CollectLessThanThousand(List<string> parts, long number, GrammaticalGender? gender)
     {
         if (number >= 100)
         {
@@ -90,7 +90,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
         }
     }
 
-    private void CollectThousandAndAbove(List<string> parts, ref long number, long divisor, GrammaticalGender gender, string[] map)
+    private static void CollectThousandAndAbove(List<string> parts, ref long number, long divisor, GrammaticalGender gender, string[] map)
     {
         var n = number / divisor;
 
