@@ -5,32 +5,32 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "нула", "един", "две", "три", "четири", "пет", "шест", "седем", "осем", "девет", "десет", "единадесет",
         "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет", "осемнадесет",
         "деветнадесет",
     };
 
-    private static readonly string[] TensMap =
+    private static readonly string[] _tensMap =
     {
         "нула", "десет", "двадесет", "тридесет", "четиридесет", "петдесет", "шестдесет", "седемдесет",
         "осемдесет", "деветдесет",
     };
 
-    private static readonly string[] HundredsMap =
+    private static readonly string[] _hundredsMap =
     {
         "нула", "сто", "двеста", "триста", "четиристотин", "петстотин", "шестстотин", "седемстотин",
         "осемстотин", "деветстотин",
     };
 
-    private static readonly string[] HundredsOrdinalMap =
+    private static readonly string[] _hundredsOrdinalMap =
     {
         string.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
         "деветстот",
     };
 
-    private static readonly string[] UnitsOrdinal =
+    private static readonly string[] _unitsOrdinal =
     {
         string.Empty, "първ", "втор", "трет", "четвърт", "пет", "шест", "седм", "осм", "девeт", "десeт",
         "единадесет", "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет",
@@ -67,8 +67,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         if ((input / 1000000000000) > 0)
         {
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = Convert(input / 1000000000000, gender, false) + " трилион" +
                                           GetEndingForGender(gender, input);
+            }
+
             input %= 1000000000000;
         }
 
@@ -78,8 +81,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
                       $" {(input < 2000000000 ? "милиард" : "милиарда")}");
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = Convert(input / 1000000000, gender, false) + " милиард" +
                                           GetEndingForGender(gender, input);
+            }
+
             input %= 1000000000;
         }
 
@@ -88,8 +94,10 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             parts.Add(Convert(input / 1000000, gender, false) + $" {(input < 2000000 ? "милион" : "милиона")}");
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = Convert(input / 1000000, gender, false) + " милион" +
                                           GetEndingForGender(gender, input);
+            }
 
             input %= 1000000;
         }
@@ -97,26 +105,30 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         if ((input / 1000) > 0)
         {
             if (input < 2000)
+            {
                 parts.Add("хиляда");
+            }
             else
             {
                 parts.Add(Convert(input / 1000, gender, false) + " хиляди");
             }
 
             if (isOrdinal)
+            {
                 lastOrdinalSubstitution = Convert(input / 1000, gender, false) + " хиляд" +
                                           GetEndingForGender(gender, input);
+            }
 
             input %= 1000;
         }
 
         if (input / 100 > 0)
         {
-            parts.Add(HundredsMap[(int)input / 100]);
+            parts.Add(_hundredsMap[(int)input / 100]);
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = HundredsOrdinalMap[(int)input / 100] + GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = _hundredsOrdinalMap[(int)input / 100] + GetEndingForGender(gender, input);
             }
 
             input %= 100;
@@ -124,11 +136,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (input > 19)
         {
-            parts.Add(TensMap[input / 10]);
+            parts.Add(_tensMap[input / 10]);
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = TensMap[(int)input / 10] + GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = _tensMap[(int)input / 10] + GetEndingForGender(gender, input);
             }
 
             input %= 10;
@@ -136,11 +148,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (input > 0)
         {
-            parts.Add(UnitsMap[input]);
+            parts.Add(_unitsMap[input]);
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = UnitsOrdinal[input] + GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = _unitsOrdinal[input] + GetEndingForGender(gender, input);
             }
         }
 

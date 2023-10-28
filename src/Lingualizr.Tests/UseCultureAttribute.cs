@@ -15,10 +15,10 @@ namespace Lingualizr.Tests;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 public class UseCultureAttribute : BeforeAfterTestAttribute
 {
-    private readonly Lazy<CultureInfo> culture;
-    private readonly Lazy<CultureInfo> uiCulture;
-    private CultureInfo originalCulture;
-    private CultureInfo originalUICulture;
+    private readonly Lazy<CultureInfo> _culture;
+    private readonly Lazy<CultureInfo> _uiCulture;
+    private CultureInfo _originalCulture;
+    private CultureInfo _originalUICulture;
 
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with
@@ -43,19 +43,19 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <param name="uiCulture">The name of the UI culture.</param>
     public UseCultureAttribute(string culture, string uiCulture)
     {
-        this.culture = new Lazy<CultureInfo>(() => new CultureInfo(culture));
-        this.uiCulture = new Lazy<CultureInfo>(() => new CultureInfo(uiCulture));
+        this._culture = new Lazy<CultureInfo>(() => new CultureInfo(culture));
+        this._uiCulture = new Lazy<CultureInfo>(() => new CultureInfo(uiCulture));
     }
 
     /// <summary>
     /// Gets the culture.
     /// </summary>
-    public CultureInfo Culture { get { return culture.Value; } }
+    public CultureInfo Culture { get { return _culture.Value; } }
 
     /// <summary>
     /// Gets the UI culture.
     /// </summary>
-    public CultureInfo UICulture { get { return uiCulture.Value; } }
+    public CultureInfo UICulture { get { return _uiCulture.Value; } }
 
     /// <summary>
     /// Stores the current <see cref="CultureInfo.CurrentCulture" />
@@ -65,8 +65,8 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <param name="methodUnderTest">The method under test</param>
     public override void Before(MethodInfo methodUnderTest)
     {
-        originalCulture = CultureInfo.CurrentCulture;
-        originalUICulture = CultureInfo.CurrentUICulture;
+        _originalCulture = CultureInfo.CurrentCulture;
+        _originalUICulture = CultureInfo.CurrentUICulture;
 
         CultureInfo.CurrentCulture = Culture;
         CultureInfo.CurrentUICulture = UICulture;
@@ -79,7 +79,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <param name="methodUnderTest">The method under test</param>
     public override void After(MethodInfo methodUnderTest)
     {
-        CultureInfo.CurrentCulture = originalCulture;
-        CultureInfo.CurrentUICulture = originalUICulture;
+        CultureInfo.CurrentCulture = _originalCulture;
+        CultureInfo.CurrentUICulture = _originalUICulture;
     }
 }

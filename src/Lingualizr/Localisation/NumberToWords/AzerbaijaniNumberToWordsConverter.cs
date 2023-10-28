@@ -5,10 +5,10 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "sıfır", "bir", "iki", "üç", "dörd", "beş", "altı", "yeddi", "səkkiz", "doqquz" };
-    private static readonly string[] TensMap = { "sıfır", "on", "iyirmi", "otuz", "qırx", "əlli", "altmış", "yetmiş", "səksən", "doxsan" };
+    private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dörd", "beş", "altı", "yeddi", "səkkiz", "doqquz" };
+    private static readonly string[] _tensMap = { "sıfır", "on", "iyirmi", "otuz", "qırx", "əlli", "altmış", "yetmiş", "səksən", "doxsan" };
 
-    private static readonly Dictionary<char, string> OrdinalSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _ordinalSuffix = new Dictionary<char, string>
     {
         { 'ı', "ıncı" },
         { 'i', "inci" },
@@ -31,7 +31,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
         var number = (int)input;
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (number < 0)
@@ -69,13 +69,13 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
 
         if ((number / 10) > 0)
         {
-            parts.Add(TensMap[number / 10]);
+            parts.Add(_tensMap[number / 10]);
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(UnitsMap[number]);
+            parts.Add(_unitsMap[number]);
         }
 
         var toWords = string.Join(" ", parts.ToArray());
@@ -91,7 +91,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
 
         for (var i = word.Length - 1; i >= 0; i--)
         {
-            if (OrdinalSuffix.TryGetValue(word[i], out wordSuffix))
+            if (_ordinalSuffix.TryGetValue(word[i], out wordSuffix))
             {
                 suffixFoundOnLastVowel = i == word.Length - 1;
                 break;

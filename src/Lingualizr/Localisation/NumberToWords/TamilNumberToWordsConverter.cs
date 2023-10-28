@@ -131,14 +131,18 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
         }
         else
+        {
             return UnitsMap[number];
+        }
     }
 
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
         var local_word = string.Empty;
         if (number < 20)
+        {
             local_word = GetUnitValue(number, isOrdinal);
+        }
         else if ((number >= 20) && (number <= 99))
         {
             var lastPart = TensMap[number / 10];
@@ -189,7 +193,9 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
                 }
             }
             else if (isOrdinal)
+            {
                 lastPart = lastPart.TrimEnd('y') + "ieth";
+            }
 
             local_word = lastPart;
         }
@@ -207,8 +213,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += " " + LakhsMap[0];
         }
         else if (num_above_10 == 1)
+        {
             local_word = "ஒரு " + LakhsMap[0];
-        else local_word += GetTensValue(number / 100000, isOrdinal) + " " + LakhsMap[0];
+        }
+        else
+        {
+            local_word += GetTensValue(number / 100000, isOrdinal) + " " + LakhsMap[0];
+        }
 
         if (number % 1000000 == 0 || number % 100000 == 0)
         {
@@ -253,8 +264,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             local_word += " ";
         }
         else if (num_above_10 == 1)
+        {
             local_word = "ஒரு ";
-        else if (num_above_10 > 0) local_word += GetTensValue(num_above_10, false) + " ";
+        }
+        else if (num_above_10 > 0)
+        {
+            local_word += GetTensValue(num_above_10, false) + " ";
+        }
 
         local_word = local_word.TrimEnd() + " " + str_crore;
         if (number % 10000000 == 0 || number % 100000000 == 0)
@@ -288,7 +304,9 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
         }
         else
+        {
             local_word += ThousandsMap[(number / 1000) - 1];
+        }
 
         number %= 1000;
 
@@ -322,9 +340,13 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
                 }
             }
             else if (number % 100 >= 1)
+            {
                 local_word += "ற்று";
+            }
             else
+            {
                 local_word += "று";
+            }
 
             number %= 100;
 

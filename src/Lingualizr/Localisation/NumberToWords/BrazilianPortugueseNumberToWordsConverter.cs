@@ -5,13 +5,13 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] PortugueseUnitsMap = { "zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove" };
-    private static readonly string[] PortugueseTensMap = { "zero", "dez", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa" };
-    private static readonly string[] PortugueseHundredsMap = { "zero", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos" };
+    private static readonly string[] _portugueseUnitsMap = { "zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "quatorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove" };
+    private static readonly string[] _portugueseTensMap = { "zero", "dez", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa" };
+    private static readonly string[] _portugueseHundredsMap = { "zero", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos" };
 
-    private static readonly string[] PortugueseOrdinalUnitsMap = { "zero", "primeiro", "segundo", "terceiro", "quarto", "quinto", "sexto", "sétimo", "oitavo", "nono" };
-    private static readonly string[] PortugueseOrdinalTensMap = { "zero", "décimo", "vigésimo", "trigésimo", "quadragésimo", "quinquagésimo", "sexagésimo", "septuagésimo", "octogésimo", "nonagésimo" };
-    private static readonly string[] PortugueseOrdinalHundredsMap = { "zero", "centésimo", "ducentésimo", "trecentésimo", "quadringentésimo", "quingentésimo", "sexcentésimo", "septingentésimo", "octingentésimo", "noningentésimo" };
+    private static readonly string[] _portugueseOrdinalUnitsMap = { "zero", "primeiro", "segundo", "terceiro", "quarto", "quinto", "sexto", "sétimo", "oitavo", "nono" };
+    private static readonly string[] _portugueseOrdinalTensMap = { "zero", "décimo", "vigésimo", "trigésimo", "quadragésimo", "quinquagésimo", "sexagésimo", "septuagésimo", "octogésimo", "nonagésimo" };
+    private static readonly string[] _portugueseOrdinalHundredsMap = { "zero", "centésimo", "ducentésimo", "trecentésimo", "quadringentésimo", "quingentésimo", "sexcentésimo", "septingentésimo", "octingentésimo", "noningentésimo" };
 
     public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
     {
@@ -70,7 +70,7 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
             else
             {
                 // Gender is applied to hundreds starting from 200
-                parts.Add(ApplyGender(PortugueseHundredsMap[ number / 100], gender));
+                parts.Add(ApplyGender(_portugueseHundredsMap[ number / 100], gender));
             }
 
             number %= 100;
@@ -85,14 +85,14 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
 
             if (number < 20)
             {
-                parts.Add(ApplyGender(PortugueseUnitsMap[number], gender));
+                parts.Add(ApplyGender(_portugueseUnitsMap[number], gender));
             }
             else
             {
-                var lastPart = PortugueseTensMap[number / 10];
+                var lastPart = _portugueseTensMap[number / 10];
                 if ((number % 10) > 0)
                 {
-                    lastPart += string.Format(" e {0}", ApplyGender(PortugueseUnitsMap[number % 10], gender));
+                    lastPart += string.Format(" e {0}", ApplyGender(_portugueseUnitsMap[number % 10], gender));
                 }
 
                 parts.Add(lastPart);
@@ -141,19 +141,19 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
 
         if ((number / 100) > 0)
         {
-            parts.Add(ApplyOrdinalGender(PortugueseOrdinalHundredsMap[number / 100], gender));
+            parts.Add(ApplyOrdinalGender(_portugueseOrdinalHundredsMap[number / 100], gender));
             number %= 100;
         }
 
         if ((number / 10) > 0)
         {
-            parts.Add(ApplyOrdinalGender(PortugueseOrdinalTensMap[number / 10], gender));
+            parts.Add(ApplyOrdinalGender(_portugueseOrdinalTensMap[number / 10], gender));
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(ApplyOrdinalGender(PortugueseOrdinalUnitsMap[number], gender));
+            parts.Add(ApplyOrdinalGender(_portugueseOrdinalUnitsMap[number], gender));
         }
 
         return string.Join(" ", parts.ToArray());

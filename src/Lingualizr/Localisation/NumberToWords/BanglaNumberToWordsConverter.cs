@@ -5,7 +5,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "শূন্য", "এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়", "সাত", "আট", "নয়", "দশ",
         "এগারো", "বারো", "তেরো", "চোদ্দ", "পনেরো", "ষোল", "সতেরো", "আঠারো", "উনিশ", "বিশ",
@@ -19,12 +19,12 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
         "একানব্বই", "বিরানব্বই", "তিরানব্বিই", "চুরানব্বই", "পঁচানব্বই", "ছিয়ানব্বই", "সাতানব্বই", "আটানব্বই", "নিরানব্বই",
     };
 
-    private static readonly string[] HundredsMap =
+    private static readonly string[] _hundredsMap =
     {
         "শূন্য", "একশ", "দুইশ", "তিনশ", "চারশ", "পাঁচশ", "ছয়শ", "সাতশ", "আটশ", "নয়শ",
     };
 
-    private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
     {
         { 1, "প্রথম" },
         { 2, "দ্বিতীয়" },
@@ -71,7 +71,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (number < 0)
@@ -101,13 +101,13 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if ((number / 100) > 0)
         {
-            parts.Add(string.Format("{0}", HundredsMap[number / 100]));
+            parts.Add(string.Format("{0}", _hundredsMap[number / 100]));
             number %= 100;
         }
 
         if (number > 0)
         {
-            parts.Add(UnitsMap[number]);
+            parts.Add(_unitsMap[number]);
         }
 
         return string.Join(" ", parts.ToArray());
@@ -115,6 +115,6 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static bool ExceptionNumbersToWords(int number, out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 }

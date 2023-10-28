@@ -6,17 +6,17 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] BillionsMap = { "miliarda", "miliardy", "miliard" };
-    private static readonly string[] MillionsMap = { "milion", "miliony", "milionů" };
-    private static readonly string[] ThousandsMap = { "tisíc", "tisíce", "tisíc" };
-    private static readonly string[] HundredsMap = { "nula", "sto", "dvě stě", "tři sta", "čtyři sta", "pět set", "šest set", "sedm set", "osm set", "devět set" };
-    private static readonly string[] TensMap = { "nula", "deset", "dvacet", "třicet", "čtyřicet", "padesát", "šedesát", "sedmdesát", "osmdesát", "devadesát" };
-    private static readonly string[] UnitsMap = { "nula", "jeden", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět", "deset", "jedenáct", "dvanáct", "třináct", "čtrnáct", "patnáct", "šestnáct", "sedmnáct", "osmnáct", "devatenáct" };
+    private static readonly string[] _billionsMap = { "miliarda", "miliardy", "miliard" };
+    private static readonly string[] _millionsMap = { "milion", "miliony", "milionů" };
+    private static readonly string[] _thousandsMap = { "tisíc", "tisíce", "tisíc" };
+    private static readonly string[] _hundredsMap = { "nula", "sto", "dvě stě", "tři sta", "čtyři sta", "pět set", "šest set", "sedm set", "osm set", "devět set" };
+    private static readonly string[] _tensMap = { "nula", "deset", "dvacet", "třicet", "čtyřicet", "padesát", "šedesát", "sedmdesát", "osmdesát", "devadesát" };
+    private static readonly string[] _unitsMap = { "nula", "jeden", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět", "deset", "jedenáct", "dvanáct", "třináct", "čtrnáct", "patnáct", "šestnáct", "sedmnáct", "osmnáct", "devatenáct" };
 
-    private static readonly string[] UnitsMasculineOverrideMap = { "jeden", "dva" };
-    private static readonly string[] UnitsFeminineOverrideMap = { "jedna", "dvě" };
-    private static readonly string[] UnitsNeuterOverride = { "jedno", "dvě" };
-    private static readonly string[] UnitsIntraOverride = { "jedna", "dva" };
+    private static readonly string[] _unitsMasculineOverrideMap = { "jeden", "dva" };
+    private static readonly string[] _unitsFeminineOverrideMap = { "jedna", "dvě" };
+    private static readonly string[] _unitsNeuterOverride = { "jedno", "dvě" };
+    private static readonly string[] _unitsIntraOverride = { "jedna", "dva" };
 
     private readonly CultureInfo _culture;
 
@@ -39,9 +39,9 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
             number = -number;
         }
 
-        CollectThousandAndAbove(parts, ref number, 1_000_000_000, GrammaticalGender.Feminine, BillionsMap);
-        CollectThousandAndAbove(parts, ref number, 1_000_000, GrammaticalGender.Masculine, MillionsMap);
-        CollectThousandAndAbove(parts, ref number, 1_000, GrammaticalGender.Masculine, ThousandsMap);
+        CollectThousandAndAbove(parts, ref number, 1_000_000_000, GrammaticalGender.Feminine, _billionsMap);
+        CollectThousandAndAbove(parts, ref number, 1_000_000, GrammaticalGender.Masculine, _millionsMap);
+        CollectThousandAndAbove(parts, ref number, 1_000, GrammaticalGender.Masculine, _thousandsMap);
 
         CollectLessThanThousand(parts, number, gender);
 
@@ -57,15 +57,15 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number != 1 && number != 2)
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
 
         return gender switch
         {
-            GrammaticalGender.Masculine => UnitsMasculineOverrideMap[number - 1],
-            GrammaticalGender.Feminine => UnitsFeminineOverrideMap[number - 1],
-            GrammaticalGender.Neuter => UnitsNeuterOverride[number - 1],
-            null => UnitsIntraOverride[number - 1],
+            GrammaticalGender.Masculine => _unitsMasculineOverrideMap[number - 1],
+            GrammaticalGender.Feminine => _unitsFeminineOverrideMap[number - 1],
+            GrammaticalGender.Neuter => _unitsNeuterOverride[number - 1],
+            null => _unitsIntraOverride[number - 1],
             _ => throw new ArgumentOutOfRangeException(nameof(gender)),
         };
     }
@@ -74,13 +74,13 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number >= 100)
         {
-            parts.Add(HundredsMap[number / 100]);
+            parts.Add(_hundredsMap[number / 100]);
             number %= 100;
         }
 
         if (number >= 20)
         {
-            parts.Add(TensMap[number / 10]);
+            parts.Add(_tensMap[number / 10]);
             number %= 10;
         }
 

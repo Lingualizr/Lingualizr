@@ -4,19 +4,19 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private readonly string[] UnitMap = { "μηδέν", "ένα", "δύο", "τρία", "τέσσερα", "πέντε", "έξι", "επτά", "οκτώ", "εννέα", "δέκα", "έντεκα", "δώδεκα" };
+    private readonly string[] _unitMap = { "μηδέν", "ένα", "δύο", "τρία", "τέσσερα", "πέντε", "έξι", "επτά", "οκτώ", "εννέα", "δέκα", "έντεκα", "δώδεκα" };
 
-    private readonly string[] UnitsMap = { "μηδέν", "ένα", "δύο", "τρείς", "τέσσερις", "πέντε", "έξι", "επτά", "οκτώ", "εννέα", "δέκα", "έντεκα", "δώδεκα" };
+    private readonly string[] _unitsMap = { "μηδέν", "ένα", "δύο", "τρείς", "τέσσερις", "πέντε", "έξι", "επτά", "οκτώ", "εννέα", "δέκα", "έντεκα", "δώδεκα" };
 
-    private readonly string[] TensMap = { string.Empty, "δέκα", "είκοσι", "τριάντα", "σαράντα", "πενήντα", "εξήντα", "εβδομήντα", "ογδόντα", "ενενήντα" };
+    private readonly string[] _tensMap = { string.Empty, "δέκα", "είκοσι", "τριάντα", "σαράντα", "πενήντα", "εξήντα", "εβδομήντα", "ογδόντα", "ενενήντα" };
 
-    private readonly string[] TensNoDiacriticsMap = { string.Empty, "δεκα", "εικοσι", "τριαντα", "σαραντα", "πενηντα", "εξηντα", "εβδομηντα", "ογδοντα", "ενενηντα" };
+    private readonly string[] _tensNoDiacriticsMap = { string.Empty, "δεκα", "εικοσι", "τριαντα", "σαραντα", "πενηντα", "εξηντα", "εβδομηντα", "ογδοντα", "ενενηντα" };
 
-    private readonly string[] HundredMap = { string.Empty, "εκατό", "διακόσια", "τριακόσια", "τετρακόσια", "πεντακόσια", "εξακόσια", "επτακόσια", "οκτακόσια", "εννιακόσια" };
+    private readonly string[] _hundredMap = { string.Empty, "εκατό", "διακόσια", "τριακόσια", "τετρακόσια", "πεντακόσια", "εξακόσια", "επτακόσια", "οκτακόσια", "εννιακόσια" };
 
-    private readonly string[] HundredsMap = { string.Empty, "εκατόν", "διακόσιες", "τριακόσιες", "τετρακόσιες", "πεντακόσιες", "εξακόσιες", "επτακόσιες", "οκτακόσιες", "Εενιακόσιες" };
+    private readonly string[] _hundredsMap = { string.Empty, "εκατόν", "διακόσιες", "τριακόσιες", "τετρακόσιες", "πεντακόσιες", "εξακόσιες", "επτακόσιες", "οκτακόσιες", "Εενιακόσιες" };
 
-    private static readonly Dictionary<long, string> ΟrdinalMap = new()
+    private static readonly Dictionary<long, string> _οrdinalMap = new()
     {
         { 0, string.Empty },
         { 1, "πρώτος" },
@@ -81,7 +81,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetOneDigitOrdinal(int number)
     {
-        if (!ΟrdinalMap.TryGetValue(number, out var output))
+        if (!_οrdinalMap.TryGetValue(number, out var output))
         {
             return string.Empty;
         }
@@ -103,7 +103,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var decades = number / 10;
 
-        if (!ΟrdinalMap.TryGetValue(decades * 10, out var decadesString))
+        if (!_οrdinalMap.TryGetValue(decades * 10, out var decadesString))
         {
             return string.Empty;
         }
@@ -120,7 +120,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         var hundrends = number / 100;
 
-        if (!ΟrdinalMap.TryGetValue(hundrends * 100, out var hundrentsString))
+        if (!_οrdinalMap.TryGetValue(hundrends * 100, out var hundrentsString))
         {
             return string.Empty;
         }
@@ -142,7 +142,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         var thousands = number / 1000;
 
-        if (!ΟrdinalMap.TryGetValue(thousands * 1000, out var thousandsString))
+        if (!_οrdinalMap.TryGetValue(thousands * 1000, out var thousandsString))
         {
             return string.Empty;
         }
@@ -197,12 +197,12 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string ConvertIntΒ13(long number, bool returnPluralized)
     {
-        return returnPluralized ? UnitsMap[number] : UnitMap[number];
+        return returnPluralized ? _unitsMap[number] : _unitMap[number];
     }
 
     private string ConvertIntBH(long number, bool returnPluralized)
     {
-        var result = (number / 10 == 1) ? TensNoDiacriticsMap[number / 10] : TensMap[number / 10];
+        var result = (number / 10 == 1) ? _tensNoDiacriticsMap[number / 10] : _tensMap[number / 10];
 
         if (number % 10 != 0)
         {
@@ -225,14 +225,14 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             if (number % 100 == 0)
             {
-                return HundredMap[number / 100];
+                return _hundredMap[number / 100];
             }
 
-            result = HundredsMap[number / 100];
+            result = _hundredsMap[number / 100];
         }
         else
         {
-            result = returnPluralized ? HundredsMap[number / 100] : HundredMap[number / 100];
+            result = returnPluralized ? _hundredsMap[number / 100] : _hundredMap[number / 100];
         }
 
         if (number % 100 != 0)

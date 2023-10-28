@@ -5,10 +5,10 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "զրո", "մեկ", "երկու", "երեք", "չորս", "հինգ", "վեց", "յոթ", "ութ", "ինը", "տաս", "տասնմեկ", "տասներկու", "տասներեք", "տասնչորս", "տասնհինգ", "տասնվեց", "տասնյոթ", "տասնութ", "տասնինը" };
-    private static readonly string[] TensMap = { "զրո", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն" };
+    private static readonly string[] _unitsMap = { "զրո", "մեկ", "երկու", "երեք", "չորս", "հինգ", "վեց", "յոթ", "ութ", "ինը", "տաս", "տասնմեկ", "տասներկու", "տասներեք", "տասնչորս", "տասնհինգ", "տասնվեց", "տասնյոթ", "տասնութ", "տասնինը" };
+    private static readonly string[] _tensMap = { "զրո", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն" };
 
-    private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
     {
         { 0, "զրոյական" },
         { 1, "առաջին" },
@@ -124,7 +124,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var lastPart = TensMap[number / 10];
+                var lastPart = _tensMap[number / 10];
                 if ((number % 10) > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
@@ -156,11 +156,11 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         if (isOrdinal)
         {
-            return UnitsMap[number] + "երորդ";
+            return _unitsMap[number] + "երորդ";
         }
         else
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
     }
 
@@ -177,6 +177,6 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static bool ExceptionNumbersToWords(long number, out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 }

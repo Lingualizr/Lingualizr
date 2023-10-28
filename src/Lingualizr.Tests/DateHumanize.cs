@@ -11,7 +11,7 @@ namespace Lingualizr.Tests;
 
 public class DateHumanize
 {
-    private static readonly object LockObject = new object();
+    private static readonly object _lockObject = new object();
 
     private static void VerifyWithCurrentDate(string expectedString, TimeSpan deltaFromNow, CultureInfo culture)
     {
@@ -43,7 +43,7 @@ public class DateHumanize
     public static void Verify(string expectedString, int unit, TimeUnit timeUnit, Tense tense, double? precision = null, CultureInfo culture = null, DateTime? baseDate = null, DateTime? baseDateUtc = null)
     {
         // We lock this as these tests can be multi-threaded and we're setting a static
-        lock (LockObject)
+        lock (_lockObject)
         {
             if (precision.HasValue)
             {
