@@ -246,7 +246,7 @@ internal class RomanianCardinalNumberConverter
 
     private static string GetPartByGender(string multiGenderPart, GrammaticalGender gender)
     {
-        if (multiGenderPart.Contains("|"))
+        if (multiGenderPart.Contains('|'))
         {
             var parts = multiGenderPart.Split('|');
             if (gender == GrammaticalGender.Feminine)

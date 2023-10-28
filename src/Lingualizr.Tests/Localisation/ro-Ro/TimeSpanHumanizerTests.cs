@@ -34,7 +34,8 @@ public class TimeSpanHumanizerTests
     [InlineData(156, "2 minute")]
     public void Seconds(int seconds, string expected, bool toWords = false)
     {
-        var actual = TimeSpan.FromSeconds(seconds).Humanize(minUnit: TimeUnit.Second,
+        var actual = TimeSpan.FromSeconds(seconds).Humanize(
+            minUnit: TimeUnit.Second,
             toWords: toWords);
         Assert.Equal(expected, actual);
     }

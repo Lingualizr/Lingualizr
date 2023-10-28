@@ -39,8 +39,8 @@ public static class HeadingExtensions
     /// </summary>
     /// <returns>A textual representation of the heading</returns>
     /// <param name="heading">The heading value</param>
-    /// <param name="culture">The culture to return the textual representation in</param>
     /// <param name="style">Whether to return a short result or not. <see cref="HeadingStyle"/></param>
+    /// <param name="culture">The culture to return the textual representation in</param>
     public static string ToHeading(this double heading, HeadingStyle style = HeadingStyle.Abbreviated, CultureInfo culture = null)
     {
         var val = (int)((heading / 22.5) + .5);

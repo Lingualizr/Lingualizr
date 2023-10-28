@@ -5,10 +5,10 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän", "kymmenen" };
-    private static readonly string[] OrdinalUnitsMap = { "nollas", "ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs", "kymmenes" };
+    private static readonly string[] _unitsMap = { "nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän", "kymmenen" };
+    private static readonly string[] _ordinalUnitsMap = { "nollas", "ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs", "kymmenes" };
 
-    private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
     {
         { 1, "yhdes" },
         { 2, "kahdes" },
@@ -30,7 +30,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         var parts = new List<string>();
@@ -78,12 +78,12 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
         else if (number > 10 && number < 20)
         {
-            parts.Add(string.Format("{0}toista", UnitsMap[number % 10]));
+            parts.Add(string.Format("{0}toista", _unitsMap[number % 10]));
         }
 
         if (number > 0 && number <= 10)
         {
-            parts.Add(UnitsMap[number]);
+            parts.Add(_unitsMap[number]);
         }
 
         return string.Join(string.Empty, parts).Trim();
@@ -91,19 +91,19 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetOrdinalUnit(int number, bool useExceptions)
     {
-        if (useExceptions && OrdinalExceptions.ContainsKey(number))
+        if (useExceptions && _ordinalExceptions.ContainsKey(number))
         {
-            return OrdinalExceptions[number];
+            return _ordinalExceptions[number];
         }
 
-        return OrdinalUnitsMap[number];
+        return _ordinalUnitsMap[number];
     }
 
     private string ToOrdinal(int number, bool useExceptions)
     {
         if (number == 0)
         {
-            return OrdinalUnitsMap[0];
+            return _ordinalUnitsMap[0];
         }
 
         var parts = new List<string>();

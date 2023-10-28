@@ -48,7 +48,7 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (numbermoney > 0)
         {
-            if (Textreturn != string.Empty)
+            if (!string.IsNullOrEmpty(Textreturn))
             {
                 Textreturn += string.Empty;
             }

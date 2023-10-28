@@ -89,7 +89,8 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         var itemsBeforeLast = itemsArray.Take(count - 1);
         var lastItem = itemsArray.Skip(count - 1).First();
 
-        return string.Format(GetConjunctionFormatString(count),
+        return string.Format(
+            GetConjunctionFormatString(count),
             string.Join(", ", itemsBeforeLast),
             separator,
             lastItem);

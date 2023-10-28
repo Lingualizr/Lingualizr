@@ -40,7 +40,8 @@ internal class RomanianOrdinalNumberConverter
         else if (number <= 9)
         {
             // units ordinals, 2 to 9, are totally different than the rest: treat them as a distinct case
-            return string.Format("{0} {1}",
+            return string.Format(
+                "{0} {1}",
                 gender == GrammaticalGender.Feminine ? _femininePrefix : _masculinePrefix,
                 GetPartByGender(_ordinalsUnder10[number], gender));
         }
@@ -104,7 +105,8 @@ internal class RomanianOrdinalNumberConverter
                 words = words.Substring(0, words.Length - 1);
             }
 
-            return string.Format("{0} {1}{2}",
+            return string.Format(
+                "{0} {1}{2}",
                 gender == GrammaticalGender.Feminine ? _femininePrefix : _masculinePrefix,
                 words,
                 gender == GrammaticalGender.Feminine ? _feminineSuffix : customMasculineSuffix);
@@ -113,7 +115,7 @@ internal class RomanianOrdinalNumberConverter
 
     private static string GetPartByGender(string multiGenderPart, GrammaticalGender gender)
     {
-        if (multiGenderPart.Contains("|"))
+        if (multiGenderPart.Contains('|'))
         {
             var parts = multiGenderPart.Split('|');
             if (gender == GrammaticalGender.Feminine)

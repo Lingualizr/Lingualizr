@@ -266,7 +266,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             format = "0.##";
         }
 
-        if (!format.Contains("#") && !format.Contains("0"))
+        if (!format.Contains('#') && !format.Contains('0'))
         {
             format = "0.## " + format;
         }
@@ -319,7 +319,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
         var formattedLargeWholeNumberValue = LargestWholeNumberValue.ToString(format, provider);
 
-        formattedLargeWholeNumberValue = formattedLargeWholeNumberValue.Equals(string.Empty)
+        formattedLargeWholeNumberValue = string.IsNullOrEmpty(formattedLargeWholeNumberValue)
             ? "0"
             : formattedLargeWholeNumberValue;
 

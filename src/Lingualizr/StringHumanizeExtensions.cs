@@ -13,7 +13,8 @@ public static class StringHumanizeExtensions
 
     static StringHumanizeExtensions()
     {
-        PascalCaseWordPartsRegex = new Regex(@"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+",
+        PascalCaseWordPartsRegex = new Regex(
+            @"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+",
             RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture | RegexOptionsUtil.Compiled);
         FreestandingSpacingCharRegex = new Regex(@"\s[-_]|[-_]\s", RegexOptionsUtil.Compiled);
     }
@@ -33,7 +34,7 @@ public static class StringHumanizeExtensions
                 : match.Value.ToLower()));
 
         if (result.Replace(" ", string.Empty).ToCharArray().All(c => char.IsUpper(c)) &&
-            result.Contains(" "))
+            result.Contains(' '))
         {
             result = result.ToLower();
         }
@@ -62,7 +63,7 @@ public static class StringHumanizeExtensions
             return FromPascalCase(FromUnderscoreDashSeparatedWords(input));
         }
 
-        if (input.Contains("_") || input.Contains("-"))
+        if (input.Contains('_') || input.Contains('-'))
         {
             return FromUnderscoreDashSeparatedWords(input);
         }

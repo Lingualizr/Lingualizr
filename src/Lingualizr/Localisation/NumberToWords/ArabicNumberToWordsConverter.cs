@@ -69,7 +69,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                     }
                     else
                     {
-                        if (process != string.Empty)
+                        if (!string.IsNullOrEmpty(process))
                         {
                             process += " و ";
                         }
@@ -91,7 +91,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 
                     if (ones > 0)
                     {
-                        if (process != string.Empty)
+                        if (!string.IsNullOrEmpty(process))
                         {
                             process += " و ";
                         }
@@ -99,7 +99,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                         process += gender == GrammaticalGender.Feminine ? _feminineOnesGroup[ones] : _onesGroup[ones];
                     }
 
-                    if (process != string.Empty)
+                    if (!string.IsNullOrEmpty(process))
                     {
                         process += " و ";
                     }
@@ -108,11 +108,11 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                 }
             }
 
-            if (process != string.Empty)
+            if (!string.IsNullOrEmpty(process))
             {
                 if (groupLevel > 0)
                 {
-                    if (result != string.Empty)
+                    if (!string.IsNullOrEmpty(result))
                     {
                         result = string.Format("{0} {1}", "و", result);
                     }
@@ -127,7 +127,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                             }
                             else
                             {
-                                result = string.Format("{0} {1}", result != string.Empty ? _appendedGroups[groupLevel] : _groups[groupLevel], result);
+                                result = string.Format("{0} {1}", !string.IsNullOrEmpty(result) ? _appendedGroups[groupLevel] : _groups[groupLevel], result);
                             }
                         }
                         else

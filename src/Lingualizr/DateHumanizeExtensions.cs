@@ -118,8 +118,8 @@ public static class DateHumanizeExtensions
     /// Turns the current or provided time into a human readable sentence
     /// </summary>
     /// <param name="input">The date to be humanized</param>
-    /// <param name="useUtc">If <paramref name="timeToCompareAgainst"/> is null, used to determine if the current time is UTC or local. Defaults to UTC.</param>
     /// <param name="timeToCompareAgainst">Date to compare the input against. If null, current date is used as base</param>
+    /// <param name="useUtc">If <paramref name="timeToCompareAgainst"/> is null, used to determine if the current time is UTC or local. Defaults to UTC.</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>distance of time in words</returns>
     public static string Humanize(this TimeOnly input, TimeOnly? timeToCompareAgainst = null, bool useUtc = true, CultureInfo culture = null)
@@ -133,8 +133,8 @@ public static class DateHumanizeExtensions
     /// Turns the current or provided time into a human readable sentence, overload for the nullable TimeOnly, returning 'never' in case null
     /// </summary>
     /// <param name="input">The date to be humanized</param>
-    /// <param name="useUtc">If <paramref name="timeToCompareAgainst"/> is null, used to determine if the current time is UTC or local. Defaults to UTC.</param>
     /// <param name="timeToCompareAgainst">Time to compare the input against. If null, current date is used as base</param>
+    /// <param name="useUtc">If <paramref name="timeToCompareAgainst"/> is null, used to determine if the current time is UTC or local. Defaults to UTC.</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>distance of time in words</returns>
     public static string Humanize(this TimeOnly? input, TimeOnly? timeToCompareAgainst = null, bool useUtc = true, CultureInfo culture = null)

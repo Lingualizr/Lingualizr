@@ -46,8 +46,8 @@ public class ByteRate
     /// <summary>
     /// Calculate rate for the quantity of bytes and interval defined by this instance
     /// </summary>
-    /// <param name="timeUnit">Unit of time to calculate rate for (defaults is per second)</param>
     /// <param name="format">The string format to use for the number of bytes</param>
+    /// <param name="timeUnit">Unit of time to calculate rate for (defaults is per second)</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
     public string Humanize(string format, TimeUnit timeUnit = TimeUnit.Second, CultureInfo culture = null)
