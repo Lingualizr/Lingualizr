@@ -26,12 +26,12 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static readonly string[][] PowersOfThousandMap =
     {
-        new [] { "tysiąc", "tysiące", "tysięcy" },
-        new [] { "milion", "miliony", "milionów" },
-        new [] { "miliard", "miliardy", "miliardów" },
-        new [] { "bilion", "biliony", "bilionów" },
-        new [] { "biliard", "biliardy", "biliardów" },
-        new [] { "trylion", "tryliony", "trylionów" },
+        new[] { "tysiąc", "tysiące", "tysięcy" },
+        new[] { "milion", "miliony", "milionów" },
+        new[] { "miliard", "miliardy", "miliardów" },
+        new[] { "bilion", "biliony", "bilionów" },
+        new[] { "biliard", "biliardy", "biliardów" },
+        new[] { "trylion", "tryliony", "trylionów" },
     };
 
     private const long MaxPossibleDivisor = 1_000_000_000_000_000_000;

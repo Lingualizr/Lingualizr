@@ -4,7 +4,8 @@ namespace Lingualizr.Configuration;
 
 internal class OrdinalizerRegistry : LocaliserRegistry<IOrdinalizer>
 {
-    public OrdinalizerRegistry() : base(new DefaultOrdinalizer())
+    public OrdinalizerRegistry()
+        : base(new DefaultOrdinalizer())
     {
         Register("de", new GermanOrdinalizer());
         Register("en", new EnglishOrdinalizer());

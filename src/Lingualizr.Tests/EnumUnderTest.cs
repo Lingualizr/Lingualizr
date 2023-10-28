@@ -67,7 +67,8 @@ public class CustomDescriptionAttribute : Attribute
 #if !NETFX_CORE
 public class DescriptionSubclassAttribute : DescriptionAttribute
 {
-    public DescriptionSubclassAttribute(string description) : base(description)
+    public DescriptionSubclassAttribute(string description)
+        : base(description)
     {
     }
 

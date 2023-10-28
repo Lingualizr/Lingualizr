@@ -4,7 +4,8 @@ namespace Lingualizr.Configuration;
 
 internal class DateToOrdinalWordsConverterRegistry : LocaliserRegistry<IDateToOrdinalWordConverter>
 {
-    public DateToOrdinalWordsConverterRegistry() : base(new DefaultDateToOrdinalWordConverter())
+    public DateToOrdinalWordsConverterRegistry()
+        : base(new DefaultDateToOrdinalWordConverter())
     {
         Register("en-US", new UsDateToOrdinalWordsConverter());
         Register("fr", new FrDateToOrdinalWordsConverter());

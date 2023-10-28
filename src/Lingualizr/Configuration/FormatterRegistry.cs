@@ -6,7 +6,8 @@ namespace Lingualizr.Configuration;
 
 internal class FormatterRegistry : LocaliserRegistry<IFormatter>
 {
-    public FormatterRegistry() : base(new DefaultFormatter("en-US"))
+    public FormatterRegistry()
+        : base(new DefaultFormatter("en-US"))
     {
         Register("ar", new ArabicFormatter());
         Register("de", new GermanFormatter());
