@@ -16,12 +16,18 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
         { 12, "twelfth" },
     };
 
-    private static readonly string[] Tillnineteen =  { "one", "two", "three", "four", "five", "six", "seven", "eight",
+    private static readonly string[] Tillnineteen =
+    {
+        "one", "two", "three", "four", "five", "six", "seven", "eight",
         "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-        "seventeen", "eighteen", "nineteen", };
+        "seventeen", "eighteen", "nineteen",
+    };
 
-    private static readonly string[] Tens = { "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
-        "eighty", "ninety", };
+    private static readonly string[] Tens =
+    {
+        "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
+        "eighty", "ninety",
+    };
 
     public override string Convert(long number)
     {

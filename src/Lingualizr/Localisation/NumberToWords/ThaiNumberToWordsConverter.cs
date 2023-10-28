@@ -13,7 +13,7 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
         if (numbermoney < 0)
         {
             Textreturn = "ลบ";
-            numbermoney = -(numbermoney);
+            numbermoney = -numbermoney;
         }
 
         if ((numbermoney / 1000000) > 0)

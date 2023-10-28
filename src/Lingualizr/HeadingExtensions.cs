@@ -100,7 +100,7 @@ public static class HeadingExtensions
             var localizedShortHeading = Resources.GetResource($"{headings[index]}_Short", culture);
             if (culture.CompareInfo.Compare(upperCaseHeading, localizedShortHeading) == 0)
             {
-                return (index * 22.5);
+                return index * 22.5;
             }
         }
 
@@ -119,7 +119,7 @@ public static class HeadingExtensions
             return -1;
         }
 
-        return (index * 45.0);
+        return index * 45.0;
     }
 
     /// <summary>

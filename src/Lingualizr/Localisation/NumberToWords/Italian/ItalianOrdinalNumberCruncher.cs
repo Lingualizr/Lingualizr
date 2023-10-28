@@ -6,7 +6,7 @@ internal class ItalianOrdinalNumberCruncher
     {
         _fullNumber = number;
         _gender = gender;
-        _genderSuffix = (gender == GrammaticalGender.Feminine ? "a" : "o");
+        _genderSuffix = gender == GrammaticalGender.Feminine ? "a" : "o";
     }
 
     public string Convert()

@@ -15,7 +15,7 @@ public static class EnumHumanizeExtensions
     private const string DisplayAttributeGetDescriptionMethodName = "GetDescription";
     private const string DisplayAttributeGetNameMethodName = "GetName";
 
-    private static readonly Func<PropertyInfo, bool> StringTypedProperty = p => p.PropertyType == typeof(string);
+    private static readonly Func<PropertyInfo, bool> _stringTypedProperty = p => p.PropertyType == typeof(string);
 
     /// <summary>
     /// Turns an enum member into a human readable string; e.g. AnonymousUser -> Anonymous user. It also honors DescriptionAttribute data annotation
@@ -98,7 +98,7 @@ public static class EnumHumanizeExtensions
 
             var descriptionProperty =
                 attrType.GetRuntimeProperties()
-                    .Where(StringTypedProperty)
+                    .Where(_stringTypedProperty)
                     .FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
             if (descriptionProperty != null)
             {

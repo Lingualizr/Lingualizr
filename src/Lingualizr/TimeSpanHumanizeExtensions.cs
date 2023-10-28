@@ -101,7 +101,7 @@ public static class TimeSpanHumanizeExtensions
 
     private static int GetTimeUnitNumericalValue(TimeUnit timeUnitToGet, TimeSpan timespan, TimeUnit maximumTimeUnit)
     {
-        var isTimeUnitToGetTheMaximumTimeUnit = (timeUnitToGet == maximumTimeUnit);
+        var isTimeUnitToGetTheMaximumTimeUnit = timeUnitToGet == maximumTimeUnit;
         switch (timeUnitToGet)
         {
             case TimeUnit.Millisecond:
@@ -202,7 +202,7 @@ public static class TimeSpanHumanizeExtensions
 
     private static bool IsContainingOnlyNullValue(IEnumerable<string> timeParts)
     {
-        return (timeParts.Count(x => x != null) == 0);
+        return timeParts.Count(x => x != null) == 0;
     }
 
     private static IEnumerable<string> SetPrecisionOfTimeSpan(IEnumerable<string> timeParts, int precision, bool countEmptyUnits)

@@ -11,7 +11,7 @@ internal class RomanianFormatter : DefaultFormatter
     private const string UnitPreposition = " de";
     private const string RomanianCultureCode = "ro";
 
-    private static readonly double Divider = Math.Pow(10, PrepositionIndicatingDecimals);
+    private static readonly double _divider = Math.Pow(10, PrepositionIndicatingDecimals);
 
     private readonly CultureInfo _romanianCulture;
 
@@ -33,7 +33,7 @@ internal class RomanianFormatter : DefaultFormatter
 
     private static bool ShouldUsePreposition(int number)
     {
-        var prepositionIndicatingNumeral = Math.Abs(number % Divider);
+        var prepositionIndicatingNumeral = Math.Abs(number % _divider);
         return prepositionIndicatingNumeral < MinNumeralWithNoPreposition
                || prepositionIndicatingNumeral > MaxNumeralWithNoPreposition;
     }

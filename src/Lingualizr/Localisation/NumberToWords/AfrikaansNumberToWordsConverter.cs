@@ -6,9 +6,9 @@ namespace Lingualizr.Localisation.NumberToWords;
 internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     private static readonly string[] UnitsMap = { "nul", "een", "twee", "drie", "vier", "vyf", "ses", "sewe", "agt", "nege", "tien", "elf", "twaalf", "dertien", "veertien", "vyftien", "sestien", "sewentien", "agtien", "negentien" };
-    private static readonly string[] TensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
+    private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
 
-    private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
     {
         { 0, "nulste" },
         { 1, "eerste" },
@@ -92,7 +92,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             else
             {
                 var lastPartValue = (number / 10) * 10;
-                var lastPart = TensMap[number / 10];
+                var lastPart = _tensMap[number / 10];
                 if ((number % 10) > 0)
                 {
                     lastPart = string.Format("{0} en {1}", GetUnitValue(number % 10, false), isOrdinal ? GetUnitValue(lastPartValue, isOrdinal) : lastPart);
@@ -134,7 +134,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
             else if (number > 19)
             {
-                return TensMap[number / 10] + "ste";
+                return _tensMap[number / 10] + "ste";
             }
             else
             {
@@ -163,6 +163,6 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
 
     private static bool ExceptionNumbersToWords(int number, out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 }

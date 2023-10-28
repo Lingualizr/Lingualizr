@@ -236,7 +236,7 @@ internal class RomanianCardinalNumberConverter
         else
         {
             // exception for zero
-            var unitsText = (units == 0 ? string.Empty : " " + (_joinGroups + " " + getPartByGender(_units[units], gender)));
+            var unitsText = units == 0 ? string.Empty : " " + (_joinGroups + " " + getPartByGender(_units[units], gender));
 
             words += unitsText;
         }
@@ -271,7 +271,7 @@ internal class RomanianCardinalNumberConverter
 
     private bool IsAbove20(int number)
     {
-        return (number >= 20);
+        return number >= 20;
     }
 
     private string HundredsToText(int hundreds)

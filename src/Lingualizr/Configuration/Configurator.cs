@@ -204,8 +204,8 @@ public static class Configurator
     }
 #endif
 
-    private static readonly Func<PropertyInfo, bool> DefaultEnumDescriptionPropertyLocator = p => p.Name == "Description";
-    private static Func<PropertyInfo, bool> _enumDescriptionPropertyLocator = DefaultEnumDescriptionPropertyLocator;
+    private static readonly Func<PropertyInfo, bool> _defaultEnumDescriptionPropertyLocator = p => p.Name == "Description";
+    private static Func<PropertyInfo, bool> _enumDescriptionPropertyLocator = _defaultEnumDescriptionPropertyLocator;
 
     /// <summary>
     /// A predicate function for description property of attribute to use for Enum.Humanize
@@ -213,6 +213,6 @@ public static class Configurator
     public static Func<PropertyInfo, bool> EnumDescriptionPropertyLocator
     {
         get { return _enumDescriptionPropertyLocator; }
-        set { _enumDescriptionPropertyLocator = value ?? DefaultEnumDescriptionPropertyLocator; }
+        set { _enumDescriptionPropertyLocator = value ?? _defaultEnumDescriptionPropertyLocator; }
     }
 }

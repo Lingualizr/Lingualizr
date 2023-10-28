@@ -208,7 +208,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
         else if (num_above_10 == 1)
             local_word = "ஒரு " + LakhsMap[0];
-        else local_word += GetTensValue((number / 100000), isOrdinal) + " " + LakhsMap[0];
+        else local_word += GetTensValue(number / 100000, isOrdinal) + " " + LakhsMap[0];
 
         if (number % 1000000 == 0 || number % 100000 == 0)
         {

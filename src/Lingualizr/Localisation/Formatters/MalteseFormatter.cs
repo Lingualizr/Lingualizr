@@ -6,7 +6,7 @@ internal class MalteseFormatter : DefaultFormatter
 {
     private const string DualPostfix = "_Dual";
 
-    private static readonly string[] DualResourceKeys = new[]
+    private static readonly string[] _dualResourceKeys = new[]
     {
         "DateHumanize_MultipleDaysAgo", "DateHumanize_MultipleDaysFromNow", "DateHumanize_MultipleHoursAgo", "DateHumanize_MultipleHoursFromNow",
         "DateHumanize_MultipleMonthsAgo", "DateHumanize_MultipleMonthsFromNow", "DateHumanize_MultipleYearsAgo", "DateHumanize_MultipleYearsFromNow",
@@ -21,7 +21,7 @@ internal class MalteseFormatter : DefaultFormatter
 
     protected override string GetResourceKey(string resourceKey, int number)
     {
-        if (number == 2 && DualResourceKeys.Contains(resourceKey))
+        if (number == 2 && _dualResourceKeys.Contains(resourceKey))
         {
             return resourceKey + DualPostfix;
         }

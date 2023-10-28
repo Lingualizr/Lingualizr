@@ -70,7 +70,7 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
             else
             {
                 // Gender is applied to hundreds starting from 200
-                parts.Add(ApplyGender(PortugueseHundredsMap[(number / 100)], gender));
+                parts.Add(ApplyGender(PortugueseHundredsMap[ number / 100], gender));
             }
 
             number %= 100;

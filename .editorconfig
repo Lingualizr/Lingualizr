@@ -103,17 +103,17 @@ dotnet_naming_rule.constants_must_be_pascal_cased.severity                      
 #dotnet_naming_rule.private_static_fields_must_be_camel_cased_and_prefixed_with_s_underscore.style     = camel_case_and_prefix_with_s_underscore_style
 #dotnet_naming_rule.private_static_fields_must_be_camel_cased_and_prefixed_with_s_underscore.severity  = warning
 
-# Static readonly fields are PascalCased
+# Static readonly fields are camelCased with an _ like _myField
 dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.symbols                               = private_static_readonly_field_symbols
-dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.style                                 = pascal_case_style
-dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.severity                              = warning
+dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.style                                 = camel_case_and_prefix_with_underscore_style
+dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.severity                              = error
 
 # Comment this group and uncomment out the next group if you don't want _ prefixed fields.
 
 # Private instance fields are camelCased with an _ like _myField
 dotnet_naming_rule.private_instance_fields_must_be_camel_cased_and_prefixed_with_underscore.symbols   = private_field_symbols
 dotnet_naming_rule.private_instance_fields_must_be_camel_cased_and_prefixed_with_underscore.style     = camel_case_and_prefix_with_underscore_style
-dotnet_naming_rule.private_instance_fields_must_be_camel_cased_and_prefixed_with_underscore.severity  = warning
+dotnet_naming_rule.private_instance_fields_must_be_camel_cased_and_prefixed_with_underscore.severity  = error
 
 # Private instance fields are camelCased
 #dotnet_naming_rule.private_instance_fields_must_be_camel_cased.symbols                                = private_field_symbols
@@ -314,14 +314,18 @@ dotnet_diagnostic.SA1012.severity = error
 dotnet_diagnostic.SA1013.severity = error
 dotnet_diagnostic.SA1028.severity = error
 dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1125.severity = error
 dotnet_diagnostic.SA1121.severity = error
 dotnet_diagnostic.SA1122.severity = error
+dotnet_diagnostic.SA1119.severity = error
 dotnet_diagnostic.SA1200.severity = none
 dotnet_diagnostic.SA1201.severity = none
 dotnet_diagnostic.SA1300.severity = none
+dotnet_diagnostic.SA1306.severity = none
 dotnet_diagnostic.SA1309.severity = none
 dotnet_diagnostic.SA1407.severity = none
 dotnet_diagnostic.SA1413.severity = error
+dotnet_diagnostic.SA1500.severity = error
 dotnet_diagnostic.SA1503.severity = error
 dotnet_diagnostic.SA1505.severity = error
 dotnet_diagnostic.SA1507.severity = error
@@ -335,5 +339,6 @@ dotnet_diagnostic.SA1611.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1614.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1615.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1616.severity = none # should be turned on in the future
+dotnet_diagnostic.SA1623.severity = none
 dotnet_diagnostic.SA1629.severity = none
 dotnet_diagnostic.SA1633.severity = none

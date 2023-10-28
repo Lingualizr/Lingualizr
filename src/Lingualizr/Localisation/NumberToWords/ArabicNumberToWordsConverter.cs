@@ -5,7 +5,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] Groups = { "مئة", "ألف", "مليون", "مليار", "تريليون", "كوادريليون", "كوينتليون", "سكستيليون" };
+    private static readonly string[] _groups = { "مئة", "ألف", "مليون", "مليار", "تريليون", "كوادريليون", "كوينتليون", "سكستيليون" };
     private static readonly string[] AppendedGroups = { string.Empty, "ألفاً", "مليوناً", "ملياراً", "تريليوناً", "كوادريليوناً", "كوينتليوناً", "سكستيليوناً" };
     private static readonly string[] PluralGroups = { string.Empty, "آلاف", "ملايين", "مليارات", "تريليونات", "كوادريليونات", "كوينتليونات", "سكستيليونات" };
     private static readonly string[] OnesGroup = { string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر" };
@@ -87,7 +87,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                 else
                 {
                     var ones = tens % 10;
-                    tens = (tens / 10);
+                    tens = tens / 10;
 
                     if (ones > 0)
                     {
@@ -127,12 +127,12 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                             }
                             else
                             {
-                                result = string.Format("{0} {1}", result != string.Empty ? AppendedGroups[groupLevel] : Groups[groupLevel], result);
+                                result = string.Format("{0} {1}", result != string.Empty ? AppendedGroups[groupLevel] : _groups[groupLevel], result);
                             }
                         }
                         else
                         {
-                            result = string.Format("{0} {1}", Groups[groupLevel], result);
+                            result = string.Format("{0} {1}", _groups[groupLevel], result);
                         }
                     }
                 }

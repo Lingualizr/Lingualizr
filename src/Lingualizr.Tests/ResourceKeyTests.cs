@@ -41,7 +41,8 @@ public class ResourceKeyTests
     {
         get
         {
-            return new[] {
+            return new[]
+            {
                 new object[] { 0, "DateHumanize_SingleSecondAgo", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Second, Tense.Past) },
                 new object[] { 0, "DateHumanize_SingleMinuteAgo", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Minute, Tense.Past) },
                 new object[] { 0, "DateHumanize_SingleHourAgo", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Hour, Tense.Past) },
@@ -84,7 +85,8 @@ public class ResourceKeyTests
     {
         get
         {
-            return new[] {
+            return new[]
+            {
                 new object[] { 0, "TimeSpanHumanize_SingleMillisecond", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Millisecond) },
                 new object[] { 0, "TimeSpanHumanize_SingleSecond", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Second) },
                 new object[] { 0, "TimeSpanHumanize_SingleMinute", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Minute) },

@@ -20,7 +20,7 @@ public class BitFieldEnumHumanizeTests
     [Fact]
     public void CanHumanizeMultipleValueBitFieldEnum()
     {
-        var xoredBitFlag = (BitFieldEnumUnderTest.RED | BitFieldEnumUnderTest.DARK_GRAY);
+        var xoredBitFlag = BitFieldEnumUnderTest.RED | BitFieldEnumUnderTest.DARK_GRAY;
         Assert.Equal(BitFlagEnumTestsResources.ExpectedResultWhenBothValuesXored, xoredBitFlag.Humanize());
     }
 
@@ -39,7 +39,7 @@ public class BitFieldEnumHumanizeTests
     [Fact]
     public void CanHumanizeShortMultipleValueBitFieldEnum()
     {
-        var xoredBitFlag = (ShortBitFieldEnumUnderTest.RED | ShortBitFieldEnumUnderTest.DARK_GRAY);
+        var xoredBitFlag = ShortBitFieldEnumUnderTest.RED | ShortBitFieldEnumUnderTest.DARK_GRAY;
         Assert.Equal(BitFlagEnumTestsResources.ExpectedResultWhenBothValuesXored, xoredBitFlag.Humanize());
     }
 
