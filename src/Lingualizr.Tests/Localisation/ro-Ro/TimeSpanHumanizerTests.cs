@@ -113,7 +113,8 @@ public class TimeSpanHumanizerTests
         Assert.Equal("0 de milisecunde", TimeSpan.Zero.Humanize());
     }
 
-    [Fact, CustomDescription("The name of this test is confusing because has no sense. Instead should be read as an interval with duration zero and not the absence of time.")]
+    [Fact]
+    [CustomDescription("The name of this test is confusing because has no sense. Instead should be read as an interval with duration zero and not the absence of time.")]
     public void NoTimeToWords()
     {
         // Usage in Romanian: "Timp execuție: 0 secunde."

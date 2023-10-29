@@ -24,7 +24,8 @@ public class StringHumanizeTests
         Assert.Equal(expectedResult, input.Humanize());
     }
 
-    [Theory, UseCulture("tr-TR")]
+    [Theory]
+    [UseCulture("tr-TR")]
     [InlineData("istanbul", "İstanbul")]
     [InlineData("diyarbakır", "Diyarbakır")]
     public void CanHumanizeStringInPascalCaseInTurkish(string input, string expectedResult)
@@ -32,7 +33,8 @@ public class StringHumanizeTests
         Assert.Equal(expectedResult, input.Humanize());
     }
 
-    [Theory, UseCulture("ar")]
+    [Theory]
+    [UseCulture("ar")]
     [InlineData("جمهورية ألمانيا الاتحادية", "جمهورية ألمانيا الاتحادية")]
     public void CanHumanizeOtherUnicodeLetter(string input, string expectedResult)
     {

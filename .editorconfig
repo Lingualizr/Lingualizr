@@ -340,6 +340,7 @@ dotnet_diagnostic.SA1118.severity = none
 dotnet_diagnostic.SA1119.severity = error
 dotnet_diagnostic.SA1128.severity = error
 dotnet_diagnostic.SA1129.severity = error
+dotnet_diagnostic.SA1133.severity = error
 dotnet_diagnostic.SA1139.severity = error
 dotnet_diagnostic.SA1200.severity = none
 dotnet_diagnostic.SA1201.severity = none
