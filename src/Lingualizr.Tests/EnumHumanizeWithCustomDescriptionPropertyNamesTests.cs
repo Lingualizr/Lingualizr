@@ -6,8 +6,7 @@ using Xunit;
 
 namespace Lingualizr.Tests;
 
-[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly",
-    Justification = "This is a test only class, and doesn't need a 'proper' IDisposable implementation.")]
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "This is a test only class, and doesn't need a 'proper' IDisposable implementation.")]
 public class EnumHumanizeWithCustomDescriptionPropertyNamesTests : IDisposable
 {
     public EnumHumanizeWithCustomDescriptionPropertyNamesTests()
@@ -15,8 +14,7 @@ public class EnumHumanizeWithCustomDescriptionPropertyNamesTests : IDisposable
         Configurator.EnumDescriptionPropertyLocator = p => p.Name == "Info";
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly",
-        Justification = "This is a test only class, and doesn't need a 'proper' IDisposable implementation.")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "This is a test only class, and doesn't need a 'proper' IDisposable implementation.")]
     public void Dispose()
     {
         Configurator.EnumDescriptionPropertyLocator = null;

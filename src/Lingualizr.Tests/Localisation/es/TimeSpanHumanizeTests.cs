@@ -499,8 +499,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1299630020, 3, "2 semanas, 1 día y 1 hora")]
     [InlineData(1299630020, 4, "2 semanas, 1 día, 1 hora y 30 segundos")]
     [InlineData(1299630020, 5, "2 semanas, 1 día, 1 hora, 30 segundos y 20 milisegundos")]
-    public void TimeSpanWithPrecisionAndAlternativeCollectionFormatter(int milliseconds, int precision,
-        string expected, bool toWords = false)
+    public void TimeSpanWithPrecisionAndAlternativeCollectionFormatter(int milliseconds, int precision, string expected, bool toWords = false)
     {
         var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, collectionSeparator: null, toWords: toWords);
         Assert.Equal(expected, actual);

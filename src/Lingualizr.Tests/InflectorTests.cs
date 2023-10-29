@@ -30,8 +30,6 @@ namespace Lingualizr.Tests;
 
 public class InflectorTests
 {
-    public readonly IList<object[]> PluralTestData = new List<object[]>();
-
     [Theory]
     [ClassData(typeof(PluralTestSource))]
     public void Pluralize(string singular, string plural)

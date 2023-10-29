@@ -41,7 +41,10 @@ public class EnumTestsResources
     public const string MemberWithDisplayAttribute = "Description from Display attribute";
     public const string MemberWithDisplayAttributeWithoutDescription = "Displayattribute without description";
 
-    public static string MemberWithLocalizedDisplayAttribute { get { return "Localized description from Display attribute"; } }
+    public static string MemberWithLocalizedDisplayAttribute
+    {
+        get { return "Localized description from Display attribute"; }
+    }
 }
 
 public class ImposterDescriptionAttribute : Attribute

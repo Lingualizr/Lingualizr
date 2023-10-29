@@ -7,8 +7,9 @@ namespace Lingualizr.Tests;
 
 public class SomeClass
 {
-    public string SomeString;
-    public int SomeInt;
+    public string SomeString { get; init; }
+
+    public int SomeInt { get; init; }
 
     public override string ToString()
     {
