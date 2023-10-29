@@ -375,6 +375,9 @@ dotnet_diagnostic.SA1642.severity = none
 dotnet_diagnostic.SA1649.severity = none
 
 dotnet_diagnostic.S927.severity = error
+dotnet_diagnostic.S1066.severity = error
 dotnet_diagnostic.S1643.severity = none # can be enabled but should be measured by benchmarks
+dotnet_diagnostic.S2223.severity = error
 dotnet_diagnostic.S2292.severity = error
+dotnet_diagnostic.S2589.severity = warning
 dotnet_diagnostic.S6610.severity = error

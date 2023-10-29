@@ -67,12 +67,9 @@ internal class RomanianOrdinalNumberConverter
                 words = words.Substring(2).TrimStart();
             }
 
-            if (words.EndsWith("milioane"))
+            if (words.EndsWith("milioane") && gender == GrammaticalGender.Feminine)
             {
-                if (gender == GrammaticalGender.Feminine)
-                {
-                    words = words.Substring(0, words.Length - 8) + "milioana";
-                }
+                words = words.Substring(0, words.Length - 8) + "milioana";
             }
 
             var customMasculineSuffix = _masculineSuffix;
@@ -87,12 +84,9 @@ internal class RomanianOrdinalNumberConverter
                     customMasculineSuffix = "u" + _masculineSuffix;
                 }
             }
-            else if (words.EndsWith("miliard"))
+            else if (words.EndsWith("miliard") && gender == GrammaticalGender.Masculine)
             {
-                if (gender == GrammaticalGender.Masculine)
-                {
-                    customMasculineSuffix = "u" + _masculineSuffix;
-                }
+                customMasculineSuffix = "u" + _masculineSuffix;
             }
 
             // trim last letter

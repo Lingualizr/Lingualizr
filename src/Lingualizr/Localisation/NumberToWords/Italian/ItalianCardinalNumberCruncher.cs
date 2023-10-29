@@ -238,7 +238,7 @@ internal class ItalianCardinalNumberCruncher
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9.
     /// </summary>
-    protected static string[] _unitsNumberToText = new string[]
+    private static readonly string[] _unitsNumberToText = new string[]
     {
         string.Empty,
         "uno",
@@ -255,7 +255,7 @@ internal class ItalianCardinalNumberCruncher
     /// <summary>
     /// Lookup table converting tens number to text. Index 2 for 20, index 3 for 30, up to index 9 for 90.
     /// </summary>
-    protected static string[] _tensOver20NumberToText = new string[]
+    private static readonly string[] _tensOver20NumberToText = new string[]
     {
         string.Empty,
         string.Empty,
@@ -272,7 +272,7 @@ internal class ItalianCardinalNumberCruncher
     /// <summary>
     /// Lookup table converting teens number to text. Index 0 for 10, index 1 for 11, up to index 9 for 19.
     /// </summary>
-    protected static string[] _teensUnder20NumberToText = new string[]
+    private static readonly string[] _teensUnder20NumberToText = new string[]
     {
         "dieci",
         "undici",
@@ -289,7 +289,7 @@ internal class ItalianCardinalNumberCruncher
     /// <summary>
     /// Lookup table converting hundreds number to text. Index 0 for no hundreds, index 1 for 100, up to index 9.
     /// </summary>
-    protected static string[] _hundredNumberToText = new string[]
+    private static readonly string[] _hundredNumberToText = new string[]
     {
         string.Empty,
         "cento",

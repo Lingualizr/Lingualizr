@@ -44,12 +44,9 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string ConvertImpl(long number, bool isOrdinal)
     {
-        if (isOrdinal && number < 20)
+        if (isOrdinal && number < 20 && OrdinalExceptions.TryGetValue(number, out var words))
         {
-            if (OrdinalExceptions.TryGetValue(number, out var words))
-            {
-                return words;
-            }
+            return words;
         }
 
         if (number == 0)

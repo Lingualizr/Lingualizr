@@ -24,12 +24,9 @@ internal class UkrainianOrdinalizer : DefaultOrdinalizer
             return numberString + "-а";
         }
 
-        if (gender == GrammaticalGender.Neuter)
+        if (gender == GrammaticalGender.Neuter && number % 10 == 3)
         {
-            if (number % 10 == 3)
-            {
-                return numberString + "-є";
-            }
+            return numberString + "-є";
         }
 
         return numberString + "-е";
