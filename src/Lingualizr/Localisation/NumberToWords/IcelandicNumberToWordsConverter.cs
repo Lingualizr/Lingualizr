@@ -6,13 +6,13 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "núll", string.Empty, string.Empty, string.Empty, string.Empty, "fimm", "sex", "sjö", "átta", "níu", "tíu", "ellefu", "tólf", "þrettán", "fjórtán", "fimmtán", "sextán", "sautján", "átján", "nítján" };
-    private static readonly string[] FeminineUnitsMap = { string.Empty, "ein", "tvær", "þrjár", "fjórar" };
-    private static readonly string[] MasculineUnitsMap = { string.Empty, "einn", "tveir", "þrír", "fjórir" };
-    private static readonly string[] NeuterUnitsMap = { string.Empty, "eitt", "tvö", "þrjú", "fjögur" };
-    private static readonly string[] TensMap = { string.Empty, "tíu", "tuttugu", "þrjátíu", "fjörutíu", "fimmtíu", "sextíu", "sjötíu", "áttatíu", "níutíu" };
-    private static readonly string[] UnitsOrdinalPrefixes = { "núllt", "fyrst", string.Empty, "þriðj", "fjórð", "fimmt", "sjött", "sjöund", "áttund", "níund", "tíund", "elleft", "tólft", "þrettánd", "fjórtánd", "fimmtánd", "sextánd", "sautjánd", "átjánd", "nítjánd" };
-    private static readonly string[] TensOrdinalPrefixes = { string.Empty, "tíund", "tuttugast", "þrítugast", "fertugast", "fimmtugast", "sextugast", "sjötugast", "áttugast", "nítugast" };
+    private static readonly string[] _unitsMap = { "núll", string.Empty, string.Empty, string.Empty, string.Empty, "fimm", "sex", "sjö", "átta", "níu", "tíu", "ellefu", "tólf", "þrettán", "fjórtán", "fimmtán", "sextán", "sautján", "átján", "nítján" };
+    private static readonly string[] _feminineUnitsMap = { string.Empty, "ein", "tvær", "þrjár", "fjórar" };
+    private static readonly string[] _masculineUnitsMap = { string.Empty, "einn", "tveir", "þrír", "fjórir" };
+    private static readonly string[] _neuterUnitsMap = { string.Empty, "eitt", "tvö", "þrjú", "fjögur" };
+    private static readonly string[] _tensMap = { string.Empty, "tíu", "tuttugu", "þrjátíu", "fjörutíu", "fimmtíu", "sextíu", "sjötíu", "áttatíu", "níutíu" };
+    private static readonly string[] _unitsOrdinalPrefixes = { "núllt", "fyrst", string.Empty, "þriðj", "fjórð", "fimmt", "sjött", "sjöund", "áttund", "níund", "tíund", "elleft", "tólft", "þrettánd", "fjórtánd", "fimmtánd", "sextánd", "sautjánd", "átjánd", "nítjánd" };
+    private static readonly string[] _tensOrdinalPrefixes = { string.Empty, "tíund", "tuttugast", "þrítugast", "fertugast", "fimmtugast", "sextugast", "sjötugast", "áttugast", "nítugast" };
     private const string AndSplit = "og";
 
     private class Fact
@@ -28,7 +28,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         public string OrdinalPrefix { get; set; }
     }
 
-    private static readonly Dictionary<int, Fact> PowerOfTenMap = new()
+    private static readonly Dictionary<int, Fact> _powerOfTenMap = new()
     {
         { 0,     new Fact { Power = 0, Single = string.Empty,        Plural = string.Empty,  OrdinalPrefix = string.Empty,   Gender = GrammaticalGender.Neuter } },
         { 2,     new Fact { Power = 2, Single = "hundrað",           Plural = "hundruð",     OrdinalPrefix = "hundruðast",   Gender = GrammaticalGender.Neuter } },
@@ -52,16 +52,16 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             var genderedForm = gender switch
             {
-                GrammaticalGender.Masculine => MasculineUnitsMap[number],
-                GrammaticalGender.Neuter => NeuterUnitsMap[number],
-                GrammaticalGender.Feminine => FeminineUnitsMap[number],
+                GrammaticalGender.Masculine => _masculineUnitsMap[number],
+                GrammaticalGender.Neuter => _neuterUnitsMap[number],
+                GrammaticalGender.Feminine => _feminineUnitsMap[number],
                 _ => throw new ArgumentOutOfRangeException(nameof(gender)),
             };
             builder.Add(genderedForm);
         }
         else
         {
-            builder.Add(UnitsMap[number]);
+            builder.Add(_unitsMap[number]);
         }
     }
 
@@ -76,8 +76,8 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         if (hundreds != 0)
         {
             GetUnits(builder, hundreds, GrammaticalGender.Neuter);
-            var hundredPrefix = hundreds == 1 ? PowerOfTenMap[2].Single : PowerOfTenMap[2].Plural;
-            if (hundredRemainder < 20 && false == hasThousand)
+            var hundredPrefix = hundreds == 1 ? _powerOfTenMap[2].Single : _powerOfTenMap[2].Plural;
+            if (hundredRemainder < 20 && !hasThousand)
             {
                 var genderedFormWithPostfix = partGender switch
                 {
@@ -152,12 +152,12 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                returnValue = UnitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
+                returnValue = _unitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
             }
         }
         else if (number < 100 && number % 10 == 0)
         {
-            returnValue = TensOrdinalPrefixes[number / 10] + GetOrdinalEnding(gender);
+            returnValue = _tensOrdinalPrefixes[number / 10] + GetOrdinalEnding(gender);
         }
 
         return returnValue;
@@ -171,7 +171,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             number %= rule.Power;
             var prevLen = parts.Count;
             CollectPart(parts, remainder, rule);
-            if (number == 0 && needsAnd && false == parts.Skip(prevLen).Contains(AndSplit))
+            if (number == 0 && needsAnd && !parts.Skip(prevLen).Contains(AndSplit))
             {
                 parts.Insert(prevLen, AndSplit);
             }
@@ -203,14 +203,14 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         if (hundreds != 0)
         {
             GetUnits(builder, hundreds, GrammaticalGender.Neuter);
-            builder.Add(hundreds == 1 ? PowerOfTenMap[2].Single : PowerOfTenMap[2].Plural);
+            builder.Add(hundreds == 1 ? _powerOfTenMap[2].Single : _powerOfTenMap[2].Plural);
         }
 
         if (tens >= 2)
         {
             if (units != 0)
             {
-                builder.Add(TensMap[tens]);
+                builder.Add(_tensMap[tens]);
                 builder.Add(AndSplit);
                 GetUnits(builder, units, gender);
             }
@@ -221,7 +221,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                     builder.Add(AndSplit);
                 }
 
-                builder.Add(TensMap[tens]);
+                builder.Add(_tensMap[tens]);
             }
         }
         else if (hundredRemainder != 0)
@@ -242,7 +242,8 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             number %= (int)rule.Power;
 
-            if (number > 0 && (number > 19 || (number % 100 > 10 && number % 100 % 10 == 0))) // https://malfar.arnastofnun.is/grein/65658
+            // https://malfar.arnastofnun.is/grein/65658
+            if (number > 0 && (number > 19 || (number % 100 > 10 && number % 100 % 10 == 0)))
             {
                 if (remainder == 1)
                 {
@@ -261,7 +262,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 var prevLen = parts.Count;
                 CollectOrdinalParts(parts, (int)remainder, rule, rule.Gender, gender);
-                if (number == 0 && needsAnd && false == parts.Skip(prevLen).Contains(AndSplit))
+                if (number == 0 && needsAnd && !parts.Skip(prevLen).Contains(AndSplit))
                 {
                     parts.Insert(prevLen, AndSplit);
                 }
@@ -275,7 +276,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number == 0)
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
 
         var parts = new List<string>();
@@ -286,12 +287,12 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
         }
 
         var needsAnd = false;
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[18]);
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[15]);
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[12]);
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[9]);
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[6]);
-        CollectParts(parts, ref number, ref needsAnd, PowerOfTenMap[3]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[18]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[15]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[12]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[9]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[6]);
+        CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[3]);
 
         if (number > 0)
         {
@@ -310,16 +311,16 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number == 0)
         {
-            return UnitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
+            return _unitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
         }
 
         var parts = new List<string>();
         var needsAnd = false;
 
-        CollectOrdinal(parts, ref number, ref needsAnd, PowerOfTenMap[12], gender);
-        CollectOrdinal(parts, ref number, ref needsAnd, PowerOfTenMap[9], gender);
-        CollectOrdinal(parts, ref number, ref needsAnd, PowerOfTenMap[6], gender);
-        CollectOrdinal(parts, ref number, ref needsAnd, PowerOfTenMap[3], gender);
+        CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[12], gender);
+        CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[9], gender);
+        CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[6], gender);
+        CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[3], gender);
 
         if (number > 0)
         {
@@ -328,7 +329,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
                 parts.Add(AndSplit);
             }
 
-            CollectOrdinalParts(parts, number, PowerOfTenMap[0], gender, gender);
+            CollectOrdinalParts(parts, number, _powerOfTenMap[0], gender, gender);
         }
 
         return string.Join(" ", parts);

@@ -323,7 +323,8 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             ? "0"
             : formattedLargeWholeNumberValue;
 
-        return string.Format("{0} {1}", formattedLargeWholeNumberValue, toSymbol ? GetLargestWholeNumberSymbol(provider) : GetLargestWholeNumberFullWord(provider));
+        return string.Format("{0} {1}", formattedLargeWholeNumberValue,
+            toSymbol ? GetLargestWholeNumberSymbol(provider) : GetLargestWholeNumberFullWord(provider));
     }
 
     /// <summary>
@@ -357,9 +358,9 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return Equals(other);
     }
 
-    public bool Equals(ByteSize value)
+    public bool Equals(ByteSize other)
     {
-        return Bits == value.Bits;
+        return Bits == other.Bits;
     }
 
     public override int GetHashCode()
@@ -502,10 +503,8 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         const NumberStyles numberStyles = AllowDecimalPoint | AllowThousands | AllowLeadingSign;
         var numberSpecialChars = new[]
         {
-            Convert.ToChar(numberFormat.NumberDecimalSeparator),
-            Convert.ToChar(numberFormat.NumberGroupSeparator),
-            Convert.ToChar(numberFormat.PositiveSign),
-            Convert.ToChar(numberFormat.NegativeSign),
+            Convert.ToChar(numberFormat.NumberDecimalSeparator), Convert.ToChar(numberFormat.NumberGroupSeparator),
+            Convert.ToChar(numberFormat.PositiveSign), Convert.ToChar(numberFormat.NegativeSign),
         };
 
         // Setup the result
@@ -527,7 +526,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             }
         }
 
-        if (found == false)
+        if (!found)
         {
             return false;
         }
@@ -549,8 +548,10 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         {
             case ByteSymbol:
                 if (sizePart == BitSymbol)
-                { // Bits
-                    if (number % 1 != 0) // Can't have partial bits
+                {
+                    // Bits
+                    // Can't have partial bits
+                    if (number % 1 != 0)
                     {
                         return false;
                     }
@@ -558,7 +559,8 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
                     result = FromBits((long)number);
                 }
                 else
-                { // Bytes
+                {
+                    // Bytes
                     result = FromBytes(number);
                 }
 

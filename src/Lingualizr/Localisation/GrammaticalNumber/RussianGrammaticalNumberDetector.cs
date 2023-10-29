@@ -9,12 +9,14 @@ internal static class RussianGrammaticalNumberDetector
         {
             var unity = number % 10;
 
-            if (unity == 1) // 1, 21, 31, 41 ... 91, 101, 121 ...
+            // 1, 21, 31, 41 ... 91, 101, 121 ...
+            if (unity == 1)
             {
                 return RussianGrammaticalNumber.Singular;
             }
 
-            if (unity > 1 && unity < 5) // 2, 3, 4, 22, 23, 24 ...
+            // 2, 3, 4, 22, 23, 24 ...
+            if (unity > 1 && unity < 5)
             {
                 return RussianGrammaticalNumber.Paucal;
             }
