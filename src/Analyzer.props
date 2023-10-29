@@ -1,7 +1,8 @@
 <Project>
 
     <PropertyGroup>
-        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+      <AnalysisLevel>latest-Recommended</AnalysisLevel>
+      <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
 
     <ItemGroup>

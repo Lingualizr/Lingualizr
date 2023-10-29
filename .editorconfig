@@ -242,6 +242,7 @@ csharp_space_between_square_brackets = false
 dotnet_diagnostic.CA1001.severity = error
 dotnet_diagnostic.CA1009.severity = error
 dotnet_diagnostic.CA1016.severity = error
+dotnet_diagnostic.CA1019.severity = none
 dotnet_diagnostic.CA1033.severity = error
 dotnet_diagnostic.CA1049.severity = error
 dotnet_diagnostic.CA1052.severity = none
