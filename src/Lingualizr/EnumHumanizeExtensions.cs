@@ -18,6 +18,19 @@ public static class EnumHumanizeExtensions
     private static readonly Func<PropertyInfo, bool> _stringTypedProperty = p => p.PropertyType == typeof(string);
 
     /// <summary>
+    /// Turns an enum member into a human readable string with the provided casing; e.g. AnonymousUser with Title casing -> Anonymous User. It also honors DescriptionAttribute data annotation
+    /// </summary>
+    /// <param name="input">The enum member to be humanized</param>
+    /// <param name="casing">The casing to use for humanizing the enum member</param>
+    /// <returns></returns>
+    public static string Humanize(this Enum input, LetterCasing casing)
+    {
+        var humanizedEnum = Humanize(input);
+
+        return humanizedEnum.ApplyCase(casing);
+    }
+
+    /// <summary>
     /// Turns an enum member into a human readable string; e.g. AnonymousUser -> Anonymous user. It also honors DescriptionAttribute data annotation
     /// </summary>
     /// <param name="input">The enum member to be humanized</param>
@@ -107,18 +120,5 @@ public static class EnumHumanizeExtensions
         }
 
         return null;
-    }
-
-    /// <summary>
-    /// Turns an enum member into a human readable string with the provided casing; e.g. AnonymousUser with Title casing -> Anonymous User. It also honors DescriptionAttribute data annotation
-    /// </summary>
-    /// <param name="input">The enum member to be humanized</param>
-    /// <param name="casing">The casing to use for humanizing the enum member</param>
-    /// <returns></returns>
-    public static string Humanize(this Enum input, LetterCasing casing)
-    {
-        var humanizedEnum = Humanize(input);
-
-        return humanizedEnum.ApplyCase(casing);
     }
 }

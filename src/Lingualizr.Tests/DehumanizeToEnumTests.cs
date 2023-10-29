@@ -95,11 +95,6 @@ public class DehumanizeToEnumTests
             throw new NotImplementedException();
         }
 
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
-            throw new NotImplementedException();
-        }
-
         public TypeCode GetTypeCode()
         {
             throw new NotImplementedException();
@@ -176,6 +171,11 @@ public class DehumanizeToEnumTests
         }
 
         public string ToString(IFormatProvider provider)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             throw new NotImplementedException();
         }

@@ -74,7 +74,7 @@ internal static class DateTimeHumanizeAlgorithms
         }
 
         // month calculation
-        if (days >= 30 * precision & days <= 31)
+        if (days >= 30 * precision && days <= 31)
         {
             months = 1;
         }
