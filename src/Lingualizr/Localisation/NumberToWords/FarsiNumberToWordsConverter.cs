@@ -74,6 +74,6 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         var word = Convert(number);
-        return string.Format("{0}{1}", word, word.EndsWith("ی") ? " ام" : "م");
+        return string.Format("{0}{1}", word, word.EndsWith('ی') ? " ام" : "م");
     }
 }

@@ -97,10 +97,10 @@ internal class RomanianOrdinalNumberConverter
 
             // trim last letter
             if ((gender == GrammaticalGender.Feminine) && (!words.EndsWith("zece") &&
-                                                           (words.EndsWith("a") ||
-                                                            words.EndsWith("ă") ||
-                                                            words.EndsWith("e") ||
-                                                            words.EndsWith("i"))))
+                                                           (words.EndsWith('a') ||
+                                                            words.EndsWith('ă') ||
+                                                            words.EndsWith('e') ||
+                                                            words.EndsWith('i'))))
             {
                 words = words.Substring(0, words.Length - 1);
             }

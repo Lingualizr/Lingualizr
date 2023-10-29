@@ -10,20 +10,20 @@ internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
 
     private static readonly string[] _ordinalSuffixes = new string[] { "инчи", "нчи" };
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
-        if (number < 0)
+        var numberInt = (int)number;
+        if (numberInt < 0)
         {
-            return string.Format("минус {0}", Convert(-number, true));
+            return string.Format("минус {0}", Convert(-numberInt, true));
         }
 
-        return Convert(number, true);
+        return Convert(numberInt, true);
     }
 
     private string Convert(int number, bool checkForHoundredRule)
