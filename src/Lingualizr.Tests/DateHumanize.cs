@@ -54,7 +54,7 @@ public class DateHumanize
                 Configurator.DateTimeHumanizeStrategy = new DefaultDateTimeHumanizeStrategy();
             }
 
-            var deltaFromNow = new TimeSpan();
+            var deltaFromNow = default(TimeSpan);
             unit = Math.Abs(unit);
 
             if (tense == Tense.Past)

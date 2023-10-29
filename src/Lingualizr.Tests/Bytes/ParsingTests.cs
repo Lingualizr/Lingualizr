@@ -113,7 +113,7 @@ public class ParsingTests
         var resultBool = ByteSize.TryParse(input, out var resultByteSize);
 
         Assert.False(resultBool);
-        Assert.Equal(new ByteSize(), resultByteSize);
+        Assert.Equal(default, resultByteSize);
 
         Assert.Throws<FormatException>(() => { ByteSize.Parse(input); });
     }

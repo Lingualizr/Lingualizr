@@ -509,7 +509,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         };
 
         // Setup the result
-        result = new ByteSize();
+        result = default;
 
         // Get the index of the first non-digit character
         s = s.TrimStart(); // Protect against leading spaces
