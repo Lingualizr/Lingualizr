@@ -11,8 +11,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ApiApprover" Version="9.3.0" />
-    <PackageReference Include="DiffPlex" Version="1.7.1" />
+    <PackageReference Include="PublicApiGenerator" Version="9.3.0" />
     
     <ProjectReference Include="..\Lingualizr\Lingualizr.csproj" />
     
