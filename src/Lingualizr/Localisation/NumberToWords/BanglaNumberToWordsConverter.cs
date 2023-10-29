@@ -60,54 +60,54 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
         return Convert(number) + " তম";
     }
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
+        var numberInt = (int)number;
 
-        if (number == 0)
+        if (numberInt == 0)
         {
             return _unitsMap[0];
         }
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("ঋণাত্মক {0}", Convert(-number));
+            return string.Format("ঋণাত্মক {0}", Convert(-numberInt));
         }
 
         var parts = new List<string>();
 
-        if ((number / 10000000) > 0)
+        if ((numberInt / 10000000) > 0)
         {
-            parts.Add(string.Format("{0} কোটি", Convert(number / 10000000)));
-            number %= 10000000;
+            parts.Add(string.Format("{0} কোটি", Convert(numberInt / 10000000)));
+            numberInt %= 10000000;
         }
 
-        if ((number / 100000) > 0)
+        if ((numberInt / 100000) > 0)
         {
-            parts.Add(string.Format("{0} লক্ষ", Convert(number / 100000)));
-            number %= 100000;
+            parts.Add(string.Format("{0} লক্ষ", Convert(numberInt / 100000)));
+            numberInt %= 100000;
         }
 
-        if ((number / 1000) > 0)
+        if ((numberInt / 1000) > 0)
         {
-            parts.Add(string.Format("{0} হাজার", Convert(number / 1000)));
-            number %= 1000;
+            parts.Add(string.Format("{0} হাজার", Convert(numberInt / 1000)));
+            numberInt %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if ((numberInt / 100) > 0)
         {
-            parts.Add(string.Format("{0}", _hundredsMap[number / 100]));
-            number %= 100;
+            parts.Add(string.Format("{0}", _hundredsMap[numberInt / 100]));
+            numberInt %= 100;
         }
 
-        if (number > 0)
+        if (numberInt > 0)
         {
-            parts.Add(_unitsMap[number]);
+            parts.Add(_unitsMap[numberInt]);
         }
 
         return string.Join(" ", parts.ToArray());

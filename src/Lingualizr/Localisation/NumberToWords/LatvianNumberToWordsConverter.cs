@@ -10,15 +10,14 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] HundredsMap = { "nulle", "simt", "divsimt", "trīssimt", "četrsimt", "piecsimt", "sešsimt", "septiņsimt", "astoņsimt", "deviņsimt" };
     private static readonly string[] UnitsOrdinal = { string.Empty, "pirm", "otr", "treš", "ceturt", "piekt", "sest", "septīt", "astot", "devīt", "desmit", "vienpadsmit", "divpadsmit", "trīspadsmit", "četrpadsmit", "piecpadsmit", "sešpadsmit", "septiņpadsmit", "astoņpadsmit", "deviņpadsmit", "divdesmit" };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
         var parts = new List<string>();
-        var number = (long)input;
 
         if ((number / 1000000) > 0)
         {
@@ -91,107 +90,107 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
         return string.Join(" ", parts);
     }
 
-    public override string ConvertToOrdinal(int input, GrammaticalGender gender)
+    public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        if (input == 0)
+        if (number == 0)
         {
             return "nulle";
         }
 
         var parts = new List<string>();
 
-        if (input < 0)
+        if (number < 0)
         {
             parts.Add("mīnus");
-            input = -input;
+            number = -number;
         }
 
-        var number = (long)input;
+        var numberLong = (long)number;
 
-        if ((number / 1000000) > 0)
+        if ((numberLong / 1000000) > 0)
         {
             var millionPart = string.Empty;
-            if (number == 1000000)
+            if (numberLong == 1000000)
             {
                 millionPart = "miljon" + GetOrdinalEndingForGender(gender);
             }
             else
             {
-                millionPart = Convert(number / 1000000, GrammaticalGender.Masculine) + " miljon" + GetOrdinalEndingForGender(gender);
+                millionPart = Convert(numberLong / 1000000, GrammaticalGender.Masculine) + " miljon" + GetOrdinalEndingForGender(gender);
             }
 
-            number %= 1000000;
+            numberLong %= 1000000;
             parts.Add(millionPart);
         }
 
-        if ((number / 1000) > 0)
+        if ((numberLong / 1000) > 0)
         {
             var thousandsPart = string.Empty;
-            if ((number % 1000) == 0)
+            if ((numberLong % 1000) == 0)
             {
-                if (number == 1000)
+                if (numberLong == 1000)
                 {
                     thousandsPart = "tūkstoš" + GetOrdinalEndingForGender(gender);
                 }
                 else
                 {
-                    thousandsPart = Convert(number / 1000, GrammaticalGender.Masculine) + " tūkstoš" + GetOrdinalEndingForGender(gender);
+                    thousandsPart = Convert(numberLong / 1000, GrammaticalGender.Masculine) + " tūkstoš" + GetOrdinalEndingForGender(gender);
                 }
             }
             else
             {
-                if (number > 1000 && number < 2000)
+                if (numberLong > 1000 && numberLong < 2000)
                 {
                     thousandsPart = "tūkstoš";
                 }
                 else
                 {
-                    thousandsPart = Convert(number / 1000, GrammaticalGender.Masculine) + " tūkstoši";
+                    thousandsPart = Convert(numberLong / 1000, GrammaticalGender.Masculine) + " tūkstoši";
                 }
             }
 
             parts.Add(thousandsPart);
-            number %= 1000;
+            numberLong %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if ((numberLong / 100) > 0)
         {
             var hundredsPart = string.Empty;
-            if ((number % 100) == 0)
+            if ((numberLong % 100) == 0)
             {
-                hundredsPart = HundredsMap[ number / 100] + GetOrdinalEndingForGender(gender);
+                hundredsPart = HundredsMap[ numberLong / 100] + GetOrdinalEndingForGender(gender);
             }
             else
             {
-                if (number > 100 && number < 200)
+                if (numberLong > 100 && numberLong < 200)
                 {
                     hundredsPart = "simtu";
                 }
                 else
                 {
-                    hundredsPart = Convert(number / 100, GrammaticalGender.Masculine) + " simti";
+                    hundredsPart = Convert(numberLong / 100, GrammaticalGender.Masculine) + " simti";
                 }
             }
 
             parts.Add(hundredsPart);
-            number %= 100;
+            numberLong %= 100;
         }
 
-        if (number > 19)
+        if (numberLong > 19)
         {
-            var tensPart = TensMap[ number / 10];
-            if ((number % 10) == 0)
+            var tensPart = TensMap[ numberLong / 10];
+            if ((numberLong % 10) == 0)
             {
                 tensPart += GetOrdinalEndingForGender(gender);
             }
 
             parts.Add(tensPart);
-            number %= 10;
+            numberLong %= 10;
         }
 
-        if (number > 0)
+        if (numberLong > 0)
         {
-            parts.Add(UnitsOrdinal[number] + GetOrdinalEndingForGender(gender));
+            parts.Add(UnitsOrdinal[numberLong] + GetOrdinalEndingForGender(gender));
         }
 
         return string.Join(" ", parts);

@@ -244,9 +244,9 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return ToString(format, NumberFormatInfo.CurrentInfo);
     }
 
-    public string ToString(string format, IFormatProvider provider)
+    public string ToString(string format, IFormatProvider formatProvider)
     {
-        return ToString(format, provider, toSymbol: true);
+        return ToString(format, formatProvider, toSymbol: true);
     }
 
     private string ToString(string format, IFormatProvider provider, bool toSymbol)
@@ -337,17 +337,17 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return ToString(format, provider, toSymbol: false);
     }
 
-    public override bool Equals(object value)
+    public override bool Equals(object obj)
     {
-        if (value == null)
+        if (obj == null)
         {
             return false;
         }
 
         ByteSize other;
-        if (value is ByteSize)
+        if (obj is ByteSize)
         {
-            other = (ByteSize)value;
+            other = (ByteSize)obj;
         }
         else
         {

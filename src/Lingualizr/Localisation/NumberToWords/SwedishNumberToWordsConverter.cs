@@ -30,30 +30,30 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         new Fact { Value = 100,        Name = "hundra", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false },
     };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
+        var numberInt = (int)number;
 
-        if (number == 0)
+        if (numberInt == 0)
         {
             return UnitsMap[0];
         }
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("minus {0}", Convert(-number, gender));
+            return string.Format("minus {0}", Convert(-numberInt, gender));
         }
 
         var word = string.Empty;
 
         foreach (var m in Hunderds)
         {
-            var divided = number / m.Value;
+            var divided = numberInt / m.Value;
 
             if (divided <= 0)
             {
@@ -70,35 +70,35 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
 
             // pluralise 1M+
-            if (divided > 1 && input >= 1_000_000)
+            if (divided > 1 && number >= 1_000_000)
             {
                 word += "er";
             }
 
-            number %= m.Value;
-            if (number > 0)
+            numberInt %= m.Value;
+            if (numberInt > 0)
             {
                 word += m.Postfix;
             }
         }
 
-        if (number > 0)
+        if (numberInt > 0)
         {
-            if (number < 20)
+            if (numberInt < 20)
             {
-                if (number == 1 && gender == GrammaticalGender.Masculine)
+                if (numberInt == 1 && gender == GrammaticalGender.Masculine)
                 {
                     word += "en";
                 }
                 else
                 {
-                    word += UnitsMap[number];
+                    word += UnitsMap[numberInt];
                 }
             }
             else
             {
-                var tens = TensMap[number / 10];
-                var unit = number % 10;
+                var tens = TensMap[numberInt / 10];
+                var unit = numberInt % 10;
                 if (unit > 0)
                 {
                     var units = UnitsMap[unit];
@@ -114,9 +114,9 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return word;
     }
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        return Convert(input, GrammaticalGender.Neuter);
+        return Convert(number, GrammaticalGender.Neuter);
     }
 
     private static string[] ordinalNumbers = new[]

@@ -35,24 +35,24 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         "tmintax-il", "dsatax-il",
     };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
         bool negativeNumber = false;
 
-        if (input < 0)
+        if (number < 0)
         {
             negativeNumber = true;
-            input = input * -1;
+            number = number * -1;
         }
 
-        if (input < 1000000000)
+        if (number < 1000000000)
         {
-            return GetMillions(input, gender) + (negativeNumber ? " inqas minn żero" : string.Empty);
+            return GetMillions(number, gender) + (negativeNumber ? " inqas minn żero" : string.Empty);
         }
 
-        var billions = input / 1000000000;
+        var billions = number / 1000000000;
         var tensInBillions = billions % 100;
-        var millions = input % 1000000000;
+        var millions = number % 1000000000;
 
         var billionsText = GetPrefixText(billions, tensInBillions, "biljun", "żewġ biljuni", "biljuni", false, gender);
         var millionsText = GetMillions(millions, gender);

@@ -14,76 +14,76 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
         { 2, "kahdes" },
     };
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
+        var numberInt = (int)number;
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("miinus {0}", Convert(-number));
+            return string.Format("miinus {0}", Convert(-numberInt));
         }
 
-        if (number == 0)
+        if (numberInt == 0)
         {
             return _unitsMap[0];
         }
 
         var parts = new List<string>();
 
-        if ((number / 1000000000) > 0)
+        if ((numberInt / 1000000000) > 0)
         {
-            parts.Add(number / 1000000000 == 1
+            parts.Add(numberInt / 1000000000 == 1
                 ? "miljardi "
-                : string.Format("{0}miljardia ", Convert(number / 1000000000)));
+                : string.Format("{0}miljardia ", Convert(numberInt / 1000000000)));
 
-            number %= 1000000000;
+            numberInt %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if ((numberInt / 1000000) > 0)
         {
-            parts.Add(number / 1000000 == 1
+            parts.Add(numberInt / 1000000 == 1
                 ? "miljoona "
-                : string.Format("{0}miljoonaa ", Convert(number / 1000000)));
+                : string.Format("{0}miljoonaa ", Convert(numberInt / 1000000)));
 
-            number %= 1000000;
+            numberInt %= 1000000;
         }
 
-        if ((number / 1000) > 0)
+        if ((numberInt / 1000) > 0)
         {
-            parts.Add(number / 1000 == 1
+            parts.Add(numberInt / 1000 == 1
                 ? "tuhat "
-                : string.Format("{0}tuhatta ", Convert(number / 1000)));
+                : string.Format("{0}tuhatta ", Convert(numberInt / 1000)));
 
-            number %= 1000;
+            numberInt %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if ((numberInt / 100) > 0)
         {
-            parts.Add(number / 100 == 1
+            parts.Add(numberInt / 100 == 1
                 ? "sata"
-                : string.Format("{0}sataa", Convert(number / 100)));
+                : string.Format("{0}sataa", Convert(numberInt / 100)));
 
-            number %= 100;
+            numberInt %= 100;
         }
 
-        if (number >= 20 && (number / 10) > 0)
+        if (numberInt >= 20 && (numberInt / 10) > 0)
         {
-            parts.Add(string.Format("{0}kymmentä", Convert(number / 10)));
-            number %= 10;
+            parts.Add(string.Format("{0}kymmentä", Convert(numberInt / 10)));
+            numberInt %= 10;
         }
-        else if (number > 10 && number < 20)
+        else if (numberInt > 10 && numberInt < 20)
         {
-            parts.Add(string.Format("{0}toista", _unitsMap[number % 10]));
+            parts.Add(string.Format("{0}toista", _unitsMap[numberInt % 10]));
         }
 
-        if (number > 0 && number <= 10)
+        if (numberInt > 0 && numberInt <= 10)
         {
-            parts.Add(_unitsMap[number]);
+            parts.Add(_unitsMap[numberInt]);
         }
 
         return string.Join(string.Empty, parts).Trim();

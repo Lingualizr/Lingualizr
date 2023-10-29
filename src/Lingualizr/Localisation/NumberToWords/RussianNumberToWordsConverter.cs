@@ -15,61 +15,61 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] TensOrdinal = { string.Empty, "десят", "двадцат", "тридцат", "сороков", "пятидесят", "шестидесят", "семидесят", "восьмидесят", "девяност" };
     private static readonly string[] UnitsOrdinal = { string.Empty, "перв", "втор", "трет", "четверт", "пят", "шест", "седьм", "восьм", "девят", "десят", "одиннадцат", "двенадцат", "тринадцат", "четырнадцат", "пятнадцат", "шестнадцат", "семнадцат", "восемнадцат", "девятнадцат" };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input == 0)
+        if (number == 0)
         {
             return "ноль";
         }
 
         var parts = new List<string>();
 
-        if (input < 0)
+        if (number < 0)
         {
             parts.Add("минус");
         }
 
-        CollectParts(parts, ref input, 1000000000000000000, GrammaticalGender.Masculine, "квинтиллион", "квинтиллиона", "квинтиллионов");
-        CollectParts(parts, ref input, 1000000000000000, GrammaticalGender.Masculine, "квадриллион", "квадриллиона", "квадриллионов");
-        CollectParts(parts, ref input, 1000000000000, GrammaticalGender.Masculine, "триллион", "триллиона", "триллионов");
-        CollectParts(parts, ref input, 1000000000, GrammaticalGender.Masculine, "миллиард", "миллиарда", "миллиардов");
-        CollectParts(parts, ref input, 1000000, GrammaticalGender.Masculine, "миллион", "миллиона", "миллионов");
-        CollectParts(parts, ref input, 1000, GrammaticalGender.Feminine, "тысяча", "тысячи", "тысяч");
+        CollectParts(parts, ref number, 1000000000000000000, GrammaticalGender.Masculine, "квинтиллион", "квинтиллиона", "квинтиллионов");
+        CollectParts(parts, ref number, 1000000000000000, GrammaticalGender.Masculine, "квадриллион", "квадриллиона", "квадриллионов");
+        CollectParts(parts, ref number, 1000000000000, GrammaticalGender.Masculine, "триллион", "триллиона", "триллионов");
+        CollectParts(parts, ref number, 1000000000, GrammaticalGender.Masculine, "миллиард", "миллиарда", "миллиардов");
+        CollectParts(parts, ref number, 1000000, GrammaticalGender.Masculine, "миллион", "миллиона", "миллионов");
+        CollectParts(parts, ref number, 1000, GrammaticalGender.Feminine, "тысяча", "тысячи", "тысяч");
 
-        if (input > 0)
+        if (number > 0)
         {
-            CollectPartsUnderOneThousand(parts, input, gender);
+            CollectPartsUnderOneThousand(parts, number, gender);
         }
 
         return string.Join(" ", parts);
     }
 
-    public override string ConvertToOrdinal(int input, GrammaticalGender gender)
+    public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        if (input == 0)
+        if (number == 0)
         {
-            return "нулев" + GetEndingForGender(gender, input);
+            return "нулев" + GetEndingForGender(gender, number);
         }
 
         var parts = new List<string>();
 
-        if (input < 0)
+        if (number < 0)
         {
             parts.Add("минус");
-            input = -input;
+            number = -number;
         }
 
-        var number = (long)input;
-        CollectOrdinalParts(parts, ref number, 1000000000, GrammaticalGender.Masculine, "миллиардн" + GetEndingForGender(gender, number), "миллиард", "миллиарда", "миллиардов");
-        CollectOrdinalParts(parts, ref number, 1000000, GrammaticalGender.Masculine, "миллионн" + GetEndingForGender(gender, number), "миллион", "миллиона", "миллионов");
-        CollectOrdinalParts(parts, ref number, 1000, GrammaticalGender.Feminine, "тысячн" + GetEndingForGender(gender, number), "тысяча", "тысячи", "тысяч");
+        var numberLong = (long)number;
+        CollectOrdinalParts(parts, ref numberLong, 1000000000, GrammaticalGender.Masculine, "миллиардн" + GetEndingForGender(gender, numberLong), "миллиард", "миллиарда", "миллиардов");
+        CollectOrdinalParts(parts, ref numberLong, 1000000, GrammaticalGender.Masculine, "миллионн" + GetEndingForGender(gender, numberLong), "миллион", "миллиона", "миллионов");
+        CollectOrdinalParts(parts, ref numberLong, 1000, GrammaticalGender.Feminine, "тысячн" + GetEndingForGender(gender, numberLong), "тысяча", "тысячи", "тысяч");
 
-        if (number >= 100)
+        if (numberLong >= 100)
         {
-            var ending = GetEndingForGender(gender, number);
-            var hundreds = number / 100;
-            number %= 100;
-            if (number == 0)
+            var ending = GetEndingForGender(gender, numberLong);
+            var hundreds = numberLong / 100;
+            numberLong %= 100;
+            if (numberLong == 0)
             {
                 parts.Add(UnitsOrdinalPrefixes[hundreds] + "сот" + ending);
             }
@@ -79,12 +79,12 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             }
         }
 
-        if (number >= 20)
+        if (numberLong >= 20)
         {
-            var ending = GetEndingForGender(gender, number);
-            var tens = number / 10;
-            number %= 10;
-            if (number == 0)
+            var ending = GetEndingForGender(gender, numberLong);
+            var tens = numberLong / 10;
+            numberLong %= 10;
+            if (numberLong == 0)
             {
                 parts.Add(TensOrdinal[tens] + ending);
             }
@@ -94,9 +94,9 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             }
         }
 
-        if (number > 0)
+        if (numberLong > 0)
         {
-            parts.Add(UnitsOrdinal[number] + GetEndingForGender(gender, number));
+            parts.Add(UnitsOrdinal[numberLong] + GetEndingForGender(gender, numberLong));
         }
 
         return string.Join(" ", parts);

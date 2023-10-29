@@ -21,61 +21,61 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
         { 'ə', "inci" },
     };
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
-        if (number == 0)
+        var numberInt = (int)number;
+        if (numberInt == 0)
         {
             return _unitsMap[0];
         }
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("mənfi {0}", Convert(-number));
+            return string.Format("mənfi {0}", Convert(-numberInt));
         }
 
         var parts = new List<string>();
 
-        if ((number / 1000000000) > 0)
+        if ((numberInt / 1000000000) > 0)
         {
-            parts.Add(string.Format("{0} milyard", Convert(number / 1000000000)));
-            number %= 1000000000;
+            parts.Add(string.Format("{0} milyard", Convert(numberInt / 1000000000)));
+            numberInt %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if ((numberInt / 1000000) > 0)
         {
-            parts.Add(string.Format("{0} milyon", Convert(number / 1000000)));
-            number %= 1000000;
+            parts.Add(string.Format("{0} milyon", Convert(numberInt / 1000000)));
+            numberInt %= 1000000;
         }
 
-        var thousand = number / 1000;
+        var thousand = numberInt / 1000;
         if (thousand > 0)
         {
             parts.Add(string.Format("{0} min", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
-            number %= 1000;
+            numberInt %= 1000;
         }
 
-        var hundred = number / 100;
+        var hundred = numberInt / 100;
         if (hundred > 0)
         {
             parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
-            number %= 100;
+            numberInt %= 100;
         }
 
-        if ((number / 10) > 0)
+        if ((numberInt / 10) > 0)
         {
-            parts.Add(_tensMap[number / 10]);
-            number %= 10;
+            parts.Add(_tensMap[numberInt / 10]);
+            numberInt %= 10;
         }
 
-        if (number > 0)
+        if (numberInt > 0)
         {
-            parts.Add(_unitsMap[number]);
+            parts.Add(_unitsMap[numberInt]);
         }
 
         var toWords = string.Join(" ", parts.ToArray());

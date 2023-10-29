@@ -37,9 +37,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         "осемнадесет", "деветнадесет",
     };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        return Convert(input, gender, false);
+        return Convert(number, gender, false);
     }
 
     private string Convert(long input, GrammaticalGender gender, bool isOrdinal, bool addAnd = true)
@@ -169,9 +169,9 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         return string.Join(" ", parts);
     }
 
-    public override string ConvertToOrdinal(int input, GrammaticalGender gender)
+    public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        return Convert(input, gender, true);
+        return Convert(number, gender, true);
     }
 
     private static string GetEndingForGender(GrammaticalGender gender, long input)

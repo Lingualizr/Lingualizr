@@ -15,30 +15,30 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] _tensOrdinal = { string.Empty, "десят", "двадцят", "тридцят", "сороков", "п'ятдесят", "шістдесят", "сімдесят", "вісімдесят", "дев'яност" };
     private static readonly string[] _unitsOrdinal = { "нульов", "перш", "друг", "трет", "четверт", "п'ят", "шост", "сьом", "восьм", "дев'ят", "десят", "одинадцят", "дванадцят", "тринадцят", "чотирнадцят", "п'ятнадцят", "шістнадцят", "сімнадцят", "вісімнадцят", "дев'ятнадцят" };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input == 0)
+        if (number == 0)
         {
             return "нуль";
         }
 
         var parts = new List<string>();
 
-        if (input < 0)
+        if (number < 0)
         {
             parts.Add("мінус");
         }
 
-        CollectParts(parts, ref input, 1000000000000000000, GrammaticalGender.Masculine, "квінтильйон", "квінтильйона", "квінтильйонів");
-        CollectParts(parts, ref input, 1000000000000000, GrammaticalGender.Masculine, "квадрильйон", "квадрильйона", "квадрильйонів");
-        CollectParts(parts, ref input, 1000000000000, GrammaticalGender.Masculine, "трильйон", "трильйона", "трильйонів");
-        CollectParts(parts, ref input, 1000000000, GrammaticalGender.Masculine, "мільярд", "мільярда", "мільярдів");
-        CollectParts(parts, ref input, 1000000, GrammaticalGender.Masculine, "мільйон", "мільйона", "мільйонів");
-        CollectParts(parts, ref input, 1000, GrammaticalGender.Feminine, "тисяча", "тисячі", "тисяч");
+        CollectParts(parts, ref number, 1000000000000000000, GrammaticalGender.Masculine, "квінтильйон", "квінтильйона", "квінтильйонів");
+        CollectParts(parts, ref number, 1000000000000000, GrammaticalGender.Masculine, "квадрильйон", "квадрильйона", "квадрильйонів");
+        CollectParts(parts, ref number, 1000000000000, GrammaticalGender.Masculine, "трильйон", "трильйона", "трильйонів");
+        CollectParts(parts, ref number, 1000000000, GrammaticalGender.Masculine, "мільярд", "мільярда", "мільярдів");
+        CollectParts(parts, ref number, 1000000, GrammaticalGender.Masculine, "мільйон", "мільйона", "мільйонів");
+        CollectParts(parts, ref number, 1000, GrammaticalGender.Feminine, "тисяча", "тисячі", "тисяч");
 
-        if (input > 0)
+        if (number > 0)
         {
-            CollectPartsUnderOneThousand(parts, input, gender);
+            CollectPartsUnderOneThousand(parts, number, gender);
         }
 
         return string.Join(" ", parts);

@@ -43,15 +43,15 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         _culture = culture;
     }
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input == 0)
+        if (number == 0)
         {
             return "zero";
         }
 
         var parts = new List<string>();
-        CollectParts(parts, input, gender);
+        CollectParts(parts, number, gender);
 
         return string.Join(" ", parts);
     }

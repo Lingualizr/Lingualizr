@@ -6,21 +6,21 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class ItalianNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
+        var numberInt = (int)number;
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return "meno " + Convert(Math.Abs(number), gender);
+            return "meno " + Convert(Math.Abs(numberInt), gender);
         }
 
-        var cruncher = new ItalianCardinalNumberCruncher(number, gender);
+        var cruncher = new ItalianCardinalNumberCruncher(numberInt, gender);
 
         return cruncher.Convert();
     }

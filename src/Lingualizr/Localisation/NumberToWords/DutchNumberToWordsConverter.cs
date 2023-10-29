@@ -38,10 +38,8 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         new Fact { Value = 100,                        Name = "honderd", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false },
     };
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        var number = input;
-
         if (number == 0)
         {
             return UnitsMap[0];

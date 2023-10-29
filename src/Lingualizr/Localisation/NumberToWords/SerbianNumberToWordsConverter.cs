@@ -16,87 +16,87 @@ internal class SerbianNumberToWordsConverter : GenderlessNumberToWordsConverter
         _culture = culture;
     }
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
-        if (number == 0)
+        var numberInt = (int)number;
+        if (numberInt == 0)
         {
             return "nula";
         }
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("- {0}", Convert(-number));
+            return string.Format("- {0}", Convert(-numberInt));
         }
 
         var parts = new List<string>();
-        var billions = number / 1000000000;
+        var billions = numberInt / 1000000000;
 
         if (billions > 0)
         {
             parts.Add(Part("milijarda", "dve milijarde", "{0} milijarde", "{0} milijarda", billions));
-            number %= 1000000000;
+            numberInt %= 1000000000;
 
-            if (number > 0)
+            if (numberInt > 0)
             {
                 parts.Add(" ");
             }
         }
 
-        var millions = number / 1000000;
+        var millions = numberInt / 1000000;
 
         if (millions > 0)
         {
             parts.Add(Part("milion", "dva miliona", "{0} miliona", "{0} miliona", millions));
-            number %= 1000000;
+            numberInt %= 1000000;
 
-            if (number > 0)
+            if (numberInt > 0)
             {
                 parts.Add(" ");
             }
         }
 
-        var thousands = number / 1000;
+        var thousands = numberInt / 1000;
 
         if (thousands > 0)
         {
             parts.Add(Part("hiljadu", "dve hiljade", "{0} hiljade", "{0} hiljada", thousands));
-            number %= 1000;
+            numberInt %= 1000;
 
-            if (number > 0)
+            if (numberInt > 0)
             {
                 parts.Add(" ");
             }
         }
 
-        var hundreds = number / 100;
+        var hundreds = numberInt / 100;
 
         if (hundreds > 0)
         {
             parts.Add(Part("sto", "dvesto", "{0}sto", "{0}sto", hundreds));
-            number %= 100;
+            numberInt %= 100;
 
-            if (number > 0)
+            if (numberInt > 0)
             {
                 parts.Add(" ");
             }
         }
 
-        if (number > 0)
+        if (numberInt > 0)
         {
-            if (number < 20)
+            if (numberInt < 20)
             {
-                parts.Add(UnitsMap[number]);
+                parts.Add(UnitsMap[numberInt]);
             }
             else
             {
-                parts.Add(TensMap[number / 10]);
-                var units = number % 10;
+                parts.Add(TensMap[numberInt / 10]);
+                var units = numberInt % 10;
 
                 if (units > 0)
                 {

@@ -31,9 +31,8 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
         { 'a', "lı" },
     };
 
-    public override string Convert(long input)
+    public override string Convert(long number)
     {
-        var number = input;
         if (number == 0)
         {
             return UnitsMap[0];

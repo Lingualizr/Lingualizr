@@ -54,9 +54,9 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve",
     };
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        return Convert(input, WordForm.Normal, gender, addAnd);
+        return Convert(number, WordForm.Normal, gender, addAnd);
     }
 
     public override string Convert(long number, WordForm wordForm, GrammaticalGender gender, bool addAnd = true)

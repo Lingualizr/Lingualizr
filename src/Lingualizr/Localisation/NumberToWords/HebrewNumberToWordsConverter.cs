@@ -38,57 +38,57 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         _culture = culture;
     }
 
-    public override string Convert(long input, GrammaticalGender gender, bool addAnd = true)
+    public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        if (input > int.MaxValue || input < int.MinValue)
+        if (number > int.MaxValue || number < int.MinValue)
         {
             throw new NotImplementedException();
         }
 
-        var number = (int)input;
+        var numberInt = (int)number;
 
-        if (number < 0)
+        if (numberInt < 0)
         {
-            return string.Format("מינוס {0}", Convert(-number, gender));
+            return string.Format("מינוס {0}", Convert(-numberInt, gender));
         }
 
-        if (number == 0)
+        if (numberInt == 0)
         {
             return UnitsFeminine[0];
         }
 
         var parts = new List<string>();
-        if (number >= (int)Group.Billions)
+        if (numberInt >= (int)Group.Billions)
         {
-            ToBigNumber(number, Group.Billions, parts);
-            number %= (int)Group.Billions;
+            ToBigNumber(numberInt, Group.Billions, parts);
+            numberInt %= (int)Group.Billions;
         }
 
-        if (number >= (int)Group.Millions)
+        if (numberInt >= (int)Group.Millions)
         {
-            ToBigNumber(number, Group.Millions, parts);
-            number %= (int)Group.Millions;
+            ToBigNumber(numberInt, Group.Millions, parts);
+            numberInt %= (int)Group.Millions;
         }
 
-        if (number >= (int)Group.Thousands)
+        if (numberInt >= (int)Group.Thousands)
         {
-            ToThousands(number, parts);
-            number %= (int)Group.Thousands;
+            ToThousands(numberInt, parts);
+            numberInt %= (int)Group.Thousands;
         }
 
-        if (number >= (int)Group.Hundreds)
+        if (numberInt >= (int)Group.Hundreds)
         {
-            ToHundreds(number, parts);
-            number %= (int)Group.Hundreds;
+            ToHundreds(numberInt, parts);
+            numberInt %= (int)Group.Hundreds;
         }
 
-        if (number > 0)
+        if (numberInt > 0)
         {
             var appendAnd = parts.Count != 0;
 
-            if (number <= 10)
+            if (numberInt <= 10)
             {
-                var unit = gender == GrammaticalGender.Masculine ? UnitsMasculine[number] : UnitsFeminine[number];
+                var unit = gender == GrammaticalGender.Masculine ? UnitsMasculine[numberInt] : UnitsFeminine[numberInt];
                 if (appendAnd)
                 {
                     unit = "ו" + unit;
@@ -96,9 +96,9 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
                 parts.Add(unit);
             }
-            else if (number < 20)
+            else if (numberInt < 20)
             {
-                var unit = Convert(number % 10, gender);
+                var unit = Convert(numberInt % 10, gender);
                 unit = unit.Replace("יי", "י");
                 unit = string.Format("{0} {1}", unit, gender == GrammaticalGender.Masculine ? "עשר" : "עשרה");
                 if (appendAnd)
@@ -110,14 +110,14 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                var tenUnit = TensUnit[number / 10 - 1];
-                if (number % 10 == 0)
+                var tenUnit = TensUnit[numberInt / 10 - 1];
+                if (numberInt % 10 == 0)
                 {
                     parts.Add(tenUnit);
                 }
                 else
                 {
-                    var unit = Convert(number % 10, gender);
+                    var unit = Convert(numberInt % 10, gender);
                     parts.Add(string.Format("{0} ו{1}", tenUnit, unit));
                 }
             }
