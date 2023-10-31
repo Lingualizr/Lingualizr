@@ -124,6 +124,12 @@ public class InflectorTests
     [InlineData("customer_first_name goes here", "CustomerFirstNameGoesHere")]
     [InlineData("customer name", "CustomerName")]
     [InlineData("customer   name", "CustomerName")]
+    [InlineData("customer-first-name", "CustomerFirstName")]
+    [InlineData("_customer-first-name", "CustomerFirstName")]
+    [InlineData(" customer__first--name", "CustomerFirstName")]
+    [InlineData(" customer_  _first  --name", "CustomerFirstName")]
+    [InlineData("", "")]
+    [InlineData(" ", " ")]
     public void Pascalize(string input, string expectedOutput)
     {
         Assert.Equal(expectedOutput, input.Pascalize());
