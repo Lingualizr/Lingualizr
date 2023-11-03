@@ -1,7 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
 
-using System;
-
 using Xunit;
 
 namespace Lingualizr.Tests.Localisation.pt_BR;

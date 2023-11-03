@@ -1,6 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
 
-using System;
 using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
@@ -13,7 +12,7 @@ public class DefaultTimeOnlyHumanizeStrategy : ITimeOnlyHumanizeStrategy
     /// <summary>
     /// Calculates the distance of time in words between two provided times
     /// </summary>
-    public string Humanize(TimeOnly input, TimeOnly comparisonBase, CultureInfo culture)
+    public string Humanize(TimeOnly input, TimeOnly comparisonBase, CultureInfo? culture)
     {
         return DateTimeHumanizeAlgorithms.DefaultHumanize(input, comparisonBase, culture);
     }

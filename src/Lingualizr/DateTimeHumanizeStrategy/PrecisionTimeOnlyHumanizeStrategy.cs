@@ -1,6 +1,5 @@
 ﻿#if NET6_0_OR_GREATER
 
-using System;
 using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
@@ -24,7 +23,7 @@ public class PrecisionTimeOnlyHumanizeStrategy : ITimeOnlyHumanizeStrategy
     /// <summary>
     /// Returns localized &amp; humanized distance of time between two dates; given a specific precision.
     /// </summary>
-    public string Humanize(TimeOnly input, TimeOnly comparisonBase, CultureInfo culture)
+    public string Humanize(TimeOnly input, TimeOnly comparisonBase, CultureInfo? culture)
     {
         return DateTimeHumanizeAlgorithms.PrecisionHumanize(input, comparisonBase, _precision, culture);
     }

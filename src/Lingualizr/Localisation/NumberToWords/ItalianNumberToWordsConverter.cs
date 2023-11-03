@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.Localisation.NumberToWords.Italian;
+﻿using Lingualizr.Localisation.NumberToWords.Italian;
 
 namespace Lingualizr.Localisation.NumberToWords;
 

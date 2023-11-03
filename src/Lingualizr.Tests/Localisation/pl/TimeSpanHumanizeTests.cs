@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.Localisation;
+﻿using Lingualizr.Localisation;
 
 using Xunit;
 

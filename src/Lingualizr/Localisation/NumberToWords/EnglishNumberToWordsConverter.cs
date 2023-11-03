@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
@@ -162,7 +161,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return toWords;
     }
 
-    private static bool ExceptionNumbersToWords(long number, out string words)
+    private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)] out string words)
     {
         return OrdinalExceptions.TryGetValue(number, out words);
     }

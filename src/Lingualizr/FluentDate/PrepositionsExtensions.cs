@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr.FluentDate;
+﻿namespace Lingualizr.FluentDate;
 
 /// <summary>
 /// <see cref="DateTime"/> extensions related to spatial or temporal relations

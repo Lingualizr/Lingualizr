@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
@@ -175,7 +174,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
         return toWords;
     }
 
-    private static bool ExceptionNumbersToWords(long number, out string words)
+    private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)]out string words)
     {
         return _ordinalExceptions.TryGetValue(number, out words);
     }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Lingualizr.Localisation.NumberToWords.Romanian;
+﻿namespace Lingualizr.Localisation.NumberToWords.Romanian;
 
 internal class RomanianCardinalNumberConverter
 {
@@ -119,6 +116,11 @@ internal class RomanianCardinalNumberConverter
 
             var partToString = GetNextPartConverter(currentSet);
 
+            if (partToString is null)
+            {
+                continue;
+            }
+
             words = partToString(_threeDigitParts[i], gender).Trim() + " " + words.Trim();
         }
 
@@ -159,9 +161,9 @@ internal class RomanianCardinalNumberConverter
     /// to use for the next three-digit set.
     /// </summary>
     /// <returns>The next conversion function to use.</returns>
-    private Func<int, GrammaticalGender, string> GetNextPartConverter(ThreeDigitSets currentSet)
+    private Func<int, GrammaticalGender, string>? GetNextPartConverter(ThreeDigitSets currentSet)
     {
-        Func<int, GrammaticalGender, string> converter;
+        Func<int, GrammaticalGender, string>? converter;
 
         switch (currentSet)
         {

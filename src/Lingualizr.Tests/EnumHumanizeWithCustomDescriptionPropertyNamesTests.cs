@@ -1,5 +1,3 @@
-using System;
-
 using Lingualizr.Configuration;
 
 using Xunit;

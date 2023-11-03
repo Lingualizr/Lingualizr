@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
 internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "சுழியம்", "ஒன்று", "இரண்டு", "மூன்று", "நான்கு", "ஐந்து", "ஆறு", "ஏழு", "எட்டு", "ஒன்பது", "பத்து", "பதினொன்று", "பனிரெண்டு", "பதிமூன்று", "பதினான்கு", "பதினைந்து", "பதினாறு", "பதினேழு", "பதினெட்டு", "பத்தொன்பது" };
-    private static readonly string[] TensMap = { "சுழியம்", "பத்து", "இருப", "முப்ப", "நாற்ப", "ஐம்ப", "அறுப", "எழுப", "எண்ப", "தொண்ணூ" };
-    private static readonly string[] HundredsMap = { "நூ", "இருநூ", "முன்னூ", "நானூ", "ஐந்நூ", "அறுநூ", "எழுநூ", "எண்ணூ", "தொள்ளாயிர", };
-    private static readonly string[] ThousandsMap = { "ஆ", "இரண்டா", "மூன்றா", "நான்கா", "ஐந்தா", "ஆறா", "ஏழா", "எட்டா", "ஒன்பதா", "பத்தா", "பதினொன்றா", "பனிரெண்டா", "பதிமூன்றா", "பதினான்கா", "பதினைந்தா", "பதினாறா", "பதினேழா", "பதினெட்டா", "பத்தொன்பதா" };
+    private static readonly string[] _unitsMap = { "சுழியம்", "ஒன்று", "இரண்டு", "மூன்று", "நான்கு", "ஐந்து", "ஆறு", "ஏழு", "எட்டு", "ஒன்பது", "பத்து", "பதினொன்று", "பனிரெண்டு", "பதிமூன்று", "பதினான்கு", "பதினைந்து", "பதினாறு", "பதினேழு", "பதினெட்டு", "பத்தொன்பது" };
+    private static readonly string[] _tensMap = { "சுழியம்", "பத்து", "இருப", "முப்ப", "நாற்ப", "ஐம்ப", "அறுப", "எழுப", "எண்ப", "தொண்ணூ" };
+    private static readonly string[] _hundredsMap = { "நூ", "இருநூ", "முன்னூ", "நானூ", "ஐந்நூ", "அறுநூ", "எழுநூ", "எண்ணூ", "தொள்ளாயிர", };
+    private static readonly string[] _thousandsMap = { "ஆ", "இரண்டா", "மூன்றா", "நான்கா", "ஐந்தா", "ஆறா", "ஏழா", "எட்டா", "ஒன்பதா", "பத்தா", "பதினொன்றா", "பனிரெண்டா", "பதிமூன்றா", "பதினான்கா", "பதினைந்தா", "பதினாறா", "பதினேழா", "பதினெட்டா", "பத்தொன்பதா" };
 
-    private static readonly string[] LakhsMap = { "இலட்ச" };
+    private static readonly string[] _lakhsMap = { "இலட்ச" };
 
-    private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
     {
         { 1, "முதலாவது" },
         { 2, "இரண்டாவது" },
@@ -127,12 +126,12 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                return UnitsMap[number] + "வது";
+                return _unitsMap[number] + "வது";
             }
         }
         else
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
     }
 
@@ -145,7 +144,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
         else if ((number >= 20) && (number <= 99))
         {
-            var lastPart = TensMap[number / 10];
+            var lastPart = _tensMap[number / 10];
             var quot = number / 10;
             if ((number % 10) > 0)
             {
@@ -210,15 +209,15 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         if (num_above_10 >= 20)
         {
             local_word = GetTensValue(num_above_10, false, false);
-            local_word += " " + LakhsMap[0];
+            local_word += " " + _lakhsMap[0];
         }
         else if (num_above_10 == 1)
         {
-            local_word = "ஒரு " + LakhsMap[0];
+            local_word = "ஒரு " + _lakhsMap[0];
         }
         else
         {
-            local_word += GetTensValue(number / 100000, isOrdinal) + " " + LakhsMap[0];
+            local_word += GetTensValue(number / 100000, isOrdinal) + " " + _lakhsMap[0];
         }
 
         if (number % 1000000 == 0 || number % 100000 == 0)
@@ -300,12 +299,12 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else if (num_above_10 % 10 > 1)
             {
-                local_word += ThousandsMap[(num_above_10 % 10) - 1];
+                local_word += _thousandsMap[(num_above_10 % 10) - 1];
             }
         }
         else
         {
-            local_word += ThousandsMap[(number / 1000) - 1];
+            local_word += _thousandsMap[(number / 1000) - 1];
         }
 
         number %= 1000;
@@ -327,7 +326,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         string local_word = string.Empty;
 
         {
-            local_word = HundredsMap[(number / 100) - 1];
+            local_word = _hundredsMap[(number / 100) - 1];
             if (number / 100 == 9)
             {
                 if (number % 100 == 0)
@@ -365,8 +364,8 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         return toWords;
     }
 
-    private static bool ExceptionNumbersToWords(long number, out string words)
+    private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)] out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 }

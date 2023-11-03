@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Lingualizr.Localisation.CollectionFormatters;
+﻿namespace Lingualizr.Localisation.CollectionFormatters;
 
 internal class DefaultCollectionFormatter : ICollectionFormatter
 {
@@ -15,7 +11,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
 
     public virtual string Humanize<T>(IEnumerable<T> collection)
     {
-        return Humanize(collection, o => o?.ToString(), DefaultSeparator);
+        return Humanize(collection, o => o?.ToString()!, DefaultSeparator);
     }
 
     public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter)
@@ -30,7 +26,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
 
     public virtual string Humanize<T>(IEnumerable<T> collection, string separator)
     {
-        return Humanize(collection, o => o?.ToString(), separator);
+        return Humanize(collection, o => o?.ToString()!, separator);
     }
 
     public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter, string separator)
@@ -67,7 +63,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
             separator);
     }
 
-    private string HumanizeDisplayStrings(IEnumerable<string> strings, string separator)
+    private string HumanizeDisplayStrings(IEnumerable<string?> strings, string separator)
     {
         var itemsArray = strings
             .Select(item => item == null ? string.Empty : item.Trim())

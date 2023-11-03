@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr.Localisation.DateToOrdinalWords;
+﻿namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 /// <summary>
 /// The interface used to localise the ToOrdinalWords method.

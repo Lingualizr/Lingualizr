@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.Localisation.NumberToWords.Romanian;
+﻿using Lingualizr.Localisation.NumberToWords.Romanian;
 
 namespace Lingualizr.Localisation.NumberToWords;
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr.Localisation;
+﻿namespace Lingualizr.Localisation;
 
 /// <summary>
 ///

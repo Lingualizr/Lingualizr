@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Lingualizr.Configuration;
+﻿using Lingualizr.Configuration;
 
 namespace Lingualizr;
 
