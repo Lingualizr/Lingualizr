@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 
 namespace Lingualizr.Localisation.Formatters;
 
@@ -17,7 +15,7 @@ internal class IcelandicFormatter : DefaultFormatter
 
     public override string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)
     {
-        return base.DataUnitHumanize(dataUnit, count, toSymbol)?.TrimEnd('s');
+        return base.DataUnitHumanize(dataUnit, count, toSymbol).TrimEnd('s');
     }
 
     protected override string Format(string resourceKey, int number, bool toWords = false)

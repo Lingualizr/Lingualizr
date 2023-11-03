@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
 
@@ -11,5 +10,5 @@ public interface IDateTimeHumanizeStrategy
     /// <summary>
     /// Calculates the distance of time in words between two provided dates used for DateTime.Humanize
     /// </summary>
-    string Humanize(DateTime input, DateTime comparisonBase, CultureInfo culture);
+    string Humanize(DateTime input, DateTime comparisonBase, CultureInfo? culture);
 }

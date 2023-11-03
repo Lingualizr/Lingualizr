@@ -1,4 +1,3 @@
-using System;
 using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
@@ -22,7 +21,7 @@ public class PrecisionDateTimeOffsetHumanizeStrategy : IDateTimeOffsetHumanizeSt
     /// <summary>
     /// Returns localized &amp; humanized distance of time between two dates; given a specific precision.
     /// </summary>
-    public string Humanize(DateTimeOffset input, DateTimeOffset comparisonBase, CultureInfo culture)
+    public string Humanize(DateTimeOffset input, DateTimeOffset comparisonBase, CultureInfo? culture)
     {
         return DateTimeHumanizeAlgorithms.PrecisionHumanize(input.UtcDateTime, comparisonBase.UtcDateTime, _precision, culture);
     }

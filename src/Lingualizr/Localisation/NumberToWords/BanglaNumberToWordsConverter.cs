@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
@@ -113,7 +112,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
         return string.Join(" ", parts.ToArray());
     }
 
-    private static bool ExceptionNumbersToWords(int number, out string words)
+    private static bool ExceptionNumbersToWords(int number, [MaybeNullWhen(false)] out string words)
     {
         return _ordinalExceptions.TryGetValue(number, out words);
     }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Lingualizr.Localisation.NumberToWords.Italian;
+﻿namespace Lingualizr.Localisation.NumberToWords.Italian;
 
 internal class ItalianCardinalNumberCruncher
 {
@@ -26,6 +23,11 @@ internal class ItalianCardinalNumberCruncher
         foreach (var part in _threeDigitParts)
         {
             var partToString = GetNextPartConverter();
+
+            if (partToString is null)
+            {
+                continue;
+            }
 
             words = partToString(part) + words;
         }
@@ -68,9 +70,9 @@ internal class ItalianCardinalNumberCruncher
     /// for the next three-digit set.
     /// </summary>
     /// <returns>The next conversion function to use.</returns>
-    public Func<int, string> GetNextPartConverter()
+    public Func<int, string>? GetNextPartConverter()
     {
-        Func<int, string> converter;
+        Func<int, string>? converter;
 
         switch (_nextSet)
         {

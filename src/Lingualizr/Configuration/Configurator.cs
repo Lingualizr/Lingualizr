@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Reflection;
 
 using Lingualizr.DateTimeHumanizeStrategy;
@@ -101,7 +100,7 @@ public static class Configurator
     /// The formatter to be used
     /// </summary>
     /// <param name="culture">The culture to retrieve formatter for. Null means that current thread's UI culture should be used.</param>
-    internal static IFormatter GetFormatter(CultureInfo culture)
+    internal static IFormatter GetFormatter(CultureInfo? culture)
     {
         return Formatters.ResolveForCulture(culture);
     }
@@ -110,7 +109,7 @@ public static class Configurator
     /// The converter to be used
     /// </summary>
     /// <param name="culture">The culture to retrieve number to words converter for. Null means that current thread's UI culture should be used.</param>
-    internal static INumberToWordsConverter GetNumberToWordsConverter(CultureInfo culture)
+    internal static INumberToWordsConverter GetNumberToWordsConverter(CultureInfo? culture)
     {
         return NumberToWordsConverters.ResolveForCulture(culture);
     }

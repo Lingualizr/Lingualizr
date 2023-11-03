@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Contains extension methods for dehumanizing Enum string values.
@@ -16,10 +13,10 @@ public static class EnumDehumanizeExtensions
     /// <exception cref="ArgumentException">If TTargetEnum is not an enum</exception>
     /// <exception cref="NoMatchFoundException">Couldn't find any enum member that matches the string</exception>
     /// <returns></returns>
-    public static TTargetEnum DehumanizeTo<TTargetEnum>(this string input)
+    public static TTargetEnum? DehumanizeTo<TTargetEnum>(this string input)
         where TTargetEnum : struct, IComparable, IFormattable
     {
-        return (TTargetEnum)DehumanizeToPrivate(input, typeof(TTargetEnum), OnNoMatch.ThrowsException);
+        return (TTargetEnum?)DehumanizeToPrivate(input, typeof(TTargetEnum), OnNoMatch.ThrowsException);
     }
 
     /// <summary>
@@ -31,12 +28,12 @@ public static class EnumDehumanizeExtensions
     /// <returns></returns>
     /// <exception cref="NoMatchFoundException">Couldn't find any enum member that matches the string</exception>
     /// <exception cref="ArgumentException">If targetEnum is not an enum</exception>
-    public static Enum DehumanizeTo(this string input, Type targetEnum, OnNoMatch onNoMatch = OnNoMatch.ThrowsException)
+    public static Enum? DehumanizeTo(this string input, Type targetEnum, OnNoMatch onNoMatch = OnNoMatch.ThrowsException)
     {
-        return (Enum)DehumanizeToPrivate(input, targetEnum, onNoMatch);
+        return (Enum?)DehumanizeToPrivate(input, targetEnum, onNoMatch);
     }
 
-    private static object DehumanizeToPrivate(string input, Type targetEnum, OnNoMatch onNoMatch)
+    private static object? DehumanizeToPrivate(string input, Type targetEnum, OnNoMatch onNoMatch)
     {
         var match = Enum.GetValues(targetEnum).Cast<Enum>().FirstOrDefault(value => string.Equals(value.Humanize(), input, StringComparison.OrdinalIgnoreCase));
 

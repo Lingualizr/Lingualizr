@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.FluentDate;
+﻿using Lingualizr.FluentDate;
 
 using Xunit;
 

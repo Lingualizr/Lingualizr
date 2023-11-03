@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using Lingualizr.Bytes;
+﻿using Lingualizr.Bytes;
 
 using Xunit;
 

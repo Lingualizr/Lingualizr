@@ -20,9 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Globalization;
-using System.Linq;
 
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
@@ -73,7 +71,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
     public string LargestWholeNumberSymbol => GetLargestWholeNumberSymbol();
 
-    public string GetLargestWholeNumberSymbol(IFormatProvider provider = null)
+    public string GetLargestWholeNumberSymbol(IFormatProvider? provider = null)
     {
         var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
@@ -108,7 +106,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
     public string LargestWholeNumberFullWord => GetLargestWholeNumberFullWord();
 
-    public string GetLargestWholeNumberFullWord(IFormatProvider provider = null)
+    public string GetLargestWholeNumberFullWord(IFormatProvider? provider = null)
     {
         var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
@@ -229,7 +227,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return ToString(NumberFormatInfo.CurrentInfo);
     }
 
-    public string ToString(IFormatProvider provider)
+    public string ToString(IFormatProvider? provider)
     {
         if (provider == null)
         {
@@ -244,12 +242,12 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return ToString(format, NumberFormatInfo.CurrentInfo);
     }
 
-    public string ToString(string format, IFormatProvider formatProvider)
+    public string ToString(string? format, IFormatProvider? formatProvider)
     {
         return ToString(format, formatProvider, toSymbol: true);
     }
 
-    private string ToString(string format, IFormatProvider provider, bool toSymbol)
+    private string ToString(string? format, IFormatProvider? provider, bool toSymbol)
     {
         if (format == null)
         {
@@ -333,12 +331,12 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     /// tera) used is the largest metric prefix such that the corresponding
     /// value is greater than or equal to one.
     /// </summary>
-    public string ToFullWords(string format = null, IFormatProvider provider = null)
+    public string ToFullWords(string? format = null, IFormatProvider? provider = null)
     {
         return ToString(format, provider, toSymbol: false);
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj == null)
         {
@@ -368,7 +366,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return Bits.GetHashCode();
     }
 
-    public int CompareTo(object obj)
+    public int CompareTo(object? obj)
     {
         if (obj == null)
         {
@@ -488,7 +486,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return TryParse(s, null, out result);
     }
 
-    public static bool TryParse(string s, IFormatProvider formatProvider, out ByteSize result)
+    public static bool TryParse(string s, IFormatProvider? formatProvider, out ByteSize result)
     {
         // Arg checking
         if (string.IsNullOrWhiteSpace(s))
@@ -589,7 +587,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return true;
     }
 
-    private static NumberFormatInfo GetNumberFormatInfo(IFormatProvider formatProvider)
+    private static NumberFormatInfo GetNumberFormatInfo(IFormatProvider? formatProvider)
     {
         if (formatProvider is NumberFormatInfo numberFormat)
         {
@@ -606,7 +604,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return Parse(s, null);
     }
 
-    public static ByteSize Parse(string s, IFormatProvider formatProvider)
+    public static ByteSize Parse(string s, IFormatProvider? formatProvider)
     {
         if (s == null)
         {

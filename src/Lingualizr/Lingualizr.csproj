@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">  
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>    
+  <PropertyGroup>  
     <Authors>Stefan Nikolei</Authors>
     <PackageLicense>https://raw.githubusercontent.com/Lingualizr/Lingualizr/main/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/Lingualizr/Lingualizr</PackageProjectUrl>

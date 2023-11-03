@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.Transformer;
+﻿using Lingualizr.Transformer;
 
 namespace Lingualizr;
 
