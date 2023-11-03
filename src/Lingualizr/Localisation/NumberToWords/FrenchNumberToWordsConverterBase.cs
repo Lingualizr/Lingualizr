@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Lingualizr.Localisation.NumberToWords;
+﻿namespace Lingualizr.Localisation.NumberToWords;
 
 internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWordsConverter
 {

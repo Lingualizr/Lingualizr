@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Lingualizr.Localisation.NumberToWords.Romanian;
+﻿namespace Lingualizr.Localisation.NumberToWords.Romanian;
 
 internal class RomanianOrdinalNumberConverter
 {

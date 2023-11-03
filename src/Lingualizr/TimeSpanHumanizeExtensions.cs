@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
@@ -29,7 +26,7 @@ public static class TimeSpanHumanizeExtensions
     /// <param name="collectionSeparator">The separator to use when combining humanized time parts. If null, the default collection formatter for the current culture is used.</param>
     /// <param name="toWords">Uses words instead of numbers if true. E.g. one day.</param>
     /// <returns></returns>
-    public static string Humanize(this TimeSpan timeSpan, int precision = 1, CultureInfo culture = null, TimeUnit maxUnit = TimeUnit.Week, TimeUnit minUnit = TimeUnit.Millisecond, string collectionSeparator = ", ", bool toWords = false)
+    public static string Humanize(this TimeSpan timeSpan, int precision = 1, CultureInfo? culture = null, TimeUnit maxUnit = TimeUnit.Week, TimeUnit minUnit = TimeUnit.Millisecond, string collectionSeparator = ", ", bool toWords = false)
     {
         return Humanize(timeSpan, precision, false, culture, maxUnit, minUnit, collectionSeparator, toWords);
     }
@@ -46,7 +43,7 @@ public static class TimeSpanHumanizeExtensions
     /// <param name="collectionSeparator">The separator to use when combining humanized time parts. If null, the default collection formatter for the current culture is used.</param>
     /// <param name="toWords">Uses words instead of numbers if true. E.g. one day.</param>
     /// <returns></returns>
-    public static string Humanize(this TimeSpan timeSpan, int precision, bool countEmptyUnits, CultureInfo culture = null, TimeUnit maxUnit = TimeUnit.Week, TimeUnit minUnit = TimeUnit.Millisecond, string collectionSeparator = ", ", bool toWords = false)
+    public static string Humanize(this TimeSpan timeSpan, int precision, bool countEmptyUnits, CultureInfo? culture = null, TimeUnit maxUnit = TimeUnit.Week, TimeUnit minUnit = TimeUnit.Millisecond, string collectionSeparator = ", ", bool toWords = false)
     {
         var timeParts = CreateTheTimePartsWithUpperAndLowerLimits(timeSpan, culture, maxUnit, minUnit, toWords);
         timeParts = SetPrecisionOfTimeSpan(timeParts, precision, countEmptyUnits);
@@ -54,7 +51,7 @@ public static class TimeSpanHumanizeExtensions
         return ConcatenateTimeSpanParts(timeParts, culture, collectionSeparator);
     }
 
-    private static IEnumerable<string> CreateTheTimePartsWithUpperAndLowerLimits(TimeSpan timespan, CultureInfo culture, TimeUnit maxUnit, TimeUnit minUnit, bool toWords = false)
+    private static IEnumerable<string> CreateTheTimePartsWithUpperAndLowerLimits(TimeSpan timespan, CultureInfo? culture, TimeUnit maxUnit, TimeUnit minUnit, bool toWords = false)
     {
         var cultureFormatter = Configurator.GetFormatter(culture);
         var firstValueFound = false;
@@ -68,7 +65,7 @@ public static class TimeSpanHumanizeExtensions
             if (timepart != null || firstValueFound)
             {
                 firstValueFound = true;
-                timeParts.Add(timepart);
+                timeParts.Add(timepart!);
             }
         }
 
@@ -88,7 +85,7 @@ public static class TimeSpanHumanizeExtensions
         return enumTypeEnumerator.Reverse();
     }
 
-    private static string GetTimeUnitPart(TimeUnit timeUnitToGet, TimeSpan timespan, TimeUnit maximumTimeUnit, TimeUnit minimumTimeUnit, IFormatter cultureFormatter, bool toWords = false)
+    private static string? GetTimeUnitPart(TimeUnit timeUnitToGet, TimeSpan timespan, TimeUnit maximumTimeUnit, TimeUnit minimumTimeUnit, IFormatter cultureFormatter, bool toWords = false)
     {
         if (timeUnitToGet <= maximumTimeUnit && timeUnitToGet >= minimumTimeUnit)
         {
@@ -187,7 +184,7 @@ public static class TimeSpanHumanizeExtensions
         return timeNumberOfUnits;
     }
 
-    private static string BuildFormatTimePart(IFormatter cultureFormatter, TimeUnit timeUnitType, int amountOfTimeUnits, bool toWords = false)
+    private static string? BuildFormatTimePart(IFormatter cultureFormatter, TimeUnit timeUnitType, int amountOfTimeUnits, bool toWords = false)
     {
         // Always use positive units to account for negative timespans
         return amountOfTimeUnits != 0
@@ -221,7 +218,7 @@ public static class TimeSpanHumanizeExtensions
         return timeParts;
     }
 
-    private static string ConcatenateTimeSpanParts(IEnumerable<string> timeSpanParts, CultureInfo culture, string collectionSeparator)
+    private static string ConcatenateTimeSpanParts(IEnumerable<string> timeSpanParts, CultureInfo? culture, string? collectionSeparator)
     {
         if (collectionSeparator == null)
         {

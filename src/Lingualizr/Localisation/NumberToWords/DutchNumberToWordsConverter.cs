@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Lingualizr.Localisation.NumberToWords;
+﻿namespace Lingualizr.Localisation.NumberToWords;
 
 /// <summary>
 /// Dutch spelling of numbers is not really officially regulated.
@@ -18,16 +15,16 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         public long Value { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public string Prefix { get; set; }
+        public string Prefix { get; set; } = null!;
 
-        public string Postfix { get; set; }
+        public string Postfix { get; set; } = null!;
 
         public bool DisplayOneUnit { get; set; }
     }
 
-    private static readonly Fact[] Hunderds =
+    private static readonly Fact[] _hunderds =
     {
         new Fact { Value = 1_000_000_000_000_000_000L, Name = "triljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
         new Fact { Value = 1_000_000_000_000_000L,     Name = "biljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
@@ -52,7 +49,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var word = string.Empty;
 
-        foreach (var m in Hunderds)
+        foreach (var m in _hunderds)
         {
             var divided = number / m.Value;
 

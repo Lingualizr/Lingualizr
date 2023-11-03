@@ -13,5 +13,5 @@ public interface ICulturedStringTransformer : IStringTransformer
     /// <param name="input">String to be transformed</param>
     /// <param name="culture">The culture</param>
     /// <returns></returns>
-    string Transform(string input, CultureInfo culture);
+    string Transform(string input, CultureInfo? culture);
 }

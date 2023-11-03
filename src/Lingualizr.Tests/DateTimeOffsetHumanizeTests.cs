@@ -1,6 +1,4 @@
-﻿using System;
-
-using Lingualizr.Configuration;
+﻿using Lingualizr.Configuration;
 using Lingualizr.DateTimeHumanizeStrategy;
 
 using Xunit;

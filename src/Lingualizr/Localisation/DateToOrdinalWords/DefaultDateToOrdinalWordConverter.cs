@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr.Localisation.DateToOrdinalWords;
+﻿namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 internal class DefaultDateToOrdinalWordConverter : IDateToOrdinalWordConverter
 {

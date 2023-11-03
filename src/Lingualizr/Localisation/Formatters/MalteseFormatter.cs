@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Lingualizr.Localisation.Formatters;
+﻿namespace Lingualizr.Localisation.Formatters;
 
 internal class MalteseFormatter : DefaultFormatter
 {

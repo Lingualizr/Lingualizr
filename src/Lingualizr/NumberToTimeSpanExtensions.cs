@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Number to TimeSpan extensions

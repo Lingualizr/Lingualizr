@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Flags for formatting the metric representation of numerals.

@@ -1,28 +1,26 @@
-﻿using System;
-
-namespace Lingualizr.Localisation.NumberToWords;
+﻿namespace Lingualizr.Localisation.NumberToWords;
 
 internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton" };
-    private static readonly string[] TensMap = { "noll", "tio", "tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio", "hundra" };
+    private static readonly string[] _unitsMap = { "noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton" };
+    private static readonly string[] _tensMap = { "noll", "tio", "tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio", "hundra" };
 
     private class Fact
     {
         public int Value { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
-        public string Prefix { get; set; }
+        public string Prefix { get; set; } = null!;
 
-        public string Postfix { get; set; }
+        public string Postfix { get; set; } = null!;
 
         public bool DisplayOneUnit { get; set; }
 
         public GrammaticalGender Gender { get; set; } = GrammaticalGender.Neuter;
     }
 
-    private static readonly Fact[] Hunderds =
+    private static readonly Fact[] _hunderds =
     {
         new Fact { Value = 1000000000, Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
         new Fact { Value = 1000000,    Name = "miljon", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
@@ -41,7 +39,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (numberInt == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (numberInt < 0)
@@ -51,7 +49,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var word = string.Empty;
 
-        foreach (var m in Hunderds)
+        foreach (var m in _hunderds)
         {
             var divided = numberInt / m.Value;
 
@@ -92,16 +90,16 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
                 }
                 else
                 {
-                    word += UnitsMap[numberInt];
+                    word += _unitsMap[numberInt];
                 }
             }
             else
             {
-                var tens = TensMap[numberInt / 10];
+                var tens = _tensMap[numberInt / 10];
                 var unit = numberInt % 10;
                 if (unit > 0)
                 {
-                    var units = UnitsMap[unit];
+                    var units = _unitsMap[unit];
                     word += tens + units;
                 }
                 else
@@ -119,7 +117,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return Convert(number, GrammaticalGender.Neuter);
     }
 
-    private static string[] ordinalNumbers = new[]
+    private static string[] _ordinalNumbers = new[]
     {
         "nollte",
         "första",
@@ -155,13 +153,13 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number <= 20)
         {
-            return ordinalNumbers[number];
+            return _ordinalNumbers[number];
         }
 
         // 21+
         if (number <= 100)
         {
-            var tens = TensMap[number / 10];
+            var tens = _tensMap[number / 10];
             var unit = number % 10;
             if (unit > 0)
             {
@@ -180,7 +178,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         // 101+
-        foreach (var m in Hunderds)
+        foreach (var m in _hunderds)
         {
             var divided = number / m.Value;
 

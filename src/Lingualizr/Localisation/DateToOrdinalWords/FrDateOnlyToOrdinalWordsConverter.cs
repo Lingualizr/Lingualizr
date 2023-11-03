@@ -1,6 +1,4 @@
 ﻿#if NET6_0_OR_GREATER
-using System;
-
 namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 internal class FrDateOnlyToOrdinalWordsConverter : DefaultDateOnlyToOrdinalWordConverter

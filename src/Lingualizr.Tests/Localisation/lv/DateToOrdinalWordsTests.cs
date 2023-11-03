@@ -1,6 +1,4 @@
-﻿using System;
-
-using Xunit;
+﻿using Xunit;
 
 namespace Lingualizr.Tests.Localisation.lv;
 

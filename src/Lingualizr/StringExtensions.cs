@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Extension methods for String type.

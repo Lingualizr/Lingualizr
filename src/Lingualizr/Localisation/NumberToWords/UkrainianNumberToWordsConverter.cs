@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Lingualizr.Localisation.GrammaticalNumber;
+﻿using Lingualizr.Localisation.GrammaticalNumber;
 
 namespace Lingualizr.Localisation.NumberToWords;
 

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Contains extension methods for dehumanizing strings.

@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
 internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "null", "en", "to", "tre", "fire", "fem", "seks", "sju", "åtte", "ni", "ti", "elleve", "tolv", "tretten", "fjorten", "femten", "seksten", "sytten", "atten", "nitten" };
-    private static readonly string[] TensMap = { "null", "ti", "tjue", "tretti", "førti", "femti", "seksti", "sytti", "åtti", "nitti" };
+    private static readonly string[] _unitsMap = { "null", "en", "to", "tre", "fire", "fem", "seks", "sju", "åtte", "ni", "ti", "elleve", "tolv", "tretten", "fjorten", "femten", "seksten", "sytten", "atten", "nitten" };
+    private static readonly string[] _tensMap = { "null", "ti", "tjue", "tretti", "førti", "femti", "seksti", "sytti", "åtti", "nitti" };
 
-    private static readonly Dictionary<int, string> OrdinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new()
     {
         { 0, "nullte" },
         { 1, "første" },
@@ -117,7 +116,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             }
             else
             {
-                var lastPart = TensMap[number / 10];
+                var lastPart = _tensMap[number / 10];
                 if ((number % 10) > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
@@ -150,22 +149,22 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             }
             else if (number < 13)
             {
-                return UnitsMap[number].TrimEnd('e') + "ende";
+                return _unitsMap[number].TrimEnd('e') + "ende";
             }
             else
             {
-                return UnitsMap[number] + "de";
+                return _unitsMap[number] + "de";
             }
         }
         else
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
     }
 
-    private static bool ExceptionNumbersToWords(int number, out string words)
+    private static bool ExceptionNumbersToWords(int number, [MaybeNullWhen(false)] out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 
     private string Part(string pluralFormat, string singular, int number, bool postfixSpace = false)

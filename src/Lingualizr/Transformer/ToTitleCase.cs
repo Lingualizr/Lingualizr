@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Lingualizr.Transformer;
@@ -12,7 +10,7 @@ internal class ToTitleCase : ICulturedStringTransformer
         return Transform(input, null);
     }
 
-    public string Transform(string input, CultureInfo culture)
+    public string Transform(string input, CultureInfo? culture)
     {
         culture ??= CultureInfo.CurrentCulture;
 

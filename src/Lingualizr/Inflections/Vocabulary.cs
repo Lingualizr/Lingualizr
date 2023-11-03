@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Lingualizr.Inflections;
 
@@ -96,7 +95,8 @@ public class Vocabulary
             return word;
         }
 
-        return result;
+        // TODO: Make better check, instead of discard
+        return result!;
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public class Vocabulary
         return result ?? word;
     }
 
-    private string ApplyRules(IList<Rule> rules, string word, bool skipFirstRule)
+    private string? ApplyRules(IList<Rule> rules, string? word, bool skipFirstRule)
     {
         if (word == null)
         {
@@ -175,7 +175,7 @@ public class Vocabulary
     /// <summary>
     /// If the word is the letter s, singular or plural, return the letter s singular
     /// </summary>
-    private string LetterS(string word)
+    private string? LetterS(string word)
     {
         var s = _letterS.Match(word);
         return s.Groups.Count > 1 ? s.Groups[1].Value : null;
@@ -192,7 +192,7 @@ public class Vocabulary
             _replacement = replacement;
         }
 
-        public string Apply(string word)
+        public string? Apply(string word)
         {
             if (!_regex.IsMatch(word))
             {

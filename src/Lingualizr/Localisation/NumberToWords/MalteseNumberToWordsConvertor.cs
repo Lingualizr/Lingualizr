@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Lingualizr.Localisation.NumberToWords;
+﻿namespace Lingualizr.Localisation.NumberToWords;
 
 internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 {

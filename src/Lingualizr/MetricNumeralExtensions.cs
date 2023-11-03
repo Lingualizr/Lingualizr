@@ -21,10 +21,6 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Lingualizr;
 
 /// <summary>
@@ -396,7 +392,7 @@ public static class MetricNumeralExtensions
 
     private struct UnitPrefix
     {
-        private readonly string _longScaleWord;
+        private readonly string? _longScaleWord;
 
         public string Name { get; }
 
@@ -404,7 +400,7 @@ public static class MetricNumeralExtensions
 
         public string LongScaleWord => _longScaleWord ?? ShortScaleWord;
 
-        public UnitPrefix(string name, string shortScaleWord, string longScaleWord = null)
+        public UnitPrefix(string name, string shortScaleWord, string? longScaleWord = null)
         {
             Name = name;
             ShortScaleWord = shortScaleWord;

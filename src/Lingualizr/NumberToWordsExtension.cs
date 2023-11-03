@@ -15,7 +15,7 @@ public static class NumberToWordsExtension
     /// <param name="number">Number to be turned to ordinal words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToOrdinalWords(this int number, CultureInfo culture = null)
+    public static string ToOrdinalWords(this int number, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).ConvertToOrdinal(number);
     }
@@ -34,7 +34,7 @@ public static class NumberToWordsExtension
     /// <param name="wordForm">Form of the word, i.e. abbreviation</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted into ordinal words</returns>
-    public static string ToOrdinalWords(this int number, WordForm wordForm, CultureInfo culture = null)
+    public static string ToOrdinalWords(this int number, WordForm wordForm, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).ConvertToOrdinal(number, wordForm);
     }
@@ -48,7 +48,7 @@ public static class NumberToWordsExtension
     /// <param name="gender">The grammatical gender to use for output words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToOrdinalWords(this int number, GrammaticalGender gender, CultureInfo culture = null)
+    public static string ToOrdinalWords(this int number, GrammaticalGender gender, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).ConvertToOrdinal(number, gender);
     }
@@ -70,7 +70,7 @@ public static class NumberToWordsExtension
     /// <param name="wordForm">Form of the word, i.e. abbreviation</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted into ordinal words</returns>
-    public static string ToOrdinalWords(this int number, GrammaticalGender gender, WordForm wordForm, CultureInfo culture = null)
+    public static string ToOrdinalWords(this int number, GrammaticalGender gender, WordForm wordForm, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).ConvertToOrdinal(number, gender, wordForm);
     }
@@ -81,7 +81,7 @@ public static class NumberToWordsExtension
     /// <param name="number">Number to be turned to tuple</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToTuple(this int number, CultureInfo culture = null)
+    public static string ToTuple(this int number, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).ConvertToTuple(number);
     }
@@ -92,7 +92,7 @@ public static class NumberToWordsExtension
     /// <param name="number">Number to be turned to words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToWords(this int number, CultureInfo culture = null)
+    public static string ToWords(this int number, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(culture);
     }
@@ -111,7 +111,7 @@ public static class NumberToWordsExtension
     /// <param name="wordForm">Form of the word, i.e. abbreviation</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted to words</returns>
-    public static string ToWords(this int number, WordForm wordForm, CultureInfo culture = null)
+    public static string ToWords(this int number, WordForm wordForm, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(wordForm, culture);
     }
@@ -123,7 +123,7 @@ public static class NumberToWordsExtension
     /// <param name="addAnd">To add 'and' before the last number.</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToWords(this int number, bool addAnd, CultureInfo culture = null)
+    public static string ToWords(this int number, bool addAnd, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(culture, addAnd);
     }
@@ -143,7 +143,7 @@ public static class NumberToWordsExtension
     /// <param name="wordForm">Form of the word, i.e. abbreviation</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted to words</returns>
-    public static string ToWords(this int number, bool addAnd, WordForm wordForm, CultureInfo culture = null)
+    public static string ToWords(this int number, bool addAnd, WordForm wordForm, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(wordForm, culture, addAnd);
     }
@@ -167,7 +167,7 @@ public static class NumberToWordsExtension
     /// <param name="gender">The grammatical gender to use for output words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToWords(this int number, GrammaticalGender gender, CultureInfo culture = null)
+    public static string ToWords(this int number, GrammaticalGender gender, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(gender, culture);
     }
@@ -188,7 +188,7 @@ public static class NumberToWordsExtension
     /// <param name="gender">The grammatical gender to use for output words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted to words</returns>
-    public static string ToWords(this int number, WordForm wordForm, GrammaticalGender gender, CultureInfo culture = null)
+    public static string ToWords(this int number, WordForm wordForm, GrammaticalGender gender, CultureInfo? culture = null)
     {
         return ((long)number).ToWords(wordForm, gender, culture);
     }
@@ -200,7 +200,7 @@ public static class NumberToWordsExtension
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <param name="addAnd">Whether "and" should be included or not.</param>
     /// <returns></returns>
-    public static string ToWords(this long number, CultureInfo culture = null, bool addAnd = true)
+    public static string ToWords(this long number, CultureInfo? culture = null, bool addAnd = true)
     {
         return Configurator.GetNumberToWordsConverter(culture).Convert(number, addAnd);
     }
@@ -220,7 +220,7 @@ public static class NumberToWordsExtension
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <param name="addAnd">To add 'and' before the last number</param>
     /// <returns>The number converted to words</returns>
-    public static string ToWords(this long number, WordForm wordForm, CultureInfo culture = null, bool addAnd = false)
+    public static string ToWords(this long number, WordForm wordForm, CultureInfo? culture = null, bool addAnd = false)
     {
         return Configurator.GetNumberToWordsConverter(culture).Convert(number, addAnd, wordForm);
     }
@@ -245,7 +245,7 @@ public static class NumberToWordsExtension
     /// <param name="gender">The grammatical gender to use for output words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns></returns>
-    public static string ToWords(this long number, GrammaticalGender gender, CultureInfo culture = null)
+    public static string ToWords(this long number, GrammaticalGender gender, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).Convert(number, gender);
     }
@@ -266,7 +266,7 @@ public static class NumberToWordsExtension
     /// <param name="gender">The grammatical gender to use for output words</param>
     /// <param name="culture">Culture to use. If null, current thread's UI culture is used.</param>
     /// <returns>The number converted to words</returns>
-    public static string ToWords(this long number, WordForm wordForm, GrammaticalGender gender, CultureInfo culture = null)
+    public static string ToWords(this long number, WordForm wordForm, GrammaticalGender gender, CultureInfo? culture = null)
     {
         return Configurator.GetNumberToWordsConverter(culture).Convert(number, wordForm, gender);
     }

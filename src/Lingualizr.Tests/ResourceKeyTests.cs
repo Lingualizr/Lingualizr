@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Lingualizr.Localisation;
+﻿using Lingualizr.Localisation;
 
 using Xunit;
 
