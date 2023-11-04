@@ -18,27 +18,8 @@ jobs:
   Build:
     strategy:
       matrix:
-        options:
-          - os: ubuntu-latest
-            framework: net8.0
-            sdk: 8.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
-          - os: macos-latest
-            framework: net8.0
-            sdk: 8.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
-          - os: windows-latest
-            framework: net8.0
-            sdk: 8.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
+        runs-on: [macOS-latest, ubuntu-latest, windows-latest]
 
-    runs-on: ${{matrix.options.os}}
 
     steps:
       - uses: actions/checkout@v4
@@ -47,7 +28,8 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version:  ${{matrix.options.sdk }}
+          dotnet-version: |
+              8.0.100-rc.2.23502.2
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
@@ -71,6 +53,12 @@ jobs:
       - name: NuGet Install
         uses: NuGet/setup-nuget@v1
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+              8.0.100-rc.2.23502.2
+              
       - name: DotNet Pack
         shell: pwsh
         run: ./ci-pack.ps1
