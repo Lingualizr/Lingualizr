@@ -18,6 +18,7 @@
 
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
     <MinVerMinimumMajorMinor>1.0</MinVerMinimumMajorMinor>
+    <MinVerMinimumMajorMinor>2.0.0</MinVerMinimumMajorMinor>
   </PropertyGroup>
   
   <!-- Common NuGet package settings. -->
