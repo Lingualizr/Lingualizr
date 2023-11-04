@@ -2,9 +2,4 @@
   
   <Import Project="Analyzer.props" />
 
-  <PropertyGroup>
-    <Nullable>enable</Nullable>
-    <WarningsAsErrors>Nullable</WarningsAsErrors>
-  </PropertyGroup>
-
   </Project>

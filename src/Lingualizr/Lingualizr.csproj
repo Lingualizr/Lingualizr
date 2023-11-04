@@ -15,9 +15,13 @@
     <DebugType>embedded</DebugType>
     <ProjectGuid>07006862-e27f-4adc-b2a6-1f016e2d2ce2</ProjectGuid>
   </PropertyGroup>
-
+  
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
-    <MinVerMinimumMajorMinor>1.0</MinVerMinimumMajorMinor>
     <MinVerMinimumMajorMinor>2.0.0</MinVerMinimumMajorMinor>
   </PropertyGroup>
   
