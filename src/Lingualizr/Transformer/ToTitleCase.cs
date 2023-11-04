@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Lingualizr.Transformer;
 
-internal class ToTitleCase : ICulturedStringTransformer
+internal partial class ToTitleCase : ICulturedStringTransformer
 {
     public string Transform(string input)
     {
@@ -15,7 +15,7 @@ internal class ToTitleCase : ICulturedStringTransformer
         culture ??= CultureInfo.CurrentCulture;
 
         var result = input;
-        var matches = Regex.Matches(input, @"(\w|[^\u0000-\u007F])+'?\w*");
+        var matches = MatchRegex().Matches(input);
         var firstWord = true;
         foreach (Match word in matches)
         {
@@ -58,4 +58,7 @@ internal class ToTitleCase : ICulturedStringTransformer
 
         return source.Substring(0, word.Index) + replacement + source.Substring(word.Index + word.Length);
     }
+
+    [GeneratedRegex(@"(\w|[^\u0000-\u007F])+'?\w*")]
+    private static partial Regex MatchRegex();
 }
