@@ -240,6 +240,8 @@ csharp_space_between_parentheses = false
 csharp_space_between_square_brackets = false
 
 
+dotnet_diagnostic.SYSLIB1045.severity = error
+
 dotnet_diagnostic.CA1001.severity = error
 dotnet_diagnostic.CA1009.severity = error
 dotnet_diagnostic.CA1016.severity = error

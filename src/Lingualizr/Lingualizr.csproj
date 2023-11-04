@@ -5,7 +5,7 @@
     <PackageProjectUrl>https://github.com/Lingualizr/Lingualizr</PackageProjectUrl>
     <Description>A micro-framework that turns your normal strings, type names, enum fields, date fields ETC into a human friendly format</Description>    
     <Product>Lingualizr ($(TargetFramework))</Product>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <AssemblyName>Lingualizr</AssemblyName>

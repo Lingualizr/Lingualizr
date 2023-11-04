@@ -5,7 +5,7 @@ namespace Lingualizr;
 /// <summary>
 /// Contains methods for removing, appending and prepending article prefixes for sorting strings ignoring the article.
 /// </summary>
-public static class EnglishArticle
+public static partial class EnglishArticle
 {
     /// <summary>
     /// Removes the prefixed article and appends it to the same string.
@@ -19,7 +19,7 @@ public static class EnglishArticle
             throw new ArgumentOutOfRangeException(nameof(items));
         }
 
-        var regex = new Regex("^((The)|(the)|(a)|(A)|(An)|(an))\\s\\w+");
+        var regex = MyRegex();
         var transformed = new string[items.Length];
 
         for (var i = 0; i < items.Length; i++)
@@ -105,4 +105,7 @@ public static class EnglishArticle
         var original = $"{suffix} {insertion}";
         return original.Trim();
     }
+
+    [GeneratedRegex("^((The)|(the)|(a)|(A)|(An)|(an))\\s\\w+")]
+    private static partial Regex MyRegex();
 }

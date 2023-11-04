@@ -30,7 +30,7 @@ namespace Lingualizr;
 /// <summary>
 /// Inflector extensions
 /// </summary>
-public static class InflectorExtensions
+public static partial class InflectorExtensions
 {
     /// <summary>
     /// Pluralizes the provided input considering irregular words
@@ -72,7 +72,7 @@ public static class InflectorExtensions
     /// <returns></returns>
     public static string Pascalize(this string input)
     {
-        return Regex.Replace(input, @"(?:[ _-]+|^)([a-zA-Z])", match => match.Groups[1].Value.ToUpper());
+        return PascalizeRegex().Replace(input, match => match.Groups[1].Value.ToUpper());
     }
 
     /// <summary>
@@ -93,11 +93,7 @@ public static class InflectorExtensions
     /// <returns></returns>
     public static string Underscore(this string input)
     {
-        return Regex.Replace(
-            Regex.Replace(
-                Regex.Replace(input, @"([\p{Lu}]+)([\p{Lu}][\p{Ll}])", "$1_$2"), @"([\p{Ll}\d])([\p{Lu}])", "$1_$2"),
-            @"[-\s]",
-            "_").ToLower();
+        return UnderscoreOneRegex().Replace(UnderscoreTwoRegex().Replace(UnderscoreThreeRegex().Replace(input, "$1_$2"), "$1_$2"), "_").ToLower();
     }
 
     /// <summary>
@@ -129,4 +125,16 @@ public static class InflectorExtensions
     {
         return Underscore(input).Dasherize();
     }
+
+    [GeneratedRegex(@"(?:[ _-]+|^)([a-zA-Z])")]
+    private static partial Regex PascalizeRegex();
+
+    [GeneratedRegex(@"[-\s]")]
+    private static partial Regex UnderscoreOneRegex();
+
+    [GeneratedRegex(@"([\p{Ll}\d])([\p{Lu}])")]
+    private static partial Regex UnderscoreTwoRegex();
+
+    [GeneratedRegex(@"([\p{Lu}]+)([\p{Lu}][\p{Ll}])")]
+    private static partial Regex UnderscoreThreeRegex();
 }
