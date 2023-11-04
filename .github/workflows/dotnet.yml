@@ -26,7 +26,7 @@ jobs:
             runtime: -x64
             codecov: false
           - os: macos-latest
-            framework: net7.0
+            framework: net8.0
             sdk: 8.0.x
             sdk-preview: true
             runtime: -x64
