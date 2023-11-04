@@ -39,7 +39,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         return Convert(number, gender, false);
     }
 
-    private string Convert(long input, GrammaticalGender gender, bool isOrdinal, bool addAnd = true)
+    private static string Convert(long input, GrammaticalGender gender, bool isOrdinal, bool addAnd = true)
     {
         if (input > int.MaxValue || input < int.MinValue)
         {

@@ -16,7 +16,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static bool IsSpecial(long number) => number > 10 && number < 20;
 
-    private string Convert(long number, bool isOrdinal, bool isSpecial)
+    private static string Convert(long number, bool isOrdinal, bool isSpecial)
     {
         if (number == 0)
         {

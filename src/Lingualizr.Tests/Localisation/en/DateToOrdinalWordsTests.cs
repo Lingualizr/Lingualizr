@@ -18,7 +18,6 @@ public class DateToOrdinalWordsTests
         Assert.Equal("January 1st, 2015", new DateTime(2015, 1, 1).ToOrdinalWords());
     }
 
-#if NET6_0_OR_GREATER
     [UseCulture("en-GB")]
     [Fact]
     public void OrdinalizeDateOnlyStringGb()
@@ -32,5 +31,4 @@ public class DateToOrdinalWordsTests
     {
         Assert.Equal("January 1st, 2015", new DateOnly(2015, 1, 1).ToOrdinalWords());
     }
-#endif
 }

@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-namespace Lingualizr.Localisation.TimeToClockNotation;
+﻿namespace Lingualizr.Localisation.TimeToClockNotation;
 
 internal class BrazilianPortugueseTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConverter
 {
@@ -32,5 +30,3 @@ internal class BrazilianPortugueseTimeOnlyToClockNotationConverter : ITimeOnlyTo
         };
     }
 }
-
-#endif

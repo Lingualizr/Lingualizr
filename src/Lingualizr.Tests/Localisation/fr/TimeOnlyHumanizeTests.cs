@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Xunit;
+﻿using Xunit;
 
 namespace Lingualizr.Tests.Localisation.fr;
 
@@ -69,5 +67,3 @@ public class TimeOnlyHumanizeTests
         Assert.Equal(never.Value.Humanize(), never.Humanize());
     }
 }
-
-#endif

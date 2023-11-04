@@ -21,7 +21,6 @@ internal static class DateTimeHumanizeAlgorithms
         return PrecisionHumanize(ts, tense, precision, culture);
     }
 
-#if NET6_0_OR_GREATER
     /// <summary>
     /// Returns localized &amp; humanized distance of time between two dates; given a specific precision.
     /// </summary>
@@ -45,7 +44,6 @@ internal static class DateTimeHumanizeAlgorithms
         return PrecisionHumanize(ts, tense, precision, culture);
     }
 
-#endif
     private static string PrecisionHumanize(TimeSpan ts, Tense tense, double precision, CultureInfo? culture)
     {
         int seconds = ts.Seconds, minutes = ts.Minutes, hours = ts.Hours, days = ts.Days;
@@ -150,7 +148,6 @@ internal static class DateTimeHumanizeAlgorithms
         return DefaultHumanize(ts, sameMonth, days, tense, culture);
     }
 
-#if NET6_0_OR_GREATER
     /// <summary>
     /// Calculates the distance of time in words between two provided dates
     /// </summary>
@@ -177,7 +174,6 @@ internal static class DateTimeHumanizeAlgorithms
 
         return DefaultHumanize(ts, true, 0, tense, culture);
     }
-#endif
 
     private static string DefaultHumanize(TimeSpan ts, bool sameMonth, int days, Tense tense, CultureInfo? culture)
     {

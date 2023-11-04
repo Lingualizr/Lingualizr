@@ -14,7 +14,6 @@ public class DateToOrdinalWordsTests
         Assert.Equal("7 de noviembre de 1979", new DateTime(1979, 11, 7).ToOrdinalWords());
     }
 
-#if NET6_0_OR_GREATER
     [Fact]
     public void OrdinalizeDateOnlyString()
     {
@@ -23,5 +22,4 @@ public class DateToOrdinalWordsTests
         Assert.Equal("4 de septiembre de 2015", new DateOnly(2015, 9, 4).ToOrdinalWords());
         Assert.Equal("7 de noviembre de 1979", new DateOnly(1979, 11, 7).ToOrdinalWords());
     }
-#endif
 }
