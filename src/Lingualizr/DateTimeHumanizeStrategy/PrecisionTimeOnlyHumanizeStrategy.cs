@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
 
@@ -28,5 +26,3 @@ public class PrecisionTimeOnlyHumanizeStrategy : ITimeOnlyHumanizeStrategy
         return DateTimeHumanizeAlgorithms.PrecisionHumanize(input, comparisonBase, _precision, culture);
     }
 }
-
-#endif

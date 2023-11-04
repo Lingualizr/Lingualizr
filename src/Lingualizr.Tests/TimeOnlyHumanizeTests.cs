@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Lingualizr.Configuration;
+﻿using Lingualizr.Configuration;
 using Lingualizr.DateTimeHumanizeStrategy;
 
 using Xunit;
@@ -81,5 +79,3 @@ public class TimeOnlyHumanizeTests
         Assert.Equal(never.Value.Humanize(), never.Humanize());
     }
 }
-
-#endif

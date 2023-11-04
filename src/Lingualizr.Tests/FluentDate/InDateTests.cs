@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Lingualizr.FluentDate;
+﻿using Lingualizr.FluentDate;
 
 using Xunit;
 
@@ -40,5 +38,3 @@ public class InDateTests
         Assert.Equal(baseDate.AddDays(5), date);
     }
 }
-#endif
-

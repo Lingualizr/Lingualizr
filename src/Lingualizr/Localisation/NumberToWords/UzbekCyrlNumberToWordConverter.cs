@@ -25,7 +25,7 @@ internal class UzbekCyrlNumberToWordConverter : GenderlessNumberToWordsConverter
         return Convert(numberInt, true);
     }
 
-    private string Convert(int number, bool checkForHoundredRule)
+    private static string Convert(int number, bool checkForHoundredRule)
     {
         if (number == 0)
         {

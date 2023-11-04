@@ -1,9 +1,4 @@
-﻿
-#if NET6_0_OR_GREATER
-
-using System;
-
-namespace Lingualizr.FluentDate;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// </summary>
@@ -1019,4 +1014,3 @@ public partial class InDate
         }
     }
 }
-#endif

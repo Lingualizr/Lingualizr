@@ -20,7 +20,7 @@ internal class JapaneseNumberToWordsConverter : GenderlessNumberToWordsConverter
         return ConvertImpl(number, true);
     }
 
-    private string ConvertImpl(long number, bool isOrdinal)
+    private static string ConvertImpl(long number, bool isOrdinal)
     {
         if (number == 0)
         {

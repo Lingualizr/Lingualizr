@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace Lingualizr.FluentDate;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// </summary>

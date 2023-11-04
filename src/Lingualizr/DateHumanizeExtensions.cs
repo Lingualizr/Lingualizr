@@ -79,7 +79,6 @@ public static class DateHumanizeExtensions
         }
     }
 
-#if NET6_0_OR_GREATER
     /// <summary>
     /// Turns the current or provided date into a human readable sentence
     /// </summary>
@@ -147,6 +146,4 @@ public static class DateHumanizeExtensions
             return Configurator.GetFormatter(culture).DateHumanize_Never();
         }
     }
-
-#endif
 }

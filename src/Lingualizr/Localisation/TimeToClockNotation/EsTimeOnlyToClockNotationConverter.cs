@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-namespace Lingualizr.Localisation.TimeToClockNotation;
+﻿namespace Lingualizr.Localisation.TimeToClockNotation;
 
 internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConverter
 {
@@ -93,5 +91,3 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
         return time.Hour >= NOON && time.Hour < AFTERNOON;
     }
 }
-
-#endif

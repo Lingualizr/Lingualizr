@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
 
@@ -14,5 +12,3 @@ public interface IDateOnlyHumanizeStrategy
     /// </summary>
     string Humanize(DateOnly input, DateOnly comparisonBase, CultureInfo? culture);
 }
-
-#endif

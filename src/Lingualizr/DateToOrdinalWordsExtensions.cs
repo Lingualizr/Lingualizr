@@ -28,7 +28,6 @@ public static class DateToOrdinalWordsExtensions
         return Configurator.DateToOrdinalWordsConverter.Convert(input, grammaticalCase);
     }
 
-#if NET6_0_OR_GREATER
     /// <summary>
     /// Turns the provided date into ordinal words
     /// </summary>
@@ -49,5 +48,4 @@ public static class DateToOrdinalWordsExtensions
     {
         return Configurator.DateOnlyToOrdinalWordsConverter.Convert(input, grammaticalCase);
     }
-#endif
 }

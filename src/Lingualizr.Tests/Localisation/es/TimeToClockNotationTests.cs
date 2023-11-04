@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Xunit;
+﻿using Xunit;
 
 namespace Lingualizr.Tests.Localisation.es;
 
@@ -65,5 +63,3 @@ public class TimeToClockNotationTests
         Assert.Equal(expectedResult, actualResult);
     }
 }
-
-#endif

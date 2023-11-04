@@ -40,7 +40,7 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
         return ConvertImpl(number, true);
     }
 
-    private string ConvertImpl(long number, bool isOrdinal)
+    private static string ConvertImpl(long number, bool isOrdinal)
     {
         if (isOrdinal && number < 20 && OrdinalExceptions.TryGetValue(number, out var words))
         {

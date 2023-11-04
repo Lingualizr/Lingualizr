@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Lingualizr.Localisation.TimeToClockNotation;
+﻿using Lingualizr.Localisation.TimeToClockNotation;
 
 namespace Lingualizr.Configuration;
 
@@ -14,5 +12,3 @@ internal class TimeOnlyToClockNotationConvertersRegistry : LocaliserRegistry<ITi
         Register("es", new EsTimeOnlyToClockNotationConverter());
     }
 }
-
-#endif

@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
 
@@ -17,5 +15,3 @@ public class DefaultTimeOnlyHumanizeStrategy : ITimeOnlyHumanizeStrategy
         return DateTimeHumanizeAlgorithms.DefaultHumanize(input, comparisonBase, culture);
     }
 }
-
-#endif
