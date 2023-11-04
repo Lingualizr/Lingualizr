@@ -7,7 +7,7 @@ namespace Lingualizr.Inflections;
 /// Vocabularies.Default contains an extensive list of rules for US English.
 /// At this time, multiple vocabularies and removing existing rules are not supported.
 /// </summary>
-public class Vocabulary
+public partial class Vocabulary
 {
     internal Vocabulary()
     {
@@ -16,7 +16,7 @@ public class Vocabulary
     private readonly List<Rule> _plurals = new List<Rule>();
     private readonly List<Rule> _singulars = new List<Rule>();
     private readonly List<string> _uncountables = new List<string>();
-    private readonly Regex _letterS = new Regex("^([sS])[sS]*$");
+    private readonly Regex _letterS = LetterRegex();
 
     /// <summary>
     /// Adds a word to the vocabulary which cannot easily be pluralized/singularized by RegEx, e.g. "person" and "people".
@@ -202,4 +202,7 @@ public class Vocabulary
             return _regex.Replace(word, _replacement);
         }
     }
+
+    [GeneratedRegex("^([sS])[sS]*$")]
+    private static partial Regex LetterRegex();
 }

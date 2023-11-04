@@ -18,43 +18,10 @@ jobs:
   Build:
     strategy:
       matrix:
-        options:
-          - os: ubuntu-latest
-            framework: net7.0
-            sdk: 7.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
-          - os: macos-latest
-            framework: net7.0
-            sdk: 7.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
-          - os: windows-latest
-            framework: net7.0
-            sdk: 7.0.x
-            sdk-preview: true
-            runtime: -x64
-            codecov: false
-          - os: ubuntu-latest
-            framework: net6.0
-            sdk: 6.0.x
-            runtime: -x64
-            codecov: false
-          - os: macos-latest
-            framework: net6.0
-            sdk: 6.0.x
-            runtime: -x64
-            codecov: false
-          - os: windows-latest
-            framework: net6.0
-            sdk: 6.0.x
-            runtime: -x64
-            codecov: false
+        runs-on: [macOS-latest, ubuntu-latest, windows-latest]
 
-    runs-on: ${{matrix.options.os}}
-
+    name: ${{ matrix.runs-on }}
+    runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -62,7 +29,8 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version:  ${{matrix.options.sdk }}
+          dotnet-version: |
+              8.0.100-rc.2.23502.2
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
@@ -85,6 +53,12 @@ jobs:
 
       - name: NuGet Install
         uses: NuGet/setup-nuget@v1
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+              8.0.100-rc.2.23502.2
 
       - name: DotNet Pack
         shell: pwsh
