@@ -1,12 +1,5 @@
-﻿
+﻿namespace Lingualizr;
 
-#if NET6_0_OR_GREATER
-using System;
-
-namespace Lingualizr.FluentDate;
-
-/// <summary>
-/// </summary>
 public partial class OnDate
 {
     /// <summary>
@@ -3105,5 +3098,3 @@ public partial class OnDate
         }
     }
 }
-
-#endif

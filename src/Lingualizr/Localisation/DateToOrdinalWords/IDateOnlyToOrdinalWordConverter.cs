@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-namespace Lingualizr.Localisation.DateToOrdinalWords;
+﻿namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 /// <summary>
 /// The interface used to localise the ToOrdinalWords method.
@@ -22,4 +20,3 @@ public interface IDateOnlyToOrdinalWordConverter
     /// <returns></returns>
     string Convert(DateOnly date, GrammaticalCase grammaticalCase);
 }
-#endif

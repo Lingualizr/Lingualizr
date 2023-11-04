@@ -51,28 +51,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="FluentDate\InDate.Months.tt">
-      <LastGenOutput>InDate.Months.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="FluentDate\OnDate.Days.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="OnDate.Days.cs" />
-    <Compile Update="FluentDate\OnDate.Days.cs" DesignTime="True" AutoGen="True" DependentUpon="OnDate.Days.tt" />
-    
-    <None Update="FluentDate\On.Days.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="On.Days.cs" />
-    <Compile Update="FluentDate\On.Days.cs" DesignTime="True" AutoGen="True" DependentUpon="On.Days.tt" />
-
-    <None Update="FluentDate\In.Months.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="In.Months.cs" />
-    <Compile Update="FluentDate\In.Months.cs" DesignTime="True" AutoGen="True" DependentUpon="In.Months.tt" />
-    
-    <None Update="FluentDate\InDate.Months.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="InDate.Months.cs" />
-    <Compile Update="FluentDate\InDate.Months.cs" DesignTime="True" AutoGen="True" DependentUpon="InDate.Months.tt" />
-
-
-    <None Update="FluentDate\In.SomeTimeFrom.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="In.SomeTimeFrom.cs" />
     <Compile Update="FluentDate\In.SomeTimeFrom.cs" DesignTime="True" AutoGen="True" DependentUpon="In.SomeTimeFrom.tt" />
 
-    <None Update="FluentDate\InDate.SomeTimeFrom.tt" Generator="TextTemplatingFileGenerator" LastGenOutput="InDate.SomeTimeFrom.cs" />
-    <Compile Update="FluentDate\InDate.SomeTimeFrom.cs" DesignTime="True" AutoGen="True" DependentUpon="InDate.SomeTimeFrom.tt" />
+    <Compile Update="FluentDate\InDate.Months.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InDate.Months.tt</DependentUpon>
+    </Compile>
+    
   </ItemGroup>
   
   <ItemGroup>

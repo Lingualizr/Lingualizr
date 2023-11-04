@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Lingualizr.FluentDate;
+﻿using Lingualizr.FluentDate;
 
 using Xunit;
 
@@ -26,5 +24,3 @@ public class OnDateTests
         Assert.Equal(new DateOnly(DateTime.Now.Year, 2, 11), OnDate.February.The(11));
     }
 }
-
-#endif

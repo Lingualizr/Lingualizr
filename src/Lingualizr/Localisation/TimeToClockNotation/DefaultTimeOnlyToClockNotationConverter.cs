@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-namespace Lingualizr.Localisation.TimeToClockNotation;
+﻿namespace Lingualizr.Localisation.TimeToClockNotation;
 
 internal class DefaultTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConverter
 {
@@ -37,5 +35,3 @@ internal class DefaultTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotatio
         };
     }
 }
-
-#endif

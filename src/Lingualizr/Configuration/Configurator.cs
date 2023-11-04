@@ -66,7 +66,6 @@ public static class Configurator
         get { return _dateToOrdinalWordConverters; }
     }
 
-#if NET6_0_OR_GREATER
     private static readonly LocaliserRegistry<IDateOnlyToOrdinalWordConverter> _dateOnlyToOrdinalWordConverters = new DateOnlyToOrdinalWordsConverterRegistry();
 
     /// <summary>
@@ -86,7 +85,6 @@ public static class Configurator
     {
         get { return _timeOnlyToClockNotationConverters; }
     }
-#endif
 
     internal static ICollectionFormatter CollectionFormatter
     {
@@ -136,7 +134,6 @@ public static class Configurator
         }
     }
 
-#if NET6_0_OR_GREATER
     /// <summary>
     /// The ordinalizer to be used
     /// </summary>
@@ -155,7 +152,6 @@ public static class Configurator
             return TimeOnlyToClockNotationConverters.ResolveForUiCulture();
         }
     }
-#endif
 
     /// <summary>
     /// The strategy to be used for DateTime.Humanize
@@ -167,8 +163,6 @@ public static class Configurator
     /// </summary>
     public static IDateTimeOffsetHumanizeStrategy DateTimeOffsetHumanizeStrategy { get; set; } = new DefaultDateTimeOffsetHumanizeStrategy();
 
-#if NET6_0_OR_GREATER
-
     /// <summary>
     /// The strategy to be used for DateOnly.Humanize
     /// </summary>
@@ -178,7 +172,6 @@ public static class Configurator
     /// The strategy to be used for TimeOnly.Humanize
     /// </summary>
     public static ITimeOnlyHumanizeStrategy TimeOnlyHumanizeStrategy { get; set; } = new DefaultTimeOnlyHumanizeStrategy();
-#endif
 
     private static readonly Func<PropertyInfo, bool> _defaultEnumDescriptionPropertyLocator = p => p.Name == "Description";
     private static Func<PropertyInfo, bool> _enumDescriptionPropertyLocator = _defaultEnumDescriptionPropertyLocator;

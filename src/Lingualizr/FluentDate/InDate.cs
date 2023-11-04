@@ -1,8 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using System;
-
-namespace Lingualizr.FluentDate;
+﻿namespace Lingualizr;
 
 public partial class InDate
 {
@@ -16,4 +12,3 @@ public partial class InDate
         return new DateOnly(year, 1, 1);
     }
 }
-#endif

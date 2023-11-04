@@ -1,6 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-
-using Lingualizr.Configuration;
+﻿using Lingualizr.Configuration;
 
 namespace Lingualizr.Localisation.DateToOrdinalWords;
 
@@ -12,5 +10,3 @@ internal class EsDateOnlyToOrdinalWordsConverter : DefaultDateOnlyToOrdinalWordC
         return Configurator.DateToOrdinalWordsConverter.Convert(equivalentDateTime);
     }
 }
-
-#endif

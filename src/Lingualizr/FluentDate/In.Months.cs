@@ -1,7 +1,4 @@
-﻿
-using System;
-
-namespace Lingualizr.FluentDate;
+﻿namespace Lingualizr;
 
 public partial class In
 {

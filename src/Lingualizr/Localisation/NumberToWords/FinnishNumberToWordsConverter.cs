@@ -96,7 +96,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return _ordinalUnitsMap[number];
     }
 
-    private string ToOrdinal(int number, bool useExceptions)
+    private static string ToOrdinal(int number, bool useExceptions)
     {
         if (number == 0)
         {

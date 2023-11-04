@@ -1,5 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-using Lingualizr.Localisation.DateToOrdinalWords;
+﻿using Lingualizr.Localisation.DateToOrdinalWords;
 
 namespace Lingualizr.Configuration;
 
@@ -13,4 +12,3 @@ internal class DateOnlyToOrdinalWordsConverterRegistry : LocaliserRegistry<IDate
         Register("es", new EsDateOnlyToOrdinalWordsConverter());
     }
 }
-#endif

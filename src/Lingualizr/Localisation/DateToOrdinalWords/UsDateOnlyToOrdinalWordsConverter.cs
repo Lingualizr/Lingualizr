@@ -1,5 +1,4 @@
-﻿#if NET6_0_OR_GREATER
-namespace Lingualizr.Localisation.DateToOrdinalWords;
+﻿namespace Lingualizr.Localisation.DateToOrdinalWords;
 
 internal class UsDateOnlyToOrdinalWordsConverter : DefaultDateOnlyToOrdinalWordConverter
 {
@@ -8,4 +7,3 @@ internal class UsDateOnlyToOrdinalWordsConverter : DefaultDateOnlyToOrdinalWordC
         return date.ToString("MMMM ") + date.Day.Ordinalize() + date.ToString(", yyyy");
     }
 }
-#endif
