@@ -4,7 +4,7 @@ namespace Lingualizr.Tests;
 
 public class SomeClass
 {
-    public string SomeString { get; init; }
+    public required string SomeString { get; init; }
 
     public int SomeInt { get; init; }
 
@@ -106,7 +106,7 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeHandlesNullItemsWithoutAnException()
     {
-        Assert.Null(Record.Exception(() => new object[] { null, null }.Humanize()));
+        Assert.Null(Record.Exception(() => new object?[] { null, null }.Humanize()));
     }
 
     [Fact]
@@ -118,7 +118,7 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeHandlesNullObjectDisplayFormatterReturnsWithoutAnException()
     {
-        Assert.Null(Record.Exception(() => new[] { "A", "B", "C" }.Humanize(_ => (object)null)));
+        Assert.Null(Record.Exception(() => new[] { "A", "B", "C" }.Humanize(_ => (object?)null)));
     }
 
     [Fact]

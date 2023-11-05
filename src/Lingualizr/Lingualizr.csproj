@@ -21,13 +21,15 @@
     <WarningsAsErrors>Nullable</WarningsAsErrors>
   </PropertyGroup>
   
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <PropertyGroup>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerVerbosity>normal</MinVerVerbosity>
     <MinVerMinimumMajorMinor>2</MinVerMinimumMajorMinor>
   </PropertyGroup>
   
   <!-- Common NuGet package settings. -->
   
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <PropertyGroup>
     <VersionPrefix>0.0.1</VersionPrefix>
     <VersionPrefix Condition="'$(packageversion)' != ''">$(PackageVersion)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
@@ -35,36 +37,13 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <IsContinuousIntegration Condition="'$(CI)' == 'true'">true</IsContinuousIntegration>
-    <IsCodeCoverage Condition="'$(codecov)' == 'true'">true</IsCodeCoverage>
-  </PropertyGroup>
-
   <!-- Deterministic settings. CI only .-->
   
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
+  <PropertyGroup>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
-
-  <!--MinVer Properties for versioning. CI only-->
-  
-  <PropertyGroup Condition="'$(IsContinuousIntegration)'=='true'">
-    <MinVerTagPrefix>v</MinVerTagPrefix>
-    <MinVerVerbosity>normal</MinVerVerbosity>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Update="FluentDate\In.SomeTimeFrom.cs" DesignTime="True" AutoGen="True" DependentUpon="In.SomeTimeFrom.tt" />
-
-    <Compile Update="FluentDate\InDate.Months.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InDate.Months.tt</DependentUpon>
-    </Compile>
-    
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="DotNet.ReproducibleBuilds">

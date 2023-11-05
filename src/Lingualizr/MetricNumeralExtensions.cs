@@ -95,7 +95,7 @@ public static class MetricNumeralExtensions
     /// </code>
     /// </example>
     /// <returns>A number after a conversion from a Metric representation.</returns>
-    public static double FromMetric(this string input)
+    public static double FromMetric(this string? input)
     {
         input = CleanRepresentation(input);
         return BuildNumber(input, input[input.Length - 1]);
@@ -224,12 +224,9 @@ public static class MetricNumeralExtensions
     /// </summary>
     /// <param name="input">Metric representation to clean</param>
     /// <returns>A cleaned representation</returns>
-    private static string CleanRepresentation(string input)
+    private static string CleanRepresentation(string? input)
     {
-        if (input == null)
-        {
-            throw new ArgumentNullException(nameof(input));
-        }
+        ArgumentNullException.ThrowIfNull(input);
 
         input = input.Trim();
         input = ReplaceNameBySymbol(input);

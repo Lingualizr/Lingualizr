@@ -15,8 +15,8 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
 {
     private readonly Lazy<CultureInfo> _culture;
     private readonly Lazy<CultureInfo> _uiCulture;
-    private CultureInfo _originalCulture;
-    private CultureInfo _originalUICulture;
+    private CultureInfo? _originalCulture;
+    private CultureInfo? _originalUICulture;
 
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with
@@ -84,7 +84,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <param name="methodUnderTest">The method under test</param>
     public override void After(MethodInfo methodUnderTest)
     {
-        CultureInfo.CurrentCulture = _originalCulture;
-        CultureInfo.CurrentUICulture = _originalUICulture;
+        CultureInfo.CurrentCulture = _originalCulture!;
+        CultureInfo.CurrentUICulture = _originalUICulture!;
     }
 }

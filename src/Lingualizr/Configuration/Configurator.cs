@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Reflection;
 
 using Lingualizr.DateTimeHumanizeStrategy;
@@ -179,7 +180,8 @@ public static class Configurator
     /// <summary>
     /// A predicate function for description property of attribute to use for Enum.Humanize
     /// </summary>
-    public static Func<PropertyInfo, bool> EnumDescriptionPropertyLocator
+    [NotNull]
+    public static Func<PropertyInfo, bool>? EnumDescriptionPropertyLocator
     {
         get { return _enumDescriptionPropertyLocator; }
         set { _enumDescriptionPropertyLocator = value ?? _defaultEnumDescriptionPropertyLocator; }
