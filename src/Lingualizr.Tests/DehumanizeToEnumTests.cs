@@ -88,7 +88,7 @@ public class DehumanizeToEnumTests
 
     private struct DummyStructWithEnumInterfaces : IComparable, IFormattable
     {
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
             throw new NotImplementedException();
         }
@@ -173,7 +173,7 @@ public class DehumanizeToEnumTests
             throw new NotImplementedException();
         }
 
-        public string ToString(string format, IFormatProvider formatProvider)
+        public string ToString(string? format, IFormatProvider? formatProvider)
         {
             throw new NotImplementedException();
         }

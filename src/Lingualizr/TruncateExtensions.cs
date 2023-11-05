@@ -53,12 +53,9 @@ public static class TruncateExtensions
     /// <param name="truncator">The truncator to use</param>
     /// <param name="from">The enum value used to determine from where to truncate the string</param>
     /// <returns>The truncated string</returns>
-    public static string? Truncate(this string? input, int length, string truncationString, ITruncator truncator, TruncateFrom from = TruncateFrom.Right)
+    public static string? Truncate(this string? input, int length, string truncationString, ITruncator? truncator, TruncateFrom from = TruncateFrom.Right)
     {
-        if (truncator == null)
-        {
-            throw new ArgumentNullException(nameof(truncator));
-        }
+        ArgumentNullException.ThrowIfNull(truncator);
 
         if (input == null)
         {

@@ -10,9 +10,6 @@ public partial class ResourceKeys
 
     private static void ValidateRange(int count)
     {
-        if (count < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(count));
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(count);
     }
 }

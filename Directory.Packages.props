@@ -10,6 +10,8 @@
     <PackageVersion Include="PublicApiGenerator" Version="11.0.0" />
     <PackageVersion Include="StyleCop.Analyzers.Unstable" Version="1.2.0.507" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.12.0.78982" />
+    <PackageVersion Include="Verify.DiffPlex" Version="2.3.0" />
+    <PackageVersion Include="Verify.Xunit" Version="22.1.4" />
     <PackageVersion Include="xunit" Version="2.6.1" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>

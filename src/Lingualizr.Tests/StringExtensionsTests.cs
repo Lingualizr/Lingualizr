@@ -30,7 +30,7 @@ public class StringExtensionsTests
     [Fact]
     public void FormatCannotBeNull()
     {
-        string format = null;
+        string? format = null;
         Assert.Throws<ArgumentNullException>(() => format.FormatWith(1, 2));
     }
 

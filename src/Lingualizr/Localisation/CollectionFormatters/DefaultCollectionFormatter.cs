@@ -14,12 +14,12 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         return Humanize(collection, o => o?.ToString()!, DefaultSeparator);
     }
 
-    public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter)
+    public virtual string Humanize<T>(IEnumerable<T>? collection, Func<T, string?>? objectFormatter)
     {
         return Humanize(collection, objectFormatter, DefaultSeparator);
     }
 
-    public string Humanize<T>(IEnumerable<T> collection, Func<T, object> objectFormatter)
+    public string Humanize<T>(IEnumerable<T>? collection, Func<T, object?>? objectFormatter)
     {
         return Humanize(collection, objectFormatter, DefaultSeparator);
     }
@@ -29,34 +29,20 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         return Humanize(collection, o => o?.ToString()!, separator);
     }
 
-    public virtual string Humanize<T>(IEnumerable<T> collection, Func<T, string> objectFormatter, string separator)
+    public virtual string Humanize<T>(IEnumerable<T>? collection, Func<T, string?>? objectFormatter, string separator)
     {
-        if (collection == null)
-        {
-            throw new ArgumentNullException(nameof(collection));
-        }
-
-        if (objectFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(objectFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(objectFormatter);
 
         return HumanizeDisplayStrings(
             collection.Select(objectFormatter),
             separator);
     }
 
-    public string Humanize<T>(IEnumerable<T> collection, Func<T, object> objectFormatter, string separator)
+    public string Humanize<T>(IEnumerable<T>? collection, Func<T, object?>? objectFormatter, string separator)
     {
-        if (collection == null)
-        {
-            throw new ArgumentNullException(nameof(collection));
-        }
-
-        if (objectFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(objectFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(collection);
+        ArgumentNullException.ThrowIfNull(objectFormatter);
 
         return HumanizeDisplayStrings(
             collection.Select(objectFormatter).Select(o => o?.ToString()),

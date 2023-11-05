@@ -481,12 +481,12 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return b1.Bits >= b2.Bits;
     }
 
-    public static bool TryParse(string s, out ByteSize result)
+    public static bool TryParse(string? s, out ByteSize result)
     {
         return TryParse(s, null, out result);
     }
 
-    public static bool TryParse(string s, IFormatProvider? formatProvider, out ByteSize result)
+    public static bool TryParse(string? s, IFormatProvider? formatProvider, out ByteSize result)
     {
         // Arg checking
         if (string.IsNullOrWhiteSpace(s))
@@ -599,17 +599,14 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return culture.NumberFormat;
     }
 
-    public static ByteSize Parse(string s)
+    public static ByteSize Parse(string? s)
     {
         return Parse(s, null);
     }
 
-    public static ByteSize Parse(string s, IFormatProvider? formatProvider)
+    public static ByteSize Parse(string? s, IFormatProvider? formatProvider)
     {
-        if (s == null)
-        {
-            throw new ArgumentNullException(nameof(s));
-        }
+        ArgumentNullException.ThrowIfNull(s);
 
         if (TryParse(s, formatProvider, out var result))
         {

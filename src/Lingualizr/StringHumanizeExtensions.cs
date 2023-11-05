@@ -7,25 +7,16 @@ namespace Lingualizr;
 /// </summary>
 public static class StringHumanizeExtensions
 {
-    private static readonly Regex PascalCaseWordPartsRegex;
-    private static readonly Regex FreestandingSpacingCharRegex;
-
-    static StringHumanizeExtensions()
-    {
-        PascalCaseWordPartsRegex = new Regex(
-            @"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+",
-            RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture | RegexOptionsUtil.Compiled);
-        FreestandingSpacingCharRegex = new Regex(@"\s[-_]|[-_]\s", RegexOptionsUtil.Compiled);
-    }
+    private static readonly char[] _separator = { '_', '-' };
 
     private static string FromUnderscoreDashSeparatedWords(string input)
     {
-        return string.Join(" ", input.Split(new[] { '_', '-' }));
+        return string.Join(" ", input.Split(_separator));
     }
 
     private static string FromPascalCase(string input)
     {
-        var result = string.Join(" ", PascalCaseWordPartsRegex
+        var result = string.Join(" ", LingualizrRegex.PascalCaseWordPartsRegex()
             .Matches(input).Cast<Match>()
             .Select(match => match.Value.ToCharArray().All(char.IsUpper) &&
                              (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I")
@@ -57,7 +48,7 @@ public static class StringHumanizeExtensions
 
         // if input contains a dash or underscore which preceeds or follows a space (or both, e.g. free-standing)
         // remove the dash/underscore and run it through FromPascalCase
-        if (FreestandingSpacingCharRegex.IsMatch(input))
+        if (LingualizrRegex.FreestandingSpacingCharRegex().IsMatch(input))
         {
             return FromPascalCase(FromUnderscoreDashSeparatedWords(input));
         }

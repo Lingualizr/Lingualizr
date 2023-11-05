@@ -20,12 +20,9 @@ public static class CollectionHumanizeExtensions
     /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
     /// and using the default separator for the current culture.
     /// </summary>
-    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string> displayFormatter)
+    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string?>? displayFormatter)
     {
-        if (displayFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(displayFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(displayFormatter);
 
         return Configurator.CollectionFormatter.Humanize(collection, displayFormatter);
     }
@@ -34,12 +31,9 @@ public static class CollectionHumanizeExtensions
     /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
     /// and using the default separator for the current culture.
     /// </summary>
-    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object> displayFormatter)
+    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object?>? displayFormatter)
     {
-        if (displayFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(displayFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(displayFormatter);
 
         return Configurator.CollectionFormatter.Humanize(collection, displayFormatter);
     }
@@ -57,12 +51,9 @@ public static class CollectionHumanizeExtensions
     /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
     /// and using the provided separator.
     /// </summary>
-    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string> displayFormatter, string separator)
+    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, string?>? displayFormatter, string separator)
     {
-        if (displayFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(displayFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(displayFormatter);
 
         return Configurator.CollectionFormatter.Humanize(collection, displayFormatter, separator);
     }
@@ -71,12 +62,9 @@ public static class CollectionHumanizeExtensions
     /// Formats the collection for display, calling <paramref name="displayFormatter"/> on each element
     /// and using the provided separator.
     /// </summary>
-    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object> displayFormatter, string separator)
+    public static string Humanize<T>(this IEnumerable<T> collection, Func<T, object?>? displayFormatter, string separator)
     {
-        if (displayFormatter == null)
-        {
-            throw new ArgumentNullException(nameof(displayFormatter));
-        }
+        ArgumentNullException.ThrowIfNull(displayFormatter);
 
         return Configurator.CollectionFormatter.Humanize(collection, displayFormatter, separator);
     }
