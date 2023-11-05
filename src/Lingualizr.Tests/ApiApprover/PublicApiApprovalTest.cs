@@ -22,8 +22,8 @@ public class PublicApiApprovalTest
             .Where(l => !l.StartsWith("[assembly: AssemblyVersion("))
             .Where(l => !l.StartsWith("[assembly: AssemblyFileVersion("))
             .Where(l => !l.StartsWith("[assembly: AssemblyInformationalVersion("))
-            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadataAttribute(\"CommitHash\""))
-            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadataAttribute(\"RepositoryUrl\""))
+            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"CommitHash\""))
+            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"RepositoryUrl\""))
             .Where(l => !string.IsNullOrWhiteSpace(l)));
     }
 }
