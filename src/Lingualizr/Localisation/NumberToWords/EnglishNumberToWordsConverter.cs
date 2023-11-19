@@ -24,7 +24,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
         return Convert(number, false);
     }
 
-    public override string Convert(long number, bool addAnd = true)
+    public override string Convert(long number, bool addAnd)
     {
         return Convert(number, false, addAnd);
     }
