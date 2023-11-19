@@ -71,6 +71,25 @@ public static class ToQuantityExtensions
     /// </summary>
     /// <param name="input">The word to be prefixed</param>
     /// <param name="quantity">The quantity of the word</param>
+    /// <param name="showQuantityAs">How to show the quantity. Numeric by default</param>
+    /// <example>
+    /// "request".ToQuantity(0) => "0 requests"
+    /// "request".ToQuantity(1) => "1 request"
+    /// "request".ToQuantity(2) => "2 requests"
+    /// "men".ToQuantity(2) => "2 men"
+    /// "process".ToQuantity(1200, ShowQuantityAs.Words) => "one thousand two hundred processes"
+    /// </example>
+    /// <returns></returns>
+    public static string ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric)
+    {
+        return input.ToQuantity(quantity, showQuantityAs, format: null, formatProvider: null);
+    }
+
+    /// <summary>
+    /// Prefixes the provided word with the number and accordingly pluralizes or singularizes the word
+    /// </summary>
+    /// <param name="input">The word to be prefixed</param>
+    /// <param name="quantity">The quantity of the word</param>
     /// <param name="format">A standard or custom numeric format string.</param>
     /// <param name="formatProvider">An object that supplies culture-specific formatting information.</param>
     /// <example>
@@ -123,5 +142,19 @@ public static class ToQuantityExtensions
             : input.Pluralize(inputIsKnownToBeSingular: false);
 
         return string.Format(formatProvider, "{0} {1}", quantity.ToString(format, formatProvider), transformedInput);
+    }
+
+    /// <summary>
+    /// Prefixes the provided word with the number and accordingly pluralizes or singularizes the word
+    /// </summary>
+    /// <param name="input">The word to be prefixed</param>
+    /// <param name="quantity">The quantity of the word</param>
+    /// <example>
+    /// "request".ToQuantity(0.2) => "0.2 requests"
+    /// </example>
+    /// <returns></returns>
+    public static string ToQuantity(this string input, double quantity)
+    {
+        return ToQuantity(input, quantity, null, null);
     }
 }
