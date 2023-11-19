@@ -350,6 +350,7 @@ dotnet_diagnostic.SA1000.severity = error
 dotnet_diagnostic.SA1001.severity = error
 dotnet_diagnostic.SA1003.severity = error
 dotnet_diagnostic.SA1005.severity = warning
+dotnet_diagnostic.SA1008.severity = error
 dotnet_diagnostic.SA1009.severity = error
 dotnet_diagnostic.SA1011.severity = error
 dotnet_diagnostic.SA1010.severity = error

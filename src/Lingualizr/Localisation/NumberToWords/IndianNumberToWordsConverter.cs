@@ -26,7 +26,7 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
         return result;
     }
 
-    public static string NumberToText( long number)
+    public static string NumberToText(long number)
     {
         if (number < 0)
         {
