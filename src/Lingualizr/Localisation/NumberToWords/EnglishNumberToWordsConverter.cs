@@ -21,7 +21,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string Convert(long number)
     {
-        return Convert(number, false);
+        return Convert(number, false, true);
     }
 
     public override string Convert(long number, bool addAnd)
@@ -31,10 +31,10 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        return Convert(number, true);
+        return Convert(number, true, true);
     }
 
-    private string Convert(long number, bool isOrdinal, bool addAnd = true)
+    private string Convert(long number, bool isOrdinal, bool addAnd)
     {
         if (number == 0)
         {
