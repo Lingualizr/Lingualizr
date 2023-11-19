@@ -74,7 +74,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number > 19)
         {
-            var tensPart = TensMap[ number / 10];
+            var tensPart = TensMap[number / 10];
             parts.Add(tensPart);
             number %= 10;
         }
@@ -155,7 +155,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             var hundredsPart = string.Empty;
             if ((numberLong % 100) == 0)
             {
-                hundredsPart = HundredsMap[ numberLong / 100] + GetOrdinalEndingForGender(gender);
+                hundredsPart = HundredsMap[numberLong / 100] + GetOrdinalEndingForGender(gender);
             }
             else
             {
@@ -175,7 +175,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong > 19)
         {
-            var tensPart = TensMap[ numberLong / 10];
+            var tensPart = TensMap[numberLong / 10];
             if ((numberLong % 10) == 0)
             {
                 tensPart += GetOrdinalEndingForGender(gender);
