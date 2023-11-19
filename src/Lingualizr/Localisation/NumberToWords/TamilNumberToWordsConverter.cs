@@ -316,7 +316,6 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static string GetHundredsValue(ref long number)
     {
         string local_word = string.Empty;
-
         {
             local_word = _hundredsMap[(number / 100) - 1];
             if (number / 100 == 9)

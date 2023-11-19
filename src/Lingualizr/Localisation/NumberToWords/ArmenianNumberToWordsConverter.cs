@@ -69,7 +69,6 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         if ((number / 1000000000000) > 0)
-
         {
             parts.Add(string.Format("{0} տրիլիոն", Convert(number / 1000000000000)));
             number %= 1000000000000;
