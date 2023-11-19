@@ -315,33 +315,30 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetHundredsValue(ref long number)
     {
-        string local_word = string.Empty;
+        var localWord = _hundredsMap[(number / 100) - 1];
+        if (number / 100 == 9)
         {
-            local_word = _hundredsMap[(number / 100) - 1];
-            if (number / 100 == 9)
+            if (number % 100 == 0)
             {
-                if (number % 100 == 0)
-                {
-                    local_word += "ம்";
-                }
-                else
-                {
-                    local_word += "த்து";
-                }
-            }
-            else if (number % 100 >= 1)
-            {
-                local_word += "ற்று";
+                localWord += "ம்";
             }
             else
             {
-                local_word += "று";
+                localWord += "த்து";
             }
-
-            number %= 100;
-
-            return local_word;
         }
+        else if (number % 100 >= 1)
+        {
+            localWord += "ற்று";
+        }
+        else
+        {
+            localWord += "று";
+        }
+
+        number %= 100;
+
+        return localWord;
     }
 
     private static string RemoveOnePrefix(string toWords)
