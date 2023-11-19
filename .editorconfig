@@ -329,6 +329,7 @@ dotnet_diagnostic.CA2146.severity = error
 dotnet_diagnostic.CA2200.severity = error
 dotnet_diagnostic.CA2202.severity = error
 dotnet_diagnostic.CA2207.severity = error
+dotnet_diagnostic.CA2208.severity = error
 dotnet_diagnostic.CA2212.severity = error
 dotnet_diagnostic.CA2213.severity = error
 dotnet_diagnostic.CA2214.severity = error
