@@ -29,7 +29,7 @@ internal class IcelandicFormatter : DefaultFormatter
 
         var words = resourceString.Split(' ');
 
-        var unitGender = words.Last() switch
+        var unitGender = words[^1] switch
         {
             var x when x.StartsWith("mán") => GrammaticalGender.Masculine,
             var x when x.StartsWith("dag") => GrammaticalGender.Masculine,

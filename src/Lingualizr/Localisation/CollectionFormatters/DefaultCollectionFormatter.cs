@@ -2,7 +2,7 @@
 
 internal class DefaultCollectionFormatter : ICollectionFormatter
 {
-    protected string DefaultSeparator = string.Empty;
+    protected string DefaultSeparator;
 
     public DefaultCollectionFormatter(string defaultSeparator)
     {
