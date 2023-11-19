@@ -37,7 +37,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
     };
 
     private static bool IsAndSplitNeeded(int number) =>
-        ((number <= 20) || (number % 10 == 0) && (number < 100)) || (number % 100 == 0);
+        number <= 20 || (number % 10 == 0 && number < 100) || number % 100 == 0;
 
     private static string GetOrdinalEnding(GrammaticalGender gender) =>
         gender == GrammaticalGender.Masculine ? "i" : "a";
