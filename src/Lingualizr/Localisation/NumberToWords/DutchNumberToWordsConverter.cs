@@ -161,9 +161,13 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         var word = Convert(number);
 
-        var kv = _ordinalExceptions.First(kv => word.EndsWith(kv.Key));
-        // replace word with exception
-        return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
+        foreach (var kv in _ordinalExceptions.Where(kv => word.EndsWith(kv.Key)))
+        {
+            // replace word with exception
+#pragma warning disable S1751
+            return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
+#pragma warning restore S1751
+        }
 
         // achtste
         // twintigste, dertigste, veertigste, ...

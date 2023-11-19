@@ -226,9 +226,12 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         if (number <= 10)
         {
             var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
-            var kv = ordinals.First(kv => word.EndsWith(kv.Key));
-
-            return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
+            foreach (var kv in ordinals.Where(kv => word.EndsWith(kv.Key)))
+            {
+#pragma warning disable S1751
+                return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
+#pragma warning restore S1751
+            }
         }
         else if (number > 10 && number < 100)
         {
