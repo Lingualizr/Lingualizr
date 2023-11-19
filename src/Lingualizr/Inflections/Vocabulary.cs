@@ -188,7 +188,7 @@ public class Vocabulary
 
         public Rule(string pattern, string replacement)
         {
-            _regex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            _regex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.Compiled, TimeSpan.FromSeconds(1));
             _replacement = replacement;
         }
 

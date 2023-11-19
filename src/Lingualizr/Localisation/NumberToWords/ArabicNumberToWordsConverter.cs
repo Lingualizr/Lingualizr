@@ -5,13 +5,23 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] _groups = { "مئة", "ألف", "مليون", "مليار", "تريليون", "كوادريليون", "كوينتليون", "سكستيليون" };
     private static readonly string[] _appendedGroups = { string.Empty, "ألفاً", "مليوناً", "ملياراً", "تريليوناً", "كوادريليوناً", "كوينتليوناً", "سكستيليوناً" };
     private static readonly string[] _pluralGroups = { string.Empty, "آلاف", "ملايين", "مليارات", "تريليونات", "كوادريليونات", "كوينتليونات", "سكستيليونات" };
-    private static readonly string[] _onesGroup = { string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر" };
+
+    private static readonly string[] _onesGroup =
+    {
+        string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر",
+        "ثمانية عشر", "تسعة عشر",
+    };
+
     private static readonly string[] _tensGroup = { string.Empty, "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون" };
     private static readonly string[] _hundredsGroup = { string.Empty, "مئة", "مئتان", "ثلاث مئة", "أربع مئة", "خمس مئة", "ست مئة", "سبع مئة", "ثمان مئة", "تسع مئة" };
     private static readonly string[] _appendedTwos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونلن" };
     private static readonly string[] _twos = { "مئتان", "ألفان", "مليونان", "ملياران", "تريليونان", "كوادريليونان", "كوينتليونان", "سكستيليونان" };
 
-    private static readonly string[] _feminineOnesGroup = { string.Empty, "واحدة", "اثنتان", "ثلاث", "أربع", "خمس", "ست", "سبع", "ثمان", "تسع", "عشر", "إحدى عشرة", "اثنتا عشرة", "ثلاث عشرة", "أربع عشرة", "خمس عشرة", "ست عشرة", "سبع عشرة", "ثمان عشرة", "تسع عشرة" };
+    private static readonly string[] _feminineOnesGroup =
+    {
+        string.Empty, "واحدة", "اثنتان", "ثلاث", "أربع", "خمس", "ست", "سبع", "ثمان", "تسع", "عشر", "إحدى عشرة", "اثنتا عشرة", "ثلاث عشرة", "أربع عشرة", "خمس عشرة", "ست عشرة", "سبع عشرة",
+        "ثمان عشرة", "تسع عشرة",
+    };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
@@ -216,11 +226,9 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         if (number <= 10)
         {
             var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
-            foreach (var kv in ordinals.Where(kv => word.EndsWith(kv.Key)))
-            {
-                // replace word with exception
-                return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
-            }
+            var kv = ordinals.First(kv => word.EndsWith(kv.Key));
+
+            return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
         }
         else if (number > 10 && number < 100)
         {

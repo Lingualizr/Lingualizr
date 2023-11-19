@@ -8,8 +8,12 @@
 /// </summary>
 internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien" };
-    private static readonly string[] TensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig" };
+    private static readonly string[] _unitsMap =
+    {
+        "nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien",
+    };
+
+    private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig" };
 
     private class Fact
     {
@@ -26,20 +30,69 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] _hunderds =
     {
-        new Fact { Value = 1_000_000_000_000_000_000L, Name = "triljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1_000_000_000_000_000L,     Name = "biljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1_000_000_000_000L,         Name = "biljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1000000000,                 Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1000000,                    Name = "miljoen", Prefix = " ", Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 1000,                       Name = "duizend", Prefix = string.Empty,  Postfix = " ", DisplayOneUnit = false },
-        new Fact { Value = 100,                        Name = "honderd", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false },
+        new Fact
+        {
+            Value = 1_000_000_000_000_000_000L,
+            Name = "triljoen",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 1_000_000_000_000_000L,
+            Name = "biljard",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 1_000_000_000_000L,
+            Name = "biljoen",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 1000000000,
+            Name = "miljard",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 1000000,
+            Name = "miljoen",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 1000,
+            Name = "duizend",
+            Prefix = string.Empty,
+            Postfix = " ",
+            DisplayOneUnit = false,
+        },
+        new Fact
+        {
+            Value = 100,
+            Name = "honderd",
+            Prefix = string.Empty,
+            Postfix = string.Empty,
+            DisplayOneUnit = false,
+        },
     };
 
     public override string Convert(long number)
     {
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (number < 0)
@@ -78,15 +131,15 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             if (number < 20)
             {
-                word += UnitsMap[number];
+                word += _unitsMap[number];
             }
             else
             {
-                var tens = TensMap[number / 10];
+                var tens = _tensMap[number / 10];
                 var unit = number % 10;
                 if (unit > 0)
                 {
-                    var units = UnitsMap[unit];
+                    var units = _unitsMap[unit];
                     var trema = units.EndsWith('e');
                     word += units + (trema ? "ën" : "en") + tens;
                 }
@@ -100,29 +153,22 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         return word;
     }
 
-    private static readonly Dictionary<string, string> OrdinalExceptions = new Dictionary<string, string>
-    {
-        { "een", "eerste" },
-        { "drie", "derde" },
-        { "miljoen", "miljoenste" },
-    };
+    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string> { { "een", "eerste" }, { "drie", "derde" }, { "miljoen", "miljoenste" }, };
 
-    private static readonly char[] EndingCharForSte = { 't', 'g', 'd' };
+    private static readonly char[] _endingCharForSte = { 't', 'g', 'd' };
 
     public override string ConvertToOrdinal(int number)
     {
         var word = Convert(number);
 
-        foreach (var kv in OrdinalExceptions.Where(kv => word.EndsWith(kv.Key)))
-        {
-            // replace word with exception
-            return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
-        }
+        var kv = _ordinalExceptions.First(kv => word.EndsWith(kv.Key));
+        // replace word with exception
+        return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
 
         // achtste
         // twintigste, dertigste, veertigste, ...
         // honderdste, duizendste, ...
-        if (word.LastIndexOfAny(EndingCharForSte) == (word.Length - 1))
+        if (word.LastIndexOfAny(_endingCharForSte) == (word.Length - 1))
         {
             return word + "ste";
         }
