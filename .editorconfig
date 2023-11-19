@@ -343,6 +343,8 @@ dotnet_diagnostic.CA2240.severity = error
 dotnet_diagnostic.CA2241.severity = error
 dotnet_diagnostic.CA2242.severity = error
 
+dotnet_diagnostic.CS1591.severity = none
+
 dotnet_diagnostic.SA1005.severity = error
 dotnet_diagnostic.SA1001.severity = error
 dotnet_diagnostic.SA1003.severity = error
@@ -399,6 +401,7 @@ dotnet_diagnostic.SA1600.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1601.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1602.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1606.severity = none # should be turned on in the future
+dotnet_diagnostic.SA1607.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1611.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1612.severity = error # should be turned on in the future
 dotnet_diagnostic.SA1614.severity = none # should be turned on in the future
