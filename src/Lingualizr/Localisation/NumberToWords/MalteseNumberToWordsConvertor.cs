@@ -2,35 +2,26 @@
 
 internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 {
-    private static readonly string[] OrdinalOverrideMap =
+    private static readonly string[] _ordinalOverrideMap =
     {
-        "0", "l-ewwel", "it-tieni", "it-tielet", "ir-raba'", "il-ħames", "is-sitt", "is-seba'", "it-tmien", "id-disa'",
-        "l-għaxar", "il-ħdax", "it-tnax", "it-tlettax", "l-erbatax", "il-ħmistax", "is-sittax", "is-sbatax",
-        "it-tmintax", "id-dsatax", "l-għoxrin",
+        "0", "l-ewwel", "it-tieni", "it-tielet", "ir-raba'", "il-ħames", "is-sitt", "is-seba'", "it-tmien", "id-disa'", "l-għaxar", "il-ħdax", "it-tnax", "it-tlettax", "l-erbatax", "il-ħmistax",
+        "is-sittax", "is-sbatax", "it-tmintax", "id-dsatax", "l-għoxrin",
     };
 
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
-        "żero", "wieħed", "tnejn", "tlieta", "erbgħa", "ħamsa", "sitta", "sebgħa", "tmienja", "disgħa", "għaxra",
-        "ħdax", "tnax", "tlettax", "erbatax", "ħmistax", "sittax", "sbatax", "tmintax", "dsatax",
+        "żero", "wieħed", "tnejn", "tlieta", "erbgħa", "ħamsa", "sitta", "sebgħa", "tmienja", "disgħa", "għaxra", "ħdax", "tnax", "tlettax", "erbatax", "ħmistax", "sittax", "sbatax", "tmintax",
+        "dsatax",
     };
 
-    private static readonly string[] TensMap =
-        {
-            "zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin",
-        };
+    private static readonly string[] _tensMap = { "zero", "għaxra", "għoxrin", "tletin", "erbgħin", "ħamsin", "sittin", "sebgħin", "tmenin", "disgħin", };
 
-    private static readonly string[] HundredsMap =
-    {
-        string.Empty, string.Empty, string.Empty, "tlett", "erbgħa", "ħames", "sitt", "sebgħa", "tminn", "disgħa",
-        "għaxar",
-    };
+    private static readonly string[] _hundredsMap = { string.Empty, string.Empty, string.Empty, "tlett", "erbgħa", "ħames", "sitt", "sebgħa", "tminn", "disgħa", "għaxar", };
 
-    private static readonly string[] PrefixMap =
+    private static readonly string[] _prefixMap =
     {
-        string.Empty, string.Empty, string.Empty, "tlett", "erbat", "ħamest", "sitt", "sebat", "tmint", "disat",
-        "għaxart", "ħdax-il", "tnax-il", "tletax-il", "erbatax-il", "ħmistax-il", "sittax-il", "sbatax-il",
-        "tmintax-il", "dsatax-il",
+        string.Empty, string.Empty, string.Empty, "tlett", "erbat", "ħamest", "sitt", "sebat", "tmint", "disat", "għaxart", "ħdax-il", "tnax-il", "tletax-il", "erbatax-il", "ħmistax-il",
+        "sittax-il", "sbatax-il", "tmintax-il", "dsatax-il",
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
@@ -67,7 +58,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
     {
         if (number <= 20)
         {
-            return OrdinalOverrideMap[number];
+            return _ordinalOverrideMap[number];
         }
 
         var ordinal = Convert(number, gender);
@@ -102,34 +93,29 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return "waħda";
         }
 
-        if (value < 11 && usePrefixMap && usePrefixMapForLowerDigits)
+        if (value < 11 && usePrefixMap)
         {
-            return PrefixMap[value];
-        }
-
-        if (value < 11 && usePrefixMap && !usePrefixMapForLowerDigits)
-        {
-            return HundredsMap[value];
+            return usePrefixMapForLowerDigits ? _prefixMap[value] : _hundredsMap[value];
         }
 
         if (value > 10 && value < 20 && usePrefixMap)
         {
-            return PrefixMap[value];
+            return _prefixMap[value];
         }
 
         if (value < 20)
         {
-            return UnitsMap[value];
+            return _unitsMap[value];
         }
 
         var single = value % 10;
         var numberOfTens = value / 10;
         if (single == 0)
         {
-            return TensMap[numberOfTens];
+            return _tensMap[numberOfTens];
         }
 
-        return $"{UnitsMap[single]} u {TensMap[numberOfTens]}";
+        return $"{_unitsMap[single]} u {_tensMap[numberOfTens]}";
     }
 
     private static string GetHundreds(long value, bool usePrefixMap, bool usePrefixMapForLowerValueDigits, GrammaticalGender gender)
@@ -153,7 +139,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         }
         else
         {
-            hundredsText = HundredsMap[numberOfHundreds] + " mija";
+            hundredsText = _hundredsMap[numberOfHundreds] + " mija";
         }
 
         if (tens == 0)

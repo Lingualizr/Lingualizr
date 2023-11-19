@@ -128,7 +128,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             {
                 parts.Add("дві");
             }
-            else if (number < 20)
+            else
             {
                 parts.Add(_unitsMap[number]);
             }

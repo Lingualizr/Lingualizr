@@ -4,10 +4,20 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] _unitsMap = { "சுழியம்", "ஒன்று", "இரண்டு", "மூன்று", "நான்கு", "ஐந்து", "ஆறு", "ஏழு", "எட்டு", "ஒன்பது", "பத்து", "பதினொன்று", "பனிரெண்டு", "பதிமூன்று", "பதினான்கு", "பதினைந்து", "பதினாறு", "பதினேழு", "பதினெட்டு", "பத்தொன்பது" };
+    private static readonly string[] _unitsMap =
+    {
+        "சுழியம்", "ஒன்று", "இரண்டு", "மூன்று", "நான்கு", "ஐந்து", "ஆறு", "ஏழு", "எட்டு", "ஒன்பது", "பத்து", "பதினொன்று", "பனிரெண்டு", "பதிமூன்று", "பதினான்கு", "பதினைந்து", "பதினாறு", "பதினேழு",
+        "பதினெட்டு", "பத்தொன்பது",
+    };
+
     private static readonly string[] _tensMap = { "சுழியம்", "பத்து", "இருப", "முப்ப", "நாற்ப", "ஐம்ப", "அறுப", "எழுப", "எண்ப", "தொண்ணூ" };
     private static readonly string[] _hundredsMap = { "நூ", "இருநூ", "முன்னூ", "நானூ", "ஐந்நூ", "அறுநூ", "எழுநூ", "எண்ணூ", "தொள்ளாயிர", };
-    private static readonly string[] _thousandsMap = { "ஆ", "இரண்டா", "மூன்றா", "நான்கா", "ஐந்தா", "ஆறா", "ஏழா", "எட்டா", "ஒன்பதா", "பத்தா", "பதினொன்றா", "பனிரெண்டா", "பதிமூன்றா", "பதினான்கா", "பதினைந்தா", "பதினாறா", "பதினேழா", "பதினெட்டா", "பத்தொன்பதா" };
+
+    private static readonly string[] _thousandsMap =
+    {
+        "ஆ", "இரண்டா", "மூன்றா", "நான்கா", "ஐந்தா", "ஆறா", "ஏழா", "எட்டா", "ஒன்பதா", "பத்தா", "பதினொன்றா", "பனிரெண்டா", "பதிமூன்றா", "பதினான்கா", "பதினைந்தா", "பதினாறா", "பதினேழா", "பதினெட்டா",
+        "பத்தொன்பதா",
+    };
 
     private static readonly string[] _lakhsMap = { "இலட்ச" };
 
@@ -137,12 +147,12 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
-        var local_word = string.Empty;
+        var localWord = string.Empty;
         if (number < 20)
         {
-            local_word = GetUnitValue(number, isOrdinal);
+            localWord = GetUnitValue(number, isOrdinal);
         }
-        else if ((number >= 20) && (number <= 99))
+        else if (number <= 99)
         {
             var lastPart = _tensMap[number / 10];
             var quot = number / 10;
@@ -196,10 +206,10 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
                 lastPart = lastPart.TrimEnd('y') + "ieth";
             }
 
-            local_word = lastPart;
+            localWord = lastPart;
         }
 
-        return local_word;
+        return localWord;
     }
 
     private static string GetLakhsValue(ref long number, bool isOrdinal)

@@ -2,7 +2,11 @@
 
 internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] _unitsMap = { "noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton" };
+    private static readonly string[] _unitsMap =
+    {
+        "noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton",
+    };
+
     private static readonly string[] _tensMap = { "noll", "tio", "tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio", "hundra" };
 
     private class Fact
@@ -22,10 +26,40 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] _hunderds =
     {
-        new Fact { Value = 1000000000, Name = "miljard", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
-        new Fact { Value = 1000000,    Name = "miljon", Prefix = " ", Postfix = " ", DisplayOneUnit = true, Gender = GrammaticalGender.Masculine },
-        new Fact { Value = 1000,       Name = "tusen", Prefix = " ",  Postfix = " ", DisplayOneUnit = true },
-        new Fact { Value = 100,        Name = "hundra", Prefix = string.Empty,  Postfix = string.Empty,  DisplayOneUnit = false },
+        new Fact
+        {
+            Value = 1000000000,
+            Name = "miljard",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+            Gender = GrammaticalGender.Masculine,
+        },
+        new Fact
+        {
+            Value = 1000000,
+            Name = "miljon",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+            Gender = GrammaticalGender.Masculine,
+        },
+        new Fact
+        {
+            Value = 1000,
+            Name = "tusen",
+            Prefix = " ",
+            Postfix = " ",
+            DisplayOneUnit = true,
+        },
+        new Fact
+        {
+            Value = 100,
+            Name = "hundra",
+            Prefix = string.Empty,
+            Postfix = string.Empty,
+            DisplayOneUnit = false,
+        },
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
@@ -119,27 +153,8 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string[] _ordinalNumbers = new[]
     {
-        "nollte",
-        "första",
-        "andra",
-        "tredje",
-        "fjärde",
-        "femte",
-        "sjätte",
-        "sjunde",
-        "åttonde",
-        "nionde",
-        "tionde",
-        "elfte",
-        "tolfte",
-        "trettonde",
-        "fjortonde",
-        "femtonde",
-        "sextonde",
-        "sjuttonde",
-        "artonde",
-        "nittonde",
-        "tjugonde",
+        "nollte", "första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde", "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde",
+        "sjuttonde", "artonde", "nittonde", "tjugonde",
     };
 
     public override string ConvertToOrdinal(int number)
@@ -197,7 +212,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
 
             // suffix -de/-te
-            if (divided > 0 && (number % m.Value) == 0)
+            if (number % m.Value == 0)
             {
                 switch (number)
                 {

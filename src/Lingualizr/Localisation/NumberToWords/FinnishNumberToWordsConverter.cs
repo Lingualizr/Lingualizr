@@ -5,11 +5,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap = { "nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän", "kymmenen" };
     private static readonly string[] _ordinalUnitsMap = { "nollas", "ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs", "kymmenes" };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
-    {
-        { 1, "yhdes" },
-        { 2, "kahdes" },
-    };
+    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string> { { 1, "yhdes" }, { 2, "kahdes" }, };
 
     public override string Convert(long number)
     {
@@ -68,12 +64,13 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             numberInt %= 100;
         }
 
-        if (numberInt >= 20 && (numberInt / 10) > 0)
+        if (numberInt >= 20)
         {
             parts.Add(string.Format("{0}kymmentä", Convert(numberInt / 10)));
             numberInt %= 10;
         }
-        else if (numberInt > 10 && numberInt < 20)
+
+        if (numberInt > 10)
         {
             parts.Add(string.Format("{0}toista", _unitsMap[numberInt % 10]));
         }
@@ -129,12 +126,12 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 100;
         }
 
-        if (number >= 20 && (number / 10) > 0)
+        if (number >= 20)
         {
             parts.Add(string.Format("{0}kymmenes", ToOrdinal(number / 10, true)));
             number %= 10;
         }
-        else if (number > 10 && number < 20)
+        else if (number > 10)
         {
             parts.Add(string.Format("{0}toista", GetOrdinalUnit(number % 10, true)));
         }

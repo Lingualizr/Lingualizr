@@ -229,10 +229,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
     public string ToString(IFormatProvider? provider)
     {
-        if (provider == null)
-        {
-            provider = CultureInfo.CurrentCulture;
-        }
+        provider ??= CultureInfo.CurrentCulture;
 
         return string.Format(provider, "{0:0.##} {1}", LargestWholeNumberValue, GetLargestWholeNumberSymbol(provider));
     }
@@ -254,10 +251,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             format = "G";
         }
 
-        if (provider == null)
-        {
-            provider = CultureInfo.CurrentCulture;
-        }
+        provider ??= CultureInfo.CurrentCulture;
 
         if (format == "G")
         {
@@ -303,13 +297,13 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         }
 
         // Byte and Bit symbol look must be case-sensitive
-        if (format.IndexOf(ByteSymbol, StringComparison.Ordinal) != -1)
+        if (format.Contains(ByteSymbol))
         {
             format = format.Replace(ByteSymbol, cultureFormatter.DataUnitHumanize(DataUnit.Byte, Bytes, toSymbol));
             return output(Bytes);
         }
 
-        if (format.IndexOf(BitSymbol, StringComparison.Ordinal) != -1)
+        if (format.Contains(BitSymbol))
         {
             format = format.Replace(BitSymbol, cultureFormatter.DataUnitHumanize(DataUnit.Bit, Bits, toSymbol));
             return output(Bits);

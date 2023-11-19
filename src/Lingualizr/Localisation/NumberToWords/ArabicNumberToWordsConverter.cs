@@ -233,7 +233,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 #pragma warning restore S1751
             }
         }
-        else if (number > 10 && number < 100)
+        else if (number < 100)
         {
             var parts = word.Split(' ');
             var newParts = new string[parts.Length];
