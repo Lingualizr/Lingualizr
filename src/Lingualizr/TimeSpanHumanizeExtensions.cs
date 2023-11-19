@@ -197,9 +197,9 @@ public static class TimeSpanHumanizeExtensions
         return new List<string>() { noTimeValue };
     }
 
-    private static bool IsContainingOnlyNullValue(IEnumerable<string> timeParts)
+    private static bool IsContainingOnlyNullValue(IEnumerable<string?> timeParts)
     {
-        return timeParts.Count(x => x != null) == 0;
+        return timeParts.All(x => x == null);
     }
 
     private static IEnumerable<string> SetPrecisionOfTimeSpan(IEnumerable<string> timeParts, int precision, bool countEmptyUnits)

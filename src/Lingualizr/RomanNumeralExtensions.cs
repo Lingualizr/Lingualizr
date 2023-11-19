@@ -86,7 +86,7 @@ public static class RomanNumeralExtensions
 
         if ((input < minValue) || (input > maxValue))
         {
-            throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException(nameof(input));
         }
 
         var sb = new StringBuilder(maxRomanNumeralLength);
