@@ -108,9 +108,9 @@ internal class RomanianCardinalNumberConverter
             number = -number;
         }
 
-        var _threeDigitParts = SplitEveryThreeDigits(number);
+        var threeDigitParts = SplitEveryThreeDigits(number);
 
-        for (var i = 0; i < _threeDigitParts.Count; i++)
+        for (var i = 0; i < threeDigitParts.Count; i++)
         {
             var currentSet = (ThreeDigitSets)Enum.ToObject(typeof(ThreeDigitSets), i);
 
@@ -121,7 +121,7 @@ internal class RomanianCardinalNumberConverter
                 continue;
             }
 
-            words = partToString(_threeDigitParts[i], gender).Trim() + " " + words.Trim();
+            words = partToString(threeDigitParts[i], gender).Trim() + " " + words.Trim();
         }
 
         if (prefixMinusSign)
