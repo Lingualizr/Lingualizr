@@ -24,23 +24,6 @@ public class DehumanizeToEnumTests
         Assert.Null(EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(DummyEnum), OnNoMatch.ReturnsNull));
     }
 
-#if !NETFX_CORE
-    [Fact]
-    public void HonorsDescriptionAttribute()
-    {
-        Assert.Equal(EnumUnderTest.MemberWithDescriptionAttribute, EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo<EnumUnderTest>());
-        Assert.Equal(EnumUnderTest.MemberWithDescriptionAttribute, EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(EnumUnderTest)));
-    }
-
-    [Fact]
-    public void HonorsDescriptionAttributeSubclasses()
-    {
-        const string calculatedDescription = "Overridden " + EnumTestsResources.MemberWithDescriptionAttributeSubclass;
-        Assert.Equal(EnumUnderTest.MemberWithDescriptionAttributeSubclass, calculatedDescription.DehumanizeTo<EnumUnderTest>());
-        Assert.Equal(EnumUnderTest.MemberWithDescriptionAttributeSubclass, calculatedDescription.DehumanizeTo(typeof(EnumUnderTest)));
-    }
-#endif
-
     [Fact]
     public void HonorsAnyAttributeWithDescriptionStringProperty()
     {

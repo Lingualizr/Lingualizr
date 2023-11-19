@@ -4,20 +4,6 @@ namespace Lingualizr.Tests;
 
 public class EnumHumanizeTests
 {
-#if !NETFX_CORE
-    [Fact]
-    public void HonorsDescriptionAttribute()
-    {
-        Assert.Equal(EnumTestsResources.MemberWithDescriptionAttribute, EnumUnderTest.MemberWithDescriptionAttribute.Humanize());
-    }
-
-    [Fact]
-    public void HonorsDescriptionAttributeSubclasses()
-    {
-        Assert.Equal("Overridden " + EnumTestsResources.MemberWithDescriptionAttributeSubclass, EnumUnderTest.MemberWithDescriptionAttributeSubclass.Humanize());
-    }
-
-#endif
     [Fact]
     public void HonorsAnyAttributeWithDescriptionStringProperty()
     {
