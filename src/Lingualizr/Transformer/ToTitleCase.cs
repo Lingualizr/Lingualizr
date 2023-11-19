@@ -32,7 +32,7 @@ internal partial class ToTitleCase : ICulturedStringTransformer
 
     private static bool AllCapitals(string input)
     {
-        return input.ToCharArray().All(char.IsUpper);
+        return input.All(char.IsUpper);
     }
 
     private static string ReplaceWithTitleCase(Match word, string source, CultureInfo culture, bool firstWord)

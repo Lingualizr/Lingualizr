@@ -18,12 +18,12 @@ public static class StringHumanizeExtensions
     {
         var result = string.Join(" ", LingualizrRegex.PascalCaseWordPartsRegex()
             .Matches(input).Cast<Match>()
-            .Select(match => match.Value.ToCharArray().All(char.IsUpper) &&
+            .Select(match => match.Value.All(char.IsUpper) &&
                              (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I")
                 ? match.Value
                 : match.Value.ToLower()));
 
-        if (result.Replace(" ", string.Empty).ToCharArray().All(c => char.IsUpper(c)) &&
+        if (result.Replace(" ", string.Empty).All(char.IsUpper) &&
             result.Contains(' '))
         {
             result = result.ToLower();
@@ -41,7 +41,7 @@ public static class StringHumanizeExtensions
     public static string Humanize(this string input)
     {
         // if input is all capitals (e.g. an acronym) then return it without change
-        if (input.ToCharArray().All(char.IsUpper))
+        if (input.All(char.IsUpper))
         {
             return input;
         }
