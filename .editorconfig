@@ -346,6 +346,7 @@ dotnet_diagnostic.CA2242.severity = error
 
 dotnet_diagnostic.CS1591.severity = none
 
+dotnet_diagnostic.SA1000.severity = error
 dotnet_diagnostic.SA1001.severity = error
 dotnet_diagnostic.SA1003.severity = error
 dotnet_diagnostic.SA1005.severity = warning

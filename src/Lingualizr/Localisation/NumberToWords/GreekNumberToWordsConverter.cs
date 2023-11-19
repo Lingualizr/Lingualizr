@@ -128,7 +128,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return hundrentsString + " " + GetTwoDigigOrdinal(number - hundrends * 100);
         }
 
-        if(number - hundrends * 100 > 0)
+        if (number - hundrends * 100 > 0)
         {
             return hundrentsString + " " + GetOneDigitOrdinal(number - hundrends * 100);
         }
