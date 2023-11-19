@@ -199,9 +199,8 @@ internal class RomanianCardinalNumberConverter
     /// </summary>
     /// <param name="number">The three-digit set to convert.</param>
     /// <param name="gender">The grammatical gender to convert to.</param>
-    /// <param name="thisIsLastSet">True if the current three-digit set is the last in the word.</param>
     /// <returns>The same three-digit set expressed as text.</returns>
-    private string ThreeDigitSetConverter(int number, GrammaticalGender gender, bool thisIsLastSet = false)
+    private string ThreeDigitSetConverter(int number, GrammaticalGender gender)
     {
         if (number == 0)
         {
@@ -300,7 +299,7 @@ internal class RomanianCardinalNumberConverter
     /// <returns>The same three-digit number, as units, expressed as text.</returns>
     private string UnitsConverter(int number, GrammaticalGender gender)
     {
-        return ThreeDigitSetConverter(number, gender, true);
+        return ThreeDigitSetConverter(number, gender);
     }
 
     /// <summary>
@@ -355,7 +354,7 @@ internal class RomanianCardinalNumberConverter
         }
         else
         {
-            return ThreeDigitSetConverter(number, GrammaticalGender.Feminine, true) + (IsAbove20(number) ? " " + _joinAbove20 : string.Empty) + " milioane";
+            return ThreeDigitSetConverter(number, GrammaticalGender.Feminine) + (IsAbove20(number) ? " " + _joinAbove20 : string.Empty) + " milioane";
         }
     }
 

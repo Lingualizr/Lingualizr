@@ -36,10 +36,10 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
-        return Convert(number, gender, false);
+        return ConvertInternal(number, gender, false);
     }
 
-    private static string Convert(long input, GrammaticalGender gender, bool isOrdinal, bool addAnd = true)
+    private static string ConvertInternal(long input, GrammaticalGender gender, bool isOrdinal)
     {
         if (input > int.MaxValue || input < int.MinValue)
         {
@@ -65,7 +65,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = Convert(input / 1000000000000, gender, false) + " трилион" +
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000000000, gender, false) + " трилион" +
                                           GetEndingForGender(gender, input);
             }
 
@@ -74,12 +74,12 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((input / 1000000000) > 0)
         {
-            parts.Add(Convert(input / 1000000000, gender, false) +
+            parts.Add(ConvertInternal(input / 1000000000, gender, false) +
                       $" {(input < 2000000000 ? "милиард" : "милиарда")}");
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = Convert(input / 1000000000, gender, false) + " милиард" +
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000000, gender, false) + " милиард" +
                                           GetEndingForGender(gender, input);
             }
 
@@ -88,11 +88,11 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if ((input / 1000000) > 0)
         {
-            parts.Add(Convert(input / 1000000, gender, false) + $" {(input < 2000000 ? "милион" : "милиона")}");
+            parts.Add(ConvertInternal(input / 1000000, gender, false) + $" {(input < 2000000 ? "милион" : "милиона")}");
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = Convert(input / 1000000, gender, false) + " милион" +
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000, gender, false) + " милион" +
                                           GetEndingForGender(gender, input);
             }
 
@@ -107,12 +107,12 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                parts.Add(Convert(input / 1000, gender, false) + " хиляди");
+                parts.Add(ConvertInternal(input / 1000, gender, false) + " хиляди");
             }
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = Convert(input / 1000, gender, false) + " хиляд" +
+                lastOrdinalSubstitution = ConvertInternal(input / 1000, gender, false) + " хиляд" +
                                           GetEndingForGender(gender, input);
             }
 
@@ -168,7 +168,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        return Convert(number, gender, true);
+        return ConvertInternal(number, gender, true);
     }
 
     private static string GetEndingForGender(GrammaticalGender gender, long input)
