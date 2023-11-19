@@ -85,9 +85,9 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetOrdinalUnit(int number, bool useExceptions)
     {
-        if (useExceptions && _ordinalExceptions.ContainsKey(number))
+        if (useExceptions && _ordinalExceptions.TryGetValue(number, out var unit))
         {
-            return _ordinalExceptions[number];
+            return unit;
         }
 
         return _ordinalUnitsMap[number];
