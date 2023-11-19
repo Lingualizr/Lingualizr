@@ -146,7 +146,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
     private static string RemoveOnePrefix(string toWords)
     {
         // one hundred => hundredth
-        if (toWords.StartsWith("een", StringComparison.Ordinal) && toWords.IndexOf("een en", StringComparison.Ordinal) != 0)
+        if (toWords.StartsWith("een", StringComparison.Ordinal) && !toWords.StartsWith("een en", StringComparison.Ordinal))
         {
             toWords = toWords.Remove(0, 4);
         }
