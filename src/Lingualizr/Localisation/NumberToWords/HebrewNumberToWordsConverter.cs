@@ -10,23 +10,11 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private readonly CultureInfo _culture;
 
-    private class DescriptionAttribute : Attribute
-    {
-        public string Description { get; set; }
-
-        public DescriptionAttribute(string description)
-        {
-            Description = description;
-        }
-    }
-
     private enum Group
     {
         Hundreds = 100,
         Thousands = 1000,
-        [Description("מיליון")]
         Millions = 1000000,
-        [Description("מיליארד")]
         Billions = 1000000000,
     }
 

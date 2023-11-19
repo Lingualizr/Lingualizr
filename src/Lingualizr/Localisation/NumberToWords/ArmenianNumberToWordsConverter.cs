@@ -158,17 +158,6 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
     }
 
-    private static string RemoveOnePrefix(string toWords)
-    {
-        // one hundred => hundredth
-        if (toWords.StartsWith("մեկ", StringComparison.Ordinal))
-        {
-            toWords = toWords.Remove(0, 4);
-        }
-
-        return toWords;
-    }
-
     private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)]out string words)
     {
         return _ordinalExceptions.TryGetValue(number, out words);
