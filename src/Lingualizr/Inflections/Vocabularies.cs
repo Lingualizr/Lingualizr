@@ -5,12 +5,7 @@
 /// </summary>
 public static class Vocabularies
 {
-    private static readonly Lazy<Vocabulary> _instance;
-
-    static Vocabularies()
-    {
-        _instance = new Lazy<Vocabulary>(BuildDefault, LazyThreadSafetyMode.PublicationOnly);
-    }
+    private static readonly Lazy<Vocabulary> _instance = new Lazy<Vocabulary>(BuildDefault, LazyThreadSafetyMode.PublicationOnly);
 
     /// <summary>
     /// The default vocabulary used for singular/plural irregularities.

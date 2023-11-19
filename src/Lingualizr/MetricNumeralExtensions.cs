@@ -29,23 +29,36 @@ namespace Lingualizr;
 /// </summary>
 public static class MetricNumeralExtensions
 {
-    private static readonly double _bigLimit;
-    private static readonly double _smallLimit;
-
-    static MetricNumeralExtensions()
-    {
-        const int limit = 27;
-        _bigLimit = Math.Pow(10, limit);
-        _smallLimit = Math.Pow(10, -limit);
-    }
+    private static readonly double _bigLimit = Math.Pow(10, 27);
+    private static readonly double _smallLimit = Math.Pow(10, -27);
 
     /// <summary>
     /// Symbols is a list of every symbols for the Metric system.
     /// </summary>
     private static readonly List<char>[] _symbols =
     {
-        new List<char> { 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y' },
-        new List<char> { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y' },
+        new List<char>
+        {
+            'k',
+            'M',
+            'G',
+            'T',
+            'P',
+            'E',
+            'Z',
+            'Y',
+        },
+        new List<char>
+        {
+            'm',
+            'μ',
+            'n',
+            'p',
+            'f',
+            'a',
+            'z',
+            'y',
+        },
     };
 
     /// <summary>
@@ -68,7 +81,6 @@ public static class MetricNumeralExtensions
         { 'G', new UnitPrefix("giga", "billion", "milliard") },
         { 'M', new UnitPrefix("mega", "million") },
         { 'k', new UnitPrefix("kilo", "thousand") },
-
         { 'm', new UnitPrefix("milli", "thousandth") },
         { 'μ', new UnitPrefix("micro", "millionth") },
         { 'n', new UnitPrefix("nano", "billionth", "milliardth") },
@@ -179,7 +191,8 @@ public static class MetricNumeralExtensions
 
         if (!useSymbol)
         {
-            formats = formats.HasValue ? formats | MetricNumeralFormats.UseName
+            formats = formats.HasValue
+                ? formats | MetricNumeralFormats.UseName
                 : MetricNumeralFormats.UseName;
         }
 
