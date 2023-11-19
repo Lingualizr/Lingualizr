@@ -397,6 +397,7 @@ dotnet_diagnostic.SA1520.severity = error
 dotnet_diagnostic.SA1600.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1601.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1602.severity = none # should be turned on in the future
+dotnet_diagnostic.SA1606.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1611.severity = none # should be turned on in the future
 dotnet_diagnostic.SA1612.severity = error # should be turned on in the future
 dotnet_diagnostic.SA1614.severity = none # should be turned on in the future
