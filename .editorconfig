@@ -420,6 +420,7 @@ dotnet_diagnostic.S2178.severity = error
 dotnet_diagnostic.S2223.severity = error
 dotnet_diagnostic.S2292.severity = error
 dotnet_diagnostic.S2589.severity = error
+dotnet_diagnostic.S3260.severity = none
 dotnet_diagnostic.S3358.severity = none
 dotnet_diagnostic.S4136.severity = error
 dotnet_diagnostic.S6562.severity = none
