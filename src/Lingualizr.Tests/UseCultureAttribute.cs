@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Reflection;
-
 using Xunit.Sdk;
 
 namespace Lingualizr.Tests;
@@ -30,9 +29,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// </para>
     /// </remarks>
     public UseCultureAttribute(string culture)
-        : this(culture, culture)
-    {
-    }
+        : this(culture, culture) { }
 
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with

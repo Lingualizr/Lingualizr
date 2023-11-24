@@ -6,9 +6,7 @@ internal class HebrewFormatter : DefaultFormatter
     private const string PluralPostfix = "_Plural";
 
     public HebrewFormatter()
-        : base("he")
-    {
-    }
+        : base("he") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

@@ -38,10 +38,7 @@ public static class To
     /// </example>
     public static ICulturedStringTransformer TitleCase
     {
-        get
-        {
-            return new ToTitleCase();
-        }
+        get { return new ToTitleCase(); }
     }
 
     /// <summary>
@@ -52,10 +49,7 @@ public static class To
     /// </example>
     public static ICulturedStringTransformer LowerCase
     {
-        get
-        {
-            return new ToLowerCase();
-        }
+        get { return new ToLowerCase(); }
     }
 
     /// <summary>
@@ -66,10 +60,7 @@ public static class To
     /// </example>
     public static ICulturedStringTransformer UpperCase
     {
-        get
-        {
-            return new ToUpperCase();
-        }
+        get { return new ToUpperCase(); }
     }
 
     /// <summary>
@@ -80,9 +71,6 @@ public static class To
     /// </example>
     public static ICulturedStringTransformer SentenceCase
     {
-        get
-        {
-            return new ToSentenceCase();
-        }
+        get { return new ToSentenceCase(); }
     }
 }

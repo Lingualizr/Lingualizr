@@ -5,9 +5,7 @@ namespace Lingualizr.Localisation.Formatters;
 internal class UkrainianFormatter : DefaultFormatter
 {
     public UkrainianFormatter()
-        : base("uk")
-    {
-    }
+        : base("uk") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

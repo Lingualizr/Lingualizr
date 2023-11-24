@@ -6,8 +6,26 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     private static readonly string[] _unitsMap =
     {
-        "சுழியம்", "ஒன்று", "இரண்டு", "மூன்று", "நான்கு", "ஐந்து", "ஆறு", "ஏழு", "எட்டு", "ஒன்பது", "பத்து", "பதினொன்று", "பனிரெண்டு", "பதிமூன்று", "பதினான்கு", "பதினைந்து", "பதினாறு", "பதினேழு",
-        "பதினெட்டு", "பத்தொன்பது",
+        "சுழியம்",
+        "ஒன்று",
+        "இரண்டு",
+        "மூன்று",
+        "நான்கு",
+        "ஐந்து",
+        "ஆறு",
+        "ஏழு",
+        "எட்டு",
+        "ஒன்பது",
+        "பத்து",
+        "பதினொன்று",
+        "பனிரெண்டு",
+        "பதிமூன்று",
+        "பதினான்கு",
+        "பதினைந்து",
+        "பதினாறு",
+        "பதினேழு",
+        "பதினெட்டு",
+        "பத்தொன்பது",
     };
 
     private static readonly string[] _tensMap = { "சுழியம்", "பத்து", "இருப", "முப்ப", "நாற்ப", "ஐம்ப", "அறுப", "எழுப", "எண்ப", "தொண்ணூ" };
@@ -15,7 +33,24 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly string[] _thousandsMap =
     {
-        "ஆ", "இரண்டா", "மூன்றா", "நான்கா", "ஐந்தா", "ஆறா", "ஏழா", "எட்டா", "ஒன்பதா", "பத்தா", "பதினொன்றா", "பனிரெண்டா", "பதிமூன்றா", "பதினான்கா", "பதினைந்தா", "பதினாறா", "பதினேழா", "பதினெட்டா",
+        "ஆ",
+        "இரண்டா",
+        "மூன்றா",
+        "நான்கா",
+        "ஐந்தா",
+        "ஆறா",
+        "ஏழா",
+        "எட்டா",
+        "ஒன்பதா",
+        "பத்தா",
+        "பதினொன்றா",
+        "பனிரெண்டா",
+        "பதிமூன்றா",
+        "பதினான்கா",
+        "பதினைந்தா",
+        "பதினாறா",
+        "பதினேழா",
+        "பதினெட்டா",
         "பத்தொன்பதா",
     };
 
@@ -57,34 +92,34 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000000000000) > 0)
+        if (number / 1000000000000000000 > 0)
         {
             parts.Add(string.Format("{0} quintillion", Convert(number / 1000000000000000000)));
             number %= 1000000000000000000;
         }
 
-        if ((number / 1000000000000000) > 0)
+        if (number / 1000000000000000 > 0)
         {
             parts.Add(string.Format("{0} quadrillion", Convert(number / 1000000000000000)));
             number %= 1000000000000000;
         }
 
-        if ((number / 10000000) > 0)
+        if (number / 10000000 > 0)
         {
             parts.Add(GetCroresValue(ref number));
         }
 
-        if ((number / 100000) > 0)
+        if (number / 100000 > 0)
         {
             parts.Add(GetLakhsValue(ref number, isOrdinal));
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             parts.Add(GetThousandsValue(ref number));
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             parts.Add(GetHundredsValue(ref number));
         }
@@ -138,7 +173,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             var lastPart = _tensMap[number / 10];
             var quot = number / 10;
-            if ((number % 10) > 0)
+            if (number % 10 > 0)
             {
                 if (quot == 9)
                 {
@@ -291,12 +326,12 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else if (num_above_10 % 10 > 1)
             {
-                local_word += _thousandsMap[(num_above_10 % 10) - 1];
+                local_word += _thousandsMap[num_above_10 % 10 - 1];
             }
         }
         else
         {
-            local_word += _thousandsMap[(number / 1000) - 1];
+            local_word += _thousandsMap[number / 1000 - 1];
         }
 
         number %= 1000;
@@ -315,7 +350,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetHundredsValue(ref long number)
     {
-        var localWord = _hundredsMap[(number / 100) - 1];
+        var localWord = _hundredsMap[number / 100 - 1];
         if (number / 100 == 9)
         {
             if (number % 100 == 0)

@@ -9,9 +9,7 @@ namespace Lingualizr.Inflections;
 /// </summary>
 public class Vocabulary
 {
-    internal Vocabulary()
-    {
-    }
+    internal Vocabulary() { }
 
     private readonly List<Rule> _plurals = new List<Rule>();
     private readonly List<Rule> _singulars = new List<Rule>();

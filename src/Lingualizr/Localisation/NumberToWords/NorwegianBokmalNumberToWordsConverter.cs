@@ -7,18 +7,19 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
     private static readonly string[] _unitsMap = { "null", "en", "to", "tre", "fire", "fem", "seks", "sju", "åtte", "ni", "ti", "elleve", "tolv", "tretten", "fjorten", "femten", "seksten", "sytten", "atten", "nitten" };
     private static readonly string[] _tensMap = { "null", "ti", "tjue", "tretti", "førti", "femti", "seksti", "sytti", "åtti", "nitti" };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new()
-    {
-        { 0, "nullte" },
-        { 1, "første" },
-        { 2, "andre" },
-        { 3, "tredje" },
-        { 4, "fjerde" },
-        { 5, "femte" },
-        { 6, "sjette" },
-        { 11, "ellevte" },
-        { 12, "tolvte" },
-    };
+    private static readonly Dictionary<int, string> _ordinalExceptions =
+        new()
+        {
+            { 0, "nullte" },
+            { 1, "første" },
+            { 2, "andre" },
+            { 3, "tredje" },
+            { 4, "fjerde" },
+            { 5, "femte" },
+            { 6, "sjette" },
+            { 11, "ellevte" },
+            { 12, "tolvte" },
+        };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
@@ -63,7 +64,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         var millionOrMore = false;
 
         const int billion = 1000000000;
-        if ((number / billion) > 0)
+        if (number / billion > 0)
         {
             millionOrMore = true;
             var isExactOrdinal = isOrdinal && number % billion == 0;
@@ -72,7 +73,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         }
 
         const int million = 1000000;
-        if ((number / million) > 0)
+        if (number / million > 0)
         {
             millionOrMore = true;
             var isExactOrdinal = isOrdinal && number % million == 0;
@@ -81,7 +82,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         }
 
         var thousand = false;
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             thousand = true;
             parts.Add(Part("{0}tusen", number % 1000 < 100 ? "tusen" : "ettusen", number / 1000));
@@ -89,7 +90,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         }
 
         var hundred = false;
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             hundred = true;
             parts.Add(Part("{0}hundre", thousand || millionOrMore ? "ethundre" : "hundre", number / 100));
@@ -117,7 +118,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             else
             {
                 var lastPart = _tensMap[number / 10];
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
                 }

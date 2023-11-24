@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Lingualizr.Localisation;
 
 namespace Lingualizr;
@@ -42,7 +41,7 @@ public static class HeadingExtensions
     /// <param name="culture">The culture to return the textual representation in</param>
     public static string ToHeading(this double heading, HeadingStyle style = HeadingStyle.Abbreviated, CultureInfo? culture = null)
     {
-        var val = (int)((heading / 22.5) + .5);
+        var val = (int)(heading / 22.5 + .5);
 
         var result = Headings[val % 16];
 
@@ -63,7 +62,7 @@ public static class HeadingExtensions
     /// <returns>The heading arrow.</returns>
     public static char ToHeadingArrow(this double heading)
     {
-        var val = (int)((heading / 45) + .5);
+        var val = (int)(heading / 45 + .5);
 
         return HeadingArrows[val % 8];
     }

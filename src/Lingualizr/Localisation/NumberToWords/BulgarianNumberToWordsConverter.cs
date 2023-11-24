@@ -4,34 +4,56 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 {
     private static readonly string[] _unitsMap =
     {
-        "нула", "един", "две", "три", "четири", "пет", "шест", "седем", "осем", "девет", "десет", "единадесет",
-        "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет", "осемнадесет",
+        "нула",
+        "един",
+        "две",
+        "три",
+        "четири",
+        "пет",
+        "шест",
+        "седем",
+        "осем",
+        "девет",
+        "десет",
+        "единадесет",
+        "дванадесет",
+        "тринадесет",
+        "четиринадесет",
+        "петнадесет",
+        "шестнадесет",
+        "седемнадесет",
+        "осемнадесет",
         "деветнадесет",
     };
 
-    private static readonly string[] _tensMap =
-    {
-        "нула", "десет", "двадесет", "тридесет", "четиридесет", "петдесет", "шестдесет", "седемдесет",
-        "осемдесет", "деветдесет",
-    };
+    private static readonly string[] _tensMap = { "нула", "десет", "двадесет", "тридесет", "четиридесет", "петдесет", "шестдесет", "седемдесет", "осемдесет", "деветдесет", };
 
-    private static readonly string[] _hundredsMap =
-    {
-        "нула", "сто", "двеста", "триста", "четиристотин", "петстотин", "шестстотин", "седемстотин",
-        "осемстотин", "деветстотин",
-    };
+    private static readonly string[] _hundredsMap = { "нула", "сто", "двеста", "триста", "четиристотин", "петстотин", "шестстотин", "седемстотин", "осемстотин", "деветстотин", };
 
-    private static readonly string[] _hundredsOrdinalMap =
-    {
-        string.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот",
-        "деветстот",
-    };
+    private static readonly string[] _hundredsOrdinalMap = { string.Empty, "стот", "двест", "трист", "четиристот", "петстот", "шестстот", "седемстот", "осемстот", "деветстот", };
 
     private static readonly string[] _unitsOrdinal =
     {
-        string.Empty, "първ", "втор", "трет", "четвърт", "пет", "шест", "седм", "осм", "девeт", "десeт",
-        "единадесет", "дванадесет", "тринадесет", "четиринадесет", "петнадесет", "шестнадесет", "седемнадесет",
-        "осемнадесет", "деветнадесет",
+        string.Empty,
+        "първ",
+        "втор",
+        "трет",
+        "четвърт",
+        "пет",
+        "шест",
+        "седм",
+        "осм",
+        "девeт",
+        "десeт",
+        "единадесет",
+        "дванадесет",
+        "тринадесет",
+        "четиринадесет",
+        "петнадесет",
+        "шестнадесет",
+        "седемнадесет",
+        "осемнадесет",
+        "деветнадесет",
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
@@ -61,45 +83,41 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         string lastOrdinalSubstitution = string.Empty;
 
-        if ((input / 1000000000000) > 0)
+        if (input / 1000000000000 > 0)
         {
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = ConvertInternal(input / 1000000000000, gender, false) + " трилион" +
-                                          GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000000000, gender, false) + " трилион" + GetEndingForGender(gender, input);
             }
 
             input %= 1000000000000;
         }
 
-        if ((input / 1000000000) > 0)
+        if (input / 1000000000 > 0)
         {
-            parts.Add(ConvertInternal(input / 1000000000, gender, false) +
-                      $" {(input < 2000000000 ? "милиард" : "милиарда")}");
+            parts.Add(ConvertInternal(input / 1000000000, gender, false) + $" {(input < 2000000000 ? "милиард" : "милиарда")}");
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = ConvertInternal(input / 1000000000, gender, false) + " милиард" +
-                                          GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000000, gender, false) + " милиард" + GetEndingForGender(gender, input);
             }
 
             input %= 1000000000;
         }
 
-        if ((input / 1000000) > 0)
+        if (input / 1000000 > 0)
         {
             parts.Add(ConvertInternal(input / 1000000, gender, false) + $" {(input < 2000000 ? "милион" : "милиона")}");
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = ConvertInternal(input / 1000000, gender, false) + " милион" +
-                                          GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = ConvertInternal(input / 1000000, gender, false) + " милион" + GetEndingForGender(gender, input);
             }
 
             input %= 1000000;
         }
 
-        if ((input / 1000) > 0)
+        if (input / 1000 > 0)
         {
             if (input < 2000)
             {
@@ -112,8 +130,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
 
             if (isOrdinal)
             {
-                lastOrdinalSubstitution = ConvertInternal(input / 1000, gender, false) + " хиляд" +
-                                          GetEndingForGender(gender, input);
+                lastOrdinalSubstitution = ConvertInternal(input / 1000, gender, false) + " хиляд" + GetEndingForGender(gender, input);
             }
 
             input %= 1000;

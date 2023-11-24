@@ -25,7 +25,6 @@ public class NumberToOrdinalWordsTests
     [InlineData(1211, "χιλιοστός διακοσιοστός ενδέκατος")]
     [InlineData(1999, "χιλιοστός εννιακοσιοστός ενενηκοστός ένατος")]
     [InlineData(2000, "")]
-
     [Theory]
     public void ToOrdinalWordsInt(int number, string expected)
     {

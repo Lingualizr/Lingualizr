@@ -138,9 +138,7 @@ public class DefaultFormatter : IFormatter
             throw new ArgumentException($"The resource object with key '{resourceKey}' was not found", nameof(resourceKey));
         }
 
-        return toWords
-            ? resourceString.FormatWith(number.ToWords(_culture))
-            : resourceString.FormatWith(number);
+        return toWords ? resourceString.FormatWith(number.ToWords(_culture)) : resourceString.FormatWith(number);
     }
 
     /// <summary>

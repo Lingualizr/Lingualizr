@@ -12,23 +12,22 @@ public static class RomanNumeralExtensions
 {
     private const int NumberOfRomanNumeralMaps = 13;
 
-    private static readonly IDictionary<string, int> _romanNumerals =
-        new Dictionary<string, int>(NumberOfRomanNumeralMaps)
-        {
-            { "M",  1000 },
-            { "CM", 900 },
-            { "D",  500 },
-            { "CD", 400 },
-            { "C",  100 },
-            { "XC", 90 },
-            { "L",  50 },
-            { "XL", 40 },
-            { "X",  10 },
-            { "IX", 9 },
-            { "V",  5 },
-            { "IV", 4 },
-            { "I",  1 },
-        };
+    private static readonly IDictionary<string, int> _romanNumerals = new Dictionary<string, int>(NumberOfRomanNumeralMaps)
+    {
+        { "M", 1000 },
+        { "CM", 900 },
+        { "D", 500 },
+        { "CD", 400 },
+        { "C", 100 },
+        { "XC", 90 },
+        { "L", 50 },
+        { "XL", 40 },
+        { "X", 10 },
+        { "IX", 9 },
+        { "V", 5 },
+        { "IV", 4 },
+        { "I", 1 },
+    };
 
     /// <summary>
     /// Converts Roman numbers into integer
@@ -43,7 +42,7 @@ public static class RomanNumeralExtensions
 
         var length = input.Length;
 
-        if ((length == 0) || IsInvalidRomanNumeral(input))
+        if (length == 0 || IsInvalidRomanNumeral(input))
         {
             throw new ArgumentException("Empty or invalid Roman numeral string.", nameof(input));
         }
@@ -84,7 +83,7 @@ public static class RomanNumeralExtensions
         const int maxValue = 3999;
         const int maxRomanNumeralLength = 15;
 
-        if ((input < minValue) || (input > maxValue))
+        if (input < minValue || input > maxValue)
         {
             throw new ArgumentOutOfRangeException(nameof(input));
         }

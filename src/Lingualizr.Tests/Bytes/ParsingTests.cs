@@ -21,9 +21,7 @@
 // THE SOFTWARE.
 
 using System.Globalization;
-
 using Lingualizr.Bytes;
-
 using Xunit;
 
 namespace Lingualizr.Tests.Bytes;
@@ -114,7 +112,10 @@ public class ParsingTests
         Assert.False(resultBool);
         Assert.Equal(default, resultByteSize);
 
-        Assert.Throws<FormatException>(() => { ByteSize.Parse(input); });
+        Assert.Throws<FormatException>(() =>
+        {
+            ByteSize.Parse(input);
+        });
     }
 
     [Fact]
@@ -126,7 +127,10 @@ public class ParsingTests
     [Fact]
     public void ParseThrowsOnNull()
     {
-        Assert.Throws<ArgumentNullException>(() => { ByteSize.Parse(null); });
+        Assert.Throws<ArgumentNullException>(() =>
+        {
+            ByteSize.Parse(null);
+        });
     }
 
     [Fact]

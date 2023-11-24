@@ -30,7 +30,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000000) > 0)
+        if (number / 1000000000000 > 0)
         {
             var format = "{0}兆";
             if (number % 1000000000000 < 100000000000 && number % 1000000000000 > 0)
@@ -42,7 +42,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 1000000000000;
         }
 
-        if ((number / 100000000) > 0)
+        if (number / 100000000 > 0)
         {
             var format = "{0}亿";
             if (number % 100000000 < 10000000 && number % 100000000 > 0)
@@ -54,7 +54,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 100000000;
         }
 
-        if ((number / 10000) > 0)
+        if (number / 10000 > 0)
         {
             var format = "{0}万";
             if (number % 10000 < 1000 && number % 10000 > 0)
@@ -66,7 +66,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 10000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             var format = "{0}千";
             if (number % 1000 < 100 && number % 1000 > 0)
@@ -78,7 +78,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             var format = "{0}百";
             if (number % 100 < 10 && number % 100 > 0)
@@ -99,7 +99,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             else
             {
                 var lastPart = string.Format("{0}十", UnitsMap[number / 10]);
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", UnitsMap[number % 10]);
                 }

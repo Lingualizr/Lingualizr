@@ -5,19 +5,7 @@ internal class RomanianCardinalNumberConverter
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9 for 9.
     /// </summary>
-    private readonly string[] _units =
-    {
-        string.Empty,
-        "unu|una|unu",
-        "doi|două|două",
-        "trei",
-        "patru",
-        "cinci",
-        "șase",
-        "șapte",
-        "opt",
-        "nouă",
-    };
+    private readonly string[] _units = { string.Empty, "unu|una|unu", "doi|două|două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă", };
 
     /// <summary>
     /// Lookup table converting teens number to text. Index 0 for 10, index 1 for 11, up to index 9 for 19.
@@ -39,19 +27,7 @@ internal class RomanianCardinalNumberConverter
     /// <summary>
     /// Lookup table converting tens number to text. Index 2 for 20, index 3 for 30, up to index 9 for 90.
     /// </summary>
-    private readonly string[] _tensOver20NumberToText =
-    {
-        string.Empty,
-        string.Empty,
-        "douăzeci",
-        "treizeci",
-        "patruzeci",
-        "cincizeci",
-        "șaizeci",
-        "șaptezeci",
-        "optzeci",
-        "nouăzeci",
-    };
+    private readonly string[] _tensOver20NumberToText = { string.Empty, string.Empty, "douăzeci", "treizeci", "patruzeci", "cincizeci", "șaizeci", "șaptezeci", "optzeci", "nouăzeci", };
 
     private readonly string _feminineSingular = "o";
     private readonly string _masculineSingular = "un";
@@ -222,7 +198,7 @@ internal class RomanianCardinalNumberConverter
         words += HundredsToText(hundreds);
 
         // append text for tens, only those from twenty upward
-        words += ((tens >= 2) ? " " : string.Empty) + _tensOver20NumberToText[tens];
+        words += (tens >= 2 ? " " : string.Empty) + _tensOver20NumberToText[tens];
 
         if (tensAndUnits <= 9)
         {
@@ -237,7 +213,7 @@ internal class RomanianCardinalNumberConverter
         else
         {
             // exception for zero
-            var unitsText = units == 0 ? string.Empty : " " + (_joinGroups + " " + GetPartByGender(_units[units], gender));
+            var unitsText = units == 0 ? string.Empty : " " + _joinGroups + " " + GetPartByGender(_units[units], gender);
 
             words += unitsText;
         }

@@ -28,38 +28,30 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((numberInt / 1000000000) > 0)
+        if (numberInt / 1000000000 > 0)
         {
-            parts.Add(numberInt / 1000000000 == 1
-                ? "miljardi "
-                : string.Format("{0}miljardia ", Convert(numberInt / 1000000000)));
+            parts.Add(numberInt / 1000000000 == 1 ? "miljardi " : string.Format("{0}miljardia ", Convert(numberInt / 1000000000)));
 
             numberInt %= 1000000000;
         }
 
-        if ((numberInt / 1000000) > 0)
+        if (numberInt / 1000000 > 0)
         {
-            parts.Add(numberInt / 1000000 == 1
-                ? "miljoona "
-                : string.Format("{0}miljoonaa ", Convert(numberInt / 1000000)));
+            parts.Add(numberInt / 1000000 == 1 ? "miljoona " : string.Format("{0}miljoonaa ", Convert(numberInt / 1000000)));
 
             numberInt %= 1000000;
         }
 
-        if ((numberInt / 1000) > 0)
+        if (numberInt / 1000 > 0)
         {
-            parts.Add(numberInt / 1000 == 1
-                ? "tuhat "
-                : string.Format("{0}tuhatta ", Convert(numberInt / 1000)));
+            parts.Add(numberInt / 1000 == 1 ? "tuhat " : string.Format("{0}tuhatta ", Convert(numberInt / 1000)));
 
             numberInt %= 1000;
         }
 
-        if ((numberInt / 100) > 0)
+        if (numberInt / 100 > 0)
         {
-            parts.Add(numberInt / 100 == 1
-                ? "sata"
-                : string.Format("{0}sataa", Convert(numberInt / 100)));
+            parts.Add(numberInt / 100 == 1 ? "sata" : string.Format("{0}sataa", Convert(numberInt / 100)));
 
             numberInt %= 100;
         }
@@ -102,27 +94,27 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000) > 0)
+        if (number / 1000000000 > 0)
         {
-            parts.Add(string.Format("{0}miljardis", (number / 1000000000) == 1 ? string.Empty : ToOrdinal(number / 1000000000, true)));
+            parts.Add(string.Format("{0}miljardis", number / 1000000000 == 1 ? string.Empty : ToOrdinal(number / 1000000000, true)));
             number %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
-            parts.Add(string.Format("{0}miljoonas", (number / 1000000) == 1 ? string.Empty : ToOrdinal(number / 1000000, true)));
+            parts.Add(string.Format("{0}miljoonas", number / 1000000 == 1 ? string.Empty : ToOrdinal(number / 1000000, true)));
             number %= 1000000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
-            parts.Add(string.Format("{0}tuhannes", (number / 1000) == 1 ? string.Empty : ToOrdinal(number / 1000, true)));
+            parts.Add(string.Format("{0}tuhannes", number / 1000 == 1 ? string.Empty : ToOrdinal(number / 1000, true)));
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
-            parts.Add(string.Format("{0}sadas", (number / 100) == 1 ? string.Empty : ToOrdinal(number / 100, true)));
+            parts.Add(string.Format("{0}sadas", number / 100 == 1 ? string.Empty : ToOrdinal(number / 100, true)));
             number %= 100;
         }
 

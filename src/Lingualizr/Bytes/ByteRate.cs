@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Lingualizr.Localisation;
 
 namespace Lingualizr.Bytes;
@@ -58,7 +57,6 @@ public class ByteRate
             TimeUnit.Hour => TimeSpan.FromHours(1),
             _ => throw new NotSupportedException("timeUnit must be Second, Minute, or Hour"),
         };
-        return new ByteSize(Size.Bytes / Interval.TotalSeconds * displayInterval.TotalSeconds)
-            .Humanize(format, culture) + '/' + timeUnit.ToSymbol(culture);
+        return new ByteSize(Size.Bytes / Interval.TotalSeconds * displayInterval.TotalSeconds).Humanize(format, culture) + '/' + timeUnit.ToSymbol(culture);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
-
 using Lingualizr.DateTimeHumanizeStrategy;
 using Lingualizr.Localisation.CollectionFormatters;
 using Lingualizr.Localisation.DateToOrdinalWords;
@@ -89,10 +88,7 @@ public static class Configurator
 
     internal static ICollectionFormatter CollectionFormatter
     {
-        get
-        {
-            return CollectionFormatters.ResolveForUiCulture();
-        }
+        get { return CollectionFormatters.ResolveForUiCulture(); }
     }
 
     /// <summary>
@@ -118,10 +114,7 @@ public static class Configurator
     /// </summary>
     internal static IOrdinalizer Ordinalizer
     {
-        get
-        {
-            return Ordinalizers.ResolveForUiCulture();
-        }
+        get { return Ordinalizers.ResolveForUiCulture(); }
     }
 
     /// <summary>
@@ -129,10 +122,7 @@ public static class Configurator
     /// </summary>
     internal static IDateToOrdinalWordConverter DateToOrdinalWordsConverter
     {
-        get
-        {
-            return DateToOrdinalWordsConverters.ResolveForUiCulture();
-        }
+        get { return DateToOrdinalWordsConverters.ResolveForUiCulture(); }
     }
 
     /// <summary>
@@ -140,18 +130,12 @@ public static class Configurator
     /// </summary>
     internal static IDateOnlyToOrdinalWordConverter DateOnlyToOrdinalWordsConverter
     {
-        get
-        {
-            return DateOnlyToOrdinalWordsConverters.ResolveForUiCulture();
-        }
+        get { return DateOnlyToOrdinalWordsConverters.ResolveForUiCulture(); }
     }
 
     internal static ITimeOnlyToClockNotationConverter TimeOnlyToClockNotationConverter
     {
-        get
-        {
-            return TimeOnlyToClockNotationConverters.ResolveForUiCulture();
-        }
+        get { return TimeOnlyToClockNotationConverters.ResolveForUiCulture(); }
     }
 
     /// <summary>

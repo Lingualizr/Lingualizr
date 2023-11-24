@@ -34,9 +34,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(objectFormatter);
 
-        return HumanizeDisplayStrings(
-            collection.Select(objectFormatter),
-            separator);
+        return HumanizeDisplayStrings(collection.Select(objectFormatter), separator);
     }
 
     public string Humanize<T>(IEnumerable<T>? collection, Func<T, object?>? objectFormatter, string separator)
@@ -44,17 +42,12 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         ArgumentNullException.ThrowIfNull(collection);
         ArgumentNullException.ThrowIfNull(objectFormatter);
 
-        return HumanizeDisplayStrings(
-            collection.Select(objectFormatter).Select(o => o?.ToString()),
-            separator);
+        return HumanizeDisplayStrings(collection.Select(objectFormatter).Select(o => o?.ToString()), separator);
     }
 
     private string HumanizeDisplayStrings(IEnumerable<string?> strings, string separator)
     {
-        var itemsArray = strings
-            .Select(item => item == null ? string.Empty : item.Trim())
-            .Where(item => !string.IsNullOrWhiteSpace(item))
-            .ToArray();
+        var itemsArray = strings.Select(item => item == null ? string.Empty : item.Trim()).Where(item => !string.IsNullOrWhiteSpace(item)).ToArray();
 
         var count = itemsArray.Length;
 
@@ -71,11 +64,7 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
         var itemsBeforeLast = itemsArray.Take(count - 1);
         var lastItem = itemsArray.Skip(count - 1).First();
 
-        return string.Format(
-            GetConjunctionFormatString(count),
-            string.Join(", ", itemsBeforeLast),
-            separator,
-            lastItem);
+        return string.Format(GetConjunctionFormatString(count), string.Join(", ", itemsBeforeLast), separator, lastItem);
     }
 
     protected virtual string GetConjunctionFormatString(int itemCount) => "{0} {1} {2}";

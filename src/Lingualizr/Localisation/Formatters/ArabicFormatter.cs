@@ -6,9 +6,7 @@ internal class ArabicFormatter : DefaultFormatter
     private const string PluralPostfix = "_Plural";
 
     public ArabicFormatter()
-        : base("ar")
-    {
-    }
+        : base("ar") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

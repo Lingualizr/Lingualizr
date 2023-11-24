@@ -23,9 +23,7 @@ internal class FixedNumberOfWordsTruncator : ITruncator
             return value;
         }
 
-        return truncateFrom == TruncateFrom.Left
-            ? TruncateFromLeft(value, length, truncationString)
-            : TruncateFromRight(value, length, truncationString);
+        return truncateFrom == TruncateFrom.Left ? TruncateFromLeft(value, length, truncationString) : TruncateFromRight(value, length, truncationString);
     }
 
     private static string TruncateFromRight(string value, int length, string? truncationString)

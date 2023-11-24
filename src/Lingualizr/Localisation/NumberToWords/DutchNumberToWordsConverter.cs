@@ -10,7 +10,26 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     private static readonly string[] _unitsMap =
     {
-        "nul", "een", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien",
+        "nul",
+        "een",
+        "twee",
+        "drie",
+        "vier",
+        "vijf",
+        "zes",
+        "zeven",
+        "acht",
+        "negen",
+        "tien",
+        "elf",
+        "twaalf",
+        "dertien",
+        "veertien",
+        "vijftien",
+        "zestien",
+        "zeventien",
+        "achttien",
+        "negentien",
     };
 
     private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig" };
@@ -153,7 +172,12 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         return word;
     }
 
-    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string> { { "een", "eerste" }, { "drie", "derde" }, { "miljoen", "miljoenste" }, };
+    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string>
+    {
+        { "een", "eerste" },
+        { "drie", "derde" },
+        { "miljoen", "miljoenste" },
+    };
 
     private static readonly char[] _endingCharForSte = { 't', 'g', 'd' };
 
@@ -172,7 +196,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         // achtste
         // twintigste, dertigste, veertigste, ...
         // honderdste, duizendste, ...
-        if (word.LastIndexOfAny(_endingCharForSte) == (word.Length - 1))
+        if (word.LastIndexOfAny(_endingCharForSte) == word.Length - 1)
         {
             return word + "ste";
         }

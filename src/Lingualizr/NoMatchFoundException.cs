@@ -6,18 +6,12 @@
 #pragma warning disable 1591
 public class NoMatchFoundException : Exception
 {
-    public NoMatchFoundException()
-    {
-    }
+    public NoMatchFoundException() { }
 
     public NoMatchFoundException(string message)
-        : base(message)
-    {
-    }
+        : base(message) { }
 
     public NoMatchFoundException(string message, Exception inner)
-        : base(message, inner)
-    {
-    }
+        : base(message, inner) { }
 }
 #pragma warning restore 1591

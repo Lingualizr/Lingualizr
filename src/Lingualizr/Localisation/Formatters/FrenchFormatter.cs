@@ -5,9 +5,7 @@ internal class FrenchFormatter : DefaultFormatter
     private const string DualPostfix = "_Dual";
 
     public FrenchFormatter(string localeCode)
-        : base(localeCode)
-    {
-    }
+        : base(localeCode) { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

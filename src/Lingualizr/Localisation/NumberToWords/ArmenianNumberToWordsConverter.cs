@@ -4,7 +4,29 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] _unitsMap = { "զրո", "մեկ", "երկու", "երեք", "չորս", "հինգ", "վեց", "յոթ", "ութ", "ինը", "տաս", "տասնմեկ", "տասներկու", "տասներեք", "տասնչորս", "տասնհինգ", "տասնվեց", "տասնյոթ", "տասնութ", "տասնինը" };
+    private static readonly string[] _unitsMap =
+    {
+        "զրո",
+        "մեկ",
+        "երկու",
+        "երեք",
+        "չորս",
+        "հինգ",
+        "վեց",
+        "յոթ",
+        "ութ",
+        "ինը",
+        "տաս",
+        "տասնմեկ",
+        "տասներկու",
+        "տասներեք",
+        "տասնչորս",
+        "տասնհինգ",
+        "տասնվեց",
+        "տասնյոթ",
+        "տասնութ",
+        "տասնինը"
+    };
     private static readonly string[] _tensMap = { "զրո", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն" };
 
     private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
@@ -40,13 +62,13 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number == long.MinValue)
         {
-            return "մինուս ինը քվինտիլիոն " +
-                    "երկու հարյուր քսաներեք կվադրիլիոն " +
-                    "երեք հարյուր յոթանասուներկու տրիլիոն " +
-                    "երեսունվեց միլիարդ " +
-                    "ութ հարյուր հիսունչորս միլիոն " +
-                    "յոթ հարյուր յոթանասունհինգ հազար " +
-                    "ութ հարյուր ութ";
+            return "մինուս ինը քվինտիլիոն "
+                + "երկու հարյուր քսաներեք կվադրիլիոն "
+                + "երեք հարյուր յոթանասուներկու տրիլիոն "
+                + "երեսունվեց միլիարդ "
+                + "ութ հարյուր հիսունչորս միլիոն "
+                + "յոթ հարյուր յոթանասունհինգ հազար "
+                + "ութ հարյուր ութ";
         }
 
         if (number < 0)
@@ -56,39 +78,39 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000000000000) > 0)
+        if (number / 1000000000000000000 > 0)
         {
             parts.Add(string.Format("{0} քվինտիլիոն", Convert(number / 1000000000000000000)));
             number %= 1000000000000000000;
         }
 
-        if ((number / 1000000000000000) > 0)
+        if (number / 1000000000000000 > 0)
         {
             parts.Add(string.Format("{0} կվադրիլիոն", Convert(number / 1000000000000000)));
             number %= 1000000000000000;
         }
 
-        if ((number / 1000000000000) > 0)
+        if (number / 1000000000000 > 0)
         {
             parts.Add(string.Format("{0} տրիլիոն", Convert(number / 1000000000000)));
             number %= 1000000000000;
         }
 
-        if ((number / 1000000000) > 0)
+        if (number / 1000000000 > 0)
         {
             parts.Add(string.Format("{0} միլիարդ", Convert(number / 1000000000)));
             number %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
             parts.Add(string.Format("{0} միլիոն", Convert(number / 1000000)));
             number %= 1000000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
-            if ((number / 1000) == 1)
+            if (number / 1000 == 1)
             {
                 parts.Add("հազար");
             }
@@ -100,9 +122,9 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
-            if ((number / 100) == 1)
+            if (number / 100 == 1)
             {
                 parts.Add("հարյուր");
             }
@@ -123,7 +145,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             else
             {
                 var lastPart = _tensMap[number / 10];
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
                 }
@@ -157,7 +179,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
     }
 
-    private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)]out string words)
+    private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)] out string words)
     {
         return _ordinalExceptions.TryGetValue(number, out words);
     }

@@ -1,5 +1,4 @@
 ﻿using PublicApiGenerator;
-
 using Xunit.Abstractions;
 
 namespace Lingualizr.Tests.ApiApprover;
@@ -17,13 +16,15 @@ public class PublicApiApprovalTest
 
     private static string Filter(string text)
     {
-        return string.Join(Environment.NewLine, text.Split(
-                new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-            .Where(l => !l.StartsWith("[assembly: AssemblyVersion("))
-            .Where(l => !l.StartsWith("[assembly: AssemblyFileVersion("))
-            .Where(l => !l.StartsWith("[assembly: AssemblyInformationalVersion("))
-            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"CommitHash\""))
-            .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"RepositoryUrl\""))
-            .Where(l => !string.IsNullOrWhiteSpace(l)));
+        return string.Join(
+            Environment.NewLine,
+            text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                .Where(l => !l.StartsWith("[assembly: AssemblyVersion("))
+                .Where(l => !l.StartsWith("[assembly: AssemblyFileVersion("))
+                .Where(l => !l.StartsWith("[assembly: AssemblyInformationalVersion("))
+                .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"CommitHash\""))
+                .Where(l => !l.StartsWith("[assembly: System.Reflection.AssemblyMetadata(\"RepositoryUrl\""))
+                .Where(l => !string.IsNullOrWhiteSpace(l))
+        );
     }
 }

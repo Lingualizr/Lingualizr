@@ -43,31 +43,31 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000000000000) > 0)
+        if (number / 1000000000000000000 > 0)
         {
             parts.Add(string.Format("{0} kentilyon", Convert(number / 1000000000000000000)));
             number %= 1000000000000000000;
         }
 
-        if ((number / 1000000000000000) > 0)
+        if (number / 1000000000000000 > 0)
         {
             parts.Add(string.Format("{0} katrilyon", Convert(number / 1000000000000000)));
             number %= 1000000000000000;
         }
 
-        if ((number / 1000000000000) > 0)
+        if (number / 1000000000000 > 0)
         {
             parts.Add(string.Format("{0} trilyon", Convert(number / 1000000000000)));
             number %= 1000000000000;
         }
 
-        if ((number / 1000000000) > 0)
+        if (number / 1000000000 > 0)
         {
             parts.Add(string.Format("{0} milyar", Convert(number / 1000000000)));
             number %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
             parts.Add(string.Format("{0} milyon", Convert(number / 1000000)));
             number %= 1000000;
@@ -87,7 +87,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
             number %= 100;
         }
 
-        if ((number / 10) > 0)
+        if (number / 10 > 0)
         {
             parts.Add(TensMap[number / 10]);
             number %= 10;

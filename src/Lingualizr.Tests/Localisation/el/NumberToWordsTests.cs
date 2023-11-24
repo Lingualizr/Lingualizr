@@ -26,7 +26,6 @@ public class NumberToWordsTests
     [InlineData(69, "εξήντα εννέα")]
     [InlineData(619, "εξακόσια δεκαεννέα")]
     [InlineData(1190, "χίλια εκατόν ενενήντα")]
-
     [Theory]
     public void ToWordsInt(int number, string expected)
     {

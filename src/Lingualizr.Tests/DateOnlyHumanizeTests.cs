@@ -1,6 +1,5 @@
 ﻿using Lingualizr.Configuration;
 using Lingualizr.DateTimeHumanizeStrategy;
-
 using Xunit;
 
 namespace Lingualizr.Tests;

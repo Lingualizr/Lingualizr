@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
-
 using Xunit;
 
 namespace Lingualizr.Tests;
@@ -42,8 +41,7 @@ public class MetricNumeralTests
     [Fact]
     public void FromMetricOnNull()
     {
-        Assert.Throws<ArgumentNullException>(() =>
-            MetricNumeralExtensions.FromMetric(null));
+        Assert.Throws<ArgumentNullException>(() => MetricNumeralExtensions.FromMetric(null));
     }
 
     [Theory]
@@ -54,9 +52,7 @@ public class MetricNumeralTests
         var to = origin.ToMetric();
         var from = to.FromMetric();
 
-        var c = Equals(
-            origin.ToString("0.##E+0", CultureInfo.InvariantCulture),
-            from.ToString("0.##E+0", CultureInfo.InvariantCulture));
+        var c = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), from.ToString("0.##E+0", CultureInfo.InvariantCulture));
 
         Assert.True(c);
     }
@@ -74,11 +70,7 @@ public class MetricNumeralTests
     public void TestAllSymbolsAsInt(int exponent)
     {
         var origin = Convert.ToInt32(Math.Pow(10, exponent));
-        var isEquals = Equals(
-            origin.ToString("0.##E+0", CultureInfo.InvariantCulture),
-            origin.ToMetric()
-                .FromMetric()
-                .ToString("0.##E+0", CultureInfo.InvariantCulture));
+        var isEquals = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), origin.ToMetric().FromMetric().ToString("0.##E+0", CultureInfo.InvariantCulture));
         if (!isEquals)
         {
             Debugger.Break();

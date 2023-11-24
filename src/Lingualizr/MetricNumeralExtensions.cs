@@ -37,28 +37,8 @@ public static class MetricNumeralExtensions
     /// </summary>
     private static readonly List<char>[] _symbols =
     {
-        new List<char>
-        {
-            'k',
-            'M',
-            'G',
-            'T',
-            'P',
-            'E',
-            'Z',
-            'Y',
-        },
-        new List<char>
-        {
-            'm',
-            'μ',
-            'n',
-            'p',
-            'f',
-            'a',
-            'z',
-            'y',
-        },
+        new List<char> { 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', },
+        new List<char> { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y', },
     };
 
     /// <summary>
@@ -196,9 +176,7 @@ public static class MetricNumeralExtensions
     /// <returns>A number build from a Metric representation</returns>
     private static double BuildNumber(string input, char last)
     {
-        return char.IsLetter(last)
-            ? BuildMetricNumber(input, last)
-            : double.Parse(input);
+        return char.IsLetter(last) ? BuildMetricNumber(input, last) : double.Parse(input);
     }
 
     /// <summary>
@@ -211,9 +189,7 @@ public static class MetricNumeralExtensions
     {
         double getExponent(List<char> symbols) => (symbols.IndexOf(last) + 1) * 3;
         var number = double.Parse(input.Remove(input.Length - 1));
-        var exponent = Math.Pow(10, _symbols[0].Contains(last)
-            ? getExponent(_symbols[0])
-            : -getExponent(_symbols[1]));
+        var exponent = Math.Pow(10, _symbols[0].Contains(last) ? getExponent(_symbols[0]) : -getExponent(_symbols[1]));
         return number * exponent;
     }
 
@@ -224,8 +200,7 @@ public static class MetricNumeralExtensions
     /// <returns>A metric representation with a symbol</returns>
     private static string ReplaceNameBySymbol(string input)
     {
-        return _unitPrefixes.Aggregate(input, (current, unitPrefix) =>
-            current.Replace(unitPrefix.Value.Name, unitPrefix.Key.ToString()));
+        return _unitPrefixes.Aggregate(input, (current, unitPrefix) => current.Replace(unitPrefix.Value.Name, unitPrefix.Key.ToString()));
     }
 
     /// <summary>
@@ -269,12 +244,8 @@ public static class MetricNumeralExtensions
             number = Math.Round(number, decimals.Value);
         }
 
-        var symbol = Math.Sign(exponent) == 1
-            ? _symbols[0][exponent - 1]
-            : _symbols[1][-exponent - 1];
-        return number.ToString("G15")
-               + (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.WithSpace) ? " " : string.Empty)
-               + GetUnitText(symbol, formats);
+        var symbol = Math.Sign(exponent) == 1 ? _symbols[0][exponent - 1] : _symbols[1][-exponent - 1];
+        return number.ToString("G15") + (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.WithSpace) ? " " : string.Empty) + GetUnitText(symbol, formats);
     }
 
     /// <summary>
@@ -285,20 +256,17 @@ public static class MetricNumeralExtensions
     /// <returns>A symbol, a symbol's name, a symbol's short scale word or a symbol's long scale word</returns>
     private static string GetUnitText(char symbol, MetricNumeralFormats? formats)
     {
-        if (formats.HasValue
-            && formats.Value.HasFlag(MetricNumeralFormats.UseName))
+        if (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.UseName))
         {
             return _unitPrefixes[symbol].Name;
         }
 
-        if (formats.HasValue
-            && formats.Value.HasFlag(MetricNumeralFormats.UseShortScaleWord))
+        if (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.UseShortScaleWord))
         {
             return _unitPrefixes[symbol].ShortScaleWord;
         }
 
-        if (formats.HasValue
-            && formats.Value.HasFlag(MetricNumeralFormats.UseLongScaleWord))
+        if (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.UseLongScaleWord))
         {
             return _unitPrefixes[symbol].LongScaleWord;
         }
@@ -315,8 +283,7 @@ public static class MetricNumeralExtensions
     {
         bool outside(double min, double max) => !(max > input && input > min);
 
-        return (Math.Sign(input) == 1 && outside(_smallLimit, _bigLimit))
-               || (Math.Sign(input) == -1 && outside(-_bigLimit, -_smallLimit));
+        return (Math.Sign(input) == 1 && outside(_smallLimit, _bigLimit)) || (Math.Sign(input) == -1 && outside(-_bigLimit, -_smallLimit));
     }
 
     /// <summary>

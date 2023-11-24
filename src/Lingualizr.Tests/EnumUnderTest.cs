@@ -6,18 +6,24 @@ namespace Lingualizr.Tests;
 public enum EnumUnderTest
 {
     MemberWithDescriptionAttributeSubclass,
+
     [CustomDescription(EnumTestsResources.MemberWithCustomDescriptionAttribute)]
     MemberWithCustomDescriptionAttribute,
+
     [ImposterDescription(42)]
     MemberWithImposterDescriptionAttribute,
+
     [CustomProperty(EnumTestsResources.MemberWithCustomPropertyAttribute)]
     MemberWithCustomPropertyAttribute,
     MemberWithoutDescriptionAttribute,
     ALLCAPITALS,
+
     [Display(Description = EnumTestsResources.MemberWithDisplayAttribute)]
     MemberWithDisplayAttribute,
+
     [Display(Description = "MemberWithLocalizedDisplayAttribute", ResourceType = typeof(EnumTestsResources))]
     MemberWithLocalizedDisplayAttribute,
+
     [Display(Name = EnumTestsResources.MemberWithDisplayAttributeWithoutDescription)]
     MemberWithDisplayAttributeWithoutDescription,
 }

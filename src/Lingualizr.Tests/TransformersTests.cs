@@ -1,5 +1,4 @@
 ﻿using Lingualizr.Transformer;
-
 using Xunit;
 
 namespace Lingualizr.Tests;

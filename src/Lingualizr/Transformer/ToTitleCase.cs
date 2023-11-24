@@ -44,10 +44,7 @@ internal partial class ToTitleCase : ICulturedStringTransformer
         var wordToConvert = word.Value;
         string replacement;
 
-        if (firstWord ||
-            (!articles.Contains(wordToConvert) &&
-             !conjunctions.Contains(wordToConvert) &&
-             !prepositions.Contains(wordToConvert)))
+        if (firstWord || (!articles.Contains(wordToConvert) && !conjunctions.Contains(wordToConvert) && !prepositions.Contains(wordToConvert)))
         {
             replacement = culture.TextInfo.ToUpper(wordToConvert[0]) + culture.TextInfo.ToLower(wordToConvert.Remove(0, 1));
         }

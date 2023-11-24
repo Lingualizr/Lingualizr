@@ -1,5 +1,4 @@
 ﻿using Lingualizr.Localisation;
-
 using Xunit;
 
 namespace Lingualizr.Tests;
@@ -65,7 +64,6 @@ public class ResourceKeyTests
                 new object[] { 0, "DateHumanize_MultipleDaysFromNow", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Day, timeUnitTense: Tense.Future, count: 10) },
                 new object[] { 0, "DateHumanize_MultipleMonthsFromNow", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Month, timeUnitTense: Tense.Future, count: 10) },
                 new object[] { 0, "DateHumanize_MultipleYearsFromNow", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Year, timeUnitTense: Tense.Future, count: 10) },
-
                 new object[] { 0, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Millisecond, Tense.Past, count: 0) },
                 new object[] { 1, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Second, Tense.Past, count: 0) },
                 new object[] { 2, "DateHumanize_Now", ResourceKeys.DateHumanize.GetResourceKey(TimeUnit.Minute, Tense.Past, count: 0) },
@@ -101,7 +99,6 @@ public class ResourceKeyTests
                 new object[] { 0, "TimeSpanHumanize_MultipleWeeks", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Week, 10) },
                 new object[] { 0, "TimeSpanHumanize_MultipleMonths", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Month, 10) },
                 new object[] { 0, "TimeSpanHumanize_MultipleYears", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Year, 10) },
-
                 new object[] { 0, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Millisecond, 0, true) },
                 new object[] { 1, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Second, 0, true) },
                 new object[] { 2, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Minute, 0, true) },
@@ -110,7 +107,6 @@ public class ResourceKeyTests
                 new object[] { 5, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Week, 0, true) },
                 new object[] { 6, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Month, 0, true) },
                 new object[] { 7, "TimeSpanHumanize_Zero", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Year, 0, true) },
-
                 new object[] { 1, "TimeSpanHumanize_MultipleMilliseconds", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Millisecond, 0) },
                 new object[] { 2, "TimeSpanHumanize_MultipleSeconds", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Second, 0) },
                 new object[] { 3, "TimeSpanHumanize_MultipleMinutes", ResourceKeys.TimeSpanHumanize.GetResourceKey(TimeUnit.Minute, 0) },

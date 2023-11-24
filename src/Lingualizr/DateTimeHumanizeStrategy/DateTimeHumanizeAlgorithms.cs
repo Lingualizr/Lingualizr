@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
 
@@ -46,8 +45,12 @@ internal static class DateTimeHumanizeAlgorithms
 
     private static string PrecisionHumanize(TimeSpan ts, Tense tense, double precision, CultureInfo? culture)
     {
-        int seconds = ts.Seconds, minutes = ts.Minutes, hours = ts.Hours, days = ts.Days;
-        int years = 0, months = 0;
+        int seconds = ts.Seconds,
+            minutes = ts.Minutes,
+            hours = ts.Hours,
+            days = ts.Days;
+        int years = 0,
+            months = 0;
 
         // start approximate from smaller units towards bigger ones
         if (ts.Milliseconds >= 999 * precision)
@@ -80,7 +83,7 @@ internal static class DateTimeHumanizeAlgorithms
         {
             var factor = Convert.ToInt32(Math.Floor((double)days / 30));
             var maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 30));
-            months = (days >= 30 * (factor + precision)) ? maxMonths : maxMonths - 1;
+            months = days >= 30 * (factor + precision) ? maxMonths : maxMonths - 1;
         }
 
         // year calculation
@@ -93,7 +96,7 @@ internal static class DateTimeHumanizeAlgorithms
         {
             var factor = Convert.ToInt32(Math.Floor((double)days / 365));
             var maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 365));
-            years = (days >= 365 * (factor + precision)) ? maxMonths : maxMonths - 1;
+            years = days >= 365 * (factor + precision) ? maxMonths : maxMonths - 1;
         }
 
         // start computing result from larger units to smaller ones

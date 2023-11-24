@@ -4,7 +4,29 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+    private static readonly string[] UnitsMap =
+    {
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen"
+    };
     private static readonly string[] TensMap = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
     private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
@@ -48,43 +70,43 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         var parts = new List<string>();
 
-        if ((number / 1000000000000000000) > 0)
+        if (number / 1000000000000000000 > 0)
         {
             parts.Add(string.Format("{0} quintillion", Convert(number / 1000000000000000000)));
             number %= 1000000000000000000;
         }
 
-        if ((number / 1000000000000000) > 0)
+        if (number / 1000000000000000 > 0)
         {
             parts.Add(string.Format("{0} quadrillion", Convert(number / 1000000000000000)));
             number %= 1000000000000000;
         }
 
-        if ((number / 1000000000000) > 0)
+        if (number / 1000000000000 > 0)
         {
             parts.Add(string.Format("{0} trillion", Convert(number / 1000000000000)));
             number %= 1000000000000;
         }
 
-        if ((number / 1000000000) > 0)
+        if (number / 1000000000 > 0)
         {
             parts.Add(string.Format("{0} billion", Convert(number / 1000000000)));
             number %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
             parts.Add(string.Format("{0} million", Convert(number / 1000000)));
             number %= 1000000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             parts.Add(string.Format("{0} thousand", Convert(number / 1000)));
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             parts.Add(string.Format("{0} hundred", Convert(number / 100)));
             number %= 100;
@@ -104,7 +126,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             else
             {
                 var lastPart = TensMap[number / 10];
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     lastPart += string.Format("-{0}", GetUnitValue(number % 10, isOrdinal));
                 }

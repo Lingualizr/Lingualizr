@@ -5,16 +5,11 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
     private const int OneBillion = 1000000000;
     private const int OneMillion = 1000000;
 
-    private static readonly string[] _numberVerbalPairs =
-    {
-        string.Empty, "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín",
-    };
+    private static readonly string[] _numberVerbalPairs = { string.Empty, "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", };
 
     public override string Convert(long number)
     {
-        return number == 0
-            ? "không"
-            : ConvertImpl(number);
+        return number == 0 ? "không" : ConvertImpl(number);
     }
 
     public override string ConvertToOrdinal(int number)
@@ -41,47 +36,27 @@ internal class VietnameseNumberToWordsConverter : GenderlessNumberToWordsConvert
     {
         if (number >= OneBillion)
         {
-            return string.Format(
-                    "{0} tỉ {1}",
-                    ConvertImpl(number / OneBillion),
-                    ConvertImpl(number % OneBillion, isGreaterThanOneHundred: true))
-                .TrimEnd();
+            return string.Format("{0} tỉ {1}", ConvertImpl(number / OneBillion), ConvertImpl(number % OneBillion, isGreaterThanOneHundred: true)).TrimEnd();
         }
 
         if (number >= OneMillion)
         {
-            return string.Format(
-                    "{0} triệu {1}",
-                    ConvertImpl(number / OneMillion),
-                    ConvertImpl(number % OneMillion, isGreaterThanOneHundred: true))
-                .TrimEnd();
+            return string.Format("{0} triệu {1}", ConvertImpl(number / OneMillion), ConvertImpl(number % OneMillion, isGreaterThanOneHundred: true)).TrimEnd();
         }
 
         if (number >= 1000)
         {
-            return string.Format(
-                    "{0} nghìn {1}",
-                    ConvertImpl(number / 1000),
-                    ConvertImpl(number % 1000, isGreaterThanOneHundred: true))
-                .TrimEnd();
+            return string.Format("{0} nghìn {1}", ConvertImpl(number / 1000), ConvertImpl(number % 1000, isGreaterThanOneHundred: true)).TrimEnd();
         }
 
         if (number >= 100)
         {
-            return string.Format(
-                    "{0} trăm {1}",
-                    _numberVerbalPairs[number / 100],
-                    ConvertImpl(number % 100, isGreaterThanOneHundred: true))
-                .TrimEnd();
+            return string.Format("{0} trăm {1}", _numberVerbalPairs[number / 100], ConvertImpl(number % 100, isGreaterThanOneHundred: true)).TrimEnd();
         }
 
         if (number >= 20)
         {
-            return string.Format(
-                    "{0} mươi {1}",
-                    _numberVerbalPairs[number / 10],
-                    ConvertImpl(number % 10, hasTens: true))
-                .TrimEnd();
+            return string.Format("{0} mươi {1}", _numberVerbalPairs[number / 10], ConvertImpl(number % 10, hasTens: true)).TrimEnd();
         }
 
         if (number == 14)

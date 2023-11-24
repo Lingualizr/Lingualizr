@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Xunit;
 
 namespace Lingualizr.Tests;
@@ -133,6 +132,6 @@ public class ToQuantityTests
 
     internal static StringComparer GetStringComparer(CultureInfo culture)
     {
-         return StringComparer.Create(culture, false);
+        return StringComparer.Create(culture, false);
     }
 }

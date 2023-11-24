@@ -16,31 +16,31 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
             number = -number;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
             textReturn += Convert(number / 1000000) + "ล้าน";
             number %= 1000000;
         }
 
-        if ((number / 100000) > 0)
+        if (number / 100000 > 0)
         {
             textReturn += Convert(number / 100000) + "แสน";
             number %= 100000;
         }
 
-        if ((number / 10000) > 0)
+        if (number / 10000 > 0)
         {
             textReturn += Convert(number / 10000) + "หมื่น";
             number %= 10000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             textReturn += Convert(number / 1000) + "พัน";
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             textReturn += Convert(number / 100) + "ร้อย";
             number %= 100;
@@ -63,7 +63,7 @@ internal class ThaiNumberToWordsConverter : GenderlessNumberToWordsConverter
             else
             {
                 textReturn += tensMap[number / 10];
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     textReturn += string.Empty + unitsMap[number % 10];
                 }

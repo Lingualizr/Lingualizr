@@ -8,7 +8,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
     public override string Convert(long number)
     {
-        var largestNumber = (Math.Pow(10, 15) * 1000) - 1;
+        var largestNumber = Math.Pow(10, 15) * 1000 - 1;
         if (number > largestNumber || number < -largestNumber)
         {
             throw new NotImplementedException();
@@ -74,10 +74,6 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
     private static bool IsVowel(char c)
     {
-        return c == 'ا' ||
-               c == 'ێ' ||
-               c == 'ۆ' ||
-               c == 'ە' ||
-               c == 'ی';
+        return c == 'ا' || c == 'ێ' || c == 'ۆ' || c == 'ە' || c == 'ی';
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Xunit;
 
 namespace Lingualizr.Tests;
@@ -76,9 +75,7 @@ public class NumberToWordsTests
         var normalForm2 = number.ToOrdinalWords(default, WordForm.Normal);
         var abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation);
 
-        Assert.All(
-            new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2 },
-            item => Assert.Equal(expected, item));
+        Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -98,9 +95,7 @@ public class NumberToWordsTests
         var normalForm2 = number.ToOrdinalWords(default, WordForm.Normal, cultureInfo);
         var abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation, cultureInfo);
 
-        Assert.All(
-            new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 },
-            item => Assert.Equal(expected, item));
+        Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -147,9 +142,7 @@ public class NumberToWordsTests
         var normalForm3 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender));
         var abbrFrom3 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender));
 
-        Assert.All(
-            new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2, normalForm3, normalForm3 },
-            item => Assert.Equal(expected, item));
+        Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2, normalForm3, normalForm3 }, item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -169,9 +162,7 @@ public class NumberToWordsTests
         var normalForm2 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender), cultureInfo);
         var abbrForm2 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender), cultureInfo);
 
-        Assert.All(
-            new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 },
-            item => Assert.Equal(expected, item));
+        Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -228,8 +219,14 @@ public class NumberToWordsTests
     [InlineData(111111111111111L, "one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven")]
     [InlineData(1111111111111111L, "one quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven")]
     [InlineData(11111111111111111L, "eleven quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven")]
-    [InlineData(111111111111111111L, "one hundred and eleven quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven")]
-    [InlineData(1111111111111111111L, "one quintillion one hundred and eleven quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven")]
+    [InlineData(
+        111111111111111111L,
+        "one hundred and eleven quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven"
+    )]
+    [InlineData(
+        1111111111111111111L,
+        "one quintillion one hundred and eleven quadrillion one hundred and eleven trillion one hundred and eleven billion one hundred and eleven million one hundred and eleven thousand one hundred and eleven"
+    )]
     public void ToWordsLong(long number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

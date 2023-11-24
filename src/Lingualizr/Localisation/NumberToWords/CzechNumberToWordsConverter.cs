@@ -9,7 +9,29 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] _thousandsMap = { "tisíc", "tisíce", "tisíc" };
     private static readonly string[] _hundredsMap = { "nula", "sto", "dvě stě", "tři sta", "čtyři sta", "pět set", "šest set", "sedm set", "osm set", "devět set" };
     private static readonly string[] _tensMap = { "nula", "deset", "dvacet", "třicet", "čtyřicet", "padesát", "šedesát", "sedmdesát", "osmdesát", "devadesát" };
-    private static readonly string[] _unitsMap = { "nula", "jeden", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět", "deset", "jedenáct", "dvanáct", "třináct", "čtrnáct", "patnáct", "šestnáct", "sedmnáct", "osmnáct", "devatenáct" };
+    private static readonly string[] _unitsMap =
+    {
+        "nula",
+        "jeden",
+        "dva",
+        "tři",
+        "čtyři",
+        "pět",
+        "šest",
+        "sedm",
+        "osm",
+        "devět",
+        "deset",
+        "jedenáct",
+        "dvanáct",
+        "třináct",
+        "čtrnáct",
+        "patnáct",
+        "šestnáct",
+        "sedmnáct",
+        "osmnáct",
+        "devatenáct"
+    };
 
     private static readonly string[] _unitsMasculineOverrideMap = { "jeden", "dva" };
     private static readonly string[] _unitsFeminineOverrideMap = { "jedna", "dvě" };

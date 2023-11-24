@@ -70,11 +70,15 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
             var n3 = (groupNumber - groupNumber % 1000) / 1000;
 
             parts.Add(
-                UnitsMap1[n3] + (n3 == 0 ? string.Empty : UnitsMap2[3])
-                              + UnitsMap1[n2] + (n2 == 0 ? string.Empty : UnitsMap2[2])
-                              + UnitsMap1[n1] + (n1 == 0 ? string.Empty : UnitsMap2[1])
-                              + (n0 == 1 ? "일" : UnitsMap1[n0])
-                              + (groupNumber == 0 ? string.Empty : UnitsMap3[groupLevel]));
+                UnitsMap1[n3]
+                    + (n3 == 0 ? string.Empty : UnitsMap2[3])
+                    + UnitsMap1[n2]
+                    + (n2 == 0 ? string.Empty : UnitsMap2[2])
+                    + UnitsMap1[n1]
+                    + (n1 == 0 ? string.Empty : UnitsMap2[1])
+                    + (n0 == 1 ? "일" : UnitsMap1[n0])
+                    + (groupNumber == 0 ? string.Empty : UnitsMap3[groupLevel])
+            );
 
             groupLevel++;
         }

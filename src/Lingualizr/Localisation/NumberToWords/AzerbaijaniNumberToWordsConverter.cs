@@ -38,13 +38,13 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
 
         var parts = new List<string>();
 
-        if ((numberInt / 1000000000) > 0)
+        if (numberInt / 1000000000 > 0)
         {
             parts.Add(string.Format("{0} milyard", Convert(numberInt / 1000000000)));
             numberInt %= 1000000000;
         }
 
-        if ((numberInt / 1000000) > 0)
+        if (numberInt / 1000000 > 0)
         {
             parts.Add(string.Format("{0} milyon", Convert(numberInt / 1000000)));
             numberInt %= 1000000;
@@ -64,7 +64,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
             numberInt %= 100;
         }
 
-        if ((numberInt / 10) > 0)
+        if (numberInt / 10 > 0)
         {
             parts.Add(_tensMap[numberInt / 10]);
             numberInt %= 10;

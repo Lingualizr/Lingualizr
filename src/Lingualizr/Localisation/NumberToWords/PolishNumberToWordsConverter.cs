@@ -4,22 +4,32 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] HundredsMap =
-    {
-        "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset",
-    };
+    private static readonly string[] HundredsMap = { "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset", };
 
-    private static readonly string[] TensMap =
-    {
-        "zero", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt",
-        "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt",
-    };
+    private static readonly string[] TensMap = { "zero", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt", };
 
     private static readonly string[] UnitsMap =
     {
-        "zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć", "dziesięć",
-        "jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście",
-        "osiemnaście", "dziewiętnaście",
+        "zero",
+        "jeden",
+        "dwa",
+        "trzy",
+        "cztery",
+        "pięć",
+        "sześć",
+        "siedem",
+        "osiem",
+        "dziewięć",
+        "dziesięć",
+        "jedenaście",
+        "dwanaście",
+        "trzynaście",
+        "czternaście",
+        "piętnaście",
+        "szesnaście",
+        "siedemnaście",
+        "osiemnaście",
+        "dziewiętnaście",
     };
 
     private static readonly string[][] PowersOfThousandMap =
@@ -105,7 +115,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
     private static void CollectPartsUnderThousand(ICollection<string> parts, int number, GrammaticalGender gender)
     {
         var hundredsDigit = number / 100;
-        var tensDigit = (number % 100) / 10;
+        var tensDigit = number % 100 / 10;
         var unitsDigit = number % 10;
 
         if (hundredsDigit >= 1)
@@ -155,7 +165,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         }
 
         var multiplierUnitsDigit = multiplier % 10;
-        var multiplierTensDigit = (multiplier % 100) / 10;
+        var multiplierTensDigit = multiplier % 100 / 10;
         if (multiplierTensDigit == 1 || multiplierUnitsDigit <= 1 || multiplierUnitsDigit >= 5)
         {
             return PowersOfThousandMap[power][genitiveIndex];

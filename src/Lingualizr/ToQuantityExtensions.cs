@@ -105,9 +105,7 @@ public static class ToQuantityExtensions
 
     private static string ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric, string? format = null, IFormatProvider? formatProvider = null)
     {
-        var transformedInput = quantity == 1
-            ? input.Singularize(inputIsKnownToBePlural: false)
-            : input.Pluralize(inputIsKnownToBeSingular: false);
+        var transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
 
         if (showQuantityAs == ShowQuantityAs.None)
         {
@@ -137,9 +135,7 @@ public static class ToQuantityExtensions
     /// <returns></returns>
     public static string ToQuantity(this string input, double quantity, string? format = null, IFormatProvider? formatProvider = null)
     {
-        var transformedInput = quantity == 1
-            ? input.Singularize(inputIsKnownToBePlural: false)
-            : input.Pluralize(inputIsKnownToBeSingular: false);
+        var transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
 
         return string.Format(formatProvider, "{0} {1}", quantity.ToString(format, formatProvider), transformedInput);
     }

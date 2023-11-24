@@ -2,52 +2,68 @@
 
 internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] HundredsRootMap =
-    {
-        "cero", "ciento", "doscient", "trescient", "cuatrocient", "quinient", "seiscient", "setecient",
-        "ochocient", "novecient",
-    };
+    private static readonly string[] HundredsRootMap = { "cero", "ciento", "doscient", "trescient", "cuatrocient", "quinient", "seiscient", "setecient", "ochocient", "novecient", };
 
-    private static readonly string[] HundredthsRootMap =
-    {
-        string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim",
-        "septingentésim", "octingentésim", "noningentésim",
-    };
+    private static readonly string[] HundredthsRootMap = { string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim", "septingentésim", "octingentésim", "noningentésim", };
 
-    private static readonly string[] OrdinalsRootMap =
-    {
-        string.Empty, "primer", "segund", "tercer", "cuart", "quint", "sext",
-        "séptim", "octav", "noven",
-    };
+    private static readonly string[] OrdinalsRootMap = { string.Empty, "primer", "segund", "tercer", "cuart", "quint", "sext", "séptim", "octav", "noven", };
 
-    private static readonly string[] TensMap =
-    {
-        "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa",
-    };
+    private static readonly string[] TensMap = { "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa", };
 
-    private static readonly string[] TenthsRootMap =
-    {
-        string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim",
-        "octogésim", "nonagésim",
-    };
+    private static readonly string[] TenthsRootMap = { string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim", "octogésim", "nonagésim", };
 
-    private static readonly string[] ThousandthsRootMap =
-    {
-        string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim",
-        "sietemilésim", "ochomilésim", "nuevemilésim",
-    };
+    private static readonly string[] ThousandthsRootMap = { string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim", "sietemilésim", "ochomilésim", "nuevemilésim", };
 
     private static readonly string[] TupleMap =
     {
-        "cero veces", "una vez", "doble", "triple", "cuádruple", "quíntuple", "séxtuple", "séptuple", "óctuple",
-        "nonuplo", "décuplo", "undécuplo", "duodécuplo", "terciodécuplo",
+        "cero veces",
+        "una vez",
+        "doble",
+        "triple",
+        "cuádruple",
+        "quíntuple",
+        "séxtuple",
+        "séptuple",
+        "óctuple",
+        "nonuplo",
+        "décuplo",
+        "undécuplo",
+        "duodécuplo",
+        "terciodécuplo",
     };
 
     private static readonly string[] UnitsMap =
     {
-        "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce",
-        "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte", "veintiuno",
-        "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve",
+        "cero",
+        "uno",
+        "dos",
+        "tres",
+        "cuatro",
+        "cinco",
+        "seis",
+        "siete",
+        "ocho",
+        "nueve",
+        "diez",
+        "once",
+        "doce",
+        "trece",
+        "catorce",
+        "quince",
+        "dieciséis",
+        "diecisiete",
+        "dieciocho",
+        "diecinueve",
+        "veinte",
+        "veintiuno",
+        "veintidós",
+        "veintitrés",
+        "veinticuatro",
+        "veinticinco",
+        "veintiséis",
+        "veintisiete",
+        "veintiocho",
+        "veintinueve",
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
@@ -66,9 +82,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number == long.MinValue)
         {
-            return
-                "menos nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil " +
-                "ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos ocho";
+            return "menos nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil " + "ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos ocho";
         }
 
         if (number < 0)
@@ -146,11 +160,9 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         var wordPart = string.Empty;
         remainder = inputNumber;
 
-        if ((inputNumber / 100) > 0)
+        if (inputNumber / 100 > 0)
         {
-            wordPart = inputNumber == 100 ?
-                "cien" :
-                GetGenderedHundredsMap(gender)[(int)(inputNumber / 100)];
+            wordPart = inputNumber == 100 ? "cien" : GetGenderedHundredsMap(gender)[(int)(inputNumber / 100)];
 
             remainder = inputNumber % 100;
         }
@@ -163,17 +175,12 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         return ConvertMappedOrdinalNumber(number, 100, HundredthsRootMap, out remainder, gender);
     }
 
-    private static string ConvertMappedOrdinalNumber(
-        in int number,
-        in int divisor,
-        IReadOnlyList<string> map,
-        out int remainder,
-        GrammaticalGender gender)
+    private static string ConvertMappedOrdinalNumber(in int number, in int divisor, IReadOnlyList<string> map, out int remainder, GrammaticalGender gender)
     {
         var wordPart = string.Empty;
         remainder = number;
 
-        if ((number / divisor) > 0)
+        if (number / divisor > 0)
         {
             var genderedEnding = gender == GrammaticalGender.Feminine ? "a" : "o";
             wordPart = map[number / divisor] + genderedEnding;
@@ -187,11 +194,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number is > 0 and < 10)
         {
-            Dictionary<GrammaticalGender, string> genderedEndingDict = new()
-            {
-                { GrammaticalGender.Feminine, "a" },
-                { GrammaticalGender.Masculine, HasOrdinalAbbreviation(number, wordForm) ? string.Empty : "o" },
-            };
+            Dictionary<GrammaticalGender, string> genderedEndingDict = new() { { GrammaticalGender.Feminine, "a" }, { GrammaticalGender.Masculine, HasOrdinalAbbreviation(number, wordForm) ? string.Empty : "o" }, };
 
             genderedEndingDict.Add(GrammaticalGender.Neuter, genderedEndingDict[GrammaticalGender.Masculine]);
 
@@ -253,11 +256,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetGenderedOne(GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
     {
-        var genderedOne = new Dictionary<GrammaticalGender, string>()
-        {
-            { GrammaticalGender.Feminine, "una" },
-            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" },
-        };
+        var genderedOne = new Dictionary<GrammaticalGender, string>() { { GrammaticalGender.Feminine, "una" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" }, };
 
         genderedOne.Add(GrammaticalGender.Neuter, genderedOne[GrammaticalGender.Masculine]);
         return genderedOne[gender];
@@ -265,11 +264,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetGenderedTwentyOne(GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
     {
-        var genderedtwentyOne = new Dictionary<GrammaticalGender, string>()
-        {
-            { GrammaticalGender.Feminine, "veintiuna" },
-            { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" },
-        };
+        var genderedtwentyOne = new Dictionary<GrammaticalGender, string>() { { GrammaticalGender.Feminine, "veintiuna" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" }, };
 
         genderedtwentyOne.Add(GrammaticalGender.Neuter, genderedtwentyOne[GrammaticalGender.Masculine]);
         return genderedtwentyOne[gender];
@@ -314,7 +309,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         foreach (var numberAndWord in numbersAndWordsDict)
         {
-            if ((remainder / numberAndWord.Value) > 0)
+            if (remainder / numberAndWord.Value > 0)
             {
                 if (remainder / numberAndWord.Value == 1)
                 {
@@ -322,9 +317,11 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
                 }
                 else
                 {
-                    wordBuilder.Add((remainder / numberAndWord.Value % 10 == 1) ?
-                        $"{Convert(remainder / numberAndWord.Value, WordForm.Abbreviation, GrammaticalGender.Masculine)} {PluralizeGreaterThanMillion(numberAndWord.Key)}" :
-                        $"{Convert(remainder / numberAndWord.Value)} {PluralizeGreaterThanMillion(numberAndWord.Key)}");
+                    wordBuilder.Add(
+                        remainder / numberAndWord.Value % 10 == 1
+                            ? $"{Convert(remainder / numberAndWord.Value, WordForm.Abbreviation, GrammaticalGender.Masculine)} {PluralizeGreaterThanMillion(numberAndWord.Key)}"
+                            : $"{Convert(remainder / numberAndWord.Value)} {PluralizeGreaterThanMillion(numberAndWord.Key)}"
+                    );
                 }
 
                 remainder %= numberAndWord.Value;
@@ -347,17 +344,15 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         var wordPart = string.Empty;
         remainder = number;
 
-        if ((number / 10000) > 0)
+        if (number / 10000 > 0)
         {
-            wordPart = Convert((number / 1000) * 1000, gender);
+            wordPart = Convert(number / 1000 * 1000, gender);
 
             if (number < 30000 || IsRoundNumber(number))
             {
                 if (number == 21000)
                 {
-                    wordPart = wordPart
-                        .Replace("a", string.Empty)
-                        .Replace("ú", "u");
+                    wordPart = wordPart.Replace("a", string.Empty).Replace("ú", "u");
                 }
 
                 wordPart = wordPart.Remove(wordPart.LastIndexOf(' '), 1);
@@ -373,11 +368,11 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         static bool IsRoundNumber(int number)
         {
             return (number % 10000 == 0 && number < 100000)
-                   || (number % 100000 == 0 && number < 1000000)
-                   || (number % 1000000 == 0 && number < 10000000)
-                   || (number % 10000000 == 0 && number < 100000000)
-                   || (number % 100000000 == 0 && number < 1000000000)
-                   || (number % 1000000000 == 0 && number < int.MaxValue);
+                || (number % 100000 == 0 && number < 1000000)
+                || (number % 1000000 == 0 && number < 10000000)
+                || (number % 10000000 == 0 && number < 100000000)
+                || (number % 100000000 == 0 && number < 1000000000)
+                || (number % 1000000000 == 0 && number < int.MaxValue);
         }
     }
 
@@ -386,7 +381,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         var wordPart = string.Empty;
         remainder = inputNumber;
 
-        if ((inputNumber / 1000) > 0)
+        if (inputNumber / 1000 > 0)
         {
             if (inputNumber / 1000 == 1)
             {
@@ -394,9 +389,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                wordPart = (gender == GrammaticalGender.Feminine) ?
-                    $"{Convert(inputNumber / 1000, GrammaticalGender.Feminine)} mil" :
-                    $"{Convert(inputNumber / 1000, WordForm.Abbreviation, gender)} mil";
+                wordPart = gender == GrammaticalGender.Feminine ? $"{Convert(inputNumber / 1000, GrammaticalGender.Feminine)} mil" : $"{Convert(inputNumber / 1000, WordForm.Abbreviation, gender)} mil";
             }
 
             remainder = inputNumber % 1000;

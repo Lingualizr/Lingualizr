@@ -26,8 +26,10 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         Hundreds = 100,
         Thousands = 1000,
+
         [Description("מיליון")]
         Millions = 1000000,
+
         [Description("מיליארד")]
         Billions = 1000000000,
     }

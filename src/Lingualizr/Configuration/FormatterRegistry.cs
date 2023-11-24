@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Lingualizr.Localisation.Formatters;
 
 namespace Lingualizr.Configuration;
