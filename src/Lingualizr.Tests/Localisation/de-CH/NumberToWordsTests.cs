@@ -47,7 +47,10 @@ public class NumberToWordsTests
     [InlineData(1111111118, "eine Milliarde einhundertelf Millionen einhundertelftausendeinhundertachtzehn")]
     [InlineData(35484694489515, "fünfunddreissig Billionen vierhundertvierundachtzig Milliarden sechshundertvierundneunzig Millionen vierhundertneunundachtzigtausendfünfhundertfünfzehn")]
     [InlineData(8183162164626926, "acht Billiarden einhundertdreiundachtzig Billionen einhundertzweiundsechzig Milliarden einhundertvierundsechzig Millionen sechshundertsechsundzwanzigtausendneunhundertsechsundzwanzig")]
-    [InlineData(4564121926659524672, "vier Trillionen fünfhundertvierundsechzig Billiarden einhunderteinundzwanzig Billionen neunhundertsechsundzwanzig Milliarden sechshundertneunundfünfzig Millionen fünfhundertvierundzwanzigtausendsechshundertzweiundsiebzig")]
+    [InlineData(
+        4564121926659524672,
+        "vier Trillionen fünfhundertvierundsechzig Billiarden einhunderteinundzwanzig Billionen neunhundertsechsundzwanzig Milliarden sechshundertneunundfünfzig Millionen fünfhundertvierundzwanzigtausendsechshundertzweiundsiebzig"
+    )]
     [InlineData(-751633619, "minus siebenhunderteinundfünfzig Millionen sechshundertdreiunddreissigtausendsechshundertneunzehn")]
     public void ToWords(long number, string expected)
     {

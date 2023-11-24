@@ -24,9 +24,7 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
         var dayPeriod = GetDayPeriod(time);
         var dayPeriodNextHour = GetDayPeriod(time.AddHours(1));
 
-        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes
-            ? 5 * Math.Round(time.Minute / 5.0)
-            : time.Minute);
+        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
         var clockNotationMap = new Dictionary<int, string>()
         {
@@ -41,19 +39,17 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
             { 60, $"{articleNextHour} {nextHour} {dayPeriodNextHour}" },
         };
 
-        return clockNotationMap.GetValueOrDefault(
-            normalizedMinutes,
-            $"{article} {hour} y {normalizedMinutes.ToWords()} {dayPeriod}");
+        return clockNotationMap.GetValueOrDefault(normalizedMinutes, $"{article} {hour} y {normalizedMinutes.ToWords()} {dayPeriod}");
     }
 
     private static int NormalizeHour(TimeOnly time)
     {
-        return time.Hour % 12 != 0 ? (time.Hour % 12) : 12;
+        return time.Hour % 12 != 0 ? time.Hour % 12 : 12;
     }
 
     private static string GetArticle(TimeOnly time)
     {
-        return (time.Hour == 1 || time.Hour == 13) ? "la" : "las";
+        return time.Hour == 1 || time.Hour == 13 ? "la" : "las";
     }
 
     private static string GetDayPeriod(TimeOnly time)

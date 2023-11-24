@@ -57,7 +57,10 @@ public class NumberToWordsTests
     [InlineData(1_000_000_000_000_000L, "een biljard")]
     [InlineData(100_000_000_000_000_000L, "honderd biljard")]
     [InlineData(1_000_000_000_000_000_000L, "een triljoen")]
-    [InlineData(9_223_372_036_854_775_807L, "negen triljoen tweehonderddrieëntwintig biljard driehonderdtweeënzeventig biljoen zesendertig miljard achthonderdvierenvijftig miljoen zevenhonderdvijfenzeventigduizend achthonderdzeven")]
+    [InlineData(
+        9_223_372_036_854_775_807L,
+        "negen triljoen tweehonderddrieëntwintig biljard driehonderdtweeënzeventig biljoen zesendertig miljard achthonderdvierenvijftig miljoen zevenhonderdvijfenzeventigduizend achthonderdzeven"
+    )]
     public void LongToWords(long number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

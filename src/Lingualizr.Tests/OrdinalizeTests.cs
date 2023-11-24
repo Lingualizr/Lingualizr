@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-
 using Xunit;
 
 namespace Lingualizr.Tests;
@@ -158,12 +157,7 @@ public class OrdinalizeTests
     [InlineData(1, WordForm.Abbreviation, GrammaticalGender.Feminine, "es-ES", "1.ª")]
     [InlineData(1, WordForm.Normal, GrammaticalGender.Masculine, "en-US", "1st")]
     [InlineData(1, WordForm.Normal, GrammaticalGender.Feminine, "en-US", "1st")]
-    public void OrdinalizeNumberWithOverridenCultureAndGenderAndForm(
-        int number,
-        WordForm wordForm,
-        GrammaticalGender gender,
-        string cultureName,
-        string expected)
+    public void OrdinalizeNumberWithOverridenCultureAndGenderAndForm(int number, WordForm wordForm, GrammaticalGender gender, string cultureName, string expected)
     {
         var culture = new CultureInfo(cultureName);
         Assert.Equal(expected, number.Ordinalize(gender, culture, wordForm));

@@ -4,13 +4,50 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 {
     private static readonly string[] _ordinalOverrideMap =
     {
-        "0", "l-ewwel", "it-tieni", "it-tielet", "ir-raba'", "il-ħames", "is-sitt", "is-seba'", "it-tmien", "id-disa'", "l-għaxar", "il-ħdax", "it-tnax", "it-tlettax", "l-erbatax", "il-ħmistax",
-        "is-sittax", "is-sbatax", "it-tmintax", "id-dsatax", "l-għoxrin",
+        "0",
+        "l-ewwel",
+        "it-tieni",
+        "it-tielet",
+        "ir-raba'",
+        "il-ħames",
+        "is-sitt",
+        "is-seba'",
+        "it-tmien",
+        "id-disa'",
+        "l-għaxar",
+        "il-ħdax",
+        "it-tnax",
+        "it-tlettax",
+        "l-erbatax",
+        "il-ħmistax",
+        "is-sittax",
+        "is-sbatax",
+        "it-tmintax",
+        "id-dsatax",
+        "l-għoxrin",
     };
 
     private static readonly string[] _unitsMap =
     {
-        "żero", "wieħed", "tnejn", "tlieta", "erbgħa", "ħamsa", "sitta", "sebgħa", "tmienja", "disgħa", "għaxra", "ħdax", "tnax", "tlettax", "erbatax", "ħmistax", "sittax", "sbatax", "tmintax",
+        "żero",
+        "wieħed",
+        "tnejn",
+        "tlieta",
+        "erbgħa",
+        "ħamsa",
+        "sitta",
+        "sebgħa",
+        "tmienja",
+        "disgħa",
+        "għaxra",
+        "ħdax",
+        "tnax",
+        "tlettax",
+        "erbatax",
+        "ħmistax",
+        "sittax",
+        "sbatax",
+        "tmintax",
         "dsatax",
     };
 
@@ -20,8 +57,26 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
 
     private static readonly string[] _prefixMap =
     {
-        string.Empty, string.Empty, string.Empty, "tlett", "erbat", "ħamest", "sitt", "sebat", "tmint", "disat", "għaxart", "ħdax-il", "tnax-il", "tletax-il", "erbatax-il", "ħmistax-il",
-        "sittax-il", "sbatax-il", "tmintax-il", "dsatax-il",
+        string.Empty,
+        string.Empty,
+        string.Empty,
+        "tlett",
+        "erbat",
+        "ħamest",
+        "sitt",
+        "sebat",
+        "tmint",
+        "disat",
+        "għaxart",
+        "ħdax-il",
+        "tnax-il",
+        "tletax-il",
+        "erbatax-il",
+        "ħmistax-il",
+        "sittax-il",
+        "sbatax-il",
+        "tmintax-il",
+        "dsatax-il",
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)

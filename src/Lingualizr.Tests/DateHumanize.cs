@@ -1,9 +1,7 @@
 ﻿using System.Globalization;
-
 using Lingualizr.Configuration;
 using Lingualizr.DateTimeHumanizeStrategy;
 using Lingualizr.Localisation;
-
 using Xunit;
 
 namespace Lingualizr.Tests;

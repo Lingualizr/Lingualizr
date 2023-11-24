@@ -240,70 +240,22 @@ internal class ItalianCardinalNumberCruncher
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9.
     /// </summary>
-    private static readonly string[] _unitsNumberToText = new string[]
-    {
-        string.Empty,
-        "uno",
-        "due",
-        "tre",
-        "quattro",
-        "cinque",
-        "sei",
-        "sette",
-        "otto",
-        "nove",
-    };
+    private static readonly string[] _unitsNumberToText = new string[] { string.Empty, "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove", };
 
     /// <summary>
     /// Lookup table converting tens number to text. Index 2 for 20, index 3 for 30, up to index 9 for 90.
     /// </summary>
-    private static readonly string[] _tensOver20NumberToText = new string[]
-    {
-        string.Empty,
-        string.Empty,
-        "venti",
-        "trenta",
-        "quaranta",
-        "cinquanta",
-        "sessanta",
-        "settanta",
-        "ottanta",
-        "novanta",
-    };
+    private static readonly string[] _tensOver20NumberToText = new string[] { string.Empty, string.Empty, "venti", "trenta", "quaranta", "cinquanta", "sessanta", "settanta", "ottanta", "novanta", };
 
     /// <summary>
     /// Lookup table converting teens number to text. Index 0 for 10, index 1 for 11, up to index 9 for 19.
     /// </summary>
-    private static readonly string[] _teensUnder20NumberToText = new string[]
-    {
-        "dieci",
-        "undici",
-        "dodici",
-        "tredici",
-        "quattordici",
-        "quindici",
-        "sedici",
-        "diciassette",
-        "diciotto",
-        "diciannove",
-    };
+    private static readonly string[] _teensUnder20NumberToText = new string[] { "dieci", "undici", "dodici", "tredici", "quattordici", "quindici", "sedici", "diciassette", "diciotto", "diciannove", };
 
     /// <summary>
     /// Lookup table converting hundreds number to text. Index 0 for no hundreds, index 1 for 100, up to index 9.
     /// </summary>
-    private static readonly string[] _hundredNumberToText = new string[]
-    {
-        string.Empty,
-        "cento",
-        "duecento",
-        "trecento",
-        "quattrocento",
-        "cinquecento",
-        "seicento",
-        "settecento",
-        "ottocento",
-        "novecento",
-    };
+    private static readonly string[] _hundredNumberToText = new string[] { string.Empty, "cento", "duecento", "trecento", "quattrocento", "cinquecento", "seicento", "settecento", "ottocento", "novecento", };
 
     /// <summary>
     /// Enumerates sets of three-digits having distinct conversion to text.

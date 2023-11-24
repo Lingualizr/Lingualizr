@@ -10,10 +10,7 @@ public static class Truncator
     /// </summary>
     public static ITruncator FixedLength
     {
-        get
-        {
-            return new FixedLengthTruncator();
-        }
+        get { return new FixedLengthTruncator(); }
     }
 
     /// <summary>
@@ -21,10 +18,7 @@ public static class Truncator
     /// </summary>
     public static ITruncator FixedNumberOfCharacters
     {
-        get
-        {
-            return new FixedNumberOfCharactersTruncator();
-        }
+        get { return new FixedNumberOfCharactersTruncator(); }
     }
 
     /// <summary>
@@ -32,9 +26,6 @@ public static class Truncator
     /// </summary>
     public static ITruncator FixedNumberOfWords
     {
-        get
-        {
-            return new FixedNumberOfWordsTruncator();
-        }
+        get { return new FixedNumberOfWordsTruncator(); }
     }
 }

@@ -7,8 +7,10 @@ public enum BitFieldEnumUnderTest : int
 {
     [Display(Description = BitFlagEnumTestsResources.None)]
     NONE = 0,
+
     [Display(Description = BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute)]
     RED = 1,
+
     [Display(Description = BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute)]
     DARK_GRAY = 2,
 }
@@ -18,6 +20,7 @@ public enum ShortBitFieldEnumUnderTest : short
 {
     [Display(Description = BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute)]
     RED = 1,
+
     [Display(Description = BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute)]
     DARK_GRAY = 2,
 }

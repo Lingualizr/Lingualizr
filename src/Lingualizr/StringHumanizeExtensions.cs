@@ -16,21 +16,21 @@ public static class StringHumanizeExtensions
 
     private static string FromPascalCase(string input)
     {
-        var result = string.Join(" ", LingualizrRegex.PascalCaseWordPartsRegex()
-            .Matches(input).Cast<Match>()
-            .Select(match => match.Value.All(char.IsUpper) &&
-                             (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I")
-                ? match.Value
-                : match.Value.ToLower()));
+        var result = string.Join(
+            " ",
+            LingualizrRegex
+                .PascalCaseWordPartsRegex()
+                .Matches(input)
+                .Cast<Match>()
+                .Select(match => match.Value.All(char.IsUpper) && (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I") ? match.Value : match.Value.ToLower())
+        );
 
-        if (result.Replace(" ", string.Empty).All(char.IsUpper) &&
-            result.Contains(' '))
+        if (result.Replace(" ", string.Empty).All(char.IsUpper) && result.Contains(' '))
         {
             result = result.ToLower();
         }
 
-        return result.Length > 0 ? char.ToUpper(result[0]) +
-                                   result.Substring(1, result.Length - 1) : result;
+        return result.Length > 0 ? char.ToUpper(result[0]) + result.Substring(1, result.Length - 1) : result;
     }
 
     /// <summary>

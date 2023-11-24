@@ -25,17 +25,13 @@ public class EnumHumanizeTests
     [Fact]
     public void CanApplyTitleCasingOnEnumHumanization()
     {
-        Assert.Equal(
-            EnumTestsResources.MemberWithoutDescriptionAttributeTitle,
-            EnumUnderTest.MemberWithoutDescriptionAttribute.Humanize(LetterCasing.Title));
+        Assert.Equal(EnumTestsResources.MemberWithoutDescriptionAttributeTitle, EnumUnderTest.MemberWithoutDescriptionAttribute.Humanize(LetterCasing.Title));
     }
 
     [Fact]
     public void CanApplyLowerCaseCasingOnEnumHumanization()
     {
-        Assert.Equal(
-            EnumTestsResources.MemberWithoutDescriptionAttributeLowerCase,
-            EnumUnderTest.MemberWithoutDescriptionAttribute.Humanize(LetterCasing.LowerCase));
+        Assert.Equal(EnumTestsResources.MemberWithoutDescriptionAttributeLowerCase, EnumUnderTest.MemberWithoutDescriptionAttribute.Humanize(LetterCasing.LowerCase));
     }
 
     [Fact]

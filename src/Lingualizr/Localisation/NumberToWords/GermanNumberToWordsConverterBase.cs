@@ -2,9 +2,53 @@
 
 internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWordsConverter
 {
-    private readonly string[] _unitsMap = { "null", "ein", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn" };
+    private readonly string[] _unitsMap =
+    {
+        "null",
+        "ein",
+        "zwei",
+        "drei",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieben",
+        "acht",
+        "neun",
+        "zehn",
+        "elf",
+        "zwölf",
+        "dreizehn",
+        "vierzehn",
+        "fünfzehn",
+        "sechzehn",
+        "siebzehn",
+        "achtzehn",
+        "neunzehn"
+    };
     private readonly string[] _tensMap = { "null", "zehn", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig" };
-    private readonly string[] _unitsOrdinal = { string.Empty, "ers", "zwei", "drit", "vier", "fünf", "sechs", "sieb", "ach", "neun", "zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn" };
+    private readonly string[] _unitsOrdinal =
+    {
+        string.Empty,
+        "ers",
+        "zwei",
+        "drit",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieb",
+        "ach",
+        "neun",
+        "zehn",
+        "elf",
+        "zwölf",
+        "dreizehn",
+        "vierzehn",
+        "fünfzehn",
+        "sechzehn",
+        "siebzehn",
+        "achtzehn",
+        "neunzehn"
+    };
     private readonly string[] _hundredOrdinalSingular = { "einhundert" };
     private readonly string[] _hundredOrdinalPlural = { "{0}hundert" };
     private readonly string[] _thousandOrdinalSingular = { "eintausend" };

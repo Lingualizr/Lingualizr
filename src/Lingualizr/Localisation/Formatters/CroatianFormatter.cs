@@ -5,9 +5,7 @@ internal class CroatianFormatter : DefaultFormatter
     private const string DualTrialQuadralPostfix = "_DualTrialQuadral";
 
     public CroatianFormatter()
-        : base("hr")
-    {
-    }
+        : base("hr") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

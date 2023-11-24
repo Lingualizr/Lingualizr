@@ -5,9 +5,7 @@ namespace Lingualizr.Localisation.Formatters;
 internal class RussianFormatter : DefaultFormatter
 {
     public RussianFormatter()
-        : base("ru")
-    {
-    }
+        : base("ru") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

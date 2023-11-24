@@ -1,6 +1,5 @@
 ﻿using Lingualizr.Bytes;
 using Lingualizr.Localisation;
-
 using Xunit;
 
 namespace Lingualizr.Tests.Localisation.de.Bytes;

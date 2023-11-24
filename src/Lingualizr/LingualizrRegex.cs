@@ -4,8 +4,7 @@ namespace Lingualizr;
 
 internal static partial class LingualizrRegex
 {
-    [GeneratedRegex(@"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+",
-        RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture)]
+    [GeneratedRegex(@"[\p{Lu}]?[\p{Ll}]+|[0-9]+[\p{Ll}]*|[\p{Lu}]+(?=[\p{Lu}][\p{Ll}]|[0-9]|\b)|[\p{Lo}]+", RegexOptions.IgnorePatternWhitespace | RegexOptions.ExplicitCapture)]
     internal static partial Regex PascalCaseWordPartsRegex();
 
     [GeneratedRegex(@"\s[-_]|[-_]\s")]

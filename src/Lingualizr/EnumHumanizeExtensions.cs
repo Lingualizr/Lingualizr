@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-
 using Lingualizr.Configuration;
 
 namespace Lingualizr;
@@ -40,12 +39,7 @@ public static class EnumHumanizeExtensions
 
         if (IsBitFieldEnum(enumTypeInfo) && !Enum.IsDefined(enumType, input))
         {
-            return Enum.GetValues(enumType)
-                .Cast<Enum>()
-                .Where(e => e.CompareTo(Convert.ChangeType(Enum.ToObject(enumType, 0), enumType)) != 0)
-                .Where(input.HasFlag)
-                .Select(e => e.Humanize())
-                .Humanize();
+            return Enum.GetValues(enumType).Cast<Enum>().Where(e => e.CompareTo(Convert.ChangeType(Enum.ToObject(enumType, 0), enumType)) != 0).Where(input.HasFlag).Select(e => e.Humanize()).Humanize();
         }
 
         var caseName = input.ToString();
@@ -107,10 +101,7 @@ public static class EnumHumanizeExtensions
                 return null;
             }
 
-            var descriptionProperty =
-                attrType.GetRuntimeProperties()
-                    .Where(_stringTypedProperty)
-                    .FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
+            var descriptionProperty = attrType.GetRuntimeProperties().Where(_stringTypedProperty).FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
             if (descriptionProperty != null)
             {
                 return descriptionProperty.GetValue(attr, null)?.ToString();

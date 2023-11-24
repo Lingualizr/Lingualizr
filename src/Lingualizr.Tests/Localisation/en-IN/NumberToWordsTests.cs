@@ -46,7 +46,6 @@ public class NumberToWordsTests
     [InlineData(1000000000000, "one lakh crore")]
     [InlineData(45678912345678, "forty five lakh sixty seven thousand eight hundred and ninety one crore twenty three lakh forty five thousand six hundred and seventy eight")]
     [InlineData(-7516, "(Negative) seven thousand five hundred and sixteen")]
-
     public void ToWords(long number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

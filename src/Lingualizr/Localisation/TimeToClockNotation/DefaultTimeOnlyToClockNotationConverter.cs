@@ -13,9 +13,7 @@ internal class DefaultTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotatio
         }
 
         var normalizedHour = time.Hour % 12;
-        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes
-            ? 5 * Math.Round(time.Minute / 5.0)
-            : time.Minute);
+        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
         return normalizedMinutes switch
         {

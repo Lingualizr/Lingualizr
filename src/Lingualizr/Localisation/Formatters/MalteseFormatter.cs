@@ -6,16 +6,23 @@ internal class MalteseFormatter : DefaultFormatter
 
     private static readonly string[] _dualResourceKeys = new[]
     {
-        "DateHumanize_MultipleDaysAgo", "DateHumanize_MultipleDaysFromNow", "DateHumanize_MultipleHoursAgo", "DateHumanize_MultipleHoursFromNow",
-        "DateHumanize_MultipleMonthsAgo", "DateHumanize_MultipleMonthsFromNow", "DateHumanize_MultipleYearsAgo", "DateHumanize_MultipleYearsFromNow",
-        "TimeSpanHumanize_MultipleDays", "TimeSpanHumanize_MultipleYears", "TimeSpanHumanize_MultipleMonths", "TimeSpanHumanize_MultipleHours",
+        "DateHumanize_MultipleDaysAgo",
+        "DateHumanize_MultipleDaysFromNow",
+        "DateHumanize_MultipleHoursAgo",
+        "DateHumanize_MultipleHoursFromNow",
+        "DateHumanize_MultipleMonthsAgo",
+        "DateHumanize_MultipleMonthsFromNow",
+        "DateHumanize_MultipleYearsAgo",
+        "DateHumanize_MultipleYearsFromNow",
+        "TimeSpanHumanize_MultipleDays",
+        "TimeSpanHumanize_MultipleYears",
+        "TimeSpanHumanize_MultipleMonths",
+        "TimeSpanHumanize_MultipleHours",
         "TimeSpanHumanize_MultipleWeeks",
     };
 
     public MalteseFormatter(string localeCode)
-        : base(localeCode)
-    {
-    }
+        : base(localeCode) { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {

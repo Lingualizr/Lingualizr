@@ -97,19 +97,7 @@ internal class ItalianOrdinalNumberCruncher
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9.
     /// </summary>
-    private static readonly string[] _unitsUnder10NumberToText = new string[]
-    {
-        string.Empty,
-        "prim",
-        "second",
-        "terz",
-        "quart",
-        "quint",
-        "sest",
-        "settim",
-        "ottav",
-        "non",
-    };
+    private static readonly string[] _unitsUnder10NumberToText = new string[] { string.Empty, "prim", "second", "terz", "quart", "quint", "sest", "settim", "ottav", "non", };
 
     private static readonly int _lengthOf10AsCardinal = "dieci".Length;
 }

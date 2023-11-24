@@ -21,10 +21,8 @@
 // THE SOFTWARE.
 
 using System.Globalization;
-
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
-
 using static System.Globalization.NumberStyles;
 
 namespace Lingualizr.Bytes;
@@ -311,12 +309,9 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
         var formattedLargeWholeNumberValue = LargestWholeNumberValue.ToString(format, provider);
 
-        formattedLargeWholeNumberValue = string.IsNullOrEmpty(formattedLargeWholeNumberValue)
-            ? "0"
-            : formattedLargeWholeNumberValue;
+        formattedLargeWholeNumberValue = string.IsNullOrEmpty(formattedLargeWholeNumberValue) ? "0" : formattedLargeWholeNumberValue;
 
-        return string.Format("{0} {1}", formattedLargeWholeNumberValue,
-            toSymbol ? GetLargestWholeNumberSymbol(provider) : GetLargestWholeNumberFullWord(provider));
+        return string.Format("{0} {1}", formattedLargeWholeNumberValue, toSymbol ? GetLargestWholeNumberSymbol(provider) : GetLargestWholeNumberFullWord(provider));
     }
 
     /// <summary>
@@ -495,8 +490,10 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         const NumberStyles numberStyles = AllowDecimalPoint | AllowThousands | AllowLeadingSign;
         var numberSpecialChars = new[]
         {
-            Convert.ToChar(numberFormat.NumberDecimalSeparator), Convert.ToChar(numberFormat.NumberGroupSeparator),
-            Convert.ToChar(numberFormat.PositiveSign), Convert.ToChar(numberFormat.NegativeSign),
+            Convert.ToChar(numberFormat.NumberDecimalSeparator),
+            Convert.ToChar(numberFormat.NumberGroupSeparator),
+            Convert.ToChar(numberFormat.PositiveSign),
+            Convert.ToChar(numberFormat.NegativeSign),
         };
 
         // Setup the result

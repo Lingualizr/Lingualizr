@@ -314,7 +314,10 @@ public class NumberToWordsTests
     [InlineData(1111111111111, "un billón ciento once mil ciento once millones ciento once mil ciento once")]
     [InlineData(1111111111111111, "mil ciento once billones ciento once mil ciento once millones ciento once mil ciento once")]
     [InlineData(1111111111111111111, "un trillón ciento once mil ciento once billones ciento once mil ciento once millones ciento once mil ciento once")]
-    [InlineData(9223372036854775807, "nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos siete")]
+    [InlineData(
+        9223372036854775807,
+        "nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos siete"
+    )]
     [InlineData(1001111111, "mil un millones ciento once mil ciento once")]
     [InlineData(1001000001, "mil un millones uno")]
     [InlineData(1002000001, "mil dos millones uno")]
@@ -334,7 +337,10 @@ public class NumberToWordsTests
     [InlineData(-15, "menos quince")]
     [InlineData(-123, "menos ciento veintitrés")]
     [InlineData(-1234567890, "menos mil doscientos treinta y cuatro millones quinientos sesenta y siete mil ochocientos noventa")]
-    [InlineData(-9223372036854775808, "menos nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos ocho")]
+    [InlineData(
+        -9223372036854775808,
+        "menos nueve trillones doscientos veintitrés mil trescientos setenta y dos billones treinta y seis mil ochocientos cincuenta y cuatro millones setecientos setenta y cinco mil ochocientos ocho"
+    )]
     public void ToWords(long number, string expected, GrammaticalGender gender = GrammaticalGender.Masculine)
     {
         Assert.Equal(expected, number.ToWords(gender));

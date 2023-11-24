@@ -3,9 +3,7 @@
 internal class GermanFormatter : DefaultFormatter
 {
     public GermanFormatter()
-        : base("de")
-    {
-    }
+        : base("de") { }
 
     /// <inheritdoc />
     public override string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)

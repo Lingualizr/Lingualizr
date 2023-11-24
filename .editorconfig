@@ -3,16 +3,20 @@
 # top-most EditorConfig file
 root = true
 
-# Don't use tabs for indentation.
 [*]
+# Non-configurable behaviors
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Configurable behaviors
+# end_of_line = lf - there is no 'auto' with a .editorconfig
 indent_style = space
-max_line_length = 200
-# (Please don't specify an indent_size here; that has too many unintended consequences.)
+indent_size = 4
+max_line_length = 220
 
 # Code files
 [*.{cs,csx,vb,vbx}]
-indent_size = 4
-insert_final_newline = true
 charset = utf-8-bom
 
 # Xml project files
@@ -249,6 +253,7 @@ csharp_space_between_method_declaration_parameter_list_parentheses = false
 csharp_space_between_parentheses = false
 csharp_space_between_square_brackets = false
 
+dotnet_diagnostic.IDE0055.severity = none
 
 dotnet_diagnostic.SYSLIB1045.severity = error
 
@@ -350,12 +355,22 @@ dotnet_diagnostic.CA2242.severity = error
 
 dotnet_diagnostic.CS1591.severity = none
 
-dotnet_diagnostic.SA1000.severity = error
-dotnet_diagnostic.SA1001.severity = error
+dotnet_diagnostic.SA1000.severity = none
+dotnet_diagnostic.SA1009.severity = none
+dotnet_diagnostic.SA1111.severity = none
+dotnet_diagnostic.SA1118.severity = none
+dotnet_diagnostic.SA1137.severity = none
+dotnet_diagnostic.SA1500.severity = none
+dotnet_diagnostic.SA1501.severity = none
+dotnet_diagnostic.SA1502.severity = none
+dotnet_diagnostic.SA1504.severity = none
+dotnet_diagnostic.SA1516.severity = none
+
+dotnet_diagnostic.SA1001.severity = none
 dotnet_diagnostic.SA1003.severity = error
 dotnet_diagnostic.SA1005.severity = warning
 dotnet_diagnostic.SA1008.severity = error
-dotnet_diagnostic.SA1009.severity = error
+dotnet_diagnostic.SA1009.severity = none
 dotnet_diagnostic.SA1011.severity = error
 dotnet_diagnostic.SA1010.severity = error
 dotnet_diagnostic.SA1012.severity = error
@@ -365,8 +380,8 @@ dotnet_diagnostic.SA1025.severity = error
 dotnet_diagnostic.SA1026.severity = error
 dotnet_diagnostic.SA1028.severity = error
 dotnet_diagnostic.SA1101.severity = none
-dotnet_diagnostic.SA1108.severity = error
-dotnet_diagnostic.SA1111.severity = error
+dotnet_diagnostic.SA1108.severity = erro
+dotnet_diagnostic.SA1113.severity = none
 dotnet_diagnostic.SA1125.severity = error
 dotnet_diagnostic.SA1121.severity = error
 dotnet_diagnostic.SA1122.severity = error
@@ -393,9 +408,7 @@ dotnet_diagnostic.SA1401.severity = none
 dotnet_diagnostic.SA1402.severity = none
 dotnet_diagnostic.SA1407.severity = none
 dotnet_diagnostic.SA1408.severity = error
-dotnet_diagnostic.SA1413.severity = error
-dotnet_diagnostic.SA1500.severity = error
-dotnet_diagnostic.SA1502.severity = error
+dotnet_diagnostic.SA1413.severity = none
 dotnet_diagnostic.SA1503.severity = error
 dotnet_diagnostic.SA1505.severity = error
 dotnet_diagnostic.SA1507.severity = error
@@ -405,7 +418,7 @@ dotnet_diagnostic.SA1512.severity = none
 dotnet_diagnostic.SA1513.severity = error
 dotnet_diagnostic.SA1514.severity = error
 dotnet_diagnostic.SA1515.severity = none
-dotnet_diagnostic.SA1516.severity = error
+dotnet_diagnostic.SA1516.severity = none
 dotnet_diagnostic.SA1518.severity = error
 dotnet_diagnostic.SA1519.severity = error
 dotnet_diagnostic.SA1520.severity = error

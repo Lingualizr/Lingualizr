@@ -8,8 +8,26 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static readonly string[] _onesGroup =
     {
-        string.Empty, "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة", "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر",
-        "ثمانية عشر", "تسعة عشر",
+        string.Empty,
+        "واحد",
+        "اثنان",
+        "ثلاثة",
+        "أربعة",
+        "خمسة",
+        "ستة",
+        "سبعة",
+        "ثمانية",
+        "تسعة",
+        "عشرة",
+        "أحد عشر",
+        "اثنا عشر",
+        "ثلاثة عشر",
+        "أربعة عشر",
+        "خمسة عشر",
+        "ستة عشر",
+        "سبعة عشر",
+        "ثمانية عشر",
+        "تسعة عشر",
     };
 
     private static readonly string[] _tensGroup = { string.Empty, "عشرة", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون" };
@@ -19,8 +37,26 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static readonly string[] _feminineOnesGroup =
     {
-        string.Empty, "واحدة", "اثنتان", "ثلاث", "أربع", "خمس", "ست", "سبع", "ثمان", "تسع", "عشر", "إحدى عشرة", "اثنتا عشرة", "ثلاث عشرة", "أربع عشرة", "خمس عشرة", "ست عشرة", "سبع عشرة",
-        "ثمان عشرة", "تسع عشرة",
+        string.Empty,
+        "واحدة",
+        "اثنتان",
+        "ثلاث",
+        "أربع",
+        "خمس",
+        "ست",
+        "سبع",
+        "ثمان",
+        "تسع",
+        "عشر",
+        "إحدى عشرة",
+        "اثنتا عشرة",
+        "ثلاث عشرة",
+        "أربع عشرة",
+        "خمس عشرة",
+        "ست عشرة",
+        "سبع عشرة",
+        "ثمان عشرة",
+        "تسع عشرة",
     };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
@@ -209,10 +245,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
             overTensWord = ParseNumber(overTensWord, overTensPart, gender);
         }
 
-        var word = beforeOneHundredWord +
-                   (overTensPart > 0
-                       ? (string.IsNullOrWhiteSpace(beforeOneHundredWord) ? string.Empty : " بعد ") + overTensWord
-                       : string.Empty);
+        var word = beforeOneHundredWord + (overTensPart > 0 ? (string.IsNullOrWhiteSpace(beforeOneHundredWord) ? string.Empty : " بعد ") + overTensWord : string.Empty);
         return word.Trim();
     }
 

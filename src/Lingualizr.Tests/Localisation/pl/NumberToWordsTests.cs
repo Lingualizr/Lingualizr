@@ -59,22 +59,24 @@ public class NumberToWordsTests
     [InlineData(-1501001892, "minus miliard pięćset jeden milionów tysiąc osiemset dziewięćdziesiąt dwa")]
     [InlineData(
         long.MaxValue,
-        "dziewięć trylionów " +
-        "dwieście dwadzieścia trzy biliardy " +
-        "trzysta siedemdziesiąt dwa biliony " +
-        "trzydzieści sześć miliardów " +
-        "osiemset pięćdziesiąt cztery miliony " +
-        "siedemset siedemdziesiąt pięć tysięcy " +
-        "osiemset siedem")]
+        "dziewięć trylionów "
+            + "dwieście dwadzieścia trzy biliardy "
+            + "trzysta siedemdziesiąt dwa biliony "
+            + "trzydzieści sześć miliardów "
+            + "osiemset pięćdziesiąt cztery miliony "
+            + "siedemset siedemdziesiąt pięć tysięcy "
+            + "osiemset siedem"
+    )]
     [InlineData(
         long.MinValue,
-        "minus dziewięć trylionów " +
-        "dwieście dwadzieścia trzy biliardy " +
-        "trzysta siedemdziesiąt dwa biliony " +
-        "trzydzieści sześć miliardów " +
-        "osiemset pięćdziesiąt cztery miliony " +
-        "siedemset siedemdziesiąt pięć tysięcy " +
-        "osiemset osiem")]
+        "minus dziewięć trylionów "
+            + "dwieście dwadzieścia trzy biliardy "
+            + "trzysta siedemdziesiąt dwa biliony "
+            + "trzydzieści sześć miliardów "
+            + "osiemset pięćdziesiąt cztery miliony "
+            + "siedemset siedemdziesiąt pięć tysięcy "
+            + "osiemset osiem"
+    )]
     public void ToWordsPolish(long number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

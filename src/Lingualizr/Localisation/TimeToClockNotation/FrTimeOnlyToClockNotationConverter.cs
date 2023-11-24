@@ -4,9 +4,7 @@ internal class FrTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
 {
     public virtual string Convert(TimeOnly time, ClockNotationRounding roundToNearestFive)
     {
-        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes
-            ? 5 * Math.Round(time.Minute / 5.0)
-            : time.Minute);
+        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
         return normalizedMinutes switch
         {

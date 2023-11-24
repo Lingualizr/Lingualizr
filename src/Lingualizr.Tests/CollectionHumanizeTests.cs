@@ -28,11 +28,7 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeUsesSeparatorWhenMoreThanOneItemIsInCollection()
     {
-        var collection = new List<string>
-        {
-            "A String",
-            "Another String",
-        };
+        var collection = new List<string> { "A String", "Another String", };
 
         Assert.Equal("A String or Another String", collection.Humanize("or"));
     }
@@ -40,11 +36,7 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeDefaultsSeparatorToAnd()
     {
-        var collection = new List<string>
-        {
-            "A String",
-            "Another String",
-        };
+        var collection = new List<string> { "A String", "Another String", };
 
         Assert.Equal("A String and Another String", collection.Humanize());
     }
@@ -52,12 +44,7 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeUsesOxfordComma()
     {
-        var collection = new List<string>
-        {
-            "A String",
-            "Another String",
-            "A Third String",
-        };
+        var collection = new List<string> { "A String", "Another String", "A Third String", };
 
         Assert.Equal("A String, Another String, or A Third String", collection.Humanize("or"));
     }

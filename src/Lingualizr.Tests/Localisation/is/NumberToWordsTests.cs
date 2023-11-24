@@ -72,7 +72,10 @@ public class NumberToWordsTests
     [InlineData(1_000_000_000_000_000L, "einn billjarður")]
     [InlineData(100_000_000_000_000_000L, "eitt hundrað billjarðar")]
     [InlineData(1_000_000_000_000_000_000L, "ein trilljón")]
-    [InlineData(9_223_372_036_854_775_807L, "níu trilljónir tvö hundruð tuttugu og þrír billjarðar þrjú hundruð sjötíu og tvær billjónir þrjátíu og sex milljarðar átta hundruð fimmtíu og fjórar milljónir sjö hundruð sjötíu og fimm þúsund átta hundruð og sjö")]
+    [InlineData(
+        9_223_372_036_854_775_807L,
+        "níu trilljónir tvö hundruð tuttugu og þrír billjarðar þrjú hundruð sjötíu og tvær billjónir þrjátíu og sex milljarðar átta hundruð fimmtíu og fjórar milljónir sjö hundruð sjötíu og fimm þúsund átta hundruð og sjö"
+    )]
     public void LongToWords(long number, string expected)
     {
         Assert.Equal(expected, number.ToWords());

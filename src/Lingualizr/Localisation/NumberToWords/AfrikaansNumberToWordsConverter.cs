@@ -4,7 +4,29 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] _unitsMap = { "nul", "een", "twee", "drie", "vier", "vyf", "ses", "sewe", "agt", "nege", "tien", "elf", "twaalf", "dertien", "veertien", "vyftien", "sestien", "sewentien", "agtien", "negentien" };
+    private static readonly string[] _unitsMap =
+    {
+        "nul",
+        "een",
+        "twee",
+        "drie",
+        "vier",
+        "vyf",
+        "ses",
+        "sewe",
+        "agt",
+        "nege",
+        "tien",
+        "elf",
+        "twaalf",
+        "dertien",
+        "veertien",
+        "vyftien",
+        "sestien",
+        "sewentien",
+        "agtien",
+        "negentien"
+    };
     private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
 
     private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
@@ -50,25 +72,25 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
 
         var parts = new List<string>();
 
-        if ((number / 1000000000) > 0)
+        if (number / 1000000000 > 0)
         {
             parts.Add(string.Format("{0} miljard", Convert(number / 1000000000)));
             number %= 1000000000;
         }
 
-        if ((number / 1000000) > 0)
+        if (number / 1000000 > 0)
         {
             parts.Add(string.Format("{0} miljoen", Convert(number / 1000000)));
             number %= 1000000;
         }
 
-        if ((number / 1000) > 0)
+        if (number / 1000 > 0)
         {
             parts.Add(string.Format("{0} duisend", Convert(number / 1000)));
             number %= 1000;
         }
 
-        if ((number / 100) > 0)
+        if (number / 100 > 0)
         {
             parts.Add(string.Format("{0} honderd", Convert(number / 100)));
             number %= 100;
@@ -87,13 +109,13 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
             else
             {
-                var lastPartValue = (number / 10) * 10;
+                var lastPartValue = number / 10 * 10;
                 var lastPart = _tensMap[number / 10];
-                if ((number % 10) > 0)
+                if (number % 10 > 0)
                 {
                     lastPart = string.Format("{0} en {1}", GetUnitValue(number % 10, false), isOrdinal ? GetUnitValue(lastPartValue, isOrdinal) : lastPart);
                 }
-                else if ((number % 10) == 0)
+                else if (number % 10 == 0)
                 {
                     lastPart = string.Format("{0}{1}{2}", parts.Count > 0 ? "en " : string.Empty, lastPart, isOrdinal ? "ste" : string.Empty);
                 }

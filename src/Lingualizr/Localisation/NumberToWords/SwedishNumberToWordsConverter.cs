@@ -4,7 +4,26 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
     private static readonly string[] _unitsMap =
     {
-        "noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton",
+        "noll",
+        "ett",
+        "två",
+        "tre",
+        "fyra",
+        "fem",
+        "sex",
+        "sju",
+        "åtta",
+        "nio",
+        "tio",
+        "elva",
+        "tolv",
+        "tretton",
+        "fjorton",
+        "femton",
+        "sexton",
+        "sjutton",
+        "arton",
+        "nitton",
     };
 
     private static readonly string[] _tensMap = { "noll", "tio", "tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio", "hundra" };
@@ -153,8 +172,27 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string[] _ordinalNumbers = new[]
     {
-        "nollte", "första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde", "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde",
-        "sjuttonde", "artonde", "nittonde", "tjugonde",
+        "nollte",
+        "första",
+        "andra",
+        "tredje",
+        "fjärde",
+        "femte",
+        "sjätte",
+        "sjunde",
+        "åttonde",
+        "nionde",
+        "tionde",
+        "elfte",
+        "tolfte",
+        "trettonde",
+        "fjortonde",
+        "femtonde",
+        "sextonde",
+        "sjuttonde",
+        "artonde",
+        "nittonde",
+        "tjugonde",
     };
 
     public override string ConvertToOrdinal(int number)

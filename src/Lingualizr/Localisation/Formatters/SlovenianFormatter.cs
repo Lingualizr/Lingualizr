@@ -6,9 +6,7 @@ internal class SlovenianFormatter : DefaultFormatter
     private const string TrialQuadralPostfix = "_TrialQuadral";
 
     public SlovenianFormatter()
-        : base("sl")
-    {
-    }
+        : base("sl") { }
 
     protected override string GetResourceKey(string resourceKey, int number)
     {
