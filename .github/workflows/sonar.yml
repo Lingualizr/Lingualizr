@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
-              8.0.100-rc.2.23502.2
+              8.0.x
               
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
