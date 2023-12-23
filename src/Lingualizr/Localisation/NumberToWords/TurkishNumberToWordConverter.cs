@@ -2,10 +2,10 @@
 
 internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
-    private static readonly string[] TensMap = { "sıfır", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
+    private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
+    private static readonly string[] _tensMap = { "sıfır", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
 
-    private static readonly Dictionary<char, string> OrdinalSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _ordinalSuffix = new Dictionary<char, string>
     {
         { 'ı', "ıncı" },
         { 'i', "inci" },
@@ -17,7 +17,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
         { 'a', "ıncı" },
     };
 
-    private static readonly Dictionary<char, string> TupleSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _tupleSuffix = new Dictionary<char, string>
     {
         { 'ı', "lı" },
         { 'i', "li" },
@@ -33,7 +33,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
     {
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (number < 0)
@@ -89,13 +89,13 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
         if (number / 10 > 0)
         {
-            parts.Add(TensMap[number / 10]);
+            parts.Add(_tensMap[number / 10]);
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(UnitsMap[number]);
+            parts.Add(_unitsMap[number]);
         }
 
         var toWords = string.Join(" ", parts.ToArray());
@@ -111,7 +111,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
         for (var i = word.Length - 1; i >= 0; i--)
         {
-            if (OrdinalSuffix.TryGetValue(word[i], out wordSuffix))
+            if (_ordinalSuffix.TryGetValue(word[i], out wordSuffix))
             {
                 suffixFoundOnLastVowel = i == word.Length - 1;
                 break;
@@ -145,7 +145,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
 
                 for (var i = word.Length - 1; i >= 0; i--)
                 {
-                    if (TupleSuffix.TryGetValue(word[i], out wordSuffix))
+                    if (_tupleSuffix.TryGetValue(word[i], out wordSuffix))
                     {
                         break;
                     }

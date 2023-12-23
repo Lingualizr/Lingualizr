@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
-using Xunit;
 
 namespace Lingualizr.Tests;
 

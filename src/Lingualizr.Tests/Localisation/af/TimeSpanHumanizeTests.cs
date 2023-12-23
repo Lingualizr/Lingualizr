@@ -1,5 +1,4 @@
 ﻿using Lingualizr.Localisation;
-using Xunit;
 
 namespace Lingualizr.Tests.Localisation.af;
 

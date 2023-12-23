@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.es;
+﻿namespace Lingualizr.Tests.Localisation.es;
 
 [UseCulture("es-ES")]
 public class TimeToClockNotationTests

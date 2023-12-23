@@ -172,23 +172,23 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
         else if (number < 100)
         {
-            return ConvertIntBH(number, returnPluralized);
+            return ConvertIntBh(number, returnPluralized);
         }
         else if (number < 1000)
         {
-            return ConvertIntBT(number, returnPluralized);
+            return ConvertIntBt(number, returnPluralized);
         }
         else if (number < 1000000)
         {
-            return ConvertIntBM(number);
+            return ConvertIntBm(number);
         }
         else if (number < 1000000000)
         {
-            return ConvertIntBB(number);
+            return ConvertIntBb(number);
         }
         else if (number < 1000000000000)
         {
-            return ConvertIntBTR(number);
+            return ConvertIntBtr(number);
         }
 
         return string.Empty;
@@ -199,7 +199,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return returnPluralized ? _unitsMap[number] : _unitMap[number];
     }
 
-    private string ConvertIntBH(long number, bool returnPluralized)
+    private string ConvertIntBh(long number, bool returnPluralized)
     {
         var result = number / 10 == 1 ? _tensNoDiacriticsMap[number / 10] : _tensMap[number / 10];
 
@@ -216,9 +216,9 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return result;
     }
 
-    private string ConvertIntBT(long number, bool returnPluralized)
+    private string ConvertIntBt(long number, bool returnPluralized)
     {
-        var result = string.Empty;
+        string result;
 
         if (number / 100 == 1)
         {
@@ -242,7 +242,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return result;
     }
 
-    private string ConvertIntBM(long number)
+    private string ConvertIntBm(long number)
     {
         if (number / 1000 == 1)
         {
@@ -264,7 +264,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return result;
     }
 
-    private string ConvertIntBB(long number)
+    private string ConvertIntBb(long number)
     {
         if (number / 1000000 == 1)
         {
@@ -286,7 +286,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
         return result;
     }
 
-    private string ConvertIntBTR(long number)
+    private string ConvertIntBtr(long number)
     {
         if (number / 1000000000 == 1)
         {

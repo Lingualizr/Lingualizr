@@ -2,9 +2,9 @@
 
 internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] KurdishHundredsMap = { "سفر", "سەد", "دوو سەد", "سێ سەد", "چوار سەد", "پێنج سەد", "شەش سەد", "حەوت سەد", "هەشت سەد", "نۆ سەد" };
-    private static readonly string[] KurdishTensMap = { "سفر", "دە", "بیست", "سی", "چل", "پەنجا", "شەست", "حەفتا", "هەشتا", "نەوەد" };
-    private static readonly string[] KurdishUnitsMap = { "سفر", "یەک", "دوو", "سێ", "چوار", "پێنج", "شەش", "حەوت", "هەشت", "نۆ", "دە", "یازدە", "دوازدە", "سێزدە", "چواردە", "پازدە", "شازدە", "حەڤدە", "هەژدە", "نۆزدە" };
+    private static readonly string[] _kurdishHundredsMap = { "سفر", "سەد", "دوو سەد", "سێ سەد", "چوار سەد", "پێنج سەد", "شەش سەد", "حەوت سەد", "هەشت سەد", "نۆ سەد" };
+    private static readonly string[] _kurdishTensMap = { "سفر", "دە", "بیست", "سی", "چل", "پەنجا", "شەست", "حەفتا", "هەشتا", "نەوەد" };
+    private static readonly string[] _kurdishUnitsMap = { "سفر", "یەک", "دوو", "سێ", "چوار", "پێنج", "شەش", "حەوت", "هەشت", "نۆ", "دە", "یازدە", "دوازدە", "سێزدە", "چواردە", "پازدە", "شازدە", "حەڤدە", "هەژدە", "نۆزدە" };
 
     public override string Convert(long number)
     {
@@ -31,7 +31,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
             { (long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
             { (long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => KurdishHundredsMap[n] },
+            { (long)Math.Pow(10, 2), n => _kurdishHundredsMap[n] },
         };
 
         var parts = new List<string>();
@@ -46,13 +46,13 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
         if (number >= 20)
         {
-            parts.Add(KurdishTensMap[number / 10]);
+            parts.Add(_kurdishTensMap[number / 10]);
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(KurdishUnitsMap[number]);
+            parts.Add(_kurdishUnitsMap[number]);
         }
 
         var sentence = string.Join(" و ", parts);

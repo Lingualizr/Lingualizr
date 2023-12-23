@@ -3,26 +3,26 @@
 namespace Lingualizr.Tests;
 
 [Flags]
-public enum BitFieldEnumUnderTest : int
+public enum BitFieldEnumUnderTest
 {
     [Display(Description = BitFlagEnumTestsResources.None)]
-    NONE = 0,
+    None = 0,
 
     [Display(Description = BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute)]
-    RED = 1,
+    Red = 1,
 
     [Display(Description = BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute)]
-    DARK_GRAY = 2,
+    DarkGray = 2,
 }
 
 [Flags]
 public enum ShortBitFieldEnumUnderTest : short
 {
     [Display(Description = BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute)]
-    RED = 1,
+    Red = 1,
 
     [Display(Description = BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute)]
-    DARK_GRAY = 2,
+    DarkGray = 2,
 }
 
 public class BitFlagEnumTestsResources

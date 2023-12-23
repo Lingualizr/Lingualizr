@@ -2,7 +2,7 @@
 
 internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "nulle",
         "vien",
@@ -25,9 +25,9 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
         "astoņpadsmit",
         "deviņpadsmit"
     };
-    private static readonly string[] TensMap = { "nulle", "desmit", "divdesmit", "trīsdesmit", "četrdesmit", "piecdesmit", "sešdesmit", "septiņdesmit", "astoņdesmit", "deviņdesmit" };
-    private static readonly string[] HundredsMap = { "nulle", "simt", "divsimt", "trīssimt", "četrsimt", "piecsimt", "sešsimt", "septiņsimt", "astoņsimt", "deviņsimt" };
-    private static readonly string[] UnitsOrdinal =
+    private static readonly string[] _tensMap = { "nulle", "desmit", "divdesmit", "trīsdesmit", "četrdesmit", "piecdesmit", "sešdesmit", "septiņdesmit", "astoņdesmit", "deviņdesmit" };
+    private static readonly string[] _hundredsMap = { "nulle", "simt", "divsimt", "trīssimt", "četrsimt", "piecsimt", "sešsimt", "septiņsimt", "astoņsimt", "deviņsimt" };
+    private static readonly string[] _unitsOrdinal =
     {
         string.Empty,
         "pirm",
@@ -63,7 +63,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number / 1000000 > 0)
         {
-            var millionPart = string.Empty;
+            string millionPart;
             if (number == 1000000)
             {
                 millionPart = "miljons";
@@ -79,7 +79,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number / 1000 > 0)
         {
-            var thousandsPart = string.Empty;
+            string thousandsPart;
             if (number == 1000)
             {
                 thousandsPart = "tūkstotis";
@@ -99,7 +99,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number / 100 > 0)
         {
-            var hundredsPart = string.Empty;
+            string hundredsPart;
             if (number == 100)
             {
                 hundredsPart = parts.Contains("tūkstoš") ? "viens simts" : "simts";
@@ -119,14 +119,14 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number > 19)
         {
-            var tensPart = TensMap[number / 10];
+            var tensPart = _tensMap[number / 10];
             parts.Add(tensPart);
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(UnitsMap[number] + GetCardinalEndingForGender(gender, number));
+            parts.Add(_unitsMap[number] + GetCardinalEndingForGender(gender, number));
         }
 
         return string.Join(" ", parts);
@@ -151,7 +151,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong / 1000000 > 0)
         {
-            var millionPart = string.Empty;
+            string millionPart;
             if (numberLong == 1000000)
             {
                 millionPart = "miljon" + GetOrdinalEndingForGender(gender);
@@ -167,7 +167,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong / 1000 > 0)
         {
-            var thousandsPart = string.Empty;
+            string thousandsPart;
             if (numberLong % 1000 == 0)
             {
                 if (numberLong == 1000)
@@ -197,10 +197,10 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong / 100 > 0)
         {
-            var hundredsPart = string.Empty;
+            string hundredsPart;
             if (numberLong % 100 == 0)
             {
-                hundredsPart = HundredsMap[numberLong / 100] + GetOrdinalEndingForGender(gender);
+                hundredsPart = _hundredsMap[numberLong / 100] + GetOrdinalEndingForGender(gender);
             }
             else
             {
@@ -220,7 +220,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong > 19)
         {
-            var tensPart = TensMap[numberLong / 10];
+            var tensPart = _tensMap[numberLong / 10];
             if (numberLong % 10 == 0)
             {
                 tensPart += GetOrdinalEndingForGender(gender);
@@ -232,7 +232,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong > 0)
         {
-            parts.Add(UnitsOrdinal[numberLong] + GetOrdinalEndingForGender(gender));
+            parts.Add(_unitsOrdinal[numberLong] + GetOrdinalEndingForGender(gender));
         }
 
         return string.Join(" ", parts);

@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.de.Bytes;
+﻿namespace Lingualizr.Tests.Localisation.de.Bytes;
 
 [UseCulture("de-DE")]
 public class ByteSizeExtensionsTests

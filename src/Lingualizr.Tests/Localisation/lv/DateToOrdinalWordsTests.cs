@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.lv;
+﻿namespace Lingualizr.Tests.Localisation.lv;
 
 [UseCulture("lv")]
 public class DateToOrdinalWordsTests

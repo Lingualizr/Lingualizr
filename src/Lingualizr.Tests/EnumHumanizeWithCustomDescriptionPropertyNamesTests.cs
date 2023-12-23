@@ -1,5 +1,4 @@
 using Lingualizr.Configuration;
-using Xunit;
 
 namespace Lingualizr.Tests;
 

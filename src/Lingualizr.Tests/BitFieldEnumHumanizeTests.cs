@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests;
+﻿namespace Lingualizr.Tests;
 
 [UseCulture("en")]
 public class BitFieldEnumHumanizeTests
@@ -8,44 +6,44 @@ public class BitFieldEnumHumanizeTests
     [Fact]
     public void CanHumanizeSingleWordDescriptionAttribute()
     {
-        Assert.Equal(BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute, BitFieldEnumUnderTest.RED.Humanize());
+        Assert.Equal(BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute, BitFieldEnumUnderTest.Red.Humanize());
     }
 
     [Fact]
     public void CanHumanizeMultipleWordDescriptionAttribute()
     {
-        Assert.Equal(BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute, BitFieldEnumUnderTest.DARK_GRAY.Humanize());
+        Assert.Equal(BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute, BitFieldEnumUnderTest.DarkGray.Humanize());
     }
 
     [Fact]
     public void CanHumanizeMultipleValueBitFieldEnum()
     {
-        var xoredBitFlag = BitFieldEnumUnderTest.RED | BitFieldEnumUnderTest.DARK_GRAY;
+        var xoredBitFlag = BitFieldEnumUnderTest.Red | BitFieldEnumUnderTest.DarkGray;
         Assert.Equal(BitFlagEnumTestsResources.ExpectedResultWhenBothValuesXored, xoredBitFlag.Humanize());
     }
 
     [Fact]
     public void CanHumanizeShortSingleWordDescriptionAttribute()
     {
-        Assert.Equal(BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute, ShortBitFieldEnumUnderTest.RED.Humanize());
+        Assert.Equal(BitFlagEnumTestsResources.MemberWithSingleWordDisplayAttribute, ShortBitFieldEnumUnderTest.Red.Humanize());
     }
 
     [Fact]
     public void CanHumanizeShortMultipleWordDescriptionAttribute()
     {
-        Assert.Equal(BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute, ShortBitFieldEnumUnderTest.DARK_GRAY.Humanize());
+        Assert.Equal(BitFlagEnumTestsResources.MemberWithMultipleWordDisplayAttribute, ShortBitFieldEnumUnderTest.DarkGray.Humanize());
     }
 
     [Fact]
     public void CanHumanizeShortMultipleValueBitFieldEnum()
     {
-        var xoredBitFlag = ShortBitFieldEnumUnderTest.RED | ShortBitFieldEnumUnderTest.DARK_GRAY;
+        var xoredBitFlag = ShortBitFieldEnumUnderTest.Red | ShortBitFieldEnumUnderTest.DarkGray;
         Assert.Equal(BitFlagEnumTestsResources.ExpectedResultWhenBothValuesXored, xoredBitFlag.Humanize());
     }
 
     [Fact]
     public void CanHumanizeBitFieldEnumWithZeroValue()
     {
-        Assert.Equal(BitFlagEnumTestsResources.None, BitFieldEnumUnderTest.NONE.Humanize());
+        Assert.Equal(BitFlagEnumTestsResources.None, BitFieldEnumUnderTest.None.Humanize());
     }
 }

@@ -18,7 +18,7 @@ public class LocaliserRegistry<TLocaliser>
     /// <param name="defaultLocaliser"></param>
     public LocaliserRegistry(TLocaliser defaultLocaliser)
     {
-        _defaultLocaliser = (culture) => defaultLocaliser;
+        _defaultLocaliser = _ => defaultLocaliser;
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class LocaliserRegistry<TLocaliser>
     /// </summary>
     public void Register(string localeCode, TLocaliser localiser)
     {
-        _localisers[localeCode] = (culture) => localiser;
+        _localisers[localeCode] = _ => localiser;
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class LocaliserRegistry<TLocaliser>
 
     private Func<CultureInfo, TLocaliser> FindLocaliser(CultureInfo culture)
     {
-        for (var c = culture; !string.IsNullOrEmpty(c?.Name); c = c.Parent)
+        for (var c = culture; !string.IsNullOrEmpty(c.Name); c = c.Parent)
         {
             if (_localisers.TryGetValue(c.Name, out var localiser))
             {

@@ -5,7 +5,7 @@ namespace Lingualizr.Configuration;
 internal class NumberToWordsConverterRegistry : LocaliserRegistry<INumberToWordsConverter>
 {
     public NumberToWordsConverterRegistry()
-        : base((culture) => new EnglishNumberToWordsConverter())
+        : base(_ => new EnglishNumberToWordsConverter())
     {
         Register("af", new AfrikaansNumberToWordsConverter());
         Register("en", new EnglishNumberToWordsConverter());

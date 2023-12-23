@@ -538,7 +538,8 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             if (sizePart.Equals(BitSymbol, StringComparison.Ordinal))
             {
                 // Bits
-                if (number % 1 != 0) // Can't have partial bits
+                // Can't have partial bits
+                if (number % 1 != 0)
                 {
                     return false;
                 }

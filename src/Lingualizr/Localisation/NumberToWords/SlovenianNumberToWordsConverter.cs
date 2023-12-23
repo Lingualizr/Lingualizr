@@ -4,7 +4,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "nič",
         "ena",
@@ -27,7 +27,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
         "osemnajst",
         "devetnajst"
     };
-    private static readonly string[] TensMap = { "nič", "deset", "dvajset", "trideset", "štirideset", "petdeset", "šestdeset", "sedemdeset", "osemdeset", "devetdeset" };
+    private static readonly string[] _tensMap = { "nič", "deset", "dvajset", "trideset", "štirideset", "petdeset", "šestdeset", "sedemdeset", "osemdeset", "devetdeset" };
 
     private readonly CultureInfo _culture;
 
@@ -106,7 +106,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             {
                 if (numberInt > 1)
                 {
-                    parts.Add(UnitsMap[numberInt]);
+                    parts.Add(_unitsMap[numberInt]);
                 }
                 else
                 {
@@ -118,10 +118,10 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
                 var units = numberInt % 10;
                 if (units > 0)
                 {
-                    parts.Add(string.Format("{0}in", UnitsMap[units]));
+                    parts.Add(string.Format("{0}in", _unitsMap[units]));
                 }
 
-                parts.Add(TensMap[numberInt / 10]);
+                parts.Add(_tensMap[numberInt / 10]);
             }
         }
 

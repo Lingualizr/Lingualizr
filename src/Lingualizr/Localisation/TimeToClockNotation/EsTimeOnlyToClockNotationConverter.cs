@@ -2,9 +2,9 @@
 
 internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConverter
 {
-    private const int MORNING = 6;
-    private const int NOON = 12;
-    private const int AFTERNOON = 21;
+    private const int Morning = 6;
+    private const int Noon = 12;
+    private const int Afternoon = 21;
 
     public string Convert(TimeOnly time, ClockNotationRounding roundToNearestFive)
     {
@@ -74,16 +74,16 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
 
     private static bool IsEarlyMorning(TimeOnly time)
     {
-        return time.Hour >= 1 && time.Hour < MORNING;
+        return time.Hour >= 1 && time.Hour < Morning;
     }
 
     private static bool IsMorning(TimeOnly time)
     {
-        return time.Hour >= MORNING && time.Hour < NOON;
+        return time.Hour >= Morning && time.Hour < Noon;
     }
 
     private static bool IsAfternoon(TimeOnly time)
     {
-        return time.Hour >= NOON && time.Hour < AFTERNOON;
+        return time.Hour >= Noon && time.Hour < Afternoon;
     }
 }

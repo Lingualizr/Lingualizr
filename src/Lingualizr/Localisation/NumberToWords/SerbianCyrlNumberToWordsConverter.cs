@@ -4,7 +4,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "нула",
         "један",
@@ -27,7 +27,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
         "осамнаест",
         "деветнаест"
     };
-    private static readonly string[] TensMap = { "нула", "десет", "двадесет", "тридесет", "четрдесет", "петдесет", "шестдесет", "седамдесет", "осамдесет", "деветдесет" };
+    private static readonly string[] _tensMap = { "нула", "десет", "двадесет", "тридесет", "четрдесет", "петдесет", "шестдесет", "седамдесет", "осамдесет", "деветдесет" };
 
     private readonly CultureInfo _culture;
 
@@ -112,17 +112,17 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
         {
             if (numberInt < 20)
             {
-                parts.Add(UnitsMap[numberInt]);
+                parts.Add(_unitsMap[numberInt]);
             }
             else
             {
-                parts.Add(TensMap[numberInt / 10]);
+                parts.Add(_tensMap[numberInt / 10]);
 
                 var units = numberInt % 10;
 
                 if (units > 0)
                 {
-                    parts.Add(string.Format(" {0}", UnitsMap[units]));
+                    parts.Add(string.Format(" {0}", _unitsMap[units]));
                 }
             }
         }

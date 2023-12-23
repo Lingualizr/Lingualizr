@@ -1,7 +1,4 @@
-﻿using Lingualizr.FluentDate;
-using Xunit;
-
-namespace Lingualizr.Tests.FluentDate;
+﻿namespace Lingualizr.Tests.FluentDate;
 
 public class InDateTests
 {

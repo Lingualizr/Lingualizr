@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.it;
+﻿namespace Lingualizr.Tests.Localisation.it;
 
 [UseCulture("it")]
 public class CollectionFormatterTests

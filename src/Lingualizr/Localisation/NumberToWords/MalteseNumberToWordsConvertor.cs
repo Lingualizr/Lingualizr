@@ -183,7 +183,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
         var tens = value % 100;
         var numberOfHundreds = value / 100;
 
-        var hundredsText = string.Empty;
+        string hundredsText;
         if (numberOfHundreds == 1)
         {
             hundredsText = "mija";

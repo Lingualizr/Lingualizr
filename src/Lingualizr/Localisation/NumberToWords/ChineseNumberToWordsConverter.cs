@@ -2,7 +2,7 @@
 
 internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap = { "零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" };
+    private static readonly string[] _unitsMap = { "零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" };
 
     public override string Convert(long number)
     {
@@ -20,7 +20,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         if (number < 0)
@@ -94,14 +94,14 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             if (number <= 10)
             {
-                parts.Add(UnitsMap[number]);
+                parts.Add(_unitsMap[number]);
             }
             else
             {
-                var lastPart = string.Format("{0}十", UnitsMap[number / 10]);
+                var lastPart = string.Format("{0}十", _unitsMap[number / 10]);
                 if (number % 10 > 0)
                 {
-                    lastPart += string.Format("{0}", UnitsMap[number % 10]);
+                    lastPart += string.Format("{0}", _unitsMap[number % 10]);
                 }
 
                 parts.Add(lastPart);

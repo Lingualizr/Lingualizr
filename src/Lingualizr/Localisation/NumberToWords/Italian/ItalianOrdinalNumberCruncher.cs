@@ -4,30 +4,30 @@ internal class ItalianOrdinalNumberCruncher
 {
     public ItalianOrdinalNumberCruncher(int number, GrammaticalGender gender)
     {
-        _fullNumber = number;
-        _gender = gender;
+        FullNumber = number;
+        Gender = gender;
         _genderSuffix = gender == GrammaticalGender.Feminine ? "a" : "o";
     }
 
     public string Convert()
     {
         // it's easier to treat zero as a completely distinct case
-        if (_fullNumber == 0)
+        if (FullNumber == 0)
         {
             return "zero";
         }
 
-        if (_fullNumber <= 9)
+        if (FullNumber <= 9)
         {
             // units ordinals, 1 to 9, are totally different than the rest: treat them as a distinct case
-            return _unitsUnder10NumberToText[_fullNumber] + _genderSuffix;
+            return _unitsUnder10NumberToText[FullNumber] + _genderSuffix;
         }
 
-        var cardinalCruncher = new ItalianCardinalNumberCruncher(_fullNumber, _gender);
+        var cardinalCruncher = new ItalianCardinalNumberCruncher(FullNumber, Gender);
 
         var words = cardinalCruncher.Convert();
 
-        var tensAndUnits = _fullNumber % 100;
+        var tensAndUnits = FullNumber % 100;
 
         if (tensAndUnits == 10)
         {
@@ -39,7 +39,7 @@ internal class ItalianOrdinalNumberCruncher
             // truncate last vowel
             words = words.Remove(words.Length - 1);
 
-            var units = _fullNumber % 10;
+            var units = FullNumber % 10;
 
             // reintroduce *unaccented* last vowel in some corner cases
             if (units == 3)
@@ -51,9 +51,9 @@ internal class ItalianOrdinalNumberCruncher
                 words += 'i';
             }
 
-            var lowestThreeDigits = _fullNumber % 1000;
-            var lowestSixDigits = _fullNumber % 1000000;
-            var lowestNineDigits = _fullNumber % 1000000000;
+            var lowestThreeDigits = FullNumber % 1000;
+            var lowestSixDigits = FullNumber % 1000000;
+            var lowestNineDigits = FullNumber % 1000000000;
 
             if (lowestNineDigits == 0)
             {
@@ -61,7 +61,7 @@ internal class ItalianOrdinalNumberCruncher
                 words = words.Replace(" miliard", "miliard");
 
                 // if 1 billion, numeral prefix is removed completely
-                if (_fullNumber == 1000000000)
+                if (FullNumber == 1000000000)
                 {
                     words = words.Replace("un", string.Empty);
                 }
@@ -72,12 +72,12 @@ internal class ItalianOrdinalNumberCruncher
                 words = words.Replace(" milion", "milion");
 
                 // if 1 million, numeral prefix is removed completely
-                if (_fullNumber == 1000000)
+                if (FullNumber == 1000000)
                 {
                     words = words.Replace("un", string.Empty);
                 }
             }
-            else if (lowestThreeDigits == 0 && _fullNumber > 1000)
+            else if (lowestThreeDigits == 0 && FullNumber > 1000)
             {
                 // if exact thousands, double the final 'l', apart from 1000 already having that
                 words += 'l';
@@ -90,8 +90,8 @@ internal class ItalianOrdinalNumberCruncher
         return words;
     }
 
-    protected readonly int _fullNumber;
-    protected readonly GrammaticalGender _gender;
+    protected readonly int FullNumber;
+    protected readonly GrammaticalGender Gender;
     private readonly string _genderSuffix;
 
     /// <summary>

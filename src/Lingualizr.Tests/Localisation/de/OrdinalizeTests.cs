@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.de;
+﻿namespace Lingualizr.Tests.Localisation.de;
 
 [UseCulture("de-DE")]
 public class OrdinalizeTests

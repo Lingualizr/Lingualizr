@@ -231,121 +231,121 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetLakhsValue(ref long number, bool isOrdinal)
     {
-        var num_above_10 = number / 100000;
-        var local_word = string.Empty;
-        if (num_above_10 >= 20)
+        var numAbove10 = number / 100000;
+        var localWord = string.Empty;
+        if (numAbove10 >= 20)
         {
-            local_word = GetTensValue(num_above_10, false, false);
-            local_word += " " + _lakhsMap[0];
+            localWord = GetTensValue(numAbove10, false);
+            localWord += " " + _lakhsMap[0];
         }
-        else if (num_above_10 == 1)
+        else if (numAbove10 == 1)
         {
-            local_word = "ஒரு " + _lakhsMap[0];
+            localWord = "ஒரு " + _lakhsMap[0];
         }
         else
         {
-            local_word += GetTensValue(number / 100000, isOrdinal) + " " + _lakhsMap[0];
+            localWord += GetTensValue(number / 100000, isOrdinal) + " " + _lakhsMap[0];
         }
 
         if (number % 1000000 == 0 || number % 100000 == 0)
         {
-            local_word += "ம்";
+            localWord += "ம்";
         }
         else
         {
-            local_word += "த்து";
+            localWord += "த்து";
         }
 
         number %= 100000;
-        return local_word;
+        return localWord;
     }
 
     private static string GetCroresValue(ref long number)
     {
-        var local_word = string.Empty;
-        var num_above_10 = number / 10000000;
-        var str_crore = "கோடி";
+        var localWord = string.Empty;
+        var numAbove10 = number / 10000000;
+        var strCrore = "கோடி";
 
-        if (num_above_10 > 99999 && num_above_10 <= 9999999)
+        if (numAbove10 > 99999 && numAbove10 <= 9999999)
         {
-            local_word = GetLakhsValue(ref num_above_10, false);
-            local_word += " ";
-        }
-
-        if (num_above_10 > 999 && num_above_10 <= 99999)
-        {
-            local_word += GetThousandsValue(ref num_above_10);
-            local_word += " ";
+            localWord = GetLakhsValue(ref numAbove10, false);
+            localWord += " ";
         }
 
-        if (num_above_10 > 99 && num_above_10 <= 999)
+        if (numAbove10 > 999 && numAbove10 <= 99999)
         {
-            local_word += GetHundredsValue(ref num_above_10);
-            local_word += " ";
+            localWord += GetThousandsValue(ref numAbove10);
+            localWord += " ";
         }
 
-        if (num_above_10 >= 20)
+        if (numAbove10 > 99 && numAbove10 <= 999)
         {
-            local_word += GetTensValue(num_above_10, false, false);
-            local_word += " ";
-        }
-        else if (num_above_10 == 1)
-        {
-            local_word = "ஒரு ";
-        }
-        else if (num_above_10 > 0)
-        {
-            local_word += GetTensValue(num_above_10, false) + " ";
+            localWord += GetHundredsValue(ref numAbove10);
+            localWord += " ";
         }
 
-        local_word = local_word.TrimEnd() + " " + str_crore;
+        if (numAbove10 >= 20)
+        {
+            localWord += GetTensValue(numAbove10, false);
+            localWord += " ";
+        }
+        else if (numAbove10 == 1)
+        {
+            localWord = "ஒரு ";
+        }
+        else if (numAbove10 > 0)
+        {
+            localWord += GetTensValue(numAbove10, false) + " ";
+        }
+
+        localWord = localWord.TrimEnd() + " " + strCrore;
         if (number % 10000000 == 0 || number % 100000000 == 0)
         {
-            local_word += string.Empty;
+            localWord += string.Empty;
         }
         else
         {
-            local_word += "யே";
+            localWord += "யே";
         }
 
         number %= 10000000;
-        return local_word;
+        return localWord;
     }
 
     private static string GetThousandsValue(ref long number)
     {
-        var num_above_10 = number / 1000;
-        var local_word = string.Empty;
-        if (num_above_10 >= 20)
+        var numAbove10 = number / 1000;
+        var localWord = string.Empty;
+        if (numAbove10 >= 20)
         {
-            local_word = GetTensValue(num_above_10, false, true);
+            localWord = GetTensValue(numAbove10, false, true);
 
-            if (num_above_10 % 10 == 1)
+            if (numAbove10 % 10 == 1)
             {
-                local_word += "ஓரா";
+                localWord += "ஓரா";
             }
-            else if (num_above_10 % 10 > 1)
+            else if (numAbove10 % 10 > 1)
             {
-                local_word += _thousandsMap[num_above_10 % 10 - 1];
+                localWord += _thousandsMap[numAbove10 % 10 - 1];
             }
         }
         else
         {
-            local_word += _thousandsMap[number / 1000 - 1];
+            localWord += _thousandsMap[number / 1000 - 1];
         }
 
         number %= 1000;
 
         if (number > 0)
         {
-            local_word = local_word + "யிரத்து";
+            localWord = localWord + "யிரத்து";
         }
         else
         {
-            local_word = local_word + "யிரம்";
+            localWord = localWord + "யிரம்";
         }
 
-        return local_word;
+        return localWord;
     }
 
     private static string GetHundredsValue(ref long number)
