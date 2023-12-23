@@ -4,11 +4,11 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] HundredsMap = { "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset", };
+    private static readonly string[] _hundredsMap = { "zero", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset", };
 
-    private static readonly string[] TensMap = { "zero", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt", };
+    private static readonly string[] _tensMap = { "zero", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt", };
 
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "zero",
         "jeden",
@@ -32,7 +32,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         "dziewiętnaście",
     };
 
-    private static readonly string[][] PowersOfThousandMap =
+    private static readonly string[][] _powersOfThousandMap =
     {
         new[] { "tysiąc", "tysiące", "tysięcy" },
         new[] { "milion", "miliony", "milionów" },
@@ -80,7 +80,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         var number = input;
         var divisor = MaxPossibleDivisor;
-        var power = PowersOfThousandMap.Length - 1;
+        var power = _powersOfThousandMap.Length - 1;
         while (divisor > 0)
         {
             var multiplier = (int)Math.Abs(number / divisor);
@@ -120,12 +120,12 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (hundredsDigit >= 1)
         {
-            parts.Add(HundredsMap[hundredsDigit]);
+            parts.Add(_hundredsMap[hundredsDigit]);
         }
 
         if (tensDigit >= 2)
         {
-            parts.Add(TensMap[tensDigit]);
+            parts.Add(_tensMap[tensDigit]);
         }
 
         if (tensDigit != 1 && unitsDigit == 2)
@@ -149,7 +149,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
             var unit = unitsDigit + 10 * (tensDigit == 1 ? 1 : 0);
             if (unit > 0)
             {
-                parts.Add(UnitsMap[unit]);
+                parts.Add(_unitsMap[unit]);
             }
         }
     }
@@ -161,16 +161,16 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         const int genitiveIndex = 2;
         if (multiplier == 1)
         {
-            return PowersOfThousandMap[power][singularIndex];
+            return _powersOfThousandMap[power][singularIndex];
         }
 
         var multiplierUnitsDigit = multiplier % 10;
         var multiplierTensDigit = multiplier % 100 / 10;
         if (multiplierTensDigit == 1 || multiplierUnitsDigit <= 1 || multiplierUnitsDigit >= 5)
         {
-            return PowersOfThousandMap[power][genitiveIndex];
+            return _powersOfThousandMap[power][genitiveIndex];
         }
 
-        return PowersOfThousandMap[power][pluralIndex];
+        return _powersOfThousandMap[power][pluralIndex];
     }
 }

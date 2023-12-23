@@ -4,23 +4,23 @@ internal class ItalianCardinalNumberCruncher
 {
     public ItalianCardinalNumberCruncher(int number, GrammaticalGender gender)
     {
-        _fullNumber = number;
-        _threeDigitParts = SplitEveryThreeDigits(number);
-        _gender = gender;
-        _nextSet = ThreeDigitSets.Units;
+        FullNumber = number;
+        ThreeDigitParts = SplitEveryThreeDigits(number);
+        Gender = gender;
+        NextSet = ThreeDigitSets.Units;
     }
 
     public string Convert()
     {
         // it's easier to treat zero as a completely distinct case
-        if (_fullNumber == 0)
+        if (FullNumber == 0)
         {
             return "zero";
         }
 
         var words = string.Empty;
 
-        foreach (var part in _threeDigitParts)
+        foreach (var part in ThreeDigitParts)
         {
             var partToString = GetNextPartConverter();
 
@@ -36,11 +36,11 @@ internal class ItalianCardinalNumberCruncher
         return words.TrimEnd();
     }
 
-    protected readonly int _fullNumber;
-    protected readonly List<int> _threeDigitParts;
-    protected readonly GrammaticalGender _gender;
+    protected readonly int FullNumber;
+    protected readonly List<int> ThreeDigitParts;
+    protected readonly GrammaticalGender Gender;
 
-    protected ThreeDigitSets _nextSet;
+    protected ThreeDigitSets NextSet;
 
     /// <summary>
     /// Splits a number into a sequence of three-digits numbers, starting
@@ -74,26 +74,26 @@ internal class ItalianCardinalNumberCruncher
     {
         Func<int, string>? converter;
 
-        switch (_nextSet)
+        switch (NextSet)
         {
             case ThreeDigitSets.Units:
                 converter = UnitsConverter;
-                _nextSet = ThreeDigitSets.Thousands;
+                NextSet = ThreeDigitSets.Thousands;
                 break;
 
             case ThreeDigitSets.Thousands:
                 converter = ThousandsConverter;
-                _nextSet = ThreeDigitSets.Millions;
+                NextSet = ThreeDigitSets.Millions;
                 break;
 
             case ThreeDigitSets.Millions:
                 converter = MillionsConverter;
-                _nextSet = ThreeDigitSets.Billions;
+                NextSet = ThreeDigitSets.Billions;
                 break;
 
             case ThreeDigitSets.Billions:
                 converter = BillionsConverter;
-                _nextSet = ThreeDigitSets.More;
+                NextSet = ThreeDigitSets.More;
                 break;
 
             case ThreeDigitSets.More:
@@ -101,7 +101,7 @@ internal class ItalianCardinalNumberCruncher
                 break;
 
             default:
-                throw new ArgumentOutOfRangeException("Unknow ThreeDigitSet: " + _nextSet);
+                throw new ArgumentOutOfRangeException("Unknow ThreeDigitSet: " + NextSet);
         }
 
         return converter;
@@ -174,7 +174,7 @@ internal class ItalianCardinalNumberCruncher
     protected string UnitsConverter(int number)
     {
         // being a unique case, it's easier to treat unity feminine gender as a completely distinct case
-        if (_gender == GrammaticalGender.Feminine && _fullNumber == 1)
+        if (Gender == GrammaticalGender.Feminine && FullNumber == 1)
         {
             return "una";
         }

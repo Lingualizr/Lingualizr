@@ -301,7 +301,7 @@ public static class MetricNumeralExtensions
         var index = input.Length - 1;
         var last = input[index];
         var isSymbol = _symbols[0].Contains(last) || _symbols[1].Contains(last);
-        return !double.TryParse(isSymbol ? input.Remove(index) : input, out var number);
+        return !double.TryParse(isSymbol ? input.Remove(index) : input, out _);
     }
 
     private struct UnitPrefix

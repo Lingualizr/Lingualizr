@@ -4,7 +4,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class CroatianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "nula",
         "jedan",
@@ -27,7 +27,7 @@ internal class CroatianNumberToWordsConverter : GenderlessNumberToWordsConverter
         "osemnaest",
         "devetnaest"
     };
-    private static readonly string[] TensMap = { "nula", "deset", "dvadeset", "trideset", "četrdeset", "petdeset", "šestdeset", "sedamdeset", "osamdeset", "devetdeset" };
+    private static readonly string[] _tensMap = { "nula", "deset", "dvadeset", "trideset", "četrdeset", "petdeset", "šestdeset", "sedamdeset", "osamdeset", "devetdeset" };
 
     private readonly CultureInfo _culture;
 
@@ -111,16 +111,16 @@ internal class CroatianNumberToWordsConverter : GenderlessNumberToWordsConverter
         {
             if (numberInt < 20)
             {
-                parts.Add(UnitsMap[numberInt]);
+                parts.Add(_unitsMap[numberInt]);
             }
             else
             {
-                parts.Add(TensMap[numberInt / 10]);
+                parts.Add(_tensMap[numberInt / 10]);
                 var units = numberInt % 10;
 
                 if (units > 0)
                 {
-                    parts.Add(string.Format(" {0}", UnitsMap[units]));
+                    parts.Add(string.Format(" {0}", _unitsMap[units]));
                 }
             }
         }

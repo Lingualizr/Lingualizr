@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Lingualizr.Tests;
 
@@ -16,7 +15,7 @@ public enum EnumUnderTest
     [CustomProperty(EnumTestsResources.MemberWithCustomPropertyAttribute)]
     MemberWithCustomPropertyAttribute,
     MemberWithoutDescriptionAttribute,
-    ALLCAPITALS,
+    Allcapitals,
 
     [Display(Description = EnumTestsResources.MemberWithDisplayAttribute)]
     MemberWithDisplayAttribute,

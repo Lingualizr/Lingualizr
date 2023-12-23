@@ -4,9 +4,9 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsFeminine = { "אפס", "אחת", "שתיים", "שלוש", "ארבע", "חמש", "שש", "שבע", "שמונה", "תשע", "עשר" };
-    private static readonly string[] UnitsMasculine = { "אפס", "אחד", "שניים", "שלושה", "ארבעה", "חמישה", "שישה", "שבעה", "שמונה", "תשעה", "עשרה" };
-    private static readonly string[] TensUnit = { "עשר", "עשרים", "שלושים", "ארבעים", "חמישים", "שישים", "שבעים", "שמונים", "תשעים" };
+    private static readonly string[] _unitsFeminine = { "אפס", "אחת", "שתיים", "שלוש", "ארבע", "חמש", "שש", "שבע", "שמונה", "תשע", "עשר" };
+    private static readonly string[] _unitsMasculine = { "אפס", "אחד", "שניים", "שלושה", "ארבעה", "חמישה", "שישה", "שבעה", "שמונה", "תשעה", "עשרה" };
+    private static readonly string[] _tensUnit = { "עשר", "עשרים", "שלושים", "ארבעים", "חמישים", "שישים", "שבעים", "שמונים", "תשעים" };
 
     private readonly CultureInfo _culture;
 
@@ -56,7 +56,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberInt == 0)
         {
-            return UnitsFeminine[0];
+            return _unitsFeminine[0];
         }
 
         var parts = new List<string>();
@@ -90,7 +90,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
             if (numberInt <= 10)
             {
-                var unit = gender == GrammaticalGender.Masculine ? UnitsMasculine[numberInt] : UnitsFeminine[numberInt];
+                var unit = gender == GrammaticalGender.Masculine ? _unitsMasculine[numberInt] : _unitsFeminine[numberInt];
                 if (appendAnd)
                 {
                     unit = "ו" + unit;
@@ -112,7 +112,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                var tenUnit = TensUnit[numberInt / 10 - 1];
+                var tenUnit = _tensUnit[numberInt / 10 - 1];
                 if (numberInt % 10 == 0)
                 {
                     parts.Add(tenUnit);
@@ -169,7 +169,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         }
         else if (thousands <= 10)
         {
-            parts.Add(UnitsFeminine[thousands] + "ת" + " אלפים");
+            parts.Add(_unitsFeminine[thousands] + "ת" + " אלפים");
         }
         else
         {
@@ -194,7 +194,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         }
         else
         {
-            parts.Add(UnitsFeminine[hundreds] + " מאות");
+            parts.Add(_unitsFeminine[hundreds] + " מאות");
         }
     }
 }

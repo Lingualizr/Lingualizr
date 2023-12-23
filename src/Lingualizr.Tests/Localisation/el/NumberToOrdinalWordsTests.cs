@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.el;
+﻿namespace Lingualizr.Tests.Localisation.el;
 
 [UseCulture("el")]
 public class NumberToOrdinalWordsTests

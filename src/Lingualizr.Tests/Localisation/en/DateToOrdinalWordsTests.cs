@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.en;
+﻿namespace Lingualizr.Tests.Localisation.en;
 
 public class DateToOrdinalWordsTests
 {

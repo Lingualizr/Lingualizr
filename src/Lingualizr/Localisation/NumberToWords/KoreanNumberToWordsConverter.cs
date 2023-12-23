@@ -2,11 +2,11 @@
 
 internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap1 = { string.Empty, string.Empty, "이", "삼", "사", "오", "육", "칠", "팔", "구" };
-    private static readonly string[] UnitsMap2 = { string.Empty, "십", "백", "천" };
-    private static readonly string[] UnitsMap3 = { string.Empty, "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극", "항하사", "아승기", "나유타", "불가사의", "무량대수" };
+    private static readonly string[] _unitsMap1 = { string.Empty, string.Empty, "이", "삼", "사", "오", "육", "칠", "팔", "구" };
+    private static readonly string[] _unitsMap2 = { string.Empty, "십", "백", "천" };
+    private static readonly string[] _unitsMap3 = { string.Empty, "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극", "항하사", "아승기", "나유타", "불가사의", "무량대수" };
 
-    private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
     {
         { 0, "영번째" },
         { 1, "첫번째" },
@@ -42,7 +42,7 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string ConvertImpl(long number, bool isOrdinal)
     {
-        if (isOrdinal && number < 20 && OrdinalExceptions.TryGetValue(number, out var words))
+        if (isOrdinal && number < 20 && _ordinalExceptions.TryGetValue(number, out var words))
         {
             return words;
         }
@@ -70,14 +70,14 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
             var n3 = (groupNumber - groupNumber % 1000) / 1000;
 
             parts.Add(
-                UnitsMap1[n3]
-                    + (n3 == 0 ? string.Empty : UnitsMap2[3])
-                    + UnitsMap1[n2]
-                    + (n2 == 0 ? string.Empty : UnitsMap2[2])
-                    + UnitsMap1[n1]
-                    + (n1 == 0 ? string.Empty : UnitsMap2[1])
-                    + (n0 == 1 ? "일" : UnitsMap1[n0])
-                    + (groupNumber == 0 ? string.Empty : UnitsMap3[groupLevel])
+                _unitsMap1[n3]
+                    + (n3 == 0 ? string.Empty : _unitsMap2[3])
+                    + _unitsMap1[n2]
+                    + (n2 == 0 ? string.Empty : _unitsMap2[2])
+                    + _unitsMap1[n1]
+                    + (n1 == 0 ? string.Empty : _unitsMap2[1])
+                    + (n0 == 1 ? "일" : _unitsMap1[n0])
+                    + (groupNumber == 0 ? string.Empty : _unitsMap3[groupLevel])
             );
 
             groupLevel++;

@@ -22,7 +22,6 @@
 
 using System.Globalization;
 using Lingualizr.Bytes;
-using Xunit;
 
 namespace Lingualizr.Tests.Bytes;
 

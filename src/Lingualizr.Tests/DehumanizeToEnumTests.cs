@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests;
+﻿namespace Lingualizr.Tests;
 
 public class DehumanizeToEnumTests
 {
@@ -51,8 +49,8 @@ public class DehumanizeToEnumTests
     [Fact]
     public void AllCapitalMembersAreReturnedAsIs()
     {
-        Assert.Equal(EnumUnderTest.ALLCAPITALS, EnumUnderTest.ALLCAPITALS.ToString().DehumanizeTo<EnumUnderTest>());
-        Assert.Equal(EnumUnderTest.ALLCAPITALS, EnumUnderTest.ALLCAPITALS.ToString().DehumanizeTo(typeof(EnumUnderTest)));
+        Assert.Equal(EnumUnderTest.Allcapitals, EnumUnderTest.Allcapitals.ToString().DehumanizeTo<EnumUnderTest>());
+        Assert.Equal(EnumUnderTest.Allcapitals, EnumUnderTest.Allcapitals.ToString().DehumanizeTo(typeof(EnumUnderTest)));
     }
 
     [Fact]

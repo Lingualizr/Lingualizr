@@ -1,5 +1,4 @@
 ﻿using Lingualizr.Truncation;
-using Xunit;
 
 namespace Lingualizr.Tests;
 

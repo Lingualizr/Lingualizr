@@ -1,8 +1,9 @@
-﻿namespace Lingualizr;
+﻿// ReSharper disable InconsistentNaming
+namespace Lingualizr;
 
 /// <summary>
 /// </summary>
-public partial class On
+public class On
 {
     /// <summary>
     /// Provides fluent date accessors for January

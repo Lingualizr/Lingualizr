@@ -2,7 +2,7 @@
 
 internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] Tillnineteen =
+    private static readonly string[] _tillnineteen =
     {
         "one",
         "two",
@@ -25,7 +25,7 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
         "nineteen",
     };
 
-    private static readonly string[] Tens = { "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", };
+    private static readonly string[] _tens = { "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", };
 
     public override string Convert(long number)
     {
@@ -52,12 +52,12 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number <= 19)
         {
-            return Tillnineteen[number - 1] + " ";
+            return _tillnineteen[number - 1] + " ";
         }
 
         if (number <= 99)
         {
-            return Tens[number / 10 - 2] + " " + NumberToText(number % 10);
+            return _tens[number / 10 - 2] + " " + NumberToText(number % 10);
         }
 
         if (number <= 199)

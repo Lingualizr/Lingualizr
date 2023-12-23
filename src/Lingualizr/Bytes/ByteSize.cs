@@ -470,15 +470,15 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         return b1.Bits >= b2.Bits;
     }
 
-    public static bool TryParse(string? s, out ByteSize result)
+    public static bool TryParse(ReadOnlySpan<char> s, out ByteSize result)
     {
         return TryParse(s, null, out result);
     }
 
-    public static bool TryParse(string? s, IFormatProvider? formatProvider, out ByteSize result)
+    public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? formatProvider, out ByteSize result)
     {
         // Arg checking
-        if (string.IsNullOrWhiteSpace(s))
+        if (s.IsEmpty || s.IsWhiteSpace())
         {
             result = default;
             return false;
@@ -523,8 +523,8 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         var lastNumber = num;
 
         // Cut the input string in half
-        var numberPart = s.Substring(0, lastNumber).Trim();
-        var sizePart = s.Substring(lastNumber, s.Length - lastNumber).Trim();
+        var numberPart = s.Slice(0, lastNumber).Trim();
+        var sizePart = s.Slice(lastNumber, s.Length - lastNumber).Trim();
 
         // Get the numeric part
         if (!double.TryParse(numberPart, numberStyles, formatProvider, out var number))
@@ -533,46 +533,44 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         }
 
         // Get the magnitude part
-        switch (sizePart.ToUpper())
+        if (sizePart.Equals(ByteSymbol, StringComparison.OrdinalIgnoreCase))
         {
-            case ByteSymbol:
-                if (sizePart == BitSymbol)
+            if (sizePart.Equals(BitSymbol, StringComparison.Ordinal))
+            {
+                // Bits
+                // Can't have partial bits
+                if (number % 1 != 0)
                 {
-                    // Bits
-                    // Can't have partial bits
-                    if (number % 1 != 0)
-                    {
-                        return false;
-                    }
-
-                    result = FromBits((long)number);
-                }
-                else
-                {
-                    // Bytes
-                    result = FromBytes(number);
+                    return false;
                 }
 
-                break;
-
-            case KilobyteSymbol:
-                result = FromKilobytes(number);
-                break;
-
-            case MegabyteSymbol:
-                result = FromMegabytes(number);
-                break;
-
-            case GigabyteSymbol:
-                result = FromGigabytes(number);
-                break;
-
-            case TerabyteSymbol:
-                result = FromTerabytes(number);
-                break;
-
-            default:
-                return false;
+                result = FromBits((long)number);
+            }
+            else
+            {
+                // Bytes
+                result = FromBytes(number);
+            }
+        }
+        else if (sizePart.Equals(KilobyteSymbol, StringComparison.OrdinalIgnoreCase))
+        {
+            result = FromKilobytes(number);
+        }
+        else if (sizePart.Equals(MegabyteSymbol, StringComparison.OrdinalIgnoreCase))
+        {
+            result = FromMegabytes(number);
+        }
+        else if (sizePart.Equals(GigabyteSymbol, StringComparison.OrdinalIgnoreCase))
+        {
+            result = FromGigabytes(number);
+        }
+        else if (sizePart.Equals(TerabyteSymbol, StringComparison.OrdinalIgnoreCase))
+        {
+            result = FromTerabytes(number);
+        }
+        else
+        {
+            return false;
         }
 
         return true;

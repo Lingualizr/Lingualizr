@@ -2,9 +2,9 @@
 
 internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] FarsiHundredsMap = { "صفر", "صد", "دویست", "سیصد", "چهارصد", "پانصد", "ششصد", "هفتصد", "هشتصد", "نهصد" };
-    private static readonly string[] FarsiTensMap = { "صفر", "ده", "بیست", "سی", "چهل", "پنجاه", "شصت", "هفتاد", "هشتاد", "نود" };
-    private static readonly string[] FarsiUnitsMap = { "صفر", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده", "یازده", "دوازده", "سیزده", "چهارده", "پانزده", "شانزده", "هفده", "هجده", "نوزده" };
+    private static readonly string[] _farsiHundredsMap = { "صفر", "صد", "دویست", "سیصد", "چهارصد", "پانصد", "ششصد", "هفتصد", "هشتصد", "نهصد" };
+    private static readonly string[] _farsiTensMap = { "صفر", "ده", "بیست", "سی", "چهل", "پنجاه", "شصت", "هفتاد", "هشتاد", "نود" };
+    private static readonly string[] _farsiUnitsMap = { "صفر", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه", "ده", "یازده", "دوازده", "سیزده", "چهارده", "پانزده", "شانزده", "هفده", "هجده", "نوزده" };
 
     public override string Convert(long number)
     {
@@ -26,7 +26,7 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
             { (long)Math.Pow(10, 6), n => string.Format("{0} میلیون", Convert(n)) },
             { (long)Math.Pow(10, 3), n => string.Format("{0} هزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => FarsiHundredsMap[n] },
+            { (long)Math.Pow(10, 2), n => _farsiHundredsMap[n] },
         };
 
         var parts = new List<string>();
@@ -41,13 +41,13 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number >= 20)
         {
-            parts.Add(FarsiTensMap[number / 10]);
+            parts.Add(_farsiTensMap[number / 10]);
             number %= 10;
         }
 
         if (number > 0)
         {
-            parts.Add(FarsiUnitsMap[number]);
+            parts.Add(_farsiUnitsMap[number]);
         }
 
         return string.Join(" و ", parts);

@@ -8,12 +8,12 @@ internal class FrTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
 
         return normalizedMinutes switch
         {
-            00 => GetHourExpression(time.Hour),
-            60 => GetHourExpression(time.Hour + 1),
-            _ => $"{GetHourExpression(time.Hour)} {normalizedMinutes.ToWords(GrammaticalGender.Feminine)}",
+            00 => getHourExpression(time.Hour),
+            60 => getHourExpression(time.Hour + 1),
+            _ => $"{getHourExpression(time.Hour)} {normalizedMinutes.ToWords(GrammaticalGender.Feminine)}",
         };
 
-        static string GetHourExpression(int hour)
+        static string getHourExpression(int hour)
         {
             return hour switch
             {

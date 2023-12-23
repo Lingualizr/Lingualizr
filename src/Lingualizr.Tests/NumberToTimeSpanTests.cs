@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests;
+﻿namespace Lingualizr.Tests;
 
 public class NumberToTimeSpanTests
 {

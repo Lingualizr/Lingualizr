@@ -190,14 +190,14 @@ public class Vocabulary
             _replacement = replacement;
         }
 
-        public string? Apply(string word)
+        public string? Apply(ReadOnlySpan<char> word)
         {
             if (!_regex.IsMatch(word))
             {
                 return null;
             }
 
-            return _regex.Replace(word, _replacement);
+            return _regex.Replace(word.ToString(), _replacement);
         }
     }
 }

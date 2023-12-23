@@ -1,5 +1,4 @@
 ﻿using PublicApiGenerator;
-using Xunit.Abstractions;
 
 namespace Lingualizr.Tests.ApiApprover;
 

@@ -4,7 +4,7 @@ namespace Lingualizr.Localisation.NumberToWords;
 
 internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "zero",
         "one",
@@ -27,9 +27,9 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
         "eighteen",
         "nineteen"
     };
-    private static readonly string[] TensMap = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+    private static readonly string[] _tensMap = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-    private static readonly Dictionary<long, string> OrdinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
     {
         { 1, "first" },
         { 2, "second" },
@@ -125,7 +125,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var lastPart = TensMap[number / 10];
+                var lastPart = _tensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format("-{0}", GetUnitValue(number % 10, isOrdinal));
@@ -163,12 +163,12 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                return UnitsMap[number] + "th";
+                return _unitsMap[number] + "th";
             }
         }
         else
         {
-            return UnitsMap[number];
+            return _unitsMap[number];
         }
     }
 
@@ -185,7 +185,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static bool ExceptionNumbersToWords(long number, [MaybeNullWhen(false)] out string words)
     {
-        return OrdinalExceptions.TryGetValue(number, out words);
+        return _ordinalExceptions.TryGetValue(number, out words);
     }
 
     public override string ConvertToTuple(int number)

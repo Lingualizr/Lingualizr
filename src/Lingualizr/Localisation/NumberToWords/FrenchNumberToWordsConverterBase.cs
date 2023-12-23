@@ -2,7 +2,7 @@
 
 internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWordsConverter
 {
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "zéro",
         "un",
@@ -25,13 +25,13 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
         "dix-huit",
         "dix-neuf"
     };
-    private static readonly string[] TensMap = { "zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "septante", "octante", "nonante" };
+    private static readonly string[] _tensMap = { "zéro", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "septante", "octante", "nonante" };
 
     public override string Convert(long number, GrammaticalGender gender, bool addAnd = true)
     {
         if (number == 0)
         {
-            return UnitsMap[0];
+            return _unitsMap[0];
         }
 
         var parts = new List<string>();
@@ -98,7 +98,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return "une";
         }
 
-        return UnitsMap[number];
+        return _unitsMap[number];
     }
 
     private static void CollectHundreds(ICollection<string> parts, ref long number, long d, string form, bool pluralize)
@@ -209,6 +209,6 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
 
     protected virtual string GetTens(long tens)
     {
-        return TensMap[tens];
+        return _tensMap[tens];
     }
 }

@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.uz_Latn_UZ;
+﻿namespace Lingualizr.Tests.Localisation.uz_Latn_UZ;
 
 [UseCulture("uz-Latn-UZ")]
 public class NumberToWordsTests

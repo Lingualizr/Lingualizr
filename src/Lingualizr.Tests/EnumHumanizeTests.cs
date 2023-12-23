@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests;
+﻿namespace Lingualizr.Tests;
 
 public class EnumHumanizeTests
 {
@@ -37,7 +35,7 @@ public class EnumHumanizeTests
     [Fact]
     public void AllCapitalMembersAreReturnedAsIs()
     {
-        Assert.Equal(EnumUnderTest.ALLCAPITALS.ToString(), EnumUnderTest.ALLCAPITALS.Humanize());
+        Assert.Equal(EnumUnderTest.Allcapitals.ToString(), EnumUnderTest.Allcapitals.Humanize());
     }
 
     [Fact]

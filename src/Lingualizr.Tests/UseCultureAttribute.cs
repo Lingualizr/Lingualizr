@@ -15,7 +15,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     private readonly Lazy<CultureInfo> _culture;
     private readonly Lazy<CultureInfo> _uiCulture;
     private CultureInfo? _originalCulture;
-    private CultureInfo? _originalUICulture;
+    private CultureInfo? _originalUiCulture;
 
     /// <summary>
     /// Replaces the culture and UI culture of the current thread with
@@ -25,7 +25,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <remarks>
     /// <para>
     /// This constructor overload uses <paramref name="culture" /> for both
-    /// <see cref="Culture" /> and <see cref="UICulture" />.
+    /// <see cref="Culture" /> and <see cref="UiCulture" />.
     /// </para>
     /// </remarks>
     public UseCultureAttribute(string culture)
@@ -54,7 +54,7 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     /// <summary>
     /// Gets the UI culture.
     /// </summary>
-    public CultureInfo UICulture
+    public CultureInfo UiCulture
     {
         get { return _uiCulture.Value; }
     }
@@ -68,10 +68,10 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     public override void Before(MethodInfo methodUnderTest)
     {
         _originalCulture = CultureInfo.CurrentCulture;
-        _originalUICulture = CultureInfo.CurrentUICulture;
+        _originalUiCulture = CultureInfo.CurrentUICulture;
 
         CultureInfo.CurrentCulture = Culture;
-        CultureInfo.CurrentUICulture = UICulture;
+        CultureInfo.CurrentUICulture = UiCulture;
     }
 
     /// <summary>
@@ -82,6 +82,6 @@ public class UseCultureAttribute : BeforeAfterTestAttribute
     public override void After(MethodInfo methodUnderTest)
     {
         CultureInfo.CurrentCulture = _originalCulture!;
-        CultureInfo.CurrentUICulture = _originalUICulture!;
+        CultureInfo.CurrentUICulture = _originalUiCulture!;
     }
 }

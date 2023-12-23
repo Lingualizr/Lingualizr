@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Lingualizr;
+﻿namespace Lingualizr;
 
 /// <summary>
 /// Contains extension methods for humanizing string values.
@@ -21,7 +19,6 @@ public static class StringHumanizeExtensions
             LingualizrRegex
                 .PascalCaseWordPartsRegex()
                 .Matches(input)
-                .Cast<Match>()
                 .Select(match => match.Value.All(char.IsUpper) && (match.Value.Length > 1 || (match.Index > 0 && input[match.Index - 1] == ' ') || match.Value == "I") ? match.Value : match.Value.ToLower())
         );
 

@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using Lingualizr.Localisation;
-using Xunit;
 
 namespace Lingualizr.Tests.Localisation;
 

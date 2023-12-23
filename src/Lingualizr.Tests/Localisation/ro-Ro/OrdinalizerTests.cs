@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.ro_Ro;
+﻿namespace Lingualizr.Tests.Localisation.ro_Ro;
 
 [UseCulture("ro-RO")]
 public class OrdinalizerTests

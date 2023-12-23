@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.pt;
+﻿namespace Lingualizr.Tests.Localisation.pt;
 
 [UseCulture("pt")]
 public class NumberToWordsTests

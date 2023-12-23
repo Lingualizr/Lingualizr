@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation.hy;
+﻿namespace Lingualizr.Tests.Localisation.hy;
 
 [UseCulture("hy")]
 public class OrdinalizeTests

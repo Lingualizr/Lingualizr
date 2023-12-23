@@ -1,6 +1,4 @@
-﻿using Xunit;
-
-namespace Lingualizr.Tests.Localisation;
+﻿namespace Lingualizr.Tests.Localisation;
 
 public class DefaultFormatterTests
 {

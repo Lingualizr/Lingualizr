@@ -119,7 +119,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
             return;
         }
 
-        CollectLessThanThousand(parts, n, n < 19 ? gender : (GrammaticalGender?)null);
+        CollectLessThanThousand(parts, n, n < 19 ? gender : null);
 
         var units = n % 1000;
 

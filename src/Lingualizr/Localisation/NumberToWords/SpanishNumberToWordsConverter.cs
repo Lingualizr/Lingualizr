@@ -2,19 +2,19 @@
 
 internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 {
-    private static readonly string[] HundredsRootMap = { "cero", "ciento", "doscient", "trescient", "cuatrocient", "quinient", "seiscient", "setecient", "ochocient", "novecient", };
+    private static readonly string[] _hundredsRootMap = { "cero", "ciento", "doscient", "trescient", "cuatrocient", "quinient", "seiscient", "setecient", "ochocient", "novecient", };
 
-    private static readonly string[] HundredthsRootMap = { string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim", "septingentésim", "octingentésim", "noningentésim", };
+    private static readonly string[] _hundredthsRootMap = { string.Empty, "centésim", "ducentésim", "tricentésim", "cuadringentésim", "quingentésim", "sexcentésim", "septingentésim", "octingentésim", "noningentésim", };
 
-    private static readonly string[] OrdinalsRootMap = { string.Empty, "primer", "segund", "tercer", "cuart", "quint", "sext", "séptim", "octav", "noven", };
+    private static readonly string[] _ordinalsRootMap = { string.Empty, "primer", "segund", "tercer", "cuart", "quint", "sext", "séptim", "octav", "noven", };
 
-    private static readonly string[] TensMap = { "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa", };
+    private static readonly string[] _tensMap = { "cero", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa", };
 
-    private static readonly string[] TenthsRootMap = { string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim", "octogésim", "nonagésim", };
+    private static readonly string[] _tenthsRootMap = { string.Empty, "décim", "vigésim", "trigésim", "cuadragésim", "quincuagésim", "sexagésim", "septuagésim", "octogésim", "nonagésim", };
 
-    private static readonly string[] ThousandthsRootMap = { string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim", "sietemilésim", "ochomilésim", "nuevemilésim", };
+    private static readonly string[] _thousandthsRootMap = { string.Empty, "milésim", "dosmilésim", "tresmilésim", "cuatromilésim", "cincomilésim", "seismilésim", "sietemilésim", "ochomilésim", "nuevemilésim", };
 
-    private static readonly string[] TupleMap =
+    private static readonly string[] _tupleMap =
     {
         "cero veces",
         "una vez",
@@ -32,7 +32,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         "terciodécuplo",
     };
 
-    private static readonly string[] UnitsMap =
+    private static readonly string[] _unitsMap =
     {
         "cero",
         "uno",
@@ -140,9 +140,9 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         number = Math.Abs(number);
 
-        if (number < TupleMap.Length)
+        if (number < _tupleMap.Length)
         {
-            return TupleMap[number];
+            return _tupleMap[number];
         }
 
         return Convert(number) + " veces";
@@ -172,7 +172,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string ConvertHundredths(in int number, out int remainder, GrammaticalGender gender)
     {
-        return ConvertMappedOrdinalNumber(number, 100, HundredthsRootMap, out remainder, gender);
+        return ConvertMappedOrdinalNumber(number, 100, _hundredthsRootMap, out remainder, gender);
     }
 
     private static string ConvertMappedOrdinalNumber(in int number, in int divisor, IReadOnlyList<string> map, out int remainder, GrammaticalGender gender)
@@ -198,7 +198,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
             genderedEndingDict.Add(GrammaticalGender.Neuter, genderedEndingDict[GrammaticalGender.Masculine]);
 
-            return OrdinalsRootMap[number] + genderedEndingDict[gender];
+            return _ordinalsRootMap[number] + genderedEndingDict[gender];
         }
 
         return string.Empty;
@@ -206,12 +206,12 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string ConvertTenths(in int number, out int remainder, GrammaticalGender gender)
     {
-        return ConvertMappedOrdinalNumber(number, 10, TenthsRootMap, out remainder, gender);
+        return ConvertMappedOrdinalNumber(number, 10, _tenthsRootMap, out remainder, gender);
     }
 
     private static string ConvertThousandths(in int number, out int remainder, GrammaticalGender gender)
     {
-        return ConvertMappedOrdinalNumber(number, 1000, ThousandthsRootMap, out remainder, gender);
+        return ConvertMappedOrdinalNumber(number, 1000, _thousandthsRootMap, out remainder, gender);
     }
 
     private static string ConvertUnits(long inputNumber, GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
@@ -220,19 +220,19 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (inputNumber > 0)
         {
-            UnitsMap[1] = GetGenderedOne(gender, wordForm);
-            UnitsMap[21] = GetGenderedTwentyOne(gender, wordForm);
+            _unitsMap[1] = GetGenderedOne(gender, wordForm);
+            _unitsMap[21] = GetGenderedTwentyOne(gender, wordForm);
 
             if (inputNumber < 30)
             {
-                wordPart = UnitsMap[inputNumber];
+                wordPart = _unitsMap[inputNumber];
             }
             else
             {
-                wordPart = TensMap[inputNumber / 10];
+                wordPart = _tensMap[inputNumber / 10];
                 if (inputNumber % 10 > 0)
                 {
-                    wordPart += $" y {UnitsMap[inputNumber % 10]}";
+                    wordPart += $" y {_unitsMap[inputNumber % 10]}";
                 }
             }
         }
@@ -244,11 +244,11 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         var genderedEnding = gender == GrammaticalGender.Feminine ? "as" : "os";
         var map = new List<string>();
-        map.AddRange(HundredsRootMap.Take(2));
+        map.AddRange(_hundredsRootMap.Take(2));
 
-        for (var i = 2; i < HundredsRootMap.Length; i++)
+        for (var i = 2; i < _hundredsRootMap.Length; i++)
         {
-            map.Add(HundredsRootMap[i] + genderedEnding);
+            map.Add(_hundredsRootMap[i] + genderedEnding);
         }
 
         return map;
@@ -348,7 +348,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
         {
             wordPart = Convert(number / 1000 * 1000, gender);
 
-            if (number < 30000 || IsRoundNumber(number))
+            if (number < 30000 || isRoundNumber(number))
             {
                 if (number == 21000)
                 {
@@ -365,7 +365,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         return wordPart;
 
-        static bool IsRoundNumber(int number)
+        static bool isRoundNumber(int number)
         {
             return (number % 10000 == 0 && number < 100000)
                 || (number % 100000 == 0 && number < 1000000)
