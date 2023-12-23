@@ -43,7 +43,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt == 0)
         {
@@ -55,8 +55,8 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             return string.Format("- {0}", Convert(-numberInt));
         }
 
-        var parts = new List<string>();
-        var billions = numberInt / 1000000000;
+        List<string> parts = new();
+        int billions = numberInt / 1000000000;
 
         if (billions > 0)
         {
@@ -69,7 +69,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             }
         }
 
-        var millions = numberInt / 1000000;
+        int millions = numberInt / 1000000;
 
         if (millions > 0)
         {
@@ -82,7 +82,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             }
         }
 
-        var thousands = numberInt / 1000;
+        int thousands = numberInt / 1000;
 
         if (thousands > 0)
         {
@@ -95,7 +95,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             }
         }
 
-        var hundreds = numberInt / 100;
+        int hundreds = numberInt / 100;
 
         if (hundreds > 0)
         {
@@ -118,7 +118,7 @@ internal class SerbianCyrlNumberToWordsConverter : GenderlessNumberToWordsConver
             {
                 parts.Add(_tensMap[numberInt / 10]);
 
-                var units = numberInt % 10;
+                int units = numberInt % 10;
 
                 if (units > 0)
                 {

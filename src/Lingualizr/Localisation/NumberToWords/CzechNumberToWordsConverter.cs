@@ -52,7 +52,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
             return UnitByGender(number, gender);
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
         if (number < 0)
         {
             parts.Add("mínus");
@@ -112,7 +112,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectThousandAndAbove(List<string> parts, ref long number, long divisor, GrammaticalGender gender, string[] map)
     {
-        var n = number / divisor;
+        long n = number / divisor;
 
         if (n <= 0)
         {
@@ -121,7 +121,7 @@ internal class CzechNumberToWordsConverter : GenderedNumberToWordsConverter
 
         CollectLessThanThousand(parts, n, n < 19 ? gender : null);
 
-        var units = n % 1000;
+        long units = n % 1000;
 
         if (units == 1)
         {

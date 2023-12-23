@@ -18,7 +18,7 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             return "صفر";
         }
 
-        var farsiGroupsMap = new Dictionary<long, Func<long, string>>
+        Dictionary<long, Func<long, string>> farsiGroupsMap = new()
         {
             { (long)Math.Pow(10, 18), n => string.Format("{0} تریلیون", Convert(n)) },
             { (long)Math.Pow(10, 15), n => string.Format("{0} بیلیارد", Convert(n)) },
@@ -29,8 +29,8 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             { (long)Math.Pow(10, 2), n => _farsiHundredsMap[n] },
         };
 
-        var parts = new List<string>();
-        foreach (var group in farsiGroupsMap.Keys)
+        List<string> parts = new();
+        foreach (long group in farsiGroupsMap.Keys)
         {
             if (number / group > 0)
             {
@@ -70,7 +70,7 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             return Convert(number / 10 * 10) + " و سوم";
         }
 
-        var word = Convert(number);
+        string word = Convert(number);
         return string.Format("{0}{1}", word, word.EndsWith('ی') ? " ام" : "م");
     }
 }

@@ -61,7 +61,7 @@ public static class ToQuantityExtensions
     /// "request".ToQuantity(1, format: "N0") => "1 request"
     /// </example>
     /// <returns></returns>
-    public static string ToQuantity(this string input, int quantity, string format, IFormatProvider? formatProvider = null)
+    public static string ToQuantity(this string input, int quantity, string? format, IFormatProvider? formatProvider = null)
     {
         return input.ToQuantity(quantity, showQuantityAs: ShowQuantityAs.Numeric, format: format, formatProvider: formatProvider);
     }
@@ -98,14 +98,14 @@ public static class ToQuantityExtensions
     /// "request".ToQuantity(1, format: "N0") => "1 request"
     /// </example>
     /// <returns></returns>
-    public static string ToQuantity(this string input, long quantity, string format, IFormatProvider? formatProvider = null)
+    public static string ToQuantity(this string input, long quantity, string? format, IFormatProvider? formatProvider = null)
     {
         return input.ToQuantity(quantity, showQuantityAs: ShowQuantityAs.Numeric, format: format, formatProvider: formatProvider);
     }
 
     private static string ToQuantity(this string input, long quantity, ShowQuantityAs showQuantityAs = ShowQuantityAs.Numeric, string? format = null, IFormatProvider? formatProvider = null)
     {
-        var transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
+        string transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
 
         if (showQuantityAs == ShowQuantityAs.None)
         {
@@ -135,7 +135,7 @@ public static class ToQuantityExtensions
     /// <returns></returns>
     public static string ToQuantity(this string input, double quantity, string? format = null, IFormatProvider? formatProvider = null)
     {
-        var transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
+        string transformedInput = quantity == 1 ? input.Singularize(inputIsKnownToBePlural: false) : input.Pluralize(inputIsKnownToBeSingular: false);
 
         return string.Format(formatProvider, "{0} {1}", quantity.ToString(format, formatProvider), transformedInput);
     }
@@ -151,6 +151,6 @@ public static class ToQuantityExtensions
     /// <returns></returns>
     public static string ToQuantity(this string input, double quantity)
     {
-        return ToQuantity(input, quantity, null, null);
+        return ToQuantity(input, quantity, null);
     }
 }

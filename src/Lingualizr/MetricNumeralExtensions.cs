@@ -21,6 +21,8 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using System.Globalization;
+
 namespace Lingualizr;
 
 /// <summary>
@@ -37,8 +39,8 @@ public static class MetricNumeralExtensions
     /// </summary>
     private static readonly List<char>[] _symbols =
     {
-        new List<char> { 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', },
-        new List<char> { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y', },
+        new() { 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y', },
+        new() { 'm', 'μ', 'n', 'p', 'f', 'a', 'z', 'y', },
     };
 
     /// <summary>
@@ -51,7 +53,7 @@ public static class MetricNumeralExtensions
     /// {'d', "deci" },
     /// {'c', "centi"},
     /// </remarks>
-    private static readonly Dictionary<char, UnitPrefix> _unitPrefixes = new Dictionary<char, UnitPrefix>
+    private static readonly Dictionary<char, UnitPrefix> _unitPrefixes = new()
     {
         { 'Y', new UnitPrefix("yotta", "septillion", "quadrillion") },
         { 'Z', new UnitPrefix("zetta", "sextillion", "trilliard") },
@@ -138,7 +140,7 @@ public static class MetricNumeralExtensions
     {
         if (input.Equals(0))
         {
-            return input.ToString();
+            return input.ToString(CultureInfo.InvariantCulture);
         }
 
         if (input.IsOutOfRange())
@@ -188,8 +190,8 @@ public static class MetricNumeralExtensions
     private static double BuildMetricNumber(string input, char last)
     {
         double getExponent(List<char> symbols) => (symbols.IndexOf(last) + 1) * 3;
-        var number = double.Parse(input.Remove(input.Length - 1));
-        var exponent = Math.Pow(10, _symbols[0].Contains(last) ? getExponent(_symbols[0]) : -getExponent(_symbols[1]));
+        double number = double.Parse(input.Remove(input.Length - 1));
+        double exponent = Math.Pow(10, _symbols[0].Contains(last) ? getExponent(_symbols[0]) : -getExponent(_symbols[1]));
         return number * exponent;
     }
 
@@ -212,14 +214,14 @@ public static class MetricNumeralExtensions
     /// <returns>A number in a Metric representation</returns>
     private static string BuildRepresentation(double input, MetricNumeralFormats? formats, int? decimals)
     {
-        var exponent = (int)Math.Floor(Math.Log10(Math.Abs(input)) / 3);
+        int exponent = (int)Math.Floor(Math.Log10(Math.Abs(input)) / 3);
 
         if (!exponent.Equals(0))
         {
             return BuildMetricRepresentation(input, exponent, formats, decimals);
         }
 
-        var representation = decimals.HasValue ? Math.Round(input, decimals.Value).ToString() : input.ToString();
+        string representation = decimals.HasValue ? Math.Round(input, decimals.Value).ToString(CultureInfo.InvariantCulture) : input.ToString(CultureInfo.InvariantCulture);
         if ((formats & MetricNumeralFormats.WithSpace) == MetricNumeralFormats.WithSpace)
         {
             representation += " ";
@@ -238,13 +240,13 @@ public static class MetricNumeralExtensions
     /// <returns>A number in a Metric representation</returns>
     private static string BuildMetricRepresentation(double input, int exponent, MetricNumeralFormats? formats, int? decimals)
     {
-        var number = input * Math.Pow(1000, -exponent);
+        double number = input * Math.Pow(1000, -exponent);
         if (decimals.HasValue)
         {
             number = Math.Round(number, decimals.Value);
         }
 
-        var symbol = Math.Sign(exponent) == 1 ? _symbols[0][exponent - 1] : _symbols[1][-exponent - 1];
+        char symbol = Math.Sign(exponent) == 1 ? _symbols[0][exponent - 1] : _symbols[1][-exponent - 1];
         return number.ToString("G15") + (formats.HasValue && formats.Value.HasFlag(MetricNumeralFormats.WithSpace) ? " " : string.Empty) + GetUnitText(symbol, formats);
     }
 
@@ -298,9 +300,9 @@ public static class MetricNumeralExtensions
     /// <returns>True if input is not a valid Metric representation.</returns>
     private static bool IsInvalidMetricNumeral(this string input)
     {
-        var index = input.Length - 1;
-        var last = input[index];
-        var isSymbol = _symbols[0].Contains(last) || _symbols[1].Contains(last);
+        int index = input.Length - 1;
+        char last = input[index];
+        bool isSymbol = _symbols[0].Contains(last) || _symbols[1].Contains(last);
         return !double.TryParse(isSymbol ? input.Remove(index) : input, out _);
     }
 

@@ -64,7 +64,7 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
             return string.Format("menos {0}", Convert(Math.Abs(number), gender));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000 > 0)
         {
@@ -119,7 +119,7 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
             }
             else
             {
-                var lastPart = _portugueseTensMap[number / 10];
+                string lastPart = _portugueseTensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format(" e {0}", ApplyGender(_portugueseUnitsMap[number % 10], gender));
@@ -140,7 +140,7 @@ internal class BrazilianPortugueseNumberToWordsConverter : GenderedNumberToWords
             return "zero";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000 > 0)
         {

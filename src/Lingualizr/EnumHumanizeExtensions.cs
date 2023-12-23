@@ -22,7 +22,7 @@ public static class EnumHumanizeExtensions
     /// <returns></returns>
     public static string Humanize(this Enum input, LetterCasing casing)
     {
-        var humanizedEnum = Humanize(input);
+        string humanizedEnum = Humanize(input);
 
         return humanizedEnum.ApplyCase(casing);
     }
@@ -34,20 +34,20 @@ public static class EnumHumanizeExtensions
     /// <returns></returns>
     public static string Humanize(this Enum input)
     {
-        var enumType = input.GetType();
-        var enumTypeInfo = enumType.GetTypeInfo();
+        Type enumType = input.GetType();
+        TypeInfo enumTypeInfo = enumType.GetTypeInfo();
 
         if (IsBitFieldEnum(enumTypeInfo) && !Enum.IsDefined(enumType, input))
         {
             return Enum.GetValues(enumType).Cast<Enum>().Where(e => e.CompareTo(Convert.ChangeType(Enum.ToObject(enumType, 0), enumType)) != 0).Where(input.HasFlag).Select(e => e.Humanize()).Humanize();
         }
 
-        var caseName = input.ToString();
-        var memInfo = enumTypeInfo.GetDeclaredField(caseName);
+        string caseName = input.ToString();
+        FieldInfo? memInfo = enumTypeInfo.GetDeclaredField(caseName);
 
         if (memInfo != null)
         {
-            var customDescription = GetCustomDescription(memInfo);
+            string? customDescription = GetCustomDescription(memInfo);
 
             if (customDescription != null)
             {
@@ -71,27 +71,27 @@ public static class EnumHumanizeExtensions
     // I had to add this method because PCL doesn't have DescriptionAttribute & I didn't want two versions of the code & thus the reflection
     private static string? GetCustomDescription(MemberInfo memberInfo)
     {
-        var attrs = memberInfo.GetCustomAttributes(true);
+        object[] attrs = memberInfo.GetCustomAttributes(true);
 
-        foreach (var attr in attrs)
+        foreach (object? attr in attrs)
         {
-            var attrType = attr.GetType();
+            Type attrType = attr.GetType();
             if (attrType.FullName == DisplayAttributeTypeName)
             {
-                var methodGetDescription = attrType.GetRuntimeMethod(DisplayAttributeGetDescriptionMethodName, Array.Empty<Type>());
+                MethodInfo? methodGetDescription = attrType.GetRuntimeMethod(DisplayAttributeGetDescriptionMethodName, Array.Empty<Type>());
                 if (methodGetDescription != null)
                 {
-                    var executedMethod = methodGetDescription.Invoke(attr, Array.Empty<object>());
+                    object? executedMethod = methodGetDescription.Invoke(attr, Array.Empty<object>());
                     if (executedMethod != null)
                     {
                         return executedMethod.ToString();
                     }
                 }
 
-                var methodGetName = attrType.GetRuntimeMethod(DisplayAttributeGetNameMethodName, Array.Empty<Type>());
+                MethodInfo? methodGetName = attrType.GetRuntimeMethod(DisplayAttributeGetNameMethodName, Array.Empty<Type>());
                 if (methodGetName != null)
                 {
-                    var executedMethod = methodGetName.Invoke(attr, Array.Empty<object>());
+                    object? executedMethod = methodGetName.Invoke(attr, Array.Empty<object>());
                     if (executedMethod != null)
                     {
                         return executedMethod.ToString();
@@ -101,7 +101,7 @@ public static class EnumHumanizeExtensions
                 return null;
             }
 
-            var descriptionProperty = attrType.GetRuntimeProperties().Where(_stringTypedProperty).FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
+            PropertyInfo? descriptionProperty = attrType.GetRuntimeProperties().Where(_stringTypedProperty).FirstOrDefault(Configurator.EnumDescriptionPropertyLocator);
             if (descriptionProperty != null)
             {
                 return descriptionProperty.GetValue(attr, null)?.ToString();

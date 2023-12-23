@@ -80,7 +80,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetOneDigitOrdinal(int number)
     {
-        if (!_οrdinalMap.TryGetValue(number, out var output))
+        if (!_οrdinalMap.TryGetValue(number, out string? output))
         {
             return string.Empty;
         }
@@ -100,9 +100,9 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return "δωδέκατος";
         }
 
-        var decades = number / 10;
+        int decades = number / 10;
 
-        if (!_οrdinalMap.TryGetValue(decades * 10, out var decadesString))
+        if (!_οrdinalMap.TryGetValue(decades * 10, out string? decadesString))
         {
             return string.Empty;
         }
@@ -117,9 +117,9 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetThreeDigitOrdinal(int number)
     {
-        var hundrends = number / 100;
+        int hundrends = number / 100;
 
-        if (!_οrdinalMap.TryGetValue(hundrends * 100, out var hundrentsString))
+        if (!_οrdinalMap.TryGetValue(hundrends * 100, out string? hundrentsString))
         {
             return string.Empty;
         }
@@ -139,9 +139,9 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetFourDigitOrdinal(int number)
     {
-        var thousands = number / 1000;
+        int thousands = number / 1000;
 
-        if (!_οrdinalMap.TryGetValue(thousands * 1000, out var thousandsString))
+        if (!_οrdinalMap.TryGetValue(thousands * 1000, out string? thousandsString))
         {
             return string.Empty;
         }
@@ -201,7 +201,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private string ConvertIntBh(long number, bool returnPluralized)
     {
-        var result = number / 10 == 1 ? _tensNoDiacriticsMap[number / 10] : _tensMap[number / 10];
+        string result = number / 10 == 1 ? _tensNoDiacriticsMap[number / 10] : _tensMap[number / 10];
 
         if (number % 10 != 0)
         {
@@ -254,7 +254,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return $"χίλια {ConvertImpl(number % 1000, false).ToLower()}";
         }
 
-        var result = $"{ConvertImpl(number / 1000, true)} χιλιάδες";
+        string result = $"{ConvertImpl(number / 1000, true)} χιλιάδες";
 
         if (number % 1000 != 0)
         {
@@ -276,7 +276,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return $"ένα εκατομμύριο {ConvertImpl(number % 1000000, true).ToLower()}";
         }
 
-        var result = $"{ConvertImpl(number / 1000000, false)} εκατομμύρια";
+        string result = $"{ConvertImpl(number / 1000000, false)} εκατομμύρια";
 
         if (number % 1000000 != 0)
         {
@@ -298,7 +298,7 @@ internal class GreekNumberToWordsConverter : GenderlessNumberToWordsConverter
             return $"ένα δισεκατομμύριο {ConvertImpl(number % 1000000000, true).ToLower()}";
         }
 
-        var result = $"{ConvertImpl(number / 1000000000, false)} δισεκατομμύρια";
+        string result = $"{ConvertImpl(number / 1000000000, false)} δισεκατομμύρια";
 
         if (number % 1000000000 != 0)
         {

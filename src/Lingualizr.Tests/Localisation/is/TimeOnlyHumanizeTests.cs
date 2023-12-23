@@ -15,9 +15,9 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
 
-        var parsedInputTime = TimeOnly.Parse(inputTime);
-        var parsedBaseTime = TimeOnly.Parse(timeToCompareAgainst);
-        var actualResult = parsedInputTime.Humanize(parsedBaseTime);
+        TimeOnly parsedInputTime = TimeOnly.Parse(inputTime);
+        TimeOnly parsedBaseTime = TimeOnly.Parse(timeToCompareAgainst);
+        string actualResult = parsedInputTime.Humanize(parsedBaseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -30,9 +30,9 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new PrecisionTimeOnlyHumanizeStrategy(precision);
 
-        var parsedInputTime = TimeOnly.Parse(inputTime);
-        var parsedBaseTime = TimeOnly.Parse(timeToCompareAgainst);
-        var actualResult = parsedInputTime.Humanize(parsedBaseTime);
+        TimeOnly parsedInputTime = TimeOnly.Parse(inputTime);
+        TimeOnly parsedBaseTime = TimeOnly.Parse(timeToCompareAgainst);
+        string actualResult = parsedInputTime.Humanize(parsedBaseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }

@@ -34,7 +34,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return _unitsMap[0];
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -61,7 +61,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return gender == GrammaticalGender.Feminine ? "première" : "premier";
         }
 
-        var convertedNumber = Convert(number);
+        string convertedNumber = Convert(number);
 
         if (convertedNumber.EndsWith('s') && !convertedNumber.EndsWith("trois"))
         {
@@ -108,7 +108,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return;
         }
 
-        var result = number / d;
+        long result = number / d;
         if (result == 1)
         {
             parts.Add(form);
@@ -136,7 +136,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return;
         }
 
-        var result = number / d;
+        long result = number / d;
 
         CollectPartsUnderAThousand(parts, result, GrammaticalGender.Masculine, true);
 
@@ -169,7 +169,7 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
             return;
         }
 
-        var result = number / d;
+        long result = number / d;
         if (result > 1)
         {
             CollectPartsUnderAThousand(parts, result, GrammaticalGender.Masculine, false);
@@ -188,8 +188,8 @@ internal abstract class FrenchNumberToWordsConverterBase : GenderedNumberToWords
         }
         else
         {
-            var units = number % 10;
-            var tens = GetTens(number / 10);
+            long units = number % 10;
+            string tens = GetTens(number / 10);
             if (units == 0)
             {
                 parts.Add(tens);

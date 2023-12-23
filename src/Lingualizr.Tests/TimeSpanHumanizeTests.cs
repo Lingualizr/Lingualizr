@@ -9,10 +9,10 @@ public class TimeSpanHumanizeTests
     [Fact]
     public void AllTimeSpansMustBeUniqueForASequenceOfDays()
     {
-        var culture = new CultureInfo("en-US");
-        var qry = from i in Enumerable.Range(0, 100000) let ts = TimeSpan.FromDays(i) let text = ts.Humanize(precision: 3, culture: culture, maxUnit: TimeUnit.Year) select text;
+        CultureInfo culture = new("en-US");
+        IEnumerable<string> qry = from i in Enumerable.Range(0, 100000) let ts = TimeSpan.FromDays(i) let text = ts.Humanize(precision: 3, culture: culture, maxUnit: TimeUnit.Year) select text;
         var grouping = from t in qry group t by t into g select new { g.Key, Count = g.Count() };
-        var allUnique = grouping.All(g => g.Count == 1);
+        bool allUnique = grouping.All(g => g.Count == 1);
         Assert.True(allUnique);
     }
 
@@ -29,7 +29,7 @@ public class TimeSpanHumanizeTests
     [InlineData(365 + 365 + 365 + 365 + 366 + 1, "5 years")]
     public void Year(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
+        string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
         Assert.Equal(expected, actual);
     }
 
@@ -48,7 +48,7 @@ public class TimeSpanHumanizeTests
     [InlineData(366, "1 year")]
     public void Month(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
+        string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
         Assert.Equal(expected, actual);
     }
 
@@ -60,7 +60,7 @@ public class TimeSpanHumanizeTests
     [InlineData(730, "104 weeks")]
     public void Weeks(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize();
+        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -73,7 +73,7 @@ public class TimeSpanHumanizeTests
     [InlineData(-1, "1 day")]
     public void Days(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize();
+        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -84,7 +84,7 @@ public class TimeSpanHumanizeTests
     [InlineData(-1, "1 hour")]
     public void Hours(int hours, string expected)
     {
-        var actual = TimeSpan.FromHours(hours).Humanize();
+        string actual = TimeSpan.FromHours(hours).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -95,7 +95,7 @@ public class TimeSpanHumanizeTests
     [InlineData(-1, "1 minute")]
     public void Minutes(int minutes, string expected)
     {
-        var actual = TimeSpan.FromMinutes(minutes).Humanize();
+        string actual = TimeSpan.FromMinutes(minutes).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -110,7 +110,7 @@ public class TimeSpanHumanizeTests
     [InlineData(-1, "1 second")]
     public void Seconds(int seconds, string expected)
     {
-        var actual = TimeSpan.FromSeconds(seconds).Humanize();
+        string actual = TimeSpan.FromSeconds(seconds).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -125,7 +125,7 @@ public class TimeSpanHumanizeTests
     [InlineData(-1, "1 millisecond")]
     public void Milliseconds(int ms, string expected)
     {
-        var actual = TimeSpan.FromMilliseconds(ms).Humanize();
+        string actual = TimeSpan.FromMilliseconds(ms).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -139,7 +139,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1000, "1000 milliseconds", TimeUnit.Millisecond)]
     public void TimeSpanWithMaxTimeUnit(long ms, string expected, TimeUnit maxUnit)
     {
-        var actual = TimeSpan.FromMilliseconds(ms).Humanize(maxUnit: maxUnit);
+        string actual = TimeSpan.FromMilliseconds(ms).Humanize(maxUnit: maxUnit);
         Assert.Equal(expected, actual);
     }
 
@@ -214,7 +214,7 @@ public class TimeSpanHumanizeTests
     [InlineData(34390862500, "1 year", TimeUnit.Year)]
     public void TimeSpanWithMinTimeUnit(long ms, string expected, TimeUnit minUnit, bool toWords = false)
     {
-        var actual = TimeSpan.FromMilliseconds(ms).Humanize(minUnit: minUnit, precision: 7, maxUnit: TimeUnit.Year, toWords: toWords);
+        string actual = TimeSpan.FromMilliseconds(ms).Humanize(minUnit: minUnit, precision: 7, maxUnit: TimeUnit.Year, toWords: toWords);
         Assert.Equal(expected, actual);
     }
 
@@ -265,7 +265,7 @@ public class TimeSpanHumanizeTests
     [InlineData(34390862500, 1, "1 year")]
     public void TimeSpanWithPrecision(long milliseconds, int precision, string expected, bool toWords = false)
     {
-        var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, maxUnit: TimeUnit.Year, toWords: toWords);
+        string actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, maxUnit: TimeUnit.Year, toWords: toWords);
         Assert.Equal(expected, actual);
     }
 
@@ -275,7 +275,7 @@ public class TimeSpanHumanizeTests
     [InlineData(72 * 7 + 6, 2, "72 weeks, 6 days")]
     public void DaysWithPrecision(int days, int precision, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize(precision: precision);
+        string actual = TimeSpan.FromDays(days).Humanize(precision: precision);
         Assert.Equal(expected, actual);
     }
 
@@ -284,8 +284,8 @@ public class TimeSpanHumanizeTests
     [InlineData(52)]
     public void TimeSpanWithMinAndMaxUnits_DoesNotReportExcessiveTime(int minutes)
     {
-        var actual = TimeSpan.FromMinutes(minutes).Humanize(2, null, TimeUnit.Hour, TimeUnit.Minute);
-        var expected = TimeSpan.FromMinutes(minutes).Humanize(2);
+        string actual = TimeSpan.FromMinutes(minutes).Humanize(2, null, TimeUnit.Hour, TimeUnit.Minute);
+        string expected = TimeSpan.FromMinutes(minutes).Humanize(2);
         Assert.Equal(expected, actual);
     }
 
@@ -329,7 +329,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1299630020, 6, "2 weeks, 1 day, 1 hour, 30 seconds, 20 milliseconds")]
     public void TimeSpanWithPrecisionAndCountingEmptyUnits(int milliseconds, int precision, string expected, bool toWords = false)
     {
-        var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision: precision, countEmptyUnits: true, toWords: toWords);
+        string actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision: precision, countEmptyUnits: true, toWords: toWords);
         Assert.Equal(expected, actual);
     }
 
@@ -367,7 +367,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1299630020, 5, "2 weeks, 1 day, 1 hour, 30 seconds, and 20 milliseconds")]
     public void TimeSpanWithPrecisionAndAlternativeCollectionFormatter(int milliseconds, int precision, string expected, bool toWords = false)
     {
-        var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, collectionSeparator: null, toWords: toWords);
+        string actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, collectionSeparator: null, toWords: toWords);
         Assert.Equal(expected, actual);
     }
 
@@ -403,23 +403,23 @@ public class TimeSpanHumanizeTests
     [InlineData(1299630020, 5, "two weeks, one day, one hour, thirty seconds, twenty milliseconds")]
     public void TimeSpanWithNumbersConvertedToWords(int milliseconds, int precision, string expected)
     {
-        var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, toWords: true);
+        string actual = TimeSpan.FromMilliseconds(milliseconds).Humanize(precision, toWords: true);
         Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void NoTime()
     {
-        var noTime = TimeSpan.Zero;
-        var actual = noTime.Humanize();
+        TimeSpan noTime = TimeSpan.Zero;
+        string actual = noTime.Humanize();
         Assert.Equal("0 milliseconds", actual);
     }
 
     [Fact]
     public void NoTimeToWords()
     {
-        var noTime = TimeSpan.Zero;
-        var actual = noTime.Humanize(toWords: true);
+        TimeSpan noTime = TimeSpan.Zero;
+        string actual = noTime.Humanize(toWords: true);
         Assert.Equal("no time", actual);
     }
 
@@ -430,7 +430,7 @@ public class TimeSpanHumanizeTests
     [InlineData(3603001, 2, "it-IT", "1 ora e 3 secondi", null)]
     public void CanSpecifyCultureExplicitly(int ms, int precision, string culture, string expected, string collectionSeparator)
     {
-        var actual = TimeSpan.FromMilliseconds(ms).Humanize(precision: precision, culture: new CultureInfo(culture), collectionSeparator: collectionSeparator);
+        string actual = TimeSpan.FromMilliseconds(ms).Humanize(precision: precision, culture: new CultureInfo(culture), collectionSeparator: collectionSeparator);
         Assert.Equal(expected, actual);
     }
 
@@ -440,8 +440,8 @@ public class TimeSpanHumanizeTests
     [InlineData(321, 2, "es", "diez meses, dieciséis días")]
     public void CanSpecifyCultureExplicitlyToWords(int days, int precision, string culture, string expected)
     {
-        var timeSpan = new TimeSpan(days, 0, 0, 0);
-        var actual = timeSpan.Humanize(precision: precision, culture: new CultureInfo(culture), maxUnit: TimeUnit.Year, toWords: true);
+        TimeSpan timeSpan = new(days, 0, 0, 0);
+        string actual = timeSpan.Humanize(precision: precision, culture: new CultureInfo(culture), maxUnit: TimeUnit.Year, toWords: true);
         Assert.Equal(expected: expected, actual);
     }
 }

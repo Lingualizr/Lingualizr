@@ -11,13 +11,13 @@ internal class RomanianNumberToWordsConverter : GenderedNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var converter = new RomanianCardinalNumberConverter();
+        RomanianCardinalNumberConverter converter = new();
         return converter.Convert((int)number, gender);
     }
 
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        var converter = new RomanianOrdinalNumberConverter();
+        RomanianOrdinalNumberConverter converter = new();
         return converter.Convert(number, gender);
     }
 }

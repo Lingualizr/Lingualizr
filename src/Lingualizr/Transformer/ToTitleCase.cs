@@ -14,9 +14,9 @@ internal partial class ToTitleCase : ICulturedStringTransformer
     {
         culture ??= CultureInfo.CurrentCulture;
 
-        var result = input;
-        var matches = MatchRegex().Matches(input);
-        var firstWord = true;
+        string result = input;
+        MatchCollection matches = MatchRegex().Matches(input);
+        bool firstWord = true;
         foreach (Match word in matches)
         {
             if (!AllCapitals(word.Value))
@@ -37,11 +37,11 @@ internal partial class ToTitleCase : ICulturedStringTransformer
 
     private static string ReplaceWithTitleCase(Match word, string source, CultureInfo culture, bool firstWord)
     {
-        var articles = new List<string> { "a", "an", "the" };
-        var conjunctions = new List<string> { "and", "as", "but", "if", "nor", "or", "so", "yet" };
-        var prepositions = new List<string> { "as", "at", "by", "for", "in", "of", "off", "on", "to", "up", "via" };
+        List<string> articles = new() { "a", "an", "the" };
+        List<string> conjunctions = new() { "and", "as", "but", "if", "nor", "or", "so", "yet" };
+        List<string> prepositions = new() { "as", "at", "by", "for", "in", "of", "off", "on", "to", "up", "via" };
 
-        var wordToConvert = word.Value;
+        string wordToConvert = word.Value;
         string replacement;
 
         if (firstWord || (!articles.Contains(wordToConvert) && !conjunctions.Contains(wordToConvert) && !prepositions.Contains(wordToConvert)))

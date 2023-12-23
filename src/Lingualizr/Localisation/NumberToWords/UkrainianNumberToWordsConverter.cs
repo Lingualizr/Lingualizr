@@ -86,7 +86,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             return "нуль";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -115,7 +115,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             return "нульов" + GetEndingForGender(gender, number);
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -129,8 +129,8 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number >= 100)
         {
-            var ending = GetEndingForGender(gender, number);
-            var hundreds = number / 100;
+            string ending = GetEndingForGender(gender, number);
+            int hundreds = number / 100;
             number %= 100;
             if (number == 0)
             {
@@ -144,8 +144,8 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number >= 20)
         {
-            var ending = GetEndingForGender(gender, number);
-            var tens = number / 10;
+            string ending = GetEndingForGender(gender, number);
+            int tens = number / 10;
             number %= 10;
             if (number == 0)
             {
@@ -169,14 +169,14 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number >= 100)
         {
-            var hundreds = number / 100;
+            long hundreds = number / 100;
             number %= 100;
             parts.Add(_hundredsMap[hundreds]);
         }
 
         if (number >= 20)
         {
-            var tens = number / 10;
+            long tens = number / 10;
             parts.Add(_tensMap[tens]);
             number %= 10;
         }
@@ -204,11 +204,11 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetPrefix(int number)
     {
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number >= 100)
         {
-            var hundreds = number / 100;
+            int hundreds = number / 100;
             number %= 100;
             if (hundreds != 1)
             {
@@ -222,7 +222,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number >= 20)
         {
-            var tens = number / 10;
+            int tens = number / 10;
             number %= 10;
             parts.Add(_tensOrdinalPrefixes[tens]);
         }
@@ -237,7 +237,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectParts(ICollection<string> parts, ref long number, long divisor, GrammaticalGender gender, params string[] forms)
     {
-        var result = Math.Abs(number / divisor);
+        long result = Math.Abs(number / divisor);
         if (result == 0)
         {
             return;
@@ -256,7 +256,7 @@ internal class UkrainianNumberToWordsConverter : GenderedNumberToWordsConverter
             return;
         }
 
-        var result = number / divisor;
+        int result = number / divisor;
         number %= divisor;
         if (number == 0)
         {

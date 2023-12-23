@@ -56,7 +56,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly string[] _lakhsMap = { "இலட்ச" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new()
     {
         { 1, "முதலாவது" },
         { 2, "இரண்டாவது" },
@@ -90,7 +90,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("கழித்தல் {0}", Convert(-number));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000000000000 > 0)
         {
@@ -133,7 +133,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
             parts[parts.Count - 1] += "வது";
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         if (isOrdinal)
         {
@@ -147,7 +147,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         if (isOrdinal)
         {
-            if (ExceptionNumbersToWords(number, out var exceptionString))
+            if (ExceptionNumbersToWords(number, out string? exceptionString))
             {
                 return exceptionString;
             }
@@ -164,15 +164,15 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetTensValue(long number, bool isOrdinal, bool isThousand = false)
     {
-        var localWord = string.Empty;
+        string localWord = string.Empty;
         if (number < 20)
         {
             localWord = GetUnitValue(number, isOrdinal);
         }
         else if (number <= 99)
         {
-            var lastPart = _tensMap[number / 10];
-            var quot = number / 10;
+            string lastPart = _tensMap[number / 10];
+            long quot = number / 10;
             if (number % 10 > 0)
             {
                 if (quot == 9)
@@ -231,8 +231,8 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetLakhsValue(ref long number, bool isOrdinal)
     {
-        var numAbove10 = number / 100000;
-        var localWord = string.Empty;
+        long numAbove10 = number / 100000;
+        string localWord = string.Empty;
         if (numAbove10 >= 20)
         {
             localWord = GetTensValue(numAbove10, false);
@@ -262,9 +262,9 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetCroresValue(ref long number)
     {
-        var localWord = string.Empty;
-        var numAbove10 = number / 10000000;
-        var strCrore = "கோடி";
+        string localWord = string.Empty;
+        long numAbove10 = number / 10000000;
+        string strCrore = "கோடி";
 
         if (numAbove10 > 99999 && numAbove10 <= 9999999)
         {
@@ -314,8 +314,8 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetThousandsValue(ref long number)
     {
-        var numAbove10 = number / 1000;
-        var localWord = string.Empty;
+        long numAbove10 = number / 1000;
+        string localWord = string.Empty;
         if (numAbove10 >= 20)
         {
             localWord = GetTensValue(numAbove10, false, true);
@@ -350,7 +350,7 @@ internal class TamilNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetHundredsValue(ref long number)
     {
-        var localWord = _hundredsMap[number / 100 - 1];
+        string localWord = _hundredsMap[number / 100 - 1];
         if (number / 100 == 9)
         {
             if (number % 100 == 0)

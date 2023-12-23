@@ -79,8 +79,8 @@ public class OrdinalizeTests
     [InlineData(8)]
     public void OrdinalizeNumberGenderIsImmaterial(int number)
     {
-        var masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine);
-        var feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine);
+        string masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine);
+        string feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine);
         Assert.Equal(masculineOrdinalized, feminineOrdinalized);
     }
 
@@ -90,8 +90,8 @@ public class OrdinalizeTests
     [InlineData("8")]
     public void OrdinalizeStringGenderIsImmaterial(string number)
     {
-        var masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine);
-        var feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine);
+        string masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine);
+        string feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine);
         Assert.Equal(masculineOrdinalized, feminineOrdinalized);
     }
 
@@ -100,7 +100,7 @@ public class OrdinalizeTests
     [InlineData("nl-NL", "1", "1e")]
     public void OrdinalizeStringWithCultureOverridesCurrentCulture(string cultureName, string number, string ordinalized)
     {
-        var culture = new CultureInfo(cultureName);
+        CultureInfo culture = new(cultureName);
         Assert.Equal(number.Ordinalize(culture), ordinalized);
     }
 
@@ -109,7 +109,7 @@ public class OrdinalizeTests
     [InlineData("nl-NL", 1, "1e")]
     public void OrdinalizeNumberWithCultureOverridesCurrentCulture(string cultureName, int number, string ordinalized)
     {
-        var culture = new CultureInfo(cultureName);
+        CultureInfo culture = new(cultureName);
         Assert.Equal(number.Ordinalize(culture), ordinalized);
     }
 
@@ -119,9 +119,9 @@ public class OrdinalizeTests
     [InlineData(8)]
     public void OrdinalizeNumberWithOverridenCultureGenderIsImmaterial(int number)
     {
-        var culture = new CultureInfo("nl-NL");
-        var masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine, culture);
-        var feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine, culture);
+        CultureInfo culture = new("nl-NL");
+        string masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine, culture);
+        string feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine, culture);
         Assert.Equal(masculineOrdinalized, feminineOrdinalized);
     }
 
@@ -131,9 +131,9 @@ public class OrdinalizeTests
     [InlineData("8")]
     public void OrdinalizeStringWithOverridenGenderIsImmaterial(string number)
     {
-        var culture = new CultureInfo("nl-NL");
-        var masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine, culture);
-        var feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine, culture);
+        CultureInfo culture = new("nl-NL");
+        string masculineOrdinalized = number.Ordinalize(GrammaticalGender.Masculine, culture);
+        string feminineOrdinalized = number.Ordinalize(GrammaticalGender.Feminine, culture);
         Assert.Equal(masculineOrdinalized, feminineOrdinalized);
     }
 
@@ -144,7 +144,7 @@ public class OrdinalizeTests
     [InlineData(1, WordForm.Abbreviation, "en-US", "1st")]
     public void OrdinalizeNumberWithOverridenCultureAndSpecificForm(int number, WordForm wordForm, string cultureName, string expected)
     {
-        var culture = new CultureInfo(cultureName);
+        CultureInfo culture = new(cultureName);
         Assert.Equal(expected, number.Ordinalize(culture, wordForm));
         Assert.Equal(expected, number.ToString(culture).Ordinalize(culture, wordForm));
     }
@@ -158,7 +158,7 @@ public class OrdinalizeTests
     [InlineData(1, WordForm.Normal, GrammaticalGender.Feminine, "en-US", "1st")]
     public void OrdinalizeNumberWithOverridenCultureAndGenderAndForm(int number, WordForm wordForm, GrammaticalGender gender, string cultureName, string expected)
     {
-        var culture = new CultureInfo(cultureName);
+        CultureInfo culture = new(cultureName);
         Assert.Equal(expected, number.Ordinalize(gender, culture, wordForm));
         Assert.Equal(expected, number.ToString(culture).Ordinalize(gender, culture, wordForm));
     }

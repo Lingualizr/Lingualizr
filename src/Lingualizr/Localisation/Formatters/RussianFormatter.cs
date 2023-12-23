@@ -9,8 +9,8 @@ internal class RussianFormatter : DefaultFormatter
 
     protected override string GetResourceKey(string resourceKey, int number)
     {
-        var grammaticalNumber = RussianGrammaticalNumberDetector.Detect(number);
-        var suffix = GetSuffix(grammaticalNumber);
+        RussianGrammaticalNumber grammaticalNumber = RussianGrammaticalNumberDetector.Detect(number);
+        string suffix = GetSuffix(grammaticalNumber);
         return resourceKey + suffix;
     }
 

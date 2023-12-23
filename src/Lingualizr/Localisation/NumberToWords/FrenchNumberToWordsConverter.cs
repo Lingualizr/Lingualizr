@@ -14,9 +14,9 @@ internal class FrenchNumberToWordsConverter : FrenchNumberToWordsConverterBase
         }
         else if (number >= 70)
         {
-            var @base = number < 80 ? 60 : 80;
-            var units = number - @base;
-            var tens = @base / 10;
+            int @base = number < 80 ? 60 : 80;
+            long units = number - @base;
+            int tens = @base / 10;
             parts.Add($"{GetTens(tens)}-{GetUnits(units, gender)}");
         }
         else

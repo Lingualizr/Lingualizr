@@ -41,9 +41,9 @@ public static class HeadingExtensions
     /// <param name="culture">The culture to return the textual representation in</param>
     public static string ToHeading(this double heading, HeadingStyle style = HeadingStyle.Abbreviated, CultureInfo? culture = null)
     {
-        var val = (int)(heading / 22.5 + .5);
+        int val = (int)(heading / 22.5 + .5);
 
-        var result = Headings[val % 16];
+        string result = Headings[val % 16];
 
         if (style == HeadingStyle.Abbreviated)
         {
@@ -62,7 +62,7 @@ public static class HeadingExtensions
     /// <returns>The heading arrow.</returns>
     public static char ToHeadingArrow(this double heading)
     {
-        var val = (int)(heading / 45 + .5);
+        int val = (int)(heading / 45 + .5);
 
         return HeadingArrows[val % 8];
     }
@@ -79,10 +79,10 @@ public static class HeadingExtensions
 
         culture ??= CultureInfo.CurrentCulture;
 
-        var upperCaseHeading = culture.TextInfo.ToUpper(heading);
-        for (var index = 0; index < Headings.Length; ++index)
+        string upperCaseHeading = culture.TextInfo.ToUpper(heading);
+        for (int index = 0; index < Headings.Length; ++index)
         {
-            var localizedShortHeading = Resources.GetResource($"{Headings[index]}_Short", culture);
+            string localizedShortHeading = Resources.GetResource($"{Headings[index]}_Short", culture);
             if (culture.CompareInfo.Compare(upperCaseHeading, localizedShortHeading) == 0)
             {
                 return index * 22.5;
@@ -97,7 +97,7 @@ public static class HeadingExtensions
     /// </summary>
     public static double FromHeadingArrow(this char heading)
     {
-        var index = Array.IndexOf(HeadingArrows, heading);
+        int index = Array.IndexOf(HeadingArrows, heading);
 
         if (index == -1)
         {

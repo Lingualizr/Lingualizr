@@ -172,7 +172,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number is > 0 and < 5)
         {
-            var genderedForm = gender switch
+            string genderedForm = gender switch
             {
                 GrammaticalGender.Masculine => _masculineUnitsMap[number],
                 GrammaticalGender.Neuter => _neuterUnitsMap[number],
@@ -189,19 +189,19 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectOrdinalParts(ICollection<string?> builder, int threeDigitPart, Fact conversionRule, GrammaticalGender partGender, GrammaticalGender ordinalGender)
     {
-        var hundreds = threeDigitPart / 100;
-        var hundredRemainder = threeDigitPart % 100;
-        var units = hundredRemainder % 10;
-        var decade = hundredRemainder / 10 * 10;
-        var hasThousand = conversionRule.Power > 100;
+        int hundreds = threeDigitPart / 100;
+        int hundredRemainder = threeDigitPart % 100;
+        int units = hundredRemainder % 10;
+        int decade = hundredRemainder / 10 * 10;
+        bool hasThousand = conversionRule.Power > 100;
 
         if (hundreds != 0)
         {
             GetUnits(builder, hundreds, GrammaticalGender.Neuter);
-            var hundredPrefix = hundreds == 1 ? _powerOfTenMap[2].Single : _powerOfTenMap[2].Plural;
+            string hundredPrefix = hundreds == 1 ? _powerOfTenMap[2].Single : _powerOfTenMap[2].Plural;
             if (hundredRemainder < 20 && !hasThousand)
             {
-                var genderedFormWithPostfix = partGender switch
+                string genderedFormWithPostfix = partGender switch
                 {
                     GrammaticalGender.Masculine => hundredPrefix + "asti",
                     GrammaticalGender.Neuter => hundredPrefix + "asta",
@@ -287,11 +287,11 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectParts(IList<string?> parts, ref long number, ref bool needsAnd, Fact rule)
     {
-        var remainder = number / rule.Power;
+        long remainder = number / rule.Power;
         if (remainder > 0)
         {
             number %= rule.Power;
-            var prevLen = parts.Count;
+            int prevLen = parts.Count;
             CollectPart(parts, remainder, rule);
             if (number == 0 && needsAnd && !parts.Skip(prevLen).Contains(AndSplit))
             {
@@ -317,10 +317,10 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectPartUnderOneThousand(ICollection<string?> builder, long number, GrammaticalGender gender)
     {
-        var hundreds = number / 100;
-        var hundredRemainder = number % 100;
-        var units = hundredRemainder % 10;
-        var tens = hundredRemainder / 10;
+        long hundreds = number / 100;
+        long hundredRemainder = number % 100;
+        long units = hundredRemainder % 10;
+        long tens = hundredRemainder / 10;
 
         if (hundreds != 0)
         {
@@ -359,7 +359,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectOrdinal(IList<string?> parts, ref int number, ref bool needsAnd, Fact rule, GrammaticalGender gender)
     {
-        var remainder = number / rule.Power;
+        long remainder = number / rule.Power;
         if (remainder > 0)
         {
             number %= (int)rule.Power;
@@ -382,7 +382,7 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                var prevLen = parts.Count;
+                int prevLen = parts.Count;
                 CollectOrdinalParts(parts, (int)remainder, rule, rule.Gender, gender);
                 if (number == 0 && needsAnd && !parts.Skip(prevLen).Contains(AndSplit))
                 {
@@ -401,14 +401,14 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             return _unitsMap[number];
         }
 
-        var parts = new List<string?>();
+        List<string?> parts = new();
         if (number < 0)
         {
             parts.Add("mínus");
             number = -number;
         }
 
-        var needsAnd = false;
+        bool needsAnd = false;
         CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[18]);
         CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[15]);
         CollectParts(parts, ref number, ref needsAnd, _powerOfTenMap[12]);
@@ -436,8 +436,8 @@ internal class IcelandicNumberToWordsConverter : GenderedNumberToWordsConverter
             return _unitsOrdinalPrefixes[number] + GetOrdinalEnding(gender);
         }
 
-        var parts = new List<string?>();
-        var needsAnd = false;
+        List<string?> parts = new();
+        bool needsAnd = false;
 
         CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[12], gender);
         CollectOrdinal(parts, ref number, ref needsAnd, _powerOfTenMap[9], gender);

@@ -5,7 +5,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
     private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dörd", "beş", "altı", "yeddi", "səkkiz", "doqquz" };
     private static readonly string[] _tensMap = { "sıfır", "on", "iyirmi", "otuz", "qırx", "əlli", "altmış", "yetmiş", "səksən", "doxsan" };
 
-    private static readonly Dictionary<char, string> _ordinalSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _ordinalSuffix = new()
     {
         { 'ı', "ıncı" },
         { 'i', "inci" },
@@ -25,7 +25,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
         if (numberInt == 0)
         {
             return _unitsMap[0];
@@ -36,7 +36,7 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
             return string.Format("mənfi {0}", Convert(-numberInt));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (numberInt / 1000000000 > 0)
         {
@@ -50,14 +50,14 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
             numberInt %= 1000000;
         }
 
-        var thousand = numberInt / 1000;
+        int thousand = numberInt / 1000;
         if (thousand > 0)
         {
             parts.Add(string.Format("{0} min", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
             numberInt %= 1000;
         }
 
-        var hundred = numberInt / 100;
+        int hundred = numberInt / 100;
         if (hundred > 0)
         {
             parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
@@ -75,18 +75,18 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
             parts.Add(_unitsMap[numberInt]);
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         return toWords;
     }
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = Convert(number);
-        var wordSuffix = string.Empty;
-        var suffixFoundOnLastVowel = false;
+        string word = Convert(number);
+        string? wordSuffix = string.Empty;
+        bool suffixFoundOnLastVowel = false;
 
-        for (var i = word.Length - 1; i >= 0; i--)
+        for (int i = word.Length - 1; i >= 0; i--)
         {
             if (_ordinalSuffix.TryGetValue(word[i], out wordSuffix))
             {

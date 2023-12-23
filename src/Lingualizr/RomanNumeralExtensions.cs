@@ -39,23 +39,23 @@ public static class RomanNumeralExtensions
 
         input = input.Trim().ToUpperInvariant();
 
-        var length = input.Length;
+        int length = input.Length;
 
         if (length == 0 || IsInvalidRomanNumeral(input))
         {
             throw new ArgumentException("Empty or invalid Roman numeral string.", nameof(input));
         }
 
-        var total = 0;
-        var i = length;
+        int total = 0;
+        int i = length;
 
         while (i > 0)
         {
-            var digit = _romanNumerals[input[--i].ToString()];
+            int digit = _romanNumerals[input[--i].ToString()];
 
             if (i > 0)
             {
-                var previousDigit = _romanNumerals[input[i - 1].ToString()];
+                int previousDigit = _romanNumerals[input[i - 1].ToString()];
 
                 if (previousDigit < digit)
                 {
@@ -87,9 +87,9 @@ public static class RomanNumeralExtensions
             throw new ArgumentOutOfRangeException(nameof(input));
         }
 
-        var sb = new StringBuilder(maxRomanNumeralLength);
+        StringBuilder sb = new(maxRomanNumeralLength);
 
-        foreach (var pair in _romanNumerals)
+        foreach (KeyValuePair<string, int> pair in _romanNumerals)
         {
             while (input / pair.Value > 0)
             {

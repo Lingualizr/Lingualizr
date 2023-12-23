@@ -85,7 +85,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             return "ноль";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -114,7 +114,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             return "нулев" + GetEndingForGender(gender, number);
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -122,15 +122,15 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             number = -number;
         }
 
-        var numberLong = (long)number;
+        long numberLong = number;
         CollectOrdinalParts(parts, ref numberLong, 1000000000, GrammaticalGender.Masculine, "миллиардн" + GetEndingForGender(gender, numberLong), "миллиард", "миллиарда", "миллиардов");
         CollectOrdinalParts(parts, ref numberLong, 1000000, GrammaticalGender.Masculine, "миллионн" + GetEndingForGender(gender, numberLong), "миллион", "миллиона", "миллионов");
         CollectOrdinalParts(parts, ref numberLong, 1000, GrammaticalGender.Feminine, "тысячн" + GetEndingForGender(gender, numberLong), "тысяча", "тысячи", "тысяч");
 
         if (numberLong >= 100)
         {
-            var ending = GetEndingForGender(gender, numberLong);
-            var hundreds = numberLong / 100;
+            string ending = GetEndingForGender(gender, numberLong);
+            long hundreds = numberLong / 100;
             numberLong %= 100;
             if (numberLong == 0)
             {
@@ -144,8 +144,8 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong >= 20)
         {
-            var ending = GetEndingForGender(gender, numberLong);
-            var tens = numberLong / 10;
+            string ending = GetEndingForGender(gender, numberLong);
+            long tens = numberLong / 10;
             numberLong %= 10;
             if (numberLong == 0)
             {
@@ -169,14 +169,14 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
     {
         if (number >= 100)
         {
-            var hundreds = number / 100;
+            long hundreds = number / 100;
             number %= 100;
             parts.Add(_hundredsMap[hundreds]);
         }
 
         if (number >= 20)
         {
-            var tens = number / 10;
+            long tens = number / 10;
             parts.Add(_tensMap[tens]);
             number %= 10;
         }
@@ -204,11 +204,11 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetPrefix(long number)
     {
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number >= 100)
         {
-            var hundreds = number / 100;
+            long hundreds = number / 100;
             number %= 100;
             if (hundreds != 1)
             {
@@ -222,7 +222,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number >= 20)
         {
-            var tens = number / 10;
+            long tens = number / 10;
             number %= 10;
             parts.Add(_tensOrdinalPrefixes[tens]);
         }
@@ -237,7 +237,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectParts(ICollection<string> parts, ref long number, long divisor, GrammaticalGender gender, params string[] forms)
     {
-        var result = Math.Abs(number / divisor);
+        long result = Math.Abs(number / divisor);
         if (result == 0)
         {
             return;
@@ -256,7 +256,7 @@ internal class RussianNumberToWordsConverter : GenderedNumberToWordsConverter
             return;
         }
 
-        var result = number / divisor;
+        long result = number / divisor;
         number %= divisor;
         if (number == 0)
         {

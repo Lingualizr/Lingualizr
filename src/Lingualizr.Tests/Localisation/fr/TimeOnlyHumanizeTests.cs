@@ -6,11 +6,11 @@ public class TimeOnlyHumanizeTests
     [Fact]
     public void DefaultStrategy_SameTime()
     {
-        var inputTime = new TimeOnly(13, 07, 05);
-        var baseTime = new TimeOnly(13, 07, 05);
+        TimeOnly inputTime = new(13, 07, 05);
+        TimeOnly baseTime = new(13, 07, 05);
 
         const string expectedResult = "maintenant";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -18,11 +18,11 @@ public class TimeOnlyHumanizeTests
     [Fact]
     public void DefaultStrategy_HoursApart()
     {
-        var inputTime = new TimeOnly(13, 08, 05);
-        var baseTime = new TimeOnly(1, 08, 05);
+        TimeOnly inputTime = new(13, 08, 05);
+        TimeOnly baseTime = new(1, 08, 05);
 
         const string expectedResult = "dans 12 heures";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -30,11 +30,11 @@ public class TimeOnlyHumanizeTests
     [Fact]
     public void DefaultStrategy_HoursAgo()
     {
-        var inputTime = new TimeOnly(13, 07, 02);
-        var baseTime = new TimeOnly(17, 07, 05);
+        TimeOnly inputTime = new(13, 07, 02);
+        TimeOnly baseTime = new(17, 07, 05);
 
         const string expectedResult = "il y a 4 heures";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -42,11 +42,11 @@ public class TimeOnlyHumanizeTests
     [Fact]
     public void PrecisionStrategy_NextDay()
     {
-        var inputTime = new TimeOnly(18, 10, 49);
-        var baseTime = new TimeOnly(13, 07, 04);
+        TimeOnly inputTime = new(18, 10, 49);
+        TimeOnly baseTime = new(13, 07, 04);
 
         const string expectedResult = "dans 5 heures";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }

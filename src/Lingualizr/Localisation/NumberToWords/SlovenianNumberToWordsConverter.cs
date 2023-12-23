@@ -43,7 +43,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
         if (numberInt == 0)
         {
             return "nič";
@@ -54,9 +54,9 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             return string.Format("minus {0}", Convert(-numberInt));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
-        var billions = numberInt / 1000000000;
+        int billions = numberInt / 1000000000;
         if (billions > 0)
         {
             parts.Add(Part("milijarda", "dve milijardi", "{0} milijarde", "{0} milijard", billions));
@@ -67,7 +67,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
         }
 
-        var millions = numberInt / 1000000;
+        int millions = numberInt / 1000000;
         if (millions > 0)
         {
             parts.Add(Part("milijon", "dva milijona", "{0} milijone", "{0} milijonov", millions));
@@ -78,7 +78,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
         }
 
-        var thousands = numberInt / 1000;
+        int thousands = numberInt / 1000;
         if (thousands > 0)
         {
             parts.Add(Part("tisoč", "dva tisoč", "{0} tisoč", "{0} tisoč", thousands));
@@ -89,7 +89,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
         }
 
-        var hundreds = numberInt / 100;
+        int hundreds = numberInt / 100;
         if (hundreds > 0)
         {
             parts.Add(Part("sto", "dvesto", "{0}sto", "{0}sto", hundreds));
@@ -115,7 +115,7 @@ internal class SlovenianNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
             else
             {
-                var units = numberInt % 10;
+                int units = numberInt % 10;
                 if (units > 0)
                 {
                     parts.Add(string.Format("{0}in", _unitsMap[units]));

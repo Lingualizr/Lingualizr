@@ -9,7 +9,7 @@ internal class SerbianFormatter : DefaultFormatter
 
     protected override string GetResourceKey(string resourceKey, int number)
     {
-        var mod10 = number % 10;
+        int mod10 = number % 10;
 
         if (mod10 > 1 && mod10 < 5)
         {

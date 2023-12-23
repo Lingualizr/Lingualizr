@@ -58,7 +58,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
             return "zero";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
         CollectParts(parts, number, gender);
 
         return string.Join(" ", parts);
@@ -71,19 +71,19 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectParts(ICollection<string> parts, long input, GrammaticalGender gender)
     {
-        var inputSign = 1;
+        int inputSign = 1;
         if (input < 0)
         {
             parts.Add("minus");
             inputSign = -1;
         }
 
-        var number = input;
-        var divisor = MaxPossibleDivisor;
-        var power = _powersOfThousandMap.Length - 1;
+        long number = input;
+        long divisor = MaxPossibleDivisor;
+        int power = _powersOfThousandMap.Length - 1;
         while (divisor > 0)
         {
-            var multiplier = (int)Math.Abs(number / divisor);
+            int multiplier = (int)Math.Abs(number / divisor);
             if (divisor > 1)
             {
                 if (multiplier > 1)
@@ -114,9 +114,9 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static void CollectPartsUnderThousand(ICollection<string> parts, int number, GrammaticalGender gender)
     {
-        var hundredsDigit = number / 100;
-        var tensDigit = number % 100 / 10;
-        var unitsDigit = number % 10;
+        int hundredsDigit = number / 100;
+        int tensDigit = number % 100 / 10;
+        int unitsDigit = number % 10;
 
         if (hundredsDigit >= 1)
         {
@@ -130,12 +130,12 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (tensDigit != 1 && unitsDigit == 2)
         {
-            var genderedForm = gender == GrammaticalGender.Feminine ? "dwie" : "dwa";
+            string genderedForm = gender == GrammaticalGender.Feminine ? "dwie" : "dwa";
             parts.Add(genderedForm);
         }
         else if (number == 1)
         {
-            var genderedForm = gender switch
+            string genderedForm = gender switch
             {
                 GrammaticalGender.Masculine => "jeden",
                 GrammaticalGender.Feminine => "jedna",
@@ -146,7 +146,7 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
         }
         else
         {
-            var unit = unitsDigit + 10 * (tensDigit == 1 ? 1 : 0);
+            int unit = unitsDigit + 10 * (tensDigit == 1 ? 1 : 0);
             if (unit > 0)
             {
                 parts.Add(_unitsMap[unit]);
@@ -164,8 +164,8 @@ internal class PolishNumberToWordsConverter : GenderedNumberToWordsConverter
             return _powersOfThousandMap[power][singularIndex];
         }
 
-        var multiplierUnitsDigit = multiplier % 10;
-        var multiplierTensDigit = multiplier % 100 / 10;
+        int multiplierUnitsDigit = multiplier % 10;
+        int multiplierTensDigit = multiplier % 100 / 10;
         if (multiplierTensDigit == 1 || multiplierUnitsDigit <= 1 || multiplierUnitsDigit >= 5)
         {
             return _powersOfThousandMap[power][genitiveIndex];

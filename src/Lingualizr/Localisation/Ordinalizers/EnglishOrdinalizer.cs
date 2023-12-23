@@ -4,7 +4,7 @@ internal class EnglishOrdinalizer : DefaultOrdinalizer
 {
     public override string Convert(int number, string numberString)
     {
-        var nMod100 = number % 100;
+        int nMod100 = number % 100;
 
         if (nMod100 >= 11 && nMod100 <= 13)
         {

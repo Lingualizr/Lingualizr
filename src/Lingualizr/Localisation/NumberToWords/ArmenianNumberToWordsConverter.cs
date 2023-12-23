@@ -29,7 +29,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
     };
     private static readonly string[] _tensMap = { "զրո", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new()
     {
         { 0, "զրոյական" },
         { 1, "առաջին" },
@@ -45,7 +45,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        if (ExceptionNumbersToWords(number, out var exceptionString))
+        if (ExceptionNumbersToWords(number, out string? exceptionString))
         {
             return exceptionString;
         }
@@ -76,7 +76,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("մինուս {0}", ConvertImpl(-number, isOrdinal));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000000000000 > 0)
         {
@@ -144,7 +144,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var lastPart = _tensMap[number / 10];
+                string lastPart = _tensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
@@ -162,7 +162,7 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
             parts[parts.Count - 1] += "երորդ";
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         return toWords;
     }

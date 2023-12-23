@@ -65,7 +65,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
             return _unitsMap[number];
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
         if (number < 0)
         {
             parts.Add("minus ");
@@ -95,7 +95,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
             }
             else
             {
-                var units = number % 10;
+                long units = number % 10;
                 if (units > 0)
                 {
                     parts.Add(string.Format("{0}und", _unitsMap[units]));
@@ -115,7 +115,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
             return _unitsMap[number] + GetEndingForGender(gender);
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
         if (number < 0)
         {
             parts.Add("minus ");
@@ -159,7 +159,7 @@ internal abstract class GermanNumberToWordsConverterBase : GenderedNumberToWords
     {
         if (number / divisor > 0)
         {
-            var noRest = evaluateNoRest ? NoRestIndex(number % divisor) : 0;
+            int noRest = evaluateNoRest ? NoRestIndex(number % divisor) : 0;
             parts.Add(Part(pluralFormats[noRest], singulars[noRest], number / divisor));
             number %= divisor;
         }

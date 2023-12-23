@@ -6,7 +6,7 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap2 = { string.Empty, "십", "백", "천" };
     private static readonly string[] _unitsMap3 = { string.Empty, "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극", "항하사", "아승기", "나유타", "불가사의", "무량대수" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new()
     {
         { 0, "영번째" },
         { 1, "첫번째" },
@@ -42,7 +42,7 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string ConvertImpl(long number, bool isOrdinal)
     {
-        if (isOrdinal && number < 20 && _ordinalExceptions.TryGetValue(number, out var words))
+        if (isOrdinal && number < 20 && _ordinalExceptions.TryGetValue(number, out string? words))
         {
             return words;
         }
@@ -57,17 +57,17 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("마이너스 {0}", ConvertImpl(-number, false));
         }
 
-        var parts = new List<string>();
-        var groupLevel = 0;
+        List<string> parts = new();
+        int groupLevel = 0;
         while (number > 0)
         {
-            var groupNumber = number % 10000;
+            long groupNumber = number % 10000;
             number /= 10000;
 
-            var n0 = groupNumber % 10;
-            var n1 = (groupNumber % 100 - groupNumber % 10) / 10;
-            var n2 = (groupNumber % 1000 - groupNumber % 100) / 100;
-            var n3 = (groupNumber - groupNumber % 1000) / 1000;
+            long n0 = groupNumber % 10;
+            long n1 = (groupNumber % 100 - groupNumber % 10) / 10;
+            long n2 = (groupNumber % 1000 - groupNumber % 100) / 100;
+            long n3 = (groupNumber - groupNumber % 1000) / 1000;
 
             parts.Add(
                 _unitsMap1[n3]
@@ -84,7 +84,7 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         parts.Reverse();
-        var toWords = string.Join(string.Empty, parts.ToArray());
+        string toWords = string.Join(string.Empty, parts.ToArray());
 
         if (isOrdinal)
         {

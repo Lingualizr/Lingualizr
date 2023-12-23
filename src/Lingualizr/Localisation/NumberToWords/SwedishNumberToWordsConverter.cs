@@ -45,7 +45,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] _hunderds =
     {
-        new Fact
+        new()
         {
             Value = 1000000000,
             Name = "miljard",
@@ -54,7 +54,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             DisplayOneUnit = true,
             Gender = GrammaticalGender.Masculine,
         },
-        new Fact
+        new()
         {
             Value = 1000000,
             Name = "miljon",
@@ -63,7 +63,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             DisplayOneUnit = true,
             Gender = GrammaticalGender.Masculine,
         },
-        new Fact
+        new()
         {
             Value = 1000,
             Name = "tusen",
@@ -71,7 +71,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 100,
             Name = "hundra",
@@ -88,7 +88,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt == 0)
         {
@@ -100,11 +100,11 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("minus {0}", Convert(-numberInt, gender));
         }
 
-        var word = string.Empty;
+        string word = string.Empty;
 
-        foreach (var m in _hunderds)
+        foreach (Fact? m in _hunderds)
         {
-            var divided = numberInt / m.Value;
+            int divided = numberInt / m.Value;
 
             if (divided <= 0)
             {
@@ -148,11 +148,11 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var tens = _tensMap[numberInt / 10];
-                var unit = numberInt % 10;
+                string tens = _tensMap[numberInt / 10];
+                int unit = numberInt % 10;
                 if (unit > 0)
                 {
-                    var units = _unitsMap[unit];
+                    string units = _unitsMap[unit];
                     word += tens + units;
                 }
                 else
@@ -197,7 +197,7 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = string.Empty;
+        string word = string.Empty;
 
         if (number < 0)
         {
@@ -212,8 +212,8 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         // 21+
         if (number <= 100)
         {
-            var tens = _tensMap[number / 10];
-            var unit = number % 10;
+            string tens = _tensMap[number / 10];
+            int unit = number % 10;
             if (unit > 0)
             {
                 word += tens + ConvertToOrdinal(unit);
@@ -231,9 +231,9 @@ internal class SwedishNumberToWordsConverter : GenderlessNumberToWordsConverter
         }
 
         // 101+
-        foreach (var m in _hunderds)
+        foreach (Fact? m in _hunderds)
         {
-            var divided = number / m.Value;
+            int divided = number / m.Value;
 
             if (divided <= 0)
             {

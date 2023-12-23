@@ -25,7 +25,7 @@ public class TimeToClockNotationTests
     [InlineData(20, 59, "vingt heures cinquante-neuf")]
     public void ConvertToClockNotationTimeOnlyString(int hours, int minutes, string expectedResult)
     {
-        var actualResult = new TimeOnly(hours, minutes).ToClockNotation();
+        string actualResult = new TimeOnly(hours, minutes).ToClockNotation();
         Assert.Equal(expectedResult, actualResult);
     }
 
@@ -53,7 +53,7 @@ public class TimeToClockNotationTests
     [InlineData(20, 59, "vingt et une heures")]
     public void ConvertToRoundedClockNotationTimeOnlyString(int hours, int minutes, string expectedResult)
     {
-        var actualResult = new TimeOnly(hours, minutes).ToClockNotation(ClockNotationRounding.NearestFiveMinutes);
+        string actualResult = new TimeOnly(hours, minutes).ToClockNotation(ClockNotationRounding.NearestFiveMinutes);
         Assert.Equal(expectedResult, actualResult);
     }
 }

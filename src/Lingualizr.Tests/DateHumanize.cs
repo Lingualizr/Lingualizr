@@ -7,12 +7,12 @@ namespace Lingualizr.Tests;
 
 public class DateHumanize
 {
-    private static readonly object _lockObject = new object();
+    private static readonly object _lockObject = new();
 
     private static void VerifyWithCurrentDate(string expectedString, TimeSpan deltaFromNow, CultureInfo? culture)
     {
-        var utcNow = DateTime.UtcNow;
-        var localNow = DateTime.Now;
+        DateTime utcNow = DateTime.UtcNow;
+        DateTime localNow = DateTime.Now;
 
         // feels like the only way to avoid breaking tests because CPU ticks over is to inject the base date
         VerifyWithDate(expectedString, deltaFromNow, culture, localNow, utcNow);
@@ -20,8 +20,8 @@ public class DateHumanize
 
     private static void VerifyWithDateInjection(string expectedString, TimeSpan deltaFromNow, CultureInfo? culture)
     {
-        var utcNow = new DateTime(2013, 6, 20, 9, 58, 22, DateTimeKind.Utc);
-        var now = new DateTime(2013, 6, 20, 11, 58, 22, DateTimeKind.Local);
+        DateTime utcNow = new(2013, 6, 20, 9, 58, 22, DateTimeKind.Utc);
+        DateTime now = new(2013, 6, 20, 11, 58, 22, DateTimeKind.Local);
 
         VerifyWithDate(expectedString, deltaFromNow, culture, now, utcNow);
     }
@@ -50,7 +50,7 @@ public class DateHumanize
                 Configurator.DateTimeHumanizeStrategy = new DefaultDateTimeHumanizeStrategy();
             }
 
-            var deltaFromNow = default(TimeSpan);
+            TimeSpan deltaFromNow = default(TimeSpan);
             unit = Math.Abs(unit);
 
             if (tense == Tense.Past)

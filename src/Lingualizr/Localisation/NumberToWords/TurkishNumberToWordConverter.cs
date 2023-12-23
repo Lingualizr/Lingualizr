@@ -5,7 +5,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
     private static readonly string[] _tensMap = { "sıfır", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
 
-    private static readonly Dictionary<char, string> _ordinalSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _ordinalSuffix = new()
     {
         { 'ı', "ıncı" },
         { 'i', "inci" },
@@ -17,7 +17,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
         { 'a', "ıncı" },
     };
 
-    private static readonly Dictionary<char, string> _tupleSuffix = new Dictionary<char, string>
+    private static readonly Dictionary<char, string> _tupleSuffix = new()
     {
         { 'ı', "lı" },
         { 'i', "li" },
@@ -41,7 +41,7 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
             return string.Format("eksi {0}", Convert(-number));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000000000000 > 0)
         {
@@ -73,14 +73,14 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
             number %= 1000000;
         }
 
-        var thousand = number / 1000;
+        long thousand = number / 1000;
         if (thousand > 0)
         {
             parts.Add(string.Format("{0} bin", thousand > 1 ? Convert(thousand) : string.Empty).Trim());
             number %= 1000;
         }
 
-        var hundred = number / 100;
+        long hundred = number / 100;
         if (hundred > 0)
         {
             parts.Add(string.Format("{0} yüz", hundred > 1 ? Convert(hundred) : string.Empty).Trim());
@@ -98,18 +98,18 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
             parts.Add(_unitsMap[number]);
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         return toWords;
     }
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = Convert(number);
-        var wordSuffix = string.Empty;
-        var suffixFoundOnLastVowel = false;
+        string word = Convert(number);
+        string? wordSuffix = string.Empty;
+        bool suffixFoundOnLastVowel = false;
 
-        for (var i = word.Length - 1; i >= 0; i--)
+        for (int i = word.Length - 1; i >= 0; i--)
         {
             if (_ordinalSuffix.TryGetValue(word[i], out wordSuffix))
             {
@@ -140,10 +140,10 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
             case 2:
                 return "çift";
             default:
-                var word = Convert(number);
-                var wordSuffix = string.Empty;
+                string word = Convert(number);
+                string? wordSuffix = string.Empty;
 
-                for (var i = word.Length - 1; i >= 0; i--)
+                for (int i = word.Length - 1; i >= 0; i--)
                 {
                     if (_tupleSuffix.TryGetValue(word[i], out wordSuffix))
                     {

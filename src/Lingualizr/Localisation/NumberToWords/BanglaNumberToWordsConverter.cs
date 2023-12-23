@@ -110,7 +110,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly string[] _hundredsMap = { "শূন্য", "একশ", "দুইশ", "তিনশ", "চারশ", "পাঁচশ", "ছয়শ", "সাতশ", "আটশ", "নয়শ", };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new()
     {
         { 1, "প্রথম" },
         { 2, "দ্বিতীয়" },
@@ -138,7 +138,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        if (ExceptionNumbersToWords(number, out var exceptionString))
+        if (ExceptionNumbersToWords(number, out string? exceptionString))
         {
             return exceptionString;
         }
@@ -153,7 +153,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt == 0)
         {
@@ -165,7 +165,7 @@ internal class BanglaNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("ঋণাত্মক {0}", Convert(-numberInt));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (numberInt / 10000000 > 0)
         {

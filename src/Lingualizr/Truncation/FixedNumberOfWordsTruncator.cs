@@ -17,7 +17,7 @@ internal class FixedNumberOfWordsTruncator : ITruncator
             return value;
         }
 
-        var numberOfWords = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length;
+        int numberOfWords = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries).Length;
         if (numberOfWords <= length)
         {
             return value;
@@ -28,9 +28,9 @@ internal class FixedNumberOfWordsTruncator : ITruncator
 
     private static string TruncateFromRight(string value, int length, string? truncationString)
     {
-        var lastCharactersWasWhiteSpace = true;
-        var numberOfWordsProcessed = 0;
-        for (var i = 0; i < value.Length; i++)
+        bool lastCharactersWasWhiteSpace = true;
+        int numberOfWordsProcessed = 0;
+        for (int i = 0; i < value.Length; i++)
         {
             if (char.IsWhiteSpace(value[i]))
             {
@@ -57,9 +57,9 @@ internal class FixedNumberOfWordsTruncator : ITruncator
 
     private static string TruncateFromLeft(string value, int length, string? truncationString)
     {
-        var lastCharactersWasWhiteSpace = true;
-        var numberOfWordsProcessed = 0;
-        for (var i = value.Length - 1; i > 0; i--)
+        bool lastCharactersWasWhiteSpace = true;
+        int numberOfWordsProcessed = 0;
+        for (int i = value.Length - 1; i > 0; i--)
         {
             if (char.IsWhiteSpace(value[i]))
             {

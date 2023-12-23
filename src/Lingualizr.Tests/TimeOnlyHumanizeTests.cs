@@ -11,11 +11,11 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
 
-        var inputTime = new TimeOnly(13, 07, 05);
-        var baseTime = new TimeOnly(13, 07, 05);
+        TimeOnly inputTime = new(13, 07, 05);
+        TimeOnly baseTime = new(13, 07, 05);
 
         const string expectedResult = "now";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -25,11 +25,11 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
 
-        var inputTime = new TimeOnly(13, 08, 05);
-        var baseTime = new TimeOnly(1, 08, 05);
+        TimeOnly inputTime = new(13, 08, 05);
+        TimeOnly baseTime = new(1, 08, 05);
 
         const string expectedResult = "12 hours from now";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -39,11 +39,11 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new DefaultTimeOnlyHumanizeStrategy();
 
-        var inputTime = new TimeOnly(13, 07, 02);
-        var baseTime = new TimeOnly(17, 07, 05);
+        TimeOnly inputTime = new(13, 07, 02);
+        TimeOnly baseTime = new(17, 07, 05);
 
         const string expectedResult = "4 hours ago";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -53,11 +53,11 @@ public class TimeOnlyHumanizeTests
     {
         Configurator.TimeOnlyHumanizeStrategy = new PrecisionTimeOnlyHumanizeStrategy(0.75);
 
-        var inputTime = new TimeOnly(18, 10, 49);
-        var baseTime = new TimeOnly(13, 07, 04);
+        TimeOnly inputTime = new(18, 10, 49);
+        TimeOnly baseTime = new(13, 07, 04);
 
         const string expectedResult = "5 hours from now";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }

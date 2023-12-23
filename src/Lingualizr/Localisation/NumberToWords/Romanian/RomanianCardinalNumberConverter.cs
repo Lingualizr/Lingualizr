@@ -74,9 +74,9 @@ internal class RomanianCardinalNumberConverter
             return "zero";
         }
 
-        var words = string.Empty;
+        string words = string.Empty;
 
-        var prefixMinusSign = false;
+        bool prefixMinusSign = false;
 
         if (number < 0)
         {
@@ -84,13 +84,13 @@ internal class RomanianCardinalNumberConverter
             number = -number;
         }
 
-        var threeDigitParts = SplitEveryThreeDigits(number);
+        List<int> threeDigitParts = SplitEveryThreeDigits(number);
 
-        for (var i = 0; i < threeDigitParts.Count; i++)
+        for (int i = 0; i < threeDigitParts.Count; i++)
         {
-            var currentSet = (ThreeDigitSets)Enum.ToObject(typeof(ThreeDigitSets), i);
+            ThreeDigitSets currentSet = (ThreeDigitSets)Enum.ToObject(typeof(ThreeDigitSets), i);
 
-            var partToString = GetNextPartConverter(currentSet);
+            Func<int, GrammaticalGender, string>? partToString = GetNextPartConverter(currentSet);
 
             if (partToString is null)
             {
@@ -117,12 +117,12 @@ internal class RomanianCardinalNumberConverter
     /// <returns>The sequence of three-digit numbers.</returns>
     private static List<int> SplitEveryThreeDigits(int number)
     {
-        var parts = new List<int>();
-        var rest = number;
+        List<int> parts = new();
+        int rest = number;
 
         while (rest > 0)
         {
-            var threeDigit = rest % 1000;
+            int threeDigit = rest % 1000;
 
             parts.Add(threeDigit);
 
@@ -184,15 +184,15 @@ internal class RomanianCardinalNumberConverter
         }
 
         // grab lowest two digits
-        var tensAndUnits = number % 100;
+        int tensAndUnits = number % 100;
         // grab third digit
-        var hundreds = number / 100;
+        int hundreds = number / 100;
 
         // grab also first and second digits separately
-        var units = tensAndUnits % 10;
-        var tens = tensAndUnits / 10;
+        int units = tensAndUnits % 10;
+        int tens = tensAndUnits / 10;
 
-        var words = string.Empty;
+        string words = string.Empty;
 
         // append text for hundreds
         words += HundredsToText(hundreds);
@@ -213,7 +213,7 @@ internal class RomanianCardinalNumberConverter
         else
         {
             // exception for zero
-            var unitsText = units == 0 ? string.Empty : " " + _joinGroups + " " + GetPartByGender(_units[units], gender);
+            string unitsText = units == 0 ? string.Empty : " " + _joinGroups + " " + GetPartByGender(_units[units], gender);
 
             words += unitsText;
         }
@@ -225,7 +225,7 @@ internal class RomanianCardinalNumberConverter
     {
         if (multiGenderPart.Contains('|'))
         {
-            var parts = multiGenderPart.Split('|');
+            string[] parts = multiGenderPart.Split('|');
             if (gender == GrammaticalGender.Feminine)
             {
                 return parts[1];

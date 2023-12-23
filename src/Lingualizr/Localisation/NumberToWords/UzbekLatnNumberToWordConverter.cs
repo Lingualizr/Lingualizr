@@ -16,7 +16,7 @@ internal class UzbekLatnNumberToWordConverter : GenderlessNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
         if (numberInt < 0)
         {
             return string.Format("minus {0}", Convert(-numberInt, true));
@@ -37,7 +37,7 @@ internal class UzbekLatnNumberToWordConverter : GenderlessNumberToWordsConverter
             return "yuz";
         }
 
-        var sb = new StringBuilder();
+        StringBuilder sb = new();
 
         if (number / 1000000000 > 0)
         {
@@ -51,14 +51,14 @@ internal class UzbekLatnNumberToWordConverter : GenderlessNumberToWordsConverter
             number %= 1000000;
         }
 
-        var thousand = number / 1000;
+        int thousand = number / 1000;
         if (thousand > 0)
         {
             sb.AppendFormat("{0} ming ", Convert(thousand, true));
             number %= 1000;
         }
 
-        var hundred = number / 100;
+        int hundred = number / 100;
         if (hundred > 0)
         {
             sb.AppendFormat("{0} yuz ", Convert(hundred, false));
@@ -81,14 +81,14 @@ internal class UzbekLatnNumberToWordConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = Convert(number);
-        var i = 0;
+        string word = Convert(number);
+        int i = 0;
         if (string.IsNullOrEmpty(word))
         {
             return string.Empty;
         }
 
-        var lastChar = word[word.Length - 1];
+        char lastChar = word[word.Length - 1];
         if (lastChar == 'i' || lastChar == 'a')
         {
             i = 1;

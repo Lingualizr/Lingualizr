@@ -27,7 +27,7 @@ internal class FixedNumberOfCharactersTruncator : ITruncator
             return truncateFrom == TruncateFrom.Right ? value.Substring(0, length) : value.Substring(value.Length - length);
         }
 
-        var alphaNumericalCharactersProcessed = 0;
+        int alphaNumericalCharactersProcessed = 0;
 
         if (value.ToCharArray().Count(char.IsLetterOrDigit) <= length)
         {
@@ -36,7 +36,7 @@ internal class FixedNumberOfCharactersTruncator : ITruncator
 
         if (truncateFrom == TruncateFrom.Left)
         {
-            for (var i = value.Length - 1; i > 0; i--)
+            for (int i = value.Length - 1; i > 0; i--)
             {
                 if (char.IsLetterOrDigit(value[i]))
                 {
@@ -50,7 +50,7 @@ internal class FixedNumberOfCharactersTruncator : ITruncator
             }
         }
 
-        for (var i = 0; i < value.Length - truncationString.Length; i++)
+        for (int i = 0; i < value.Length - truncationString.Length; i++)
         {
             if (char.IsLetterOrDigit(value[i]))
             {

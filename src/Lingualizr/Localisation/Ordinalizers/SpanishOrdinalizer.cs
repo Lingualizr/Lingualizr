@@ -16,7 +16,7 @@ internal class SpanishOrdinalizer : DefaultOrdinalizer
 
     public override string Convert(int number, string numberString, GrammaticalGender gender, WordForm wordForm)
     {
-        var genderMap = new Dictionary<GrammaticalGender, string>()
+        Dictionary<GrammaticalGender, string> genderMap = new()
         {
             { GrammaticalGender.Feminine, ".ª" },
             { GrammaticalGender.Masculine, GetWordForm(number, wordForm) },

@@ -37,14 +37,14 @@ public class ParsingTests
     [Fact]
     public void TryParseReturnsFalseOnNull()
     {
-        Assert.False(ByteSize.TryParse(null, out var result));
+        Assert.False(ByteSize.TryParse(null, out ByteSize result));
         Assert.Equal(default, result);
     }
 
     [Fact]
     public void TryParse()
     {
-        var resultBool = ByteSize.TryParse("1020KB", out var resultByteSize);
+        bool resultBool = ByteSize.TryParse("1020KB", out ByteSize resultByteSize);
 
         Assert.True(resultBool);
         Assert.Equal(ByteSize.FromKilobytes(1020), resultByteSize);
@@ -62,9 +62,9 @@ public class ParsingTests
     [InlineData("+2000,01KB", "de")]
     public void TryParseWithCultureInfo(string value, string cultureName)
     {
-        var culture = new CultureInfo(cultureName);
+        CultureInfo culture = new(cultureName);
 
-        Assert.True(ByteSize.TryParse(value, culture, out var resultByteSize));
+        Assert.True(ByteSize.TryParse(value, culture, out ByteSize resultByteSize));
         Assert.Equal(ByteSize.FromKilobytes(2000.01), resultByteSize);
 
         Assert.Equal(resultByteSize, ByteSize.Parse(value, culture));
@@ -73,16 +73,16 @@ public class ParsingTests
     [Fact]
     public void TryParseWithNumberFormatInfo()
     {
-        var numberFormat = new NumberFormatInfo
+        NumberFormatInfo numberFormat = new()
         {
             NumberDecimalSeparator = "_",
             NumberGroupSeparator = ";",
             NegativeSign = "−", // proper minus, not hyphen-minus
         };
 
-        var value = "−2;000_01KB";
+        string value = "−2;000_01KB";
 
-        Assert.True(ByteSize.TryParse(value, numberFormat, out var resultByteSize));
+        Assert.True(ByteSize.TryParse(value, numberFormat, out ByteSize resultByteSize));
         Assert.Equal(ByteSize.FromKilobytes(-2000.01), resultByteSize);
 
         Assert.Equal(resultByteSize, ByteSize.Parse(value, numberFormat));
@@ -106,7 +106,7 @@ public class ParsingTests
     [InlineData("1000KBB")] // Bad suffix
     public void TryParseReturnsFalseOnBadValue(string input)
     {
-        var resultBool = ByteSize.TryParse(input, out var resultByteSize);
+        bool resultBool = ByteSize.TryParse(input, out ByteSize resultByteSize);
 
         Assert.False(resultBool);
         Assert.Equal(default, resultByteSize);

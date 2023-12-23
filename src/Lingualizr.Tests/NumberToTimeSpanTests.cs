@@ -286,7 +286,7 @@ public class NumberToTimeSpanTests
     public void ByteToWeeks()
     {
         const byte number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -294,7 +294,7 @@ public class NumberToTimeSpanTests
     public void SbyteToWeeks()
     {
         const sbyte number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -302,7 +302,7 @@ public class NumberToTimeSpanTests
     public void ShortToWeeks()
     {
         const short number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -310,7 +310,7 @@ public class NumberToTimeSpanTests
     public void UshortToWeeks()
     {
         const ushort number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -318,7 +318,7 @@ public class NumberToTimeSpanTests
     public void IntToWeeks()
     {
         const int number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -326,7 +326,7 @@ public class NumberToTimeSpanTests
     public void UintToWeeks()
     {
         const uint number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -334,7 +334,7 @@ public class NumberToTimeSpanTests
     public void LongToWeeks()
     {
         const long number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 
@@ -342,7 +342,7 @@ public class NumberToTimeSpanTests
     public void UlongToWeeks()
     {
         const ulong number = 6;
-        var now = DateTime.Now;
+        DateTime now = DateTime.Now;
         Assert.Equal(now.AddDays(42), now.Add(number.Weeks()));
     }
 }

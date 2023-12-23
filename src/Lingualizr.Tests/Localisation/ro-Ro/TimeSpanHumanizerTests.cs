@@ -17,7 +17,7 @@ public class TimeSpanHumanizerTests
     [InlineData(3000, "3 secunde")]
     public void Milliseconds(int milliseconds, string expected)
     {
-        var actual = TimeSpan.FromMilliseconds(milliseconds).Humanize();
+        string actual = TimeSpan.FromMilliseconds(milliseconds).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -30,7 +30,7 @@ public class TimeSpanHumanizerTests
     [InlineData(156, "2 minute")]
     public void Seconds(int seconds, string expected, bool toWords = false)
     {
-        var actual = TimeSpan.FromSeconds(seconds).Humanize(minUnit: TimeUnit.Second, toWords: toWords);
+        string actual = TimeSpan.FromSeconds(seconds).Humanize(minUnit: TimeUnit.Second, toWords: toWords);
         Assert.Equal(expected, actual);
     }
 
@@ -41,7 +41,7 @@ public class TimeSpanHumanizerTests
     [InlineData(156, "2 ore")]
     public void Minutes(int minutes, string expected)
     {
-        var actual = TimeSpan.FromMinutes(minutes).Humanize();
+        string actual = TimeSpan.FromMinutes(minutes).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -52,7 +52,7 @@ public class TimeSpanHumanizerTests
     [InlineData(48, "2 zile")]
     public void Hours(int hours, string expected)
     {
-        var actual = TimeSpan.FromHours(hours).Humanize();
+        string actual = TimeSpan.FromHours(hours).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -64,7 +64,7 @@ public class TimeSpanHumanizerTests
     [InlineData(21, "3 săptămâni")]
     public void Days(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize();
+        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -74,7 +74,7 @@ public class TimeSpanHumanizerTests
     [InlineData(21, "21 de săptămâni")]
     public void Weeks(int weeks, string expected)
     {
-        var actual = TimeSpan.FromDays(7 * weeks).Humanize();
+        string actual = TimeSpan.FromDays(7 * weeks).Humanize();
         Assert.Equal(expected, actual);
     }
 

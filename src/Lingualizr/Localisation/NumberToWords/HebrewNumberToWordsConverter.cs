@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel;
+using System.Globalization;
 
 namespace Lingualizr.Localisation.NumberToWords;
 
@@ -9,18 +10,6 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
     private static readonly string[] _tensUnit = { "עשר", "עשרים", "שלושים", "ארבעים", "חמישים", "שישים", "שבעים", "שמונים", "תשעים" };
 
     private readonly CultureInfo _culture;
-
-#pragma warning disable S1144
-    private class DescriptionAttribute : Attribute
-#pragma warning restore S1144
-    {
-        public string Description { get; set; }
-
-        public DescriptionAttribute(string description)
-        {
-            Description = description;
-        }
-    }
 
     private enum Group
     {
@@ -47,7 +36,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt < 0)
         {
@@ -59,7 +48,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             return _unitsFeminine[0];
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
         if (numberInt >= (int)Group.Billions)
         {
             ToBigNumber(numberInt, Group.Billions, parts);
@@ -86,11 +75,11 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberInt > 0)
         {
-            var appendAnd = parts.Count != 0;
+            bool appendAnd = parts.Count != 0;
 
             if (numberInt <= 10)
             {
-                var unit = gender == GrammaticalGender.Masculine ? _unitsMasculine[numberInt] : _unitsFeminine[numberInt];
+                string unit = gender == GrammaticalGender.Masculine ? _unitsMasculine[numberInt] : _unitsFeminine[numberInt];
                 if (appendAnd)
                 {
                     unit = "ו" + unit;
@@ -100,7 +89,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else if (numberInt < 20)
             {
-                var unit = Convert(numberInt % 10, gender);
+                string unit = Convert(numberInt % 10, gender);
                 unit = unit.Replace("יי", "י");
                 unit = string.Format("{0} {1}", unit, gender == GrammaticalGender.Masculine ? "עשר" : "עשרה");
                 if (appendAnd)
@@ -112,14 +101,14 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
             }
             else
             {
-                var tenUnit = _tensUnit[numberInt / 10 - 1];
+                string tenUnit = _tensUnit[numberInt / 10 - 1];
                 if (numberInt % 10 == 0)
                 {
                     parts.Add(tenUnit);
                 }
                 else
                 {
-                    var unit = Convert(numberInt % 10, gender);
+                    string unit = Convert(numberInt % 10, gender);
                     parts.Add(string.Format("{0} ו{1}", tenUnit, unit));
                 }
             }
@@ -138,7 +127,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         // Big numbers (million and above) always use the masculine form
         // See https://www.safa-ivrit.org/dikduk/numbers.php
 
-        var digits = number / (int)@group;
+        int digits = number / (int)@group;
         if (digits == 2)
         {
             parts.Add("שני");
@@ -153,7 +142,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private void ToThousands(int number, List<string> parts)
     {
-        var thousands = number / (int)Group.Thousands;
+        int thousands = number / (int)Group.Thousands;
 
         if (thousands == 1)
         {
@@ -182,7 +171,7 @@ internal class HebrewNumberToWordsConverter : GenderedNumberToWordsConverter
         // For hundreds, Hebrew is using the feminine form
         // See https://www.safa-ivrit.org/dikduk/numbers.php
 
-        var hundreds = number / (int)Group.Hundreds;
+        int hundreds = number / (int)Group.Hundreds;
 
         if (hundreds == 1)
         {

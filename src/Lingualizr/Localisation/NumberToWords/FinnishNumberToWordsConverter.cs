@@ -5,7 +5,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap = { "nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän", "kymmenen" };
     private static readonly string[] _ordinalUnitsMap = { "nollas", "ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs", "kymmenes" };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string> { { 1, "yhdes" }, { 2, "kahdes" }, };
+    private static readonly Dictionary<int, string> _ordinalExceptions = new() { { 1, "yhdes" }, { 2, "kahdes" }, };
 
     public override string Convert(long number)
     {
@@ -14,7 +14,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt < 0)
         {
@@ -26,7 +26,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             return _unitsMap[0];
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (numberInt / 1000000000 > 0)
         {
@@ -77,7 +77,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static string GetOrdinalUnit(int number, bool useExceptions)
     {
-        if (useExceptions && _ordinalExceptions.TryGetValue(number, out var unit))
+        if (useExceptions && _ordinalExceptions.TryGetValue(number, out string? unit))
         {
             return unit;
         }
@@ -92,7 +92,7 @@ internal class FinnishNumberToWordsConverter : GenderlessNumberToWordsConverter
             return _ordinalUnitsMap[0];
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000 > 0)
         {

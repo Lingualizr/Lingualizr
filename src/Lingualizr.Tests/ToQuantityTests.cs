@@ -123,7 +123,7 @@ public class ToQuantityTests
     [InlineData("euro", 2, "C2", "es-ES", "2,00 € euros")]
     public void ToQuantityWordsWithCustomCultureFormatting(string word, int quantity, string format, string cultureCode, string expected)
     {
-        var culture = new CultureInfo(cultureCode);
+        CultureInfo culture = new(cultureCode);
 
         Assert.Equal(expected, word.ToQuantity(quantity, format, culture), GetStringComparer(culture));
         Assert.Equal(expected, word.ToQuantity((long)quantity, format, culture), GetStringComparer(culture));

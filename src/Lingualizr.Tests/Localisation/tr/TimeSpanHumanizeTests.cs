@@ -32,7 +32,7 @@ public class TimeSpanHumanizeTests
     [InlineData(7, "1 hafta")]
     public void Weeks(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize();
+        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -41,7 +41,7 @@ public class TimeSpanHumanizeTests
     [InlineData(2, "2 gün")]
     public void Days(int days, string expected)
     {
-        var actual = TimeSpan.FromDays(days).Humanize();
+        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -50,7 +50,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1, "1 saat")]
     public void Hours(int hours, string expected)
     {
-        var actual = TimeSpan.FromHours(hours).Humanize();
+        string actual = TimeSpan.FromHours(hours).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -59,7 +59,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1, "1 dakika")]
     public void Minutes(int minutes, string expected)
     {
-        var actual = TimeSpan.FromMinutes(minutes).Humanize();
+        string actual = TimeSpan.FromMinutes(minutes).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -68,7 +68,7 @@ public class TimeSpanHumanizeTests
     [InlineData(1, "1 saniye")]
     public void Seconds(int seconds, string expected)
     {
-        var actual = TimeSpan.FromSeconds(seconds).Humanize();
+        string actual = TimeSpan.FromSeconds(seconds).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -77,23 +77,23 @@ public class TimeSpanHumanizeTests
     [InlineData(1, "1 milisaniye")]
     public void Milliseconds(int ms, string expected)
     {
-        var actual = TimeSpan.FromMilliseconds(ms).Humanize();
+        string actual = TimeSpan.FromMilliseconds(ms).Humanize();
         Assert.Equal(expected, actual);
     }
 
     [Fact]
     public void NoTime()
     {
-        var noTime = TimeSpan.Zero;
-        var actual = noTime.Humanize();
+        TimeSpan noTime = TimeSpan.Zero;
+        string actual = noTime.Humanize();
         Assert.Equal("0 milisaniye", actual);
     }
 
     [Fact]
     public void NoTimeToWords()
     {
-        var noTime = TimeSpan.Zero;
-        var actual = noTime.Humanize(toWords: true);
+        TimeSpan noTime = TimeSpan.Zero;
+        string actual = noTime.Humanize(toWords: true);
         Assert.Equal("zaman farkı yok", actual);
     }
 }

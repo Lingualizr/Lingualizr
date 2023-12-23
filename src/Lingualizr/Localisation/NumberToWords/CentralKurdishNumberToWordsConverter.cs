@@ -8,7 +8,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
     public override string Convert(long number)
     {
-        var largestNumber = Math.Pow(10, 15) * 1000 - 1;
+        double largestNumber = Math.Pow(10, 15) * 1000 - 1;
         if (number > largestNumber || number < -largestNumber)
         {
             throw new NotImplementedException();
@@ -24,7 +24,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             return "سفر";
         }
 
-        var kurdishGroupsMap = new Dictionary<long, Func<long, string>>
+        Dictionary<long, Func<long, string>> kurdishGroupsMap = new()
         {
             { (long)Math.Pow(10, 15), n => string.Format("{0} کوادریلیۆن", Convert(n)) },
             { (long)Math.Pow(10, 12), n => string.Format("{0} تریلیۆن", Convert(n)) },
@@ -34,8 +34,8 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             { (long)Math.Pow(10, 2), n => _kurdishHundredsMap[n] },
         };
 
-        var parts = new List<string>();
-        foreach (var group in kurdishGroupsMap.Keys)
+        List<string> parts = new();
+        foreach (long group in kurdishGroupsMap.Keys)
         {
             if (number / group > 0)
             {
@@ -55,7 +55,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             parts.Add(_kurdishUnitsMap[number]);
         }
 
-        var sentence = string.Join(" و ", parts);
+        string sentence = string.Join(" و ", parts);
         if (sentence.StartsWith("یەک هەزار"))
         {
             return sentence.Substring(" یەک".Length);
@@ -68,7 +68,7 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = Convert(number);
+        string word = Convert(number);
         return string.Format("{0}{1}", word, IsVowel(word[word.Length - 1]) ? "یەم" : "ەم");
     }
 

@@ -73,7 +73,7 @@ internal class BulgarianNumberToWordsConverter : GenderedNumberToWordsConverter
             return isOrdinal ? "нулев" + GetEndingForGender(gender, input) : "нула";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (input < 0)
         {

@@ -73,8 +73,8 @@ public class DefaultFormatter : IFormatter
     /// <inheritdoc cref="IFormatter.DataUnitHumanize(DataUnit, double, bool)"/>
     public virtual string DataUnitHumanize(DataUnit dataUnit, double count, bool toSymbol = true)
     {
-        var resourceKey = toSymbol ? $"DataUnit_{dataUnit}Symbol" : $"DataUnit_{dataUnit}";
-        var resourceValue = Format(resourceKey);
+        string resourceKey = toSymbol ? $"DataUnit_{dataUnit}Symbol" : $"DataUnit_{dataUnit}";
+        string resourceValue = Format(resourceKey);
 
         if (!toSymbol && count > 1)
         {
@@ -87,19 +87,19 @@ public class DefaultFormatter : IFormatter
     /// <inheritdoc />
     public virtual string TimeUnitHumanize(TimeUnit timeUnit)
     {
-        var resourceKey = ResourceKeys.TimeUnitSymbol.GetResourceKey(timeUnit);
+        string resourceKey = ResourceKeys.TimeUnitSymbol.GetResourceKey(timeUnit);
         return Format(resourceKey);
     }
 
     private string GetResourceForDate(TimeUnit unit, Tense timeUnitTense, int count)
     {
-        var resourceKey = ResourceKeys.DateHumanize.GetResourceKey(unit, timeUnitTense: timeUnitTense, count: count);
+        string resourceKey = ResourceKeys.DateHumanize.GetResourceKey(unit, timeUnitTense: timeUnitTense, count: count);
         return count == 1 ? Format(resourceKey) : Format(resourceKey, count);
     }
 
     private string GetResourceForTimeSpan(TimeUnit unit, int count, bool toWords = false)
     {
-        var resourceKey = ResourceKeys.TimeSpanHumanize.GetResourceKey(unit, count, toWords);
+        string resourceKey = ResourceKeys.TimeSpanHumanize.GetResourceKey(unit, count, toWords);
         return count == 1 ? Format(resourceKey + (toWords ? "_Words" : string.Empty)) : Format(resourceKey, count, toWords);
     }
 
@@ -111,7 +111,7 @@ public class DefaultFormatter : IFormatter
     /// <exception cref="ArgumentException">If the resource not exists on the specified culture.</exception>
     protected virtual string Format(string resourceKey)
     {
-        var resourceString = Resources.GetResource(GetResourceKey(resourceKey), _culture);
+        string resourceString = Resources.GetResource(GetResourceKey(resourceKey), _culture);
 
         if (string.IsNullOrEmpty(resourceString))
         {
@@ -131,7 +131,7 @@ public class DefaultFormatter : IFormatter
     /// <exception cref="ArgumentException">If the resource not exists on the specified culture.</exception>
     protected virtual string Format(string resourceKey, int number, bool toWords = false)
     {
-        var resourceString = Resources.GetResource(GetResourceKey(resourceKey, number), _culture);
+        string resourceString = Resources.GetResource(GetResourceKey(resourceKey, number), _culture);
 
         if (string.IsNullOrEmpty(resourceString))
         {

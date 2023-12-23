@@ -14,7 +14,7 @@ public static class StringHumanizeExtensions
 
     private static string FromPascalCase(string input)
     {
-        var result = string.Join(
+        string result = string.Join(
             " ",
             LingualizrRegex
                 .PascalCaseWordPartsRegex()

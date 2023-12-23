@@ -11,11 +11,11 @@ public class DateOnlyHumanizeTests
     {
         Configurator.DateOnlyHumanizeStrategy = new DefaultDateOnlyHumanizeStrategy();
 
-        var inputTime = new DateOnly(2015, 07, 05);
-        var baseTime = new DateOnly(2015, 07, 05);
+        DateOnly inputTime = new(2015, 07, 05);
+        DateOnly baseTime = new(2015, 07, 05);
 
         const string expectedResult = "now";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -25,11 +25,11 @@ public class DateOnlyHumanizeTests
     {
         Configurator.DateOnlyHumanizeStrategy = new DefaultDateOnlyHumanizeStrategy();
 
-        var inputTime = new DateOnly(2015, 08, 05);
-        var baseTime = new DateOnly(2015, 07, 05);
+        DateOnly inputTime = new(2015, 08, 05);
+        DateOnly baseTime = new(2015, 07, 05);
 
         const string expectedResult = "one month from now";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -39,11 +39,11 @@ public class DateOnlyHumanizeTests
     {
         Configurator.DateOnlyHumanizeStrategy = new DefaultDateOnlyHumanizeStrategy();
 
-        var inputTime = new DateOnly(2015, 07, 02);
-        var baseTime = new DateOnly(2015, 07, 05);
+        DateOnly inputTime = new(2015, 07, 02);
+        DateOnly baseTime = new(2015, 07, 05);
 
         const string expectedResult = "3 days ago";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }
@@ -53,11 +53,11 @@ public class DateOnlyHumanizeTests
     {
         Configurator.DateOnlyHumanizeStrategy = new PrecisionDateOnlyHumanizeStrategy(0.75);
 
-        var inputTime = new DateOnly(2015, 07, 05);
-        var baseTime = new DateOnly(2015, 07, 04);
+        DateOnly inputTime = new(2015, 07, 05);
+        DateOnly baseTime = new(2015, 07, 04);
 
         const string expectedResult = "tomorrow";
-        var actualResult = inputTime.Humanize(baseTime);
+        string actualResult = inputTime.Humanize(baseTime);
 
         Assert.Equal(expectedResult, actualResult);
     }

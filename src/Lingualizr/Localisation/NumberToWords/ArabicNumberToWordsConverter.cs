@@ -71,17 +71,17 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
             return string.Format("ناقص {0}", Convert(-number, gender));
         }
 
-        var result = string.Empty;
-        var groupLevel = 0;
+        string result = string.Empty;
+        int groupLevel = 0;
 
         while (number >= 1)
         {
-            var groupNumber = number % 1000;
+            long groupNumber = number % 1000;
             number /= 1000;
 
-            var tens = groupNumber % 100;
-            var hundreds = groupNumber / 100;
-            var process = string.Empty;
+            long tens = groupNumber % 100;
+            long hundreds = groupNumber / 100;
+            string process = string.Empty;
 
             if (hundreds > 0)
             {
@@ -129,7 +129,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
                 }
                 else
                 {
-                    var ones = tens % 10;
+                    long ones = tens % 10;
                     tens = tens / 10;
 
                     if (ones > 0)
@@ -189,7 +189,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         return result.Trim();
     }
 
-    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> _ordinalExceptions = new()
     {
         { "واحد", "الحادي" },
         { "أحد", "الحادي" },
@@ -205,7 +205,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         { "عشرة", "العاشر" },
     };
 
-    private static readonly Dictionary<string, string> _feminineOrdinalExceptions = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> _feminineOrdinalExceptions = new()
     {
         { "واحدة", "الحادية" },
         { "إحدى", "الحادية" },
@@ -228,10 +228,10 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
             return "الصفر";
         }
 
-        var beforeOneHundredNumber = number % 100;
-        var overTensPart = number / 100 * 100;
-        var beforeOneHundredWord = string.Empty;
-        var overTensWord = string.Empty;
+        int beforeOneHundredNumber = number % 100;
+        int overTensPart = number / 100 * 100;
+        string beforeOneHundredWord = string.Empty;
+        string overTensWord = string.Empty;
 
         if (beforeOneHundredNumber > 0)
         {
@@ -245,7 +245,7 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
             overTensWord = ParseNumber(overTensWord, overTensPart, gender);
         }
 
-        var word = beforeOneHundredWord + (overTensPart > 0 ? (string.IsNullOrWhiteSpace(beforeOneHundredWord) ? string.Empty : " بعد ") + overTensWord : string.Empty);
+        string word = beforeOneHundredWord + (overTensPart > 0 ? (string.IsNullOrWhiteSpace(beforeOneHundredWord) ? string.Empty : " بعد ") + overTensWord : string.Empty);
         return word.Trim();
     }
 
@@ -258,8 +258,8 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number <= 10)
         {
-            var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
-            foreach (var kv in ordinals.Where(kv => word.EndsWith(kv.Key)))
+            Dictionary<string, string> ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
+            foreach (KeyValuePair<string, string> kv in ordinals.Where(kv => word.EndsWith(kv.Key)))
             {
 #pragma warning disable S1751
                 return word.Substring(0, word.Length - kv.Key.Length) + kv.Value;
@@ -268,17 +268,17 @@ internal class ArabicNumberToWordsConverter : GenderedNumberToWordsConverter
         }
         else if (number < 100)
         {
-            var parts = word.Split(' ');
-            var newParts = new string[parts.Length];
-            var count = 0;
+            string[] parts = word.Split(' ');
+            string[] newParts = new string[parts.Length];
+            int count = 0;
 
-            foreach (var part in parts)
+            foreach (string? part in parts)
             {
-                var newPart = part;
-                var oldPart = part;
+                string newPart = part;
+                string oldPart = part;
 
-                var ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
-                foreach (var kv in ordinals.Where(kv => oldPart.EndsWith(kv.Key)))
+                Dictionary<string, string> ordinals = gender == GrammaticalGender.Feminine ? _feminineOrdinalExceptions : _ordinalExceptions;
+                foreach (KeyValuePair<string, string> kv in ordinals.Where(kv => oldPart.EndsWith(kv.Key)))
                 {
                     // replace word with exception
                     newPart = oldPart.Substring(0, oldPart.Length - kv.Key.Length) + kv.Value;

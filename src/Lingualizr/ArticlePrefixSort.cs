@@ -19,16 +19,16 @@ public static partial class EnglishArticle
             throw new ArgumentOutOfRangeException(nameof(items));
         }
 
-        var regex = MyRegex();
-        var transformed = new string[items.Length];
+        Regex regex = MyRegex();
+        string[] transformed = new string[items.Length];
 
-        for (var i = 0; i < items.Length; i++)
+        for (int i = 0; i < items.Length; i++)
         {
             if (regex.IsMatch(items[i]))
             {
-                var article = items[i].Substring(0, items[i].IndexOf(" ", StringComparison.CurrentCulture));
-                var removed = items[i].Remove(0, items[i].IndexOf(" ", StringComparison.CurrentCulture));
-                var appended = $"{removed} {article}";
+                string article = items[i].Substring(0, items[i].IndexOf(" ", StringComparison.CurrentCulture));
+                string removed = items[i].Remove(0, items[i].IndexOf(" ", StringComparison.CurrentCulture));
+                string appended = $"{removed} {article}";
                 transformed[i] = appended.Trim();
             }
             else
@@ -48,9 +48,9 @@ public static partial class EnglishArticle
     /// <returns>String array.</returns>
     public static string[] PrependArticleSuffix(string[] appended)
     {
-        var inserted = new string[appended.Length];
+        string[] inserted = new string[appended.Length];
 
-        for (var i = 0; i < appended.Length; i++)
+        for (int i = 0; i < appended.Length; i++)
         {
             string suffix;
             string original;
@@ -101,8 +101,8 @@ public static partial class EnglishArticle
 
     private static string ToOriginalFormat(string[] appended, string suffix, int i)
     {
-        var insertion = appended[i].Remove(appended[i].IndexOf(suffix, StringComparison.CurrentCulture));
-        var original = $"{suffix} {insertion}";
+        string insertion = appended[i].Remove(appended[i].IndexOf(suffix, StringComparison.CurrentCulture));
+        string original = $"{suffix} {insertion}";
         return original.Trim();
     }
 

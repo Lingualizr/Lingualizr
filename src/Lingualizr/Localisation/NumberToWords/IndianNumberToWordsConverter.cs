@@ -34,7 +34,7 @@ internal class IndianNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        var result = NumberToText(number).Trim();
+        string result = NumberToText(number).Trim();
         return result;
     }
 

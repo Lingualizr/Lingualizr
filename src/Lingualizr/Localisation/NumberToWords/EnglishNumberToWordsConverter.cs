@@ -29,7 +29,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
     };
     private static readonly string[] _tensMap = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new Dictionary<long, string>
+    private static readonly Dictionary<long, string> _ordinalExceptions = new()
     {
         { 1, "first" },
         { 2, "second" },
@@ -68,7 +68,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("minus {0}", Convert(-number));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000000000000 > 0)
         {
@@ -125,7 +125,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var lastPart = _tensMap[number / 10];
+                string lastPart = _tensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format("-{0}", GetUnitValue(number % 10, isOrdinal));
@@ -143,7 +143,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
             parts[parts.Count - 1] += "th";
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         if (isOrdinal)
         {
@@ -157,7 +157,7 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
     {
         if (isOrdinal)
         {
-            if (ExceptionNumbersToWords(number, out var exceptionString))
+            if (ExceptionNumbersToWords(number, out string? exceptionString))
             {
                 return exceptionString;
             }

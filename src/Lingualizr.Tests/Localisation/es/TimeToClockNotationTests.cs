@@ -28,7 +28,7 @@ public class TimeToClockNotationTests
     [InlineData(23, 43, "las once y cuarenta y tres de la noche")]
     public void ConvertToClockNotationTimeOnlyString(int hours, int minutes, string expectedResult)
     {
-        var actualResult = new TimeOnly(hours, minutes).ToClockNotation();
+        string actualResult = new TimeOnly(hours, minutes).ToClockNotation();
         Assert.Equal(expectedResult, actualResult);
     }
 
@@ -57,7 +57,7 @@ public class TimeToClockNotationTests
     [InlineData(23, 43, "las doce menos cuarto de la noche")]
     public void ConvertToRoundedClockNotationTimeOnlyString(int hours, int minutes, string expectedResult)
     {
-        var actualResult = new TimeOnly(hours, minutes).ToClockNotation(ClockNotationRounding.NearestFiveMinutes);
+        string actualResult = new TimeOnly(hours, minutes).ToClockNotation(ClockNotationRounding.NearestFiveMinutes);
         Assert.Equal(expectedResult, actualResult);
     }
 }

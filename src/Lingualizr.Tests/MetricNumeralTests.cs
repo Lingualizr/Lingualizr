@@ -47,11 +47,11 @@ public class MetricNumeralTests
     [MemberData(nameof(SymbolRange))]
     public void TestAllSymbols(int e)
     {
-        var origin = Math.Pow(10, e);
-        var to = origin.ToMetric();
-        var from = to.FromMetric();
+        double origin = Math.Pow(10, e);
+        string to = origin.ToMetric();
+        double from = to.FromMetric();
 
-        var c = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), from.ToString("0.##E+0", CultureInfo.InvariantCulture));
+        bool c = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), from.ToString("0.##E+0", CultureInfo.InvariantCulture));
 
         Assert.True(c);
     }
@@ -68,8 +68,8 @@ public class MetricNumeralTests
     [InlineData(9)]
     public void TestAllSymbolsAsInt(int exponent)
     {
-        var origin = Convert.ToInt32(Math.Pow(10, exponent));
-        var isEquals = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), origin.ToMetric().FromMetric().ToString("0.##E+0", CultureInfo.InvariantCulture));
+        int origin = Convert.ToInt32(Math.Pow(10, exponent));
+        bool isEquals = Equals(origin.ToString("0.##E+0", CultureInfo.InvariantCulture), origin.ToMetric().FromMetric().ToString("0.##E+0", CultureInfo.InvariantCulture));
         if (!isEquals)
         {
             Debugger.Break();

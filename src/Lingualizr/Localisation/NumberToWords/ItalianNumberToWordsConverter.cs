@@ -11,21 +11,21 @@ internal class ItalianNumberToWordsConverter : GenderedNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var numberInt = (int)number;
+        int numberInt = (int)number;
 
         if (numberInt < 0)
         {
             return "meno " + Convert(Math.Abs(numberInt), gender);
         }
 
-        var cruncher = new ItalianCardinalNumberCruncher(numberInt, gender);
+        ItalianCardinalNumberCruncher cruncher = new(numberInt, gender);
 
         return cruncher.Convert();
     }
 
     public override string ConvertToOrdinal(int number, GrammaticalGender gender)
     {
-        var cruncher = new ItalianOrdinalNumberCruncher(number, gender);
+        ItalianOrdinalNumberCruncher cruncher = new(number, gender);
 
         return cruncher.Convert();
     }

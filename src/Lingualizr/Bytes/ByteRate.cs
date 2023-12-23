@@ -50,7 +50,7 @@ public class ByteRate
     /// <returns></returns>
     public string Humanize(string? format, TimeUnit timeUnit = TimeUnit.Second, CultureInfo? culture = null)
     {
-        var displayInterval = timeUnit switch
+        TimeSpan displayInterval = timeUnit switch
         {
             TimeUnit.Second => TimeSpan.FromSeconds(1),
             TimeUnit.Minute => TimeSpan.FromMinutes(1),

@@ -49,7 +49,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     private static readonly Fact[] _hunderds =
     {
-        new Fact
+        new()
         {
             Value = 1_000_000_000_000_000_000L,
             Name = "triljoen",
@@ -57,7 +57,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 1_000_000_000_000_000L,
             Name = "biljard",
@@ -65,7 +65,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 1_000_000_000_000L,
             Name = "biljoen",
@@ -73,7 +73,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 1000000000,
             Name = "miljard",
@@ -81,7 +81,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 1000000,
             Name = "miljoen",
@@ -89,7 +89,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = true,
         },
-        new Fact
+        new()
         {
             Value = 1000,
             Name = "duizend",
@@ -97,7 +97,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             Postfix = " ",
             DisplayOneUnit = false,
         },
-        new Fact
+        new()
         {
             Value = 100,
             Name = "honderd",
@@ -119,11 +119,11 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("min {0}", Convert(-number));
         }
 
-        var word = string.Empty;
+        string word = string.Empty;
 
-        foreach (var m in _hunderds)
+        foreach (Fact? m in _hunderds)
         {
-            var divided = number / m.Value;
+            long divided = number / m.Value;
 
             if (divided <= 0)
             {
@@ -154,12 +154,12 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var tens = _tensMap[number / 10];
-                var unit = number % 10;
+                string tens = _tensMap[number / 10];
+                long unit = number % 10;
                 if (unit > 0)
                 {
-                    var units = _unitsMap[unit];
-                    var trema = units.EndsWith('e');
+                    string units = _unitsMap[unit];
+                    bool trema = units.EndsWith('e');
                     word += units + (trema ? "ën" : "en") + tens;
                 }
                 else
@@ -172,7 +172,7 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         return word;
     }
 
-    private static readonly Dictionary<string, string> _ordinalExceptions = new Dictionary<string, string>
+    private static readonly Dictionary<string, string> _ordinalExceptions = new()
     {
         { "een", "eerste" },
         { "drie", "derde" },
@@ -183,9 +183,9 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
 
     public override string ConvertToOrdinal(int number)
     {
-        var word = Convert(number);
+        string word = Convert(number);
 
-        foreach (var kv in _ordinalExceptions.Where(kv => word.EndsWith(kv.Key)))
+        foreach (KeyValuePair<string, string> kv in _ordinalExceptions.Where(kv => word.EndsWith(kv.Key)))
         {
             // replace word with exception
 #pragma warning disable S1751

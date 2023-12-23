@@ -5,7 +5,7 @@
 /// </summary>
 public static class Vocabularies
 {
-    private static readonly Lazy<Vocabulary> _instance = new Lazy<Vocabulary>(BuildDefault, LazyThreadSafetyMode.PublicationOnly);
+    private static readonly Lazy<Vocabulary> _instance = new(BuildDefault, LazyThreadSafetyMode.PublicationOnly);
 
     /// <summary>
     /// The default vocabulary used for singular/plural irregularities.
@@ -16,7 +16,7 @@ public static class Vocabularies
 
     private static Vocabulary BuildDefault()
     {
-        var @default = new Vocabulary();
+        Vocabulary @default = new();
 
         @default.AddPlural("$", "s");
         @default.AddPlural("s$", "s");

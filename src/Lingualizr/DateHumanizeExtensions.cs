@@ -18,7 +18,7 @@ public static class DateHumanizeExtensions
     /// <returns>distance of time in words</returns>
     public static string Humanize(this DateTime input, bool? utcDate = null, DateTime? dateToCompareAgainst = null, CultureInfo? culture = null)
     {
-        var comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateTime.UtcNow;
+        DateTime comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateTime.UtcNow;
         utcDate ??= input.Kind != DateTimeKind.Local;
         comparisonBase = utcDate.Value ? comparisonBase.ToUniversalTime() : comparisonBase.ToLocalTime();
 
@@ -54,7 +54,7 @@ public static class DateHumanizeExtensions
     /// <returns>distance of time in words</returns>
     public static string Humanize(this DateTimeOffset input, DateTimeOffset? dateToCompareAgainst = null, CultureInfo? culture = null)
     {
-        var comparisonBase = dateToCompareAgainst ?? DateTimeOffset.UtcNow;
+        DateTimeOffset comparisonBase = dateToCompareAgainst ?? DateTimeOffset.UtcNow;
 
         return Configurator.DateTimeOffsetHumanizeStrategy.Humanize(input, comparisonBase, culture);
     }
@@ -87,7 +87,7 @@ public static class DateHumanizeExtensions
     /// <returns>distance of time in words</returns>
     public static string Humanize(this DateOnly input, DateOnly? dateToCompareAgainst = null, CultureInfo? culture = null)
     {
-        var comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateOnly.FromDateTime(DateTime.UtcNow);
+        DateOnly comparisonBase = dateToCompareAgainst.HasValue ? dateToCompareAgainst.Value : DateOnly.FromDateTime(DateTime.UtcNow);
 
         return Configurator.DateOnlyHumanizeStrategy.Humanize(input, comparisonBase, culture);
     }
@@ -121,7 +121,7 @@ public static class DateHumanizeExtensions
     /// <returns>distance of time in words</returns>
     public static string Humanize(this TimeOnly input, TimeOnly? timeToCompareAgainst = null, bool useUtc = true, CultureInfo? culture = null)
     {
-        var comparisonBase = timeToCompareAgainst.HasValue ? timeToCompareAgainst.Value : TimeOnly.FromDateTime(useUtc ? DateTime.UtcNow : DateTime.Now);
+        TimeOnly comparisonBase = timeToCompareAgainst.HasValue ? timeToCompareAgainst.Value : TimeOnly.FromDateTime(useUtc ? DateTime.UtcNow : DateTime.Now);
 
         return Configurator.TimeOnlyHumanizeStrategy.Humanize(input, comparisonBase, culture);
     }

@@ -42,9 +42,9 @@ public partial class ResourceKeys
                 return Now;
             }
 
-            var singularity = count == 1 ? Single : Multiple;
-            var tense = timeUnitTense == Tense.Future ? FromNow : Ago;
-            var unit = timeUnit.ToString().ToQuantity(count, ShowQuantityAs.None);
+            string singularity = count == 1 ? Single : Multiple;
+            string tense = timeUnitTense == Tense.Future ? FromNow : Ago;
+            string unit = timeUnit.ToString().ToQuantity(count, ShowQuantityAs.None);
             return DateTimeFormat.FormatWith(singularity, unit, tense);
         }
     }

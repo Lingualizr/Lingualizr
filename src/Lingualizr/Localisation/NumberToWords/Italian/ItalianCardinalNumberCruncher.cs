@@ -18,11 +18,11 @@ internal class ItalianCardinalNumberCruncher
             return "zero";
         }
 
-        var words = string.Empty;
+        string words = string.Empty;
 
-        foreach (var part in ThreeDigitParts)
+        foreach (int part in ThreeDigitParts)
         {
-            var partToString = GetNextPartConverter();
+            Func<int, string>? partToString = GetNextPartConverter();
 
             if (partToString is null)
             {
@@ -50,12 +50,12 @@ internal class ItalianCardinalNumberCruncher
     /// <returns>The sequence of three-digit numbers.</returns>
     protected static List<int> SplitEveryThreeDigits(int number)
     {
-        var parts = new List<int>();
-        var rest = number;
+        List<int> parts = new();
+        int rest = number;
 
         while (rest > 0)
         {
-            var threeDigit = rest % 1000;
+            int threeDigit = rest % 1000;
 
             parts.Add(threeDigit);
 
@@ -121,15 +121,15 @@ internal class ItalianCardinalNumberCruncher
         }
 
         // grab lowest two digits
-        var tensAndUnits = number % 100;
+        int tensAndUnits = number % 100;
         // grab third digit
-        var hundreds = number / 100;
+        int hundreds = number / 100;
 
         // grab also first and second digits separately
-        var units = tensAndUnits % 10;
-        var tens = tensAndUnits / 10;
+        int units = tensAndUnits % 10;
+        int tens = tensAndUnits / 10;
 
-        var words = string.Empty;
+        string words = string.Empty;
 
         // append text for hundreds
         words += _hundredNumberToText[hundreds];
@@ -158,7 +158,7 @@ internal class ItalianCardinalNumberCruncher
             }
 
             // if this is the last set, an accent could be due
-            var unitsText = thisIsLastSet && units == 3 ? "tré" : _unitsNumberToText[units];
+            string unitsText = thisIsLastSet && units == 3 ? "tré" : _unitsNumberToText[units];
 
             words += unitsText;
         }

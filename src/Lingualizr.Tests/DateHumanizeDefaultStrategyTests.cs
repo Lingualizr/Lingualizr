@@ -78,8 +78,8 @@ public class DateHumanizeDefaultStrategyTests
     public void HoursFromNowNotTomorrow(int hours, string expected)
     {
         // Only test with injected date, as results are dependent on time of day
-        var utcNow = new DateTime(2014, 6, 28, 9, 58, 22, DateTimeKind.Utc);
-        var now = new DateTime(2014, 6, 28, 9, 58, 22, DateTimeKind.Local);
+        DateTime utcNow = new(2014, 6, 28, 9, 58, 22, DateTimeKind.Utc);
+        DateTime now = new(2014, 6, 28, 9, 58, 22, DateTimeKind.Local);
 
         DateHumanize.Verify(expected, hours, TimeUnit.Hour, Tense.Future, null, null, now, utcNow);
     }

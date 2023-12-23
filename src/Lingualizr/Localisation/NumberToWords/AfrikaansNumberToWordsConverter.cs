@@ -29,7 +29,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
     };
     private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new Dictionary<int, string>
+    private static readonly Dictionary<int, string> _ordinalExceptions = new()
     {
         { 0, "nulste" },
         { 1, "eerste" },
@@ -70,7 +70,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             return string.Format("minus {0}", Convert(-number));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000 > 0)
         {
@@ -109,8 +109,8 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             }
             else
             {
-                var lastPartValue = number / 10 * 10;
-                var lastPart = _tensMap[number / 10];
+                int lastPartValue = number / 10 * 10;
+                string lastPart = _tensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart = string.Format("{0} en {1}", GetUnitValue(number % 10, false), isOrdinal ? GetUnitValue(lastPartValue, isOrdinal) : lastPart);
@@ -132,7 +132,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
             parts[parts.Count - 1] += "ste";
         }
 
-        var toWords = string.Join(" ", parts.ToArray());
+        string toWords = string.Join(" ", parts.ToArray());
 
         if (isOrdinal)
         {
@@ -146,7 +146,7 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
     {
         if (isOrdinal)
         {
-            if (ExceptionNumbersToWords(number, out var exceptionString))
+            if (ExceptionNumbersToWords(number, out string? exceptionString))
             {
                 return exceptionString;
             }

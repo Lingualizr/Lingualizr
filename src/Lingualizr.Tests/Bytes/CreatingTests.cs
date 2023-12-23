@@ -29,7 +29,7 @@ public class CreatingTests
     [Fact]
     public void Constructor()
     {
-        var result = new ByteSize(1099511627776);
+        ByteSize result = new(1099511627776);
 
         Assert.Equal(8.796093022208e12, result.Bits);
         Assert.Equal(1099511627776, result.Bytes);
@@ -42,7 +42,7 @@ public class CreatingTests
     [Fact]
     public void FromBits()
     {
-        var result = ByteSize.FromBits(8);
+        ByteSize result = ByteSize.FromBits(8);
 
         Assert.Equal(8, result.Bits);
         Assert.Equal(1, result.Bytes);
@@ -51,7 +51,7 @@ public class CreatingTests
     [Fact]
     public void FromBytes()
     {
-        var result = ByteSize.FromBytes(1.5);
+        ByteSize result = ByteSize.FromBytes(1.5);
 
         Assert.Equal(12, result.Bits);
         Assert.Equal(1.5, result.Bytes);
@@ -60,7 +60,7 @@ public class CreatingTests
     [Fact]
     public void FromKilobytes()
     {
-        var result = ByteSize.FromKilobytes(1.5);
+        ByteSize result = ByteSize.FromKilobytes(1.5);
 
         Assert.Equal(1536, result.Bytes);
         Assert.Equal(1.5, result.Kilobytes);
@@ -69,7 +69,7 @@ public class CreatingTests
     [Fact]
     public void FromMegabytes()
     {
-        var result = ByteSize.FromMegabytes(1.5);
+        ByteSize result = ByteSize.FromMegabytes(1.5);
 
         Assert.Equal(1572864, result.Bytes);
         Assert.Equal(1.5, result.Megabytes);
@@ -78,7 +78,7 @@ public class CreatingTests
     [Fact]
     public void FromGigabytes()
     {
-        var result = ByteSize.FromGigabytes(1.5);
+        ByteSize result = ByteSize.FromGigabytes(1.5);
 
         Assert.Equal(1610612736, result.Bytes);
         Assert.Equal(1.5, result.Gigabytes);
@@ -87,7 +87,7 @@ public class CreatingTests
     [Fact]
     public void FromTerabytes()
     {
-        var result = ByteSize.FromTerabytes(1.5);
+        ByteSize result = ByteSize.FromTerabytes(1.5);
 
         Assert.Equal(1649267441664, result.Bytes);
         Assert.Equal(1.5, result.Terabytes);

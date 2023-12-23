@@ -23,6 +23,8 @@
 using System.Globalization;
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
+using Lingualizr.Localisation.Formatters;
+
 using static System.Globalization.NumberStyles;
 
 namespace Lingualizr.Bytes;
@@ -71,7 +73,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
     public string GetLargestWholeNumberSymbol(IFormatProvider? provider = null)
     {
-        var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
+        IFormatter cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
         // Absolute value is used to deal with negative values
         if (Math.Abs(Terabytes) >= 1)
@@ -106,7 +108,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
     public string GetLargestWholeNumberFullWord(IFormatProvider? provider = null)
     {
-        var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
+        IFormatter cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
         // Absolute value is used to deal with negative values
         if (Math.Abs(Terabytes) >= 1)
@@ -263,12 +265,12 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
 
         format = format.Replace("#.##", "0.##");
 
-        var culture = provider as CultureInfo ?? CultureInfo.CurrentCulture;
+        CultureInfo? culture = provider as CultureInfo ?? CultureInfo.CurrentCulture;
 
         bool has(string s) => culture.CompareInfo.IndexOf(format, s, CompareOptions.IgnoreCase) != -1;
         string output(double n) => n.ToString(format, provider);
 
-        var cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
+        IFormatter cultureFormatter = Configurator.GetFormatter(provider as CultureInfo);
 
         if (has(TerabyteSymbol))
         {
@@ -307,7 +309,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             return output(Bits);
         }
 
-        var formattedLargeWholeNumberValue = LargestWholeNumberValue.ToString(format, provider);
+        string formattedLargeWholeNumberValue = LargestWholeNumberValue.ToString(format, provider);
 
         formattedLargeWholeNumberValue = string.IsNullOrEmpty(formattedLargeWholeNumberValue) ? "0" : formattedLargeWholeNumberValue;
 
@@ -485,10 +487,10 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         }
 
         // Acquiring culture-specific parsing info
-        var numberFormat = GetNumberFormatInfo(formatProvider);
+        NumberFormatInfo numberFormat = GetNumberFormatInfo(formatProvider);
 
         const NumberStyles numberStyles = AllowDecimalPoint | AllowThousands | AllowLeadingSign;
-        var numberSpecialChars = new[]
+        char[] numberSpecialChars = new[]
         {
             Convert.ToChar(numberFormat.NumberDecimalSeparator),
             Convert.ToChar(numberFormat.NumberGroupSeparator),
@@ -503,7 +505,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
         s = s.TrimStart(); // Protect against leading spaces
 
         int num;
-        var found = false;
+        bool found = false;
 
         // Pick first non-digit number
         for (num = 0; num < s.Length; num++)
@@ -520,14 +522,14 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             return false;
         }
 
-        var lastNumber = num;
+        int lastNumber = num;
 
         // Cut the input string in half
-        var numberPart = s.Slice(0, lastNumber).Trim();
-        var sizePart = s.Slice(lastNumber, s.Length - lastNumber).Trim();
+        ReadOnlySpan<char> numberPart = s.Slice(0, lastNumber).Trim();
+        ReadOnlySpan<char> sizePart = s.Slice(lastNumber, s.Length - lastNumber).Trim();
 
         // Get the numeric part
-        if (!double.TryParse(numberPart, numberStyles, formatProvider, out var number))
+        if (!double.TryParse(numberPart, numberStyles, formatProvider, out double number))
         {
             return false;
         }
@@ -583,7 +585,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
             return numberFormat;
         }
 
-        var culture = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
+        CultureInfo culture = formatProvider as CultureInfo ?? CultureInfo.CurrentCulture;
 
         return culture.NumberFormat;
     }
@@ -597,7 +599,7 @@ public struct ByteSize : IComparable<ByteSize>, IEquatable<ByteSize>, IComparabl
     {
         ArgumentNullException.ThrowIfNull(s);
 
-        if (TryParse(s, formatProvider, out var result))
+        if (TryParse(s, formatProvider, out ByteSize result))
         {
             return result;
         }

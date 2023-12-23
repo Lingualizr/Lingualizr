@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
+using Lingualizr.Localisation.Formatters;
 
 namespace Lingualizr.DateTimeHumanizeStrategy;
 
@@ -14,8 +15,8 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string PrecisionHumanize(DateTime input, DateTime comparisonBase, double precision, CultureInfo? culture)
     {
-        var ts = new TimeSpan(Math.Abs(comparisonBase.Ticks - input.Ticks));
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        TimeSpan ts = new(Math.Abs(comparisonBase.Ticks - input.Ticks));
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
 
         return PrecisionHumanize(ts, tense, precision, culture);
     }
@@ -25,9 +26,9 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string PrecisionHumanize(DateOnly input, DateOnly comparisonBase, double precision, CultureInfo? culture)
     {
-        var diffDays = Math.Abs(comparisonBase.DayOfYear - input.DayOfYear);
-        var ts = new TimeSpan(diffDays, 0, 0, 0);
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        int diffDays = Math.Abs(comparisonBase.DayOfYear - input.DayOfYear);
+        TimeSpan ts = new(diffDays, 0, 0, 0);
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
 
         return PrecisionHumanize(ts, tense, precision, culture);
     }
@@ -37,8 +38,8 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string PrecisionHumanize(TimeOnly input, TimeOnly comparisonBase, double precision, CultureInfo? culture)
     {
-        var ts = new TimeSpan(Math.Abs(comparisonBase.Ticks - input.Ticks));
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        TimeSpan ts = new(Math.Abs(comparisonBase.Ticks - input.Ticks));
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
 
         return PrecisionHumanize(ts, tense, precision, culture);
     }
@@ -81,8 +82,8 @@ internal static class DateTimeHumanizeAlgorithms
 
         if (days > 31 && days < 365 * precision)
         {
-            var factor = Convert.ToInt32(Math.Floor((double)days / 30));
-            var maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 30));
+            int factor = Convert.ToInt32(Math.Floor((double)days / 30));
+            int maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 30));
             months = days >= 30 * (factor + precision) ? maxMonths : maxMonths - 1;
         }
 
@@ -94,13 +95,13 @@ internal static class DateTimeHumanizeAlgorithms
 
         if (days > 365)
         {
-            var factor = Convert.ToInt32(Math.Floor((double)days / 365));
-            var maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 365));
+            int factor = Convert.ToInt32(Math.Floor((double)days / 365));
+            int maxMonths = Convert.ToInt32(Math.Ceiling((double)days / 365));
             years = days >= 365 * (factor + precision) ? maxMonths : maxMonths - 1;
         }
 
         // start computing result from larger units to smaller ones
-        var formatter = Configurator.GetFormatter(culture);
+        IFormatter formatter = Configurator.GetFormatter(culture);
         if (years > 0)
         {
             return formatter.DateHumanize(TimeUnit.Year, tense, years);
@@ -141,12 +142,12 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string DefaultHumanize(DateTime input, DateTime comparisonBase, CultureInfo? culture)
     {
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
-        var ts = new TimeSpan(Math.Abs(comparisonBase.Ticks - input.Ticks));
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        TimeSpan ts = new(Math.Abs(comparisonBase.Ticks - input.Ticks));
 
-        var sameMonth = comparisonBase.Date.AddMonths(tense == Tense.Future ? 1 : -1) == input.Date;
+        bool sameMonth = comparisonBase.Date.AddMonths(tense == Tense.Future ? 1 : -1) == input.Date;
 
-        var days = Math.Abs((input.Date - comparisonBase.Date).Days);
+        int days = Math.Abs((input.Date - comparisonBase.Date).Days);
 
         return DefaultHumanize(ts, sameMonth, days, tense, culture);
     }
@@ -156,13 +157,13 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string DefaultHumanize(DateOnly input, DateOnly comparisonBase, CultureInfo? culture)
     {
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
-        var diffDays = Math.Abs(comparisonBase.DayOfYear - input.DayOfYear);
-        var ts = new TimeSpan(diffDays, 0, 0, 0);
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        int diffDays = Math.Abs(comparisonBase.DayOfYear - input.DayOfYear);
+        TimeSpan ts = new(diffDays, 0, 0, 0);
 
-        var sameMonth = comparisonBase.AddMonths(tense == Tense.Future ? 1 : -1) == input;
+        bool sameMonth = comparisonBase.AddMonths(tense == Tense.Future ? 1 : -1) == input;
 
-        var days = Math.Abs(input.DayOfYear - comparisonBase.DayOfYear);
+        int days = Math.Abs(input.DayOfYear - comparisonBase.DayOfYear);
 
         return DefaultHumanize(ts, sameMonth, days, tense, culture);
     }
@@ -172,15 +173,15 @@ internal static class DateTimeHumanizeAlgorithms
     /// </summary>
     public static string DefaultHumanize(TimeOnly input, TimeOnly comparisonBase, CultureInfo? culture)
     {
-        var tense = input > comparisonBase ? Tense.Future : Tense.Past;
-        var ts = new TimeSpan(Math.Abs(comparisonBase.Ticks - input.Ticks));
+        Tense tense = input > comparisonBase ? Tense.Future : Tense.Past;
+        TimeSpan ts = new(Math.Abs(comparisonBase.Ticks - input.Ticks));
 
         return DefaultHumanize(ts, true, 0, tense, culture);
     }
 
     private static string DefaultHumanize(TimeSpan ts, bool sameMonth, int days, Tense tense, CultureInfo? culture)
     {
-        var formatter = Configurator.GetFormatter(culture);
+        IFormatter formatter = Configurator.GetFormatter(culture);
 
         if (ts.TotalMilliseconds < 500)
         {
@@ -234,11 +235,11 @@ internal static class DateTimeHumanizeAlgorithms
 
         if (ts.TotalDays < 345)
         {
-            var months = Convert.ToInt32(Math.Floor(ts.TotalDays / 29.5));
+            int months = Convert.ToInt32(Math.Floor(ts.TotalDays / 29.5));
             return formatter.DateHumanize(TimeUnit.Month, tense, months);
         }
 
-        var years = Convert.ToInt32(Math.Floor(ts.TotalDays / 365));
+        int years = Convert.ToInt32(Math.Floor(ts.TotalDays / 365));
         if (years == 0)
         {
             years = 1;

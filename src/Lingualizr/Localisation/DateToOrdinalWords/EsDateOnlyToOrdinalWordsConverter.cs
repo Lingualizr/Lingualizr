@@ -6,7 +6,7 @@ internal class EsDateOnlyToOrdinalWordsConverter : DefaultDateOnlyToOrdinalWordC
 {
     public override string Convert(DateOnly date)
     {
-        var equivalentDateTime = date.ToDateTime(TimeOnly.MinValue);
+        DateTime equivalentDateTime = date.ToDateTime(TimeOnly.MinValue);
         return Configurator.DateToOrdinalWordsConverter.Convert(equivalentDateTime);
     }
 }

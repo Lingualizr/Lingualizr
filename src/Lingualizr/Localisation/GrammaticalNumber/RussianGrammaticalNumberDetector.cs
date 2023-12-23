@@ -4,10 +4,10 @@ internal static class RussianGrammaticalNumberDetector
 {
     public static RussianGrammaticalNumber Detect(long number)
     {
-        var tens = number % 100 / 10;
+        long tens = number % 100 / 10;
         if (tens != 1)
         {
-            var unity = number % 10;
+            long unity = number % 10;
 
             // 1, 21, 31, 41 ... 91, 101, 121 ...
             if (unity == 1)

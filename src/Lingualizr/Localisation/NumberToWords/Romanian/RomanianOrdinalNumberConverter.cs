@@ -5,7 +5,7 @@ internal class RomanianOrdinalNumberConverter
     /// <summary>
     /// Lookup table converting units number to text. Index 1 for 1, index 2 for 2, up to index 9.
     /// </summary>
-    private readonly Dictionary<int, string> _ordinalsUnder10 = new Dictionary<int, string>
+    private readonly Dictionary<int, string> _ordinalsUnder10 = new()
     {
         { 1, "primul|prima" },
         { 2, "doilea|doua" },
@@ -42,8 +42,8 @@ internal class RomanianOrdinalNumberConverter
         }
         else
         {
-            var coverter = new RomanianCardinalNumberConverter();
-            var words = coverter.Convert(number, gender);
+            RomanianCardinalNumberConverter coverter = new();
+            string words = coverter.Convert(number, gender);
 
             // remove 'de' preposition
             words = words.Replace(" de ", " ");
@@ -67,7 +67,7 @@ internal class RomanianOrdinalNumberConverter
                 words = words.Substring(0, words.Length - 8) + "milioana";
             }
 
-            var customMasculineSuffix = _masculineSuffix;
+            string customMasculineSuffix = _masculineSuffix;
             if (words.EndsWith("milion"))
             {
                 if (gender == GrammaticalGender.Feminine)
@@ -98,7 +98,7 @@ internal class RomanianOrdinalNumberConverter
     {
         if (multiGenderPart.Contains('|'))
         {
-            var parts = multiGenderPart.Split('|');
+            string[] parts = multiGenderPart.Split('|');
             if (gender == GrammaticalGender.Feminine)
             {
                 return parts[1];

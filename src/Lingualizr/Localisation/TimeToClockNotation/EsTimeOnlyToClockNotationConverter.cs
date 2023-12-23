@@ -17,16 +17,16 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
                 return "mediodía";
         }
 
-        var article = GetArticle(time);
-        var articleNextHour = GetArticle(time.AddHours(1));
-        var hour = NormalizeHour(time).ToWords(GrammaticalGender.Feminine);
-        var nextHour = NormalizeHour(time.AddHours(1)).ToWords(GrammaticalGender.Feminine);
-        var dayPeriod = GetDayPeriod(time);
-        var dayPeriodNextHour = GetDayPeriod(time.AddHours(1));
+        string article = GetArticle(time);
+        string articleNextHour = GetArticle(time.AddHours(1));
+        string hour = NormalizeHour(time).ToWords(GrammaticalGender.Feminine);
+        string nextHour = NormalizeHour(time.AddHours(1)).ToWords(GrammaticalGender.Feminine);
+        string dayPeriod = GetDayPeriod(time);
+        string dayPeriodNextHour = GetDayPeriod(time.AddHours(1));
 
-        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
+        int normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
-        var clockNotationMap = new Dictionary<int, string>()
+        Dictionary<int, string> clockNotationMap = new()
         {
             { 0, $"{article} {hour} {dayPeriod}" },
             { 15, $"{article} {hour} y cuarto {dayPeriod}" },

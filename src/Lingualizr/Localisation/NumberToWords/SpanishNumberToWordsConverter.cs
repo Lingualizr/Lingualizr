@@ -90,7 +90,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
             return $"menos {Convert(-number)}";
         }
 
-        wordBuilder.Add(ConvertGreaterThanMillion(number, out var remainder));
+        wordBuilder.Add(ConvertGreaterThanMillion(number, out long remainder));
         wordBuilder.Add(ConvertThousands(remainder, out remainder, gender));
         wordBuilder.Add(ConvertHundreds(remainder, out remainder, gender));
         wordBuilder.Add(ConvertUnits(remainder, gender, wordForm));
@@ -127,7 +127,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
             return ConvertToOrdinal(number / 1000, gender).Replace("milésim", "millonésim");
         }
 
-        wordBuilder.Add(ConvertTensAndHunderdsOfThousandths(number, out var remainder, gender));
+        wordBuilder.Add(ConvertTensAndHunderdsOfThousandths(number, out int remainder, gender));
         wordBuilder.Add(ConvertThousandths(remainder, out remainder, gender));
         wordBuilder.Add(ConvertHundredths(remainder, out remainder, gender));
         wordBuilder.Add(ConvertTenths(remainder, out remainder, gender));
@@ -150,14 +150,14 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string BuildWord(IReadOnlyList<string> wordParts)
     {
-        var parts = wordParts.ToList();
+        List<string> parts = wordParts.ToList();
         parts.RemoveAll(string.IsNullOrEmpty);
         return string.Join(" ", parts);
     }
 
     private static string ConvertHundreds(in long inputNumber, out long remainder, GrammaticalGender gender)
     {
-        var wordPart = string.Empty;
+        string wordPart = string.Empty;
         remainder = inputNumber;
 
         if (inputNumber / 100 > 0)
@@ -177,12 +177,12 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string ConvertMappedOrdinalNumber(in int number, in int divisor, IReadOnlyList<string> map, out int remainder, GrammaticalGender gender)
     {
-        var wordPart = string.Empty;
+        string wordPart = string.Empty;
         remainder = number;
 
         if (number / divisor > 0)
         {
-            var genderedEnding = gender == GrammaticalGender.Feminine ? "a" : "o";
+            string genderedEnding = gender == GrammaticalGender.Feminine ? "a" : "o";
             wordPart = map[number / divisor] + genderedEnding;
             remainder = number % divisor;
         }
@@ -216,7 +216,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string ConvertUnits(long inputNumber, GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
     {
-        var wordPart = string.Empty;
+        string wordPart = string.Empty;
 
         if (inputNumber > 0)
         {
@@ -242,11 +242,11 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static IReadOnlyList<string> GetGenderedHundredsMap(GrammaticalGender gender)
     {
-        var genderedEnding = gender == GrammaticalGender.Feminine ? "as" : "os";
-        var map = new List<string>();
+        string genderedEnding = gender == GrammaticalGender.Feminine ? "as" : "os";
+        List<string> map = new();
         map.AddRange(_hundredsRootMap.Take(2));
 
-        for (var i = 2; i < _hundredsRootMap.Length; i++)
+        for (int i = 2; i < _hundredsRootMap.Length; i++)
         {
             map.Add(_hundredsRootMap[i] + genderedEnding);
         }
@@ -256,7 +256,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetGenderedOne(GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
     {
-        var genderedOne = new Dictionary<GrammaticalGender, string>() { { GrammaticalGender.Feminine, "una" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" }, };
+        Dictionary<GrammaticalGender, string> genderedOne = new() { { GrammaticalGender.Feminine, "una" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "un" : "uno" }, };
 
         genderedOne.Add(GrammaticalGender.Neuter, genderedOne[GrammaticalGender.Masculine]);
         return genderedOne[gender];
@@ -264,7 +264,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private static string GetGenderedTwentyOne(GrammaticalGender gender, WordForm wordForm = WordForm.Normal)
     {
-        var genderedtwentyOne = new Dictionary<GrammaticalGender, string>() { { GrammaticalGender.Feminine, "veintiuna" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" }, };
+        Dictionary<GrammaticalGender, string> genderedtwentyOne = new() { { GrammaticalGender.Feminine, "veintiuna" }, { GrammaticalGender.Masculine, wordForm == WordForm.Abbreviation ? "veintiún" : "veintiuno" }, };
 
         genderedtwentyOne.Add(GrammaticalGender.Neuter, genderedtwentyOne[GrammaticalGender.Masculine]);
         return genderedtwentyOne[gender];
@@ -300,14 +300,14 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         remainder = inputNumber;
 
-        var numbersAndWordsDict = new Dictionary<string, long>()
+        Dictionary<string, long> numbersAndWordsDict = new()
         {
             { "trillón", oneTrillion },
             { "billón", oneBillion },
             { "millón", oneMillion },
         };
 
-        foreach (var numberAndWord in numbersAndWordsDict)
+        foreach (KeyValuePair<string, long> numberAndWord in numbersAndWordsDict)
         {
             if (remainder / numberAndWord.Value > 0)
             {
@@ -333,15 +333,15 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private string ConvertRoundBillionths(int number, GrammaticalGender gender)
     {
-        var cardinalPart = Convert(number / 1_000_000, WordForm.Abbreviation, gender);
-        var sep = number == 1_000_000_000 ? string.Empty : " ";
-        var ordinalPart = ConvertToOrdinal(1_000_000, gender);
+        string cardinalPart = Convert(number / 1_000_000, WordForm.Abbreviation, gender);
+        string sep = number == 1_000_000_000 ? string.Empty : " ";
+        string ordinalPart = ConvertToOrdinal(1_000_000, gender);
         return cardinalPart + sep + ordinalPart;
     }
 
     private string ConvertTensAndHunderdsOfThousandths(in int number, out int remainder, GrammaticalGender gender)
     {
-        var wordPart = string.Empty;
+        string wordPart = string.Empty;
         remainder = number;
 
         if (number / 10000 > 0)
@@ -378,7 +378,7 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
     private string ConvertThousands(in long inputNumber, out long remainder, GrammaticalGender gender)
     {
-        var wordPart = string.Empty;
+        string wordPart = string.Empty;
         remainder = inputNumber;
 
         if (inputNumber / 1000 > 0)

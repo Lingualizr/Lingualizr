@@ -22,15 +22,15 @@ internal class RomanianFormatter : DefaultFormatter
 
     protected override string Format(string resourceKey, int number, bool toWords = false)
     {
-        var format = Resources.GetResource(GetResourceKey(resourceKey, number), _romanianCulture);
-        var preposition = ShouldUsePreposition(number) ? UnitPreposition : string.Empty;
+        string format = Resources.GetResource(GetResourceKey(resourceKey, number), _romanianCulture);
+        string preposition = ShouldUsePreposition(number) ? UnitPreposition : string.Empty;
 
         return format.FormatWith(number, preposition);
     }
 
     private static bool ShouldUsePreposition(int number)
     {
-        var prepositionIndicatingNumeral = Math.Abs(number % _divider);
+        double prepositionIndicatingNumeral = Math.Abs(number % _divider);
         return prepositionIndicatingNumeral < MinNumeralWithNoPreposition || prepositionIndicatingNumeral > MaxNumeralWithNoPreposition;
     }
 }

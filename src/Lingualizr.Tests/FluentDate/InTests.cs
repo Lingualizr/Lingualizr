@@ -29,8 +29,8 @@ public class InTests
     [Fact]
     public void InFiveDays()
     {
-        var baseDate = On.January.The21st;
-        var date = In.Five.DaysFrom(baseDate);
+        DateTime baseDate = On.January.The21st;
+        DateTime date = In.Five.DaysFrom(baseDate);
         Assert.Equal(baseDate.AddDays(5), date);
     }
 }

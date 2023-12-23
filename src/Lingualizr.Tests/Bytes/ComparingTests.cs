@@ -10,9 +10,9 @@ public class ComparingTests
     [InlineData(45, 23, 1)]
     public void CompareStrongTyped(double value, double valueToCompareWith, int expectedResult)
     {
-        var valueSize = new ByteSize(value);
-        var otherSize = new ByteSize(valueToCompareWith);
-        var result = valueSize.CompareTo(otherSize);
+        ByteSize valueSize = new(value);
+        ByteSize otherSize = new(valueToCompareWith);
+        int result = valueSize.CompareTo(otherSize);
 
         Assert.Equal(expectedResult, result);
     }
@@ -23,9 +23,9 @@ public class ComparingTests
     [InlineData(45, 23, 1)]
     public void CompareUntyped(double value, double valueToCompareWith, int expectedResult)
     {
-        var valueSize = new ByteSize(value);
+        ByteSize valueSize = new(value);
         object otherSize = new ByteSize(valueToCompareWith);
-        var result = valueSize.CompareTo(otherSize);
+        int result = valueSize.CompareTo(otherSize);
 
         Assert.Equal(expectedResult, result);
     }
@@ -35,7 +35,7 @@ public class ComparingTests
     [InlineData(new[] { "1MB", "3KB", "5MB" }, new[] { "3KB", "1MB", "5MB" })]
     public void SortList(IEnumerable<string> values, IEnumerable<string> expected)
     {
-        var list = values.Select(ByteSize.Parse).ToList();
+        List<ByteSize> list = values.Select(ByteSize.Parse).ToList();
         list.Sort();
 
         Assert.Equal(expected.Select(ByteSize.Parse), list);

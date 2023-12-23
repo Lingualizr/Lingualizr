@@ -35,7 +35,7 @@ public static class EnumDehumanizeExtensions
 
     private static object? DehumanizeToPrivate(string input, Type targetEnum, OnNoMatch onNoMatch)
     {
-        var match = Enum.GetValues(targetEnum).Cast<Enum>().FirstOrDefault(value => string.Equals(value.Humanize(), input, StringComparison.OrdinalIgnoreCase));
+        Enum? match = Enum.GetValues(targetEnum).Cast<Enum>().FirstOrDefault(value => string.Equals(value.Humanize(), input, StringComparison.OrdinalIgnoreCase));
 
         if (match == null && onNoMatch == OnNoMatch.ThrowsException)
         {

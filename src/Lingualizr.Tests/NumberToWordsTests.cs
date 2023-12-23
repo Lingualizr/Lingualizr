@@ -69,10 +69,10 @@ public class NumberToWordsTests
     [InlineData(3, "third")]
     public void ToOrdinalWords_WordFormIsIgnored(int number, string expected)
     {
-        var normalForm1 = number.ToOrdinalWords(WordForm.Normal);
-        var abbrForm1 = number.ToOrdinalWords(WordForm.Abbreviation);
-        var normalForm2 = number.ToOrdinalWords(default, WordForm.Normal);
-        var abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation);
+        string normalForm1 = number.ToOrdinalWords(WordForm.Normal);
+        string abbrForm1 = number.ToOrdinalWords(WordForm.Abbreviation);
+        string normalForm2 = number.ToOrdinalWords(default, WordForm.Normal);
+        string abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation);
 
         Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }
@@ -86,13 +86,13 @@ public class NumberToWordsTests
     [InlineData(3, "ko-KR", "세번째")]
     public void ToOrdinalWords_WordFormIsIgnoredWithSpecificCulture(int number, string culture, string expected)
     {
-        var cultureInfo = new CultureInfo(culture);
+        CultureInfo cultureInfo = new(culture);
 
-        var cultureSpecificNumber = number.ToOrdinalWords(cultureInfo);
-        var normalForm1 = number.ToOrdinalWords(WordForm.Normal, cultureInfo);
-        var abbrForm1 = number.ToOrdinalWords(WordForm.Abbreviation, cultureInfo);
-        var normalForm2 = number.ToOrdinalWords(default, WordForm.Normal, cultureInfo);
-        var abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation, cultureInfo);
+        string cultureSpecificNumber = number.ToOrdinalWords(cultureInfo);
+        string normalForm1 = number.ToOrdinalWords(WordForm.Normal, cultureInfo);
+        string abbrForm1 = number.ToOrdinalWords(WordForm.Abbreviation, cultureInfo);
+        string normalForm2 = number.ToOrdinalWords(default, WordForm.Normal, cultureInfo);
+        string abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation, cultureInfo);
 
         Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }
@@ -134,12 +134,12 @@ public class NumberToWordsTests
     [InlineData(3, "three")]
     public void ToWords_WordFormIsIgnored(int number, string expected)
     {
-        var normalForm1 = number.ToWords(WordForm.Normal);
-        var abbrForm1 = number.ToWords(WordForm.Abbreviation);
-        var normalForm2 = number.ToWords(addAnd: true, WordForm.Normal);
-        var abbrForm2 = number.ToWords(addAnd: true, WordForm.Abbreviation);
-        var normalForm3 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender));
-        var abbrFrom3 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender));
+        string normalForm1 = number.ToWords(WordForm.Normal);
+        string abbrForm1 = number.ToWords(WordForm.Abbreviation);
+        string normalForm2 = number.ToWords(addAnd: true, WordForm.Normal);
+        string abbrForm2 = number.ToWords(addAnd: true, WordForm.Abbreviation);
+        string normalForm3 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender));
+        string abbrFrom3 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender));
 
         Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2, normalForm3, normalForm3 }, item => Assert.Equal(expected, item));
     }
@@ -153,13 +153,13 @@ public class NumberToWordsTests
     [InlineData(3, "ko-KR", "삼")]
     public void ToWords_WordFormIsIgnoredWithSpecificCulture(int number, string culture, string expected)
     {
-        var cultureInfo = new CultureInfo(culture);
+        CultureInfo cultureInfo = new(culture);
 
-        var cultureSpecificNumber = number.ToWords(cultureInfo);
-        var normalForm1 = number.ToWords(addAnd: true, WordForm.Normal, cultureInfo);
-        var abbrForm1 = number.ToWords(addAnd: true, WordForm.Abbreviation, cultureInfo);
-        var normalForm2 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender), cultureInfo);
-        var abbrForm2 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender), cultureInfo);
+        string cultureSpecificNumber = number.ToWords(cultureInfo);
+        string normalForm1 = number.ToWords(addAnd: true, WordForm.Normal, cultureInfo);
+        string abbrForm1 = number.ToWords(addAnd: true, WordForm.Abbreviation, cultureInfo);
+        string normalForm2 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender), cultureInfo);
+        string abbrForm2 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender), cultureInfo);
 
         Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
     }

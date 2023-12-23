@@ -61,22 +61,22 @@ public static class TimeSpanHumanizeExtensions
         bool toWords = false
     )
     {
-        var timeParts = CreateTheTimePartsWithUpperAndLowerLimits(timeSpan, culture, maxUnit, minUnit, toWords);
+        IEnumerable<string?> timeParts = CreateTheTimePartsWithUpperAndLowerLimits(timeSpan, culture, maxUnit, minUnit, toWords);
         timeParts = SetPrecisionOfTimeSpan(timeParts, precision, countEmptyUnits);
 
-        return ConcatenateTimeSpanParts(timeParts, culture, collectionSeparator);
+        return ConcatenateTimeSpanParts(timeParts!, culture, collectionSeparator);
     }
 
     private static IEnumerable<string> CreateTheTimePartsWithUpperAndLowerLimits(TimeSpan timespan, CultureInfo? culture, TimeUnit maxUnit, TimeUnit minUnit, bool toWords = false)
     {
-        var cultureFormatter = Configurator.GetFormatter(culture);
-        var firstValueFound = false;
-        var timeUnitsEnumTypes = GetEnumTypesForTimeUnit();
-        var timeParts = new List<string>();
+        IFormatter cultureFormatter = Configurator.GetFormatter(culture);
+        bool firstValueFound = false;
+        IEnumerable<TimeUnit> timeUnitsEnumTypes = GetEnumTypesForTimeUnit();
+        List<string> timeParts = new();
 
-        foreach (var timeUnitType in timeUnitsEnumTypes)
+        foreach (TimeUnit timeUnitType in timeUnitsEnumTypes)
         {
-            var timepart = GetTimeUnitPart(timeUnitType, timespan, maxUnit, minUnit, cultureFormatter, toWords);
+            string? timepart = GetTimeUnitPart(timeUnitType, timespan, maxUnit, minUnit, cultureFormatter, toWords);
 
             if (timepart != null || firstValueFound)
             {
@@ -87,7 +87,7 @@ public static class TimeSpanHumanizeExtensions
 
         if (IsContainingOnlyNullValue(timeParts))
         {
-            var noTimeValueCultureFormatted = toWords ? cultureFormatter.TimeSpanHumanize_Zero() : cultureFormatter.TimeSpanHumanize(minUnit, 0, toWords);
+            string noTimeValueCultureFormatted = toWords ? cultureFormatter.TimeSpanHumanize_Zero() : cultureFormatter.TimeSpanHumanize(minUnit, 0, toWords);
             timeParts = CreateTimePartsWithNoTimeValue(noTimeValueCultureFormatted);
         }
 
@@ -96,7 +96,7 @@ public static class TimeSpanHumanizeExtensions
 
     private static IEnumerable<TimeUnit> GetEnumTypesForTimeUnit()
     {
-        var enumTypeEnumerator = (IEnumerable<TimeUnit>)Enum.GetValues(typeof(TimeUnit));
+        IEnumerable<TimeUnit> enumTypeEnumerator = (IEnumerable<TimeUnit>)Enum.GetValues(typeof(TimeUnit));
         return enumTypeEnumerator.Reverse();
     }
 
@@ -104,7 +104,7 @@ public static class TimeSpanHumanizeExtensions
     {
         if (timeUnitToGet <= maximumTimeUnit && timeUnitToGet >= minimumTimeUnit)
         {
-            var numberOfTimeUnits = GetTimeUnitNumericalValue(timeUnitToGet, timespan, maximumTimeUnit);
+            int numberOfTimeUnits = GetTimeUnitNumericalValue(timeUnitToGet, timespan, maximumTimeUnit);
             return BuildFormatTimePart(cultureFormatter, timeUnitToGet, numberOfTimeUnits, toWords);
         }
 
@@ -113,7 +113,7 @@ public static class TimeSpanHumanizeExtensions
 
     private static int GetTimeUnitNumericalValue(TimeUnit timeUnitToGet, TimeSpan timespan, TimeUnit maximumTimeUnit)
     {
-        var isTimeUnitToGetTheMaximumTimeUnit = timeUnitToGet == maximumTimeUnit;
+        bool isTimeUnitToGetTheMaximumTimeUnit = timeUnitToGet == maximumTimeUnit;
         switch (timeUnitToGet)
         {
             case TimeUnit.Millisecond:
@@ -145,7 +145,7 @@ public static class TimeSpanHumanizeExtensions
         }
         else
         {
-            var remainingDays = timespan.Days % DaysInAYear;
+            double remainingDays = timespan.Days % DaysInAYear;
             return (int)(remainingDays / DaysInAMonth);
         }
     }
@@ -174,7 +174,7 @@ public static class TimeSpanHumanizeExtensions
 
         if (timespan.Days < DaysInAMonth || maximumTimeUnit == TimeUnit.Week)
         {
-            var remainingDays = timespan.Days % DaysInAWeek;
+            int remainingDays = timespan.Days % DaysInAWeek;
             return remainingDays;
         }
 
@@ -215,7 +215,7 @@ public static class TimeSpanHumanizeExtensions
         return timeParts.All(x => x == null);
     }
 
-    private static IEnumerable<string> SetPrecisionOfTimeSpan(IEnumerable<string> timeParts, int precision, bool countEmptyUnits)
+    private static IEnumerable<string> SetPrecisionOfTimeSpan(IEnumerable<string?> timeParts, int precision, bool countEmptyUnits)
     {
         if (!countEmptyUnits)
         {
@@ -228,7 +228,7 @@ public static class TimeSpanHumanizeExtensions
             timeParts = timeParts.Where(x => x != null);
         }
 
-        return timeParts;
+        return timeParts!;
     }
 
     private static string ConcatenateTimeSpanParts(IEnumerable<string> timeSpanParts, CultureInfo? culture, string? collectionSeparator)

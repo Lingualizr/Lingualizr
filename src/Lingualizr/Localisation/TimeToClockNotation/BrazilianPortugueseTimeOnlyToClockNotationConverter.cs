@@ -12,8 +12,8 @@ internal class BrazilianPortugueseTimeOnlyToClockNotationConverter : ITimeOnlyTo
                 return "meio-dia";
         }
 
-        var normalizedHour = time.Hour % 12;
-        var normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
+        int normalizedHour = time.Hour % 12;
+        int normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
         return normalizedMinutes switch
         {

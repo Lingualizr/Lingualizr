@@ -47,9 +47,9 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
 
     private string HumanizeDisplayStrings(IEnumerable<string?> strings, string separator)
     {
-        var itemsArray = strings.Select(item => item == null ? string.Empty : item.Trim()).Where(item => !string.IsNullOrWhiteSpace(item)).ToArray();
+        string[] itemsArray = strings.Select(item => item == null ? string.Empty : item.Trim()).Where(item => !string.IsNullOrWhiteSpace(item)).ToArray();
 
-        var count = itemsArray.Length;
+        int count = itemsArray.Length;
 
         if (count == 0)
         {
@@ -61,8 +61,8 @@ internal class DefaultCollectionFormatter : ICollectionFormatter
             return itemsArray[0];
         }
 
-        var itemsBeforeLast = itemsArray.Take(count - 1);
-        var lastItem = itemsArray.Skip(count - 1).First();
+        IEnumerable<string> itemsBeforeLast = itemsArray.Take(count - 1);
+        string lastItem = itemsArray.Skip(count - 1).First();
 
         return string.Format(GetConjunctionFormatString(count), string.Join(", ", itemsBeforeLast), separator, lastItem);
     }

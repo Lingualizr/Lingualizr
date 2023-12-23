@@ -28,11 +28,11 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             return string.Format("负 {0}", Convert(-number, false, false));
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000000000 > 0)
         {
-            var format = "{0}兆";
+            string format = "{0}兆";
             if (number % 1000000000000 < 100000000000 && number % 1000000000000 > 0)
             {
                 format = "{0}兆零";
@@ -44,7 +44,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number / 100000000 > 0)
         {
-            var format = "{0}亿";
+            string format = "{0}亿";
             if (number % 100000000 < 10000000 && number % 100000000 > 0)
             {
                 format = "{0}亿零";
@@ -56,7 +56,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number / 10000 > 0)
         {
-            var format = "{0}万";
+            string format = "{0}万";
             if (number % 10000 < 1000 && number % 10000 > 0)
             {
                 format = "{0}万零";
@@ -68,7 +68,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number / 1000 > 0)
         {
-            var format = "{0}千";
+            string format = "{0}千";
             if (number % 1000 < 100 && number % 1000 > 0)
             {
                 format = "{0}千零";
@@ -80,7 +80,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
 
         if (number / 100 > 0)
         {
-            var format = "{0}百";
+            string format = "{0}百";
             if (number % 100 < 10 && number % 100 > 0)
             {
                 format = "{0}百零";
@@ -98,7 +98,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
             else
             {
-                var lastPart = string.Format("{0}十", _unitsMap[number / 10]);
+                string lastPart = string.Format("{0}十", _unitsMap[number / 10]);
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", _unitsMap[number % 10]);
@@ -108,7 +108,7 @@ internal class ChineseNumberToWordsConverter : GenderlessNumberToWordsConverter
             }
         }
 
-        var toWords = string.Join(string.Empty, parts.ToArray());
+        string toWords = string.Join(string.Empty, parts.ToArray());
 
         if (isSpecial)
         {

@@ -59,15 +59,15 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             }
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
-        var millionOrMore = false;
+        bool millionOrMore = false;
 
         const int billion = 1000000000;
         if (number / billion > 0)
         {
             millionOrMore = true;
-            var isExactOrdinal = isOrdinal && number % billion == 0;
+            bool isExactOrdinal = isOrdinal && number % billion == 0;
             parts.Add(Part("{0} milliard" + (isExactOrdinal ? string.Empty : "er"), (isExactOrdinal ? string.Empty : "en ") + "milliard", number / billion, !isExactOrdinal));
             number %= billion;
         }
@@ -76,12 +76,12 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
         if (number / million > 0)
         {
             millionOrMore = true;
-            var isExactOrdinal = isOrdinal && number % million == 0;
+            bool isExactOrdinal = isOrdinal && number % million == 0;
             parts.Add(Part("{0} million" + (isExactOrdinal ? string.Empty : "er"), (isExactOrdinal ? string.Empty : "en ") + "million", number / million, !isExactOrdinal));
             number %= million;
         }
 
-        var thousand = false;
+        bool thousand = false;
         if (number / 1000 > 0)
         {
             thousand = true;
@@ -89,7 +89,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             number %= 1000;
         }
 
-        var hundred = false;
+        bool hundred = false;
         if (number / 100 > 0)
         {
             hundred = true;
@@ -117,7 +117,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             }
             else
             {
-                var lastPart = _tensMap[number / 10];
+                string lastPart = _tensMap[number / 10];
                 if (number % 10 > 0)
                 {
                     lastPart += string.Format("{0}", GetUnitValue(number % 10, isOrdinal));
@@ -135,7 +135,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
             parts[parts.Count - 1] += (number == 0 ? string.Empty : "en") + (millionOrMore ? "te" : "de");
         }
 
-        var toWords = string.Join(string.Empty, parts.ToArray()).Trim();
+        string toWords = string.Join(string.Empty, parts.ToArray()).Trim();
 
         return toWords;
     }
@@ -144,7 +144,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
     {
         if (isOrdinal)
         {
-            if (ExceptionNumbersToWords(number, out var exceptionString))
+            if (ExceptionNumbersToWords(number, out string? exceptionString))
             {
                 return exceptionString;
             }
@@ -170,7 +170,7 @@ internal class NorwegianBokmalNumberToWordsConverter : GenderedNumberToWordsConv
 
     private string Part(string pluralFormat, string singular, int number, bool postfixSpace = false)
     {
-        var postfix = postfixSpace ? " " : string.Empty;
+        string postfix = postfixSpace ? " " : string.Empty;
         if (number == 1)
         {
             return singular + postfix;

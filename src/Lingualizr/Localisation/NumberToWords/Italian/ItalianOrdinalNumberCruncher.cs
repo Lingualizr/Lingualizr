@@ -23,11 +23,11 @@ internal class ItalianOrdinalNumberCruncher
             return _unitsUnder10NumberToText[FullNumber] + _genderSuffix;
         }
 
-        var cardinalCruncher = new ItalianCardinalNumberCruncher(FullNumber, Gender);
+        ItalianCardinalNumberCruncher cardinalCruncher = new(FullNumber, Gender);
 
-        var words = cardinalCruncher.Convert();
+        string words = cardinalCruncher.Convert();
 
-        var tensAndUnits = FullNumber % 100;
+        int tensAndUnits = FullNumber % 100;
 
         if (tensAndUnits == 10)
         {
@@ -39,7 +39,7 @@ internal class ItalianOrdinalNumberCruncher
             // truncate last vowel
             words = words.Remove(words.Length - 1);
 
-            var units = FullNumber % 10;
+            int units = FullNumber % 10;
 
             // reintroduce *unaccented* last vowel in some corner cases
             if (units == 3)
@@ -51,9 +51,9 @@ internal class ItalianOrdinalNumberCruncher
                 words += 'i';
             }
 
-            var lowestThreeDigits = FullNumber % 1000;
-            var lowestSixDigits = FullNumber % 1000000;
-            var lowestNineDigits = FullNumber % 1000000000;
+            int lowestThreeDigits = FullNumber % 1000;
+            int lowestSixDigits = FullNumber % 1000000;
+            int lowestNineDigits = FullNumber % 1000000000;
 
             if (lowestNineDigits == 0)
             {

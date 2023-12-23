@@ -9,7 +9,7 @@ public class PublicApiApprovalTest
     [UseCulture("en-US")]
     public Task Approve_Public_Api()
     {
-        var publicApi = Filter(typeof(StringHumanizeExtensions).Assembly.GeneratePublicApi());
+        string publicApi = Filter(typeof(StringHumanizeExtensions).Assembly.GeneratePublicApi());
         return Verify(publicApi);
     }
 

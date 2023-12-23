@@ -20,16 +20,16 @@ internal class IcelandicFormatter : DefaultFormatter
 
     protected override string Format(string resourceKey, int number, bool toWords = false)
     {
-        var resourceString = Resources.GetResource(GetResourceKey(resourceKey, number), _localCulture);
+        string resourceString = Resources.GetResource(GetResourceKey(resourceKey, number), _localCulture);
 
         if (string.IsNullOrEmpty(resourceString))
         {
             throw new ArgumentException($@"The resource object with key '{resourceKey}' was not found", nameof(resourceKey));
         }
 
-        var words = resourceString.Split(' ');
+        string[] words = resourceString.Split(' ');
 
-        var unitGender = words[^1] switch
+        GrammaticalGender unitGender = words[^1] switch
         {
             var x when x.StartsWith("mán") => GrammaticalGender.Masculine,
             var x when x.StartsWith("dag") => GrammaticalGender.Masculine,

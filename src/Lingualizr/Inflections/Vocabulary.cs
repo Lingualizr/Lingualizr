@@ -11,9 +11,9 @@ public class Vocabulary
 {
     internal Vocabulary() { }
 
-    private readonly List<Rule> _plurals = new List<Rule>();
-    private readonly List<Rule> _singulars = new List<Rule>();
-    private readonly List<string> _uncountables = new List<string>();
+    private readonly List<Rule> _plurals = new();
+    private readonly List<Rule> _singulars = new();
+    private readonly List<string> _uncountables = new();
     private readonly Regex _letterS = LingualizrRegex.LetterRegex();
 
     /// <summary>
@@ -73,21 +73,21 @@ public class Vocabulary
     /// <returns></returns>
     public string Pluralize(string word, bool inputIsKnownToBeSingular = true)
     {
-        var s = LetterS(word);
+        string? s = LetterS(word);
         if (s != null)
         {
             return s + "s";
         }
 
-        var result = ApplyRules(_plurals, word, false);
+        string? result = ApplyRules(_plurals, word, false);
 
         if (inputIsKnownToBeSingular)
         {
             return result ?? word;
         }
 
-        var asSingular = ApplyRules(_singulars, word, false);
-        var asSingularAsPlural = ApplyRules(_plurals, asSingular, false);
+        string? asSingular = ApplyRules(_singulars, word, false);
+        string? asSingularAsPlural = ApplyRules(_plurals, asSingular, false);
         if (asSingular != null && asSingular != word && asSingular + "s" != word && asSingularAsPlural == word && result != word)
         {
             return word;
@@ -106,13 +106,13 @@ public class Vocabulary
     /// <returns></returns>
     public string Singularize(string word, bool inputIsKnownToBePlural = true, bool skipSimpleWords = false)
     {
-        var s = LetterS(word);
+        string? s = LetterS(word);
         if (s != null)
         {
             return s;
         }
 
-        var result = ApplyRules(_singulars, word, skipSimpleWords);
+        string? result = ApplyRules(_singulars, word, skipSimpleWords);
 
         if (inputIsKnownToBePlural)
         {
@@ -120,8 +120,8 @@ public class Vocabulary
         }
 
         // the Plurality is unknown so we should check all possibilities
-        var asPlural = ApplyRules(_plurals, word, false);
-        var asPluralAsSingular = ApplyRules(_singulars, asPlural, false);
+        string? asPlural = ApplyRules(_plurals, word, false);
+        string? asPluralAsSingular = ApplyRules(_singulars, asPlural, false);
         if (asPlural != word && word + "s" != asPlural && asPluralAsSingular == word && result != word)
         {
             return word;
@@ -147,9 +147,9 @@ public class Vocabulary
             return word;
         }
 
-        var result = word;
-        var end = skipFirstRule ? 1 : 0;
-        for (var i = rules.Count - 1; i >= end; i--)
+        string? result = word;
+        int end = skipFirstRule ? 1 : 0;
+        for (int i = rules.Count - 1; i >= end; i--)
         {
             if ((result = rules[i].Apply(word)) != null)
             {
@@ -175,7 +175,7 @@ public class Vocabulary
     /// </summary>
     private string? LetterS(string word)
     {
-        var s = _letterS.Match(word);
+        Match s = _letterS.Match(word);
         return s.Groups.Count > 1 ? s.Groups[1].Value : null;
     }
 

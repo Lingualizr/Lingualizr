@@ -94,12 +94,12 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return GetMillions(number, gender) + (negativeNumber ? " inqas minn żero" : string.Empty);
         }
 
-        var billions = number / 1000000000;
-        var tensInBillions = billions % 100;
-        var millions = number % 1000000000;
+        long billions = number / 1000000000;
+        long tensInBillions = billions % 100;
+        long millions = number % 1000000000;
 
-        var billionsText = GetPrefixText(billions, tensInBillions, "biljun", "żewġ biljuni", "biljuni", false, gender);
-        var millionsText = GetMillions(millions, gender);
+        string billionsText = GetPrefixText(billions, tensInBillions, "biljun", "żewġ biljuni", "biljuni", false, gender);
+        string millionsText = GetMillions(millions, gender);
 
         if (millions == 0)
         {
@@ -116,7 +116,7 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return _ordinalOverrideMap[number];
         }
 
-        var ordinal = Convert(number, gender);
+        string ordinal = Convert(number, gender);
 
         if (ordinal.StartsWith('d'))
         {
@@ -163,8 +163,8 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return _unitsMap[value];
         }
 
-        var single = value % 10;
-        var numberOfTens = value / 10;
+        long single = value % 10;
+        long numberOfTens = value / 10;
         if (single == 0)
         {
             return _tensMap[numberOfTens];
@@ -180,8 +180,8 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return GetTens(value, usePrefixMap, usePrefixMapForLowerValueDigits, gender);
         }
 
-        var tens = value % 100;
-        var numberOfHundreds = value / 100;
+        long tens = value % 100;
+        long numberOfHundreds = value / 100;
 
         string hundredsText;
         if (numberOfHundreds == 1)
@@ -212,13 +212,13 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return GetHundreds(value, false, false, gender);
         }
 
-        var thousands = value / 1000;
-        var tensInThousands = thousands % 100;
-        var hundreds = value % 1000;
+        long thousands = value / 1000;
+        long tensInThousands = thousands % 100;
+        long hundreds = value % 1000;
 
-        var thousandsInText = GetPrefixText(thousands, tensInThousands, "elf", "elfejn", "elef", true, gender);
+        string thousandsInText = GetPrefixText(thousands, tensInThousands, "elf", "elfejn", "elef", true, gender);
 
-        var hundredsInText = GetHundreds(hundreds, false, false, gender);
+        string hundredsInText = GetHundreds(hundreds, false, false, gender);
 
         if (hundreds == 0)
         {
@@ -235,12 +235,12 @@ internal class MalteseNumberToWordsConvertor : GenderedNumberToWordsConverter
             return GetThousands(value, gender);
         }
 
-        var millions = value / 1000000;
-        var tensInMillions = millions % 100;
-        var thousands = value % 1000000;
+        long millions = value / 1000000;
+        long tensInMillions = millions % 100;
+        long thousands = value % 1000000;
 
-        var millionsText = GetPrefixText(millions, tensInMillions, "miljun", "żewġ miljuni", "miljuni", false, gender);
-        var thousandsText = GetThousands(thousands, gender);
+        string millionsText = GetPrefixText(millions, tensInMillions, "miljun", "żewġ miljuni", "miljuni", false, gender);
+        string thousandsText = GetThousands(thousands, gender);
 
         if (thousands == 0)
         {

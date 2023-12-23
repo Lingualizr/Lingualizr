@@ -59,7 +59,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             throw new NotImplementedException();
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number / 1000000 > 0)
         {
@@ -119,7 +119,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (number > 19)
         {
-            var tensPart = _tensMap[number / 10];
+            string tensPart = _tensMap[number / 10];
             parts.Add(tensPart);
             number %= 10;
         }
@@ -139,7 +139,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             return "nulle";
         }
 
-        var parts = new List<string>();
+        List<string> parts = new();
 
         if (number < 0)
         {
@@ -147,7 +147,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
             number = -number;
         }
 
-        var numberLong = (long)number;
+        long numberLong = number;
 
         if (numberLong / 1000000 > 0)
         {
@@ -220,7 +220,7 @@ internal class LatvianNumberToWordsConverter : GenderedNumberToWordsConverter
 
         if (numberLong > 19)
         {
-            var tensPart = _tensMap[numberLong / 10];
+            string tensPart = _tensMap[numberLong / 10];
             if (numberLong % 10 == 0)
             {
                 tensPart += GetOrdinalEndingForGender(gender);

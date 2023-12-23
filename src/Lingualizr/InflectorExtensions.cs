@@ -81,7 +81,7 @@ public static partial class InflectorExtensions
     /// <returns></returns>
     public static string Camelize(this string input)
     {
-        var word = input.Pascalize();
+        string word = input.Pascalize();
         return word.Length > 0 ? word.Substring(0, 1).ToLower() + word.Substring(1) : word;
     }
 
