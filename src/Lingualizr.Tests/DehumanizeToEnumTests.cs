@@ -1,4 +1,6 @@
-﻿namespace Lingualizr.Tests;
+﻿// ReSharper disable UnusedMember.Local
+// ReSharper disable UnusedParameter.Local
+namespace Lingualizr.Tests;
 
 public class DehumanizeToEnumTests
 {
@@ -12,14 +14,14 @@ public class DehumanizeToEnumTests
     [Fact]
     public void ThrowsForEnumNoMatch()
     {
-        Assert.Throws<NoMatchFoundException>(() => EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo<DummyEnum>());
-        Assert.Throws<NoMatchFoundException>(() => EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(DummyEnum)));
+        Assert.Throws<NoMatchFoundException>(() => EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo<Dummy>());
+        Assert.Throws<NoMatchFoundException>(() => EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(Dummy)));
     }
 
     [Fact]
     public void CanReturnNullForEnumNoMatch()
     {
-        Assert.Null(EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(DummyEnum), OnNoMatch.ReturnsNull));
+        Assert.Null(EnumTestsResources.MemberWithDescriptionAttribute.DehumanizeTo(typeof(Dummy), OnNoMatch.ReturnsNull));
     }
 
     [Fact]
@@ -165,7 +167,7 @@ public class DehumanizeToEnumTests
         }
     }
 
-    private enum DummyEnum
+    private enum Dummy
     {
         First,
         Second,

@@ -74,7 +74,7 @@ public class NumberToWordsTests
         string normalForm2 = number.ToOrdinalWords(default, WordForm.Normal);
         string abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation);
 
-        Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
+        Assert.All([normalForm1, abbrForm1, normalForm2, abbrForm2], item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -94,7 +94,7 @@ public class NumberToWordsTests
         string normalForm2 = number.ToOrdinalWords(default, WordForm.Normal, cultureInfo);
         string abbrForm2 = number.ToOrdinalWords(default, WordForm.Abbreviation, cultureInfo);
 
-        Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
+        Assert.All([cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2], item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -141,7 +141,7 @@ public class NumberToWordsTests
         string normalForm3 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender));
         string abbrFrom3 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender));
 
-        Assert.All(new string[] { normalForm1, abbrForm1, normalForm2, abbrForm2, normalForm3, normalForm3 }, item => Assert.Equal(expected, item));
+        Assert.All([normalForm1, abbrForm1, normalForm2, abbrForm2, normalForm3, abbrFrom3], item => Assert.Equal(expected, item));
     }
 
     [Theory]
@@ -161,7 +161,7 @@ public class NumberToWordsTests
         string normalForm2 = ((long)number).ToWords(WordForm.Normal, default(GrammaticalGender), cultureInfo);
         string abbrForm2 = ((long)number).ToWords(WordForm.Abbreviation, default(GrammaticalGender), cultureInfo);
 
-        Assert.All(new string[] { cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2 }, item => Assert.Equal(expected, item));
+        Assert.All([cultureSpecificNumber, normalForm1, abbrForm1, normalForm2, abbrForm2], item => Assert.Equal(expected, item));
     }
 
     [Theory]

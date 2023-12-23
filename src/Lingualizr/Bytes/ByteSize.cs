@@ -24,7 +24,6 @@ using System.Globalization;
 using Lingualizr.Configuration;
 using Lingualizr.Localisation;
 using Lingualizr.Localisation.Formatters;
-
 using static System.Globalization.NumberStyles;
 
 namespace Lingualizr.Bytes;

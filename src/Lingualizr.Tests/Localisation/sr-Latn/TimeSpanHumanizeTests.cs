@@ -31,13 +31,6 @@ public class TimeSpanHumanizeTests
     [InlineData(35, "5 nedelja")]
     [InlineData(14, "2 nedelje")]
     [InlineData(7, "1 nedelja")]
-    public void Weeks(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize();
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData(2, "2 dana")]
     [InlineData(1, "1 dan")]
     public void Days(int days, string expected)

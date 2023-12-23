@@ -16,12 +16,13 @@ internal class SpanishOrdinalizer : DefaultOrdinalizer
 
     public override string Convert(int number, string numberString, GrammaticalGender gender, WordForm wordForm)
     {
-        Dictionary<GrammaticalGender, string> genderMap = new()
-        {
-            { GrammaticalGender.Feminine, ".ª" },
-            { GrammaticalGender.Masculine, GetWordForm(number, wordForm) },
-            { GrammaticalGender.Neuter, GetWordForm(number, wordForm) },
-        };
+        Dictionary<GrammaticalGender, string> genderMap =
+            new()
+            {
+                { GrammaticalGender.Feminine, ".ª" },
+                { GrammaticalGender.Masculine, GetWordForm(number, wordForm) },
+                { GrammaticalGender.Neuter, GetWordForm(number, wordForm) },
+            };
 
         // N/A in Spanish
         if (number == 0 || number == int.MinValue)

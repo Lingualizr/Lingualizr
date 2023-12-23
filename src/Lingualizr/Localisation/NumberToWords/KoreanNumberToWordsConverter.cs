@@ -6,29 +6,30 @@ internal class KoreanNumberToWordsConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap2 = { string.Empty, "십", "백", "천" };
     private static readonly string[] _unitsMap3 = { string.Empty, "만", "억", "조", "경", "해", "자", "양", "구", "간", "정", "재", "극", "항하사", "아승기", "나유타", "불가사의", "무량대수" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new()
-    {
-        { 0, "영번째" },
-        { 1, "첫번째" },
-        { 2, "두번째" },
-        { 3, "세번째" },
-        { 4, "네번째" },
-        { 5, "다섯번째" },
-        { 6, "여섯번째" },
-        { 7, "일곱번째" },
-        { 8, "여덟번째" },
-        { 9, "아홉번째" },
-        { 10, "열번째" },
-        { 11, "열한번째" },
-        { 12, "열두번째" },
-        { 13, "열세번째" },
-        { 14, "열네번째" },
-        { 15, "열다섯번째" },
-        { 16, "열여섯번째" },
-        { 17, "열일곱번째" },
-        { 18, "열여덟번째" },
-        { 19, "열아홉째" },
-    };
+    private static readonly Dictionary<long, string> _ordinalExceptions =
+        new()
+        {
+            { 0, "영번째" },
+            { 1, "첫번째" },
+            { 2, "두번째" },
+            { 3, "세번째" },
+            { 4, "네번째" },
+            { 5, "다섯번째" },
+            { 6, "여섯번째" },
+            { 7, "일곱번째" },
+            { 8, "여덟번째" },
+            { 9, "아홉번째" },
+            { 10, "열번째" },
+            { 11, "열한번째" },
+            { 12, "열두번째" },
+            { 13, "열세번째" },
+            { 14, "열네번째" },
+            { 15, "열다섯번째" },
+            { 16, "열여섯번째" },
+            { 17, "열일곱번째" },
+            { 18, "열여덟번째" },
+            { 19, "열아홉째" },
+        };
 
     public override string Convert(long number)
     {

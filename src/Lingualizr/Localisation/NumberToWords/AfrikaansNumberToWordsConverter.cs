@@ -29,19 +29,20 @@ internal class AfrikaansNumberToWordsConverter : GenderlessNumberToWordsConverte
     };
     private static readonly string[] _tensMap = { "nul", "tien", "twintig", "dertig", "veertig", "vyftig", "sestig", "sewentig", "tagtig", "negentig" };
 
-    private static readonly Dictionary<int, string> _ordinalExceptions = new()
-    {
-        { 0, "nulste" },
-        { 1, "eerste" },
-        { 3, "derde" },
-        { 7, "sewende" },
-        { 8, "agste" },
-        { 9, "negende" },
-        { 10, "tiende" },
-        { 14, "veertiende" },
-        { 17, "sewentiende" },
-        { 19, "negentiende" },
-    };
+    private static readonly Dictionary<int, string> _ordinalExceptions =
+        new()
+        {
+            { 0, "nulste" },
+            { 1, "eerste" },
+            { 3, "derde" },
+            { 7, "sewende" },
+            { 8, "agste" },
+            { 9, "negende" },
+            { 10, "tiende" },
+            { 14, "veertiende" },
+            { 17, "sewentiende" },
+            { 19, "negentiende" },
+        };
 
     public override string Convert(long number)
     {

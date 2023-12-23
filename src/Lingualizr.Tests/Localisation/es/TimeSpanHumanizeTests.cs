@@ -151,13 +151,6 @@ public class TimeSpanHumanizeTests
     [InlineData(365 + 365 + 365 + 365 + 1, "4 años")]
     [InlineData(365 + 365 + 365 + 365 + 366, "4 años, 11 meses, 30 días")]
     [InlineData(365 + 365 + 365 + 365 + 366 + 1, "5 años")]
-    public void Year(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData(30, "4 semanas, 2 días")]
     [InlineData(30 + 1, "1 mes")]
     [InlineData(30 + 30, "1 mes, 29 días")]
@@ -168,23 +161,9 @@ public class TimeSpanHumanizeTests
     [InlineData(30 + 30 + 31 + 30 + 1, "4 meses")]
     [InlineData(30 + 30 + 31 + 30 + 31, "4 meses, 30 días")]
     [InlineData(30 + 30 + 31 + 30 + 31 + 1, "5 meses")]
-    [InlineData(365, "11 meses, 30 días")]
-    [InlineData(366, "1 año")]
-    public void Month(int days, string expected)
+    public void Year(int days, string expected)
     {
         string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData(14, "2 semanas")]
-    [InlineData(7, "1 semana")]
-    [InlineData(-14, "2 semanas")]
-    [InlineData(-7, "1 semana")]
-    [InlineData(730, "104 semanas")]
-    public void Weeks(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize();
         Assert.Equal(expected, actual);
     }
 
@@ -195,6 +174,11 @@ public class TimeSpanHumanizeTests
     [InlineData(-6, "6 días")]
     [InlineData(-2, "2 días")]
     [InlineData(-1, "1 día")]
+    [InlineData(14, "2 semanas")]
+    [InlineData(7, "1 semana")]
+    [InlineData(-14, "2 semanas")]
+    [InlineData(-7, "1 semana")]
+    [InlineData(730, "104 semanas")]
     public void Days(int days, string expected)
     {
         string actual = TimeSpan.FromDays(days).Humanize();

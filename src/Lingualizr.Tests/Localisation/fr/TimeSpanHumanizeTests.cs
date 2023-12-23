@@ -48,22 +48,6 @@ public class TimeSpanHumanizeTests
     [Theory]
     [InlineData(14, "2 semaines")]
     [InlineData(7, "1 semaine")]
-    public void Weeks(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize();
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
-    [InlineData(14, "deux semaines")]
-    [InlineData(7, "une semaine")]
-    public void WeeksToWords(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize(toWords: true);
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData(6, "6 jours")]
     [InlineData(1, "1 jour")]
     public void Days(int days, string expected)
@@ -73,6 +57,8 @@ public class TimeSpanHumanizeTests
     }
 
     [Theory]
+    [InlineData(14, "deux semaines")]
+    [InlineData(7, "une semaine")]
     [InlineData(6, "six jours")]
     [InlineData(1, "un jour")]
     public void DaysToWords(int days, string expected)

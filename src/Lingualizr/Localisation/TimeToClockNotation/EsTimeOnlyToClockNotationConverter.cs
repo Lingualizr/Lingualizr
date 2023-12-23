@@ -26,18 +26,19 @@ internal class EsTimeOnlyToClockNotationConverter : ITimeOnlyToClockNotationConv
 
         int normalizedMinutes = (int)(roundToNearestFive == ClockNotationRounding.NearestFiveMinutes ? 5 * Math.Round(time.Minute / 5.0) : time.Minute);
 
-        Dictionary<int, string> clockNotationMap = new()
-        {
-            { 0, $"{article} {hour} {dayPeriod}" },
-            { 15, $"{article} {hour} y cuarto {dayPeriod}" },
-            { 30, $"{article} {hour} y media {dayPeriod}" },
-            { 35, $"{articleNextHour} {nextHour} menos veinticinco {dayPeriodNextHour}" },
-            { 40, $"{articleNextHour} {nextHour} menos veinte {dayPeriodNextHour}" },
-            { 45, $"{articleNextHour} {nextHour} menos cuarto {dayPeriodNextHour}" },
-            { 50, $"{articleNextHour} {nextHour} menos diez {dayPeriodNextHour}" },
-            { 55, $"{articleNextHour} {nextHour} menos cinco {dayPeriodNextHour}" },
-            { 60, $"{articleNextHour} {nextHour} {dayPeriodNextHour}" },
-        };
+        Dictionary<int, string> clockNotationMap =
+            new()
+            {
+                { 0, $"{article} {hour} {dayPeriod}" },
+                { 15, $"{article} {hour} y cuarto {dayPeriod}" },
+                { 30, $"{article} {hour} y media {dayPeriod}" },
+                { 35, $"{articleNextHour} {nextHour} menos veinticinco {dayPeriodNextHour}" },
+                { 40, $"{articleNextHour} {nextHour} menos veinte {dayPeriodNextHour}" },
+                { 45, $"{articleNextHour} {nextHour} menos cuarto {dayPeriodNextHour}" },
+                { 50, $"{articleNextHour} {nextHour} menos diez {dayPeriodNextHour}" },
+                { 55, $"{articleNextHour} {nextHour} menos cinco {dayPeriodNextHour}" },
+                { 60, $"{articleNextHour} {nextHour} {dayPeriodNextHour}" },
+            };
 
         return clockNotationMap.GetValueOrDefault(normalizedMinutes, $"{article} {hour} y {normalizedMinutes.ToWords()} {dayPeriod}");
     }

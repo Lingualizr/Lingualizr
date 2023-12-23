@@ -29,17 +29,18 @@ internal class EnglishNumberToWordsConverter : GenderlessNumberToWordsConverter
     };
     private static readonly string[] _tensMap = { "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new()
-    {
-        { 1, "first" },
-        { 2, "second" },
-        { 3, "third" },
-        { 4, "fourth" },
-        { 5, "fifth" },
-        { 8, "eighth" },
-        { 9, "ninth" },
-        { 12, "twelfth" },
-    };
+    private static readonly Dictionary<long, string> _ordinalExceptions =
+        new()
+        {
+            { 1, "first" },
+            { 2, "second" },
+            { 3, "third" },
+            { 4, "fourth" },
+            { 5, "fifth" },
+            { 8, "eighth" },
+            { 9, "ninth" },
+            { 12, "twelfth" },
+        };
 
     public override string Convert(long number)
     {

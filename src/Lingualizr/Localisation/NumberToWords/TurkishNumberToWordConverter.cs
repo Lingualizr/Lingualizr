@@ -5,29 +5,31 @@ internal class TurkishNumberToWordConverter : GenderlessNumberToWordsConverter
     private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz" };
     private static readonly string[] _tensMap = { "sıfır", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan" };
 
-    private static readonly Dictionary<char, string> _ordinalSuffix = new()
-    {
-        { 'ı', "ıncı" },
-        { 'i', "inci" },
-        { 'u', "uncu" },
-        { 'ü', "üncü" },
-        { 'o', "uncu" },
-        { 'ö', "üncü" },
-        { 'e', "inci" },
-        { 'a', "ıncı" },
-    };
+    private static readonly Dictionary<char, string> _ordinalSuffix =
+        new()
+        {
+            { 'ı', "ıncı" },
+            { 'i', "inci" },
+            { 'u', "uncu" },
+            { 'ü', "üncü" },
+            { 'o', "uncu" },
+            { 'ö', "üncü" },
+            { 'e', "inci" },
+            { 'a', "ıncı" },
+        };
 
-    private static readonly Dictionary<char, string> _tupleSuffix = new()
-    {
-        { 'ı', "lı" },
-        { 'i', "li" },
-        { 'u', "lu" },
-        { 'ü', "lü" },
-        { 'o', "lu" },
-        { 'ö', "lü" },
-        { 'e', "li" },
-        { 'a', "lı" },
-    };
+    private static readonly Dictionary<char, string> _tupleSuffix =
+        new()
+        {
+            { 'ı', "lı" },
+            { 'i', "li" },
+            { 'u', "lu" },
+            { 'ü', "lü" },
+            { 'o', "lu" },
+            { 'ö', "lü" },
+            { 'e', "li" },
+            { 'a', "lı" },
+        };
 
     public override string Convert(long number)
     {

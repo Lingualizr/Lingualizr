@@ -1596,15 +1596,15 @@ namespace Lingualizr
         public static string ToQuantity(this string input, int quantity, Lingualizr.ShowQuantityAs showQuantityAs = 1) { }
         public static string ToQuantity(this string input, long quantity, Lingualizr.ShowQuantityAs showQuantityAs = 1) { }
         public static string ToQuantity(this string input, double quantity, string? format = null, System.IFormatProvider? formatProvider = null) { }
-        public static string ToQuantity(this string input, int quantity, string format, System.IFormatProvider? formatProvider = null) { }
-        public static string ToQuantity(this string input, long quantity, string format, System.IFormatProvider? formatProvider = null) { }
+        public static string ToQuantity(this string input, int quantity, string? format, System.IFormatProvider? formatProvider = null) { }
+        public static string ToQuantity(this string input, long quantity, string? format, System.IFormatProvider? formatProvider = null) { }
     }
     public static class TruncateExtensions
     {
         public static string? Truncate(this string? input, int length) { }
         public static string? Truncate(this string? input, int length, Lingualizr.Truncation.ITruncator truncator, Lingualizr.TruncateFrom from = 1) { }
-        public static string? Truncate(this string? input, int length, string truncationString, Lingualizr.TruncateFrom from = 1) { }
-        public static string? Truncate(this string? input, int length, string truncationString, Lingualizr.Truncation.ITruncator? truncator, Lingualizr.TruncateFrom from = 1) { }
+        public static string? Truncate(this string? input, int length, string? truncationString, Lingualizr.TruncateFrom from = 1) { }
+        public static string? Truncate(this string? input, int length, string? truncationString, Lingualizr.Truncation.ITruncator truncator, Lingualizr.TruncateFrom from = 1) { }
     }
     public enum TruncateFrom
     {
@@ -1690,8 +1690,8 @@ namespace Lingualizr.Bytes
         public static Lingualizr.Bytes.ByteSize FromTerabytes(double value) { }
         public static Lingualizr.Bytes.ByteSize Parse(string? s) { }
         public static Lingualizr.Bytes.ByteSize Parse(string? s, System.IFormatProvider? formatProvider) { }
-        public static bool TryParse(string? s, out Lingualizr.Bytes.ByteSize result) { }
-        public static bool TryParse(string? s, System.IFormatProvider? formatProvider, out Lingualizr.Bytes.ByteSize result) { }
+        public static bool TryParse(System.ReadOnlySpan<char> s, out Lingualizr.Bytes.ByteSize result) { }
+        public static bool TryParse(System.ReadOnlySpan<char> s, System.IFormatProvider? formatProvider, out Lingualizr.Bytes.ByteSize result) { }
         public static bool operator !=(Lingualizr.Bytes.ByteSize b1, Lingualizr.Bytes.ByteSize b2) { }
         public static Lingualizr.Bytes.ByteSize operator +(Lingualizr.Bytes.ByteSize b1, Lingualizr.Bytes.ByteSize b2) { }
         public static Lingualizr.Bytes.ByteSize operator ++(Lingualizr.Bytes.ByteSize b) { }

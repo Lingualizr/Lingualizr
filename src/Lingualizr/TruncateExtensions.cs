@@ -39,7 +39,7 @@ public static class TruncateExtensions
     /// <param name="truncationString">The string used to truncate with</param>
     /// <param name="from">The enum value used to determine from where to truncate the string</param>
     /// <returns>The truncated string</returns>
-    public static string? Truncate(this string? input, int length, string truncationString, TruncateFrom from = TruncateFrom.Right)
+    public static string? Truncate(this string? input, int length, string? truncationString, TruncateFrom from = TruncateFrom.Right)
     {
         return input.Truncate(length, truncationString, Truncator.FixedLength, from);
     }
@@ -53,7 +53,7 @@ public static class TruncateExtensions
     /// <param name="truncator">The truncator to use</param>
     /// <param name="from">The enum value used to determine from where to truncate the string</param>
     /// <returns>The truncated string</returns>
-    public static string? Truncate(this string? input, int length, string truncationString, ITruncator? truncator, TruncateFrom from = TruncateFrom.Right)
+    public static string? Truncate(this string? input, int length, string? truncationString, ITruncator truncator, TruncateFrom from = TruncateFrom.Right)
     {
         ArgumentNullException.ThrowIfNull(truncator);
 

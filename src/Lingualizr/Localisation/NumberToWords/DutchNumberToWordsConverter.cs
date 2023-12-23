@@ -172,12 +172,13 @@ internal class DutchNumberToWordsConverter : GenderlessNumberToWordsConverter
         return word;
     }
 
-    private static readonly Dictionary<string, string> _ordinalExceptions = new()
-    {
-        { "een", "eerste" },
-        { "drie", "derde" },
-        { "miljoen", "miljoenste" },
-    };
+    private static readonly Dictionary<string, string> _ordinalExceptions =
+        new()
+        {
+            { "een", "eerste" },
+            { "drie", "derde" },
+            { "miljoen", "miljoenste" },
+        };
 
     private static readonly char[] _endingCharForSte = { 't', 'g', 'd' };
 

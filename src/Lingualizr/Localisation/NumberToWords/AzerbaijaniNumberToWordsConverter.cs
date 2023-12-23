@@ -5,18 +5,19 @@ internal class AzerbaijaniNumberToWordsConverter : GenderlessNumberToWordsConver
     private static readonly string[] _unitsMap = { "sıfır", "bir", "iki", "üç", "dörd", "beş", "altı", "yeddi", "səkkiz", "doqquz" };
     private static readonly string[] _tensMap = { "sıfır", "on", "iyirmi", "otuz", "qırx", "əlli", "altmış", "yetmiş", "səksən", "doxsan" };
 
-    private static readonly Dictionary<char, string> _ordinalSuffix = new()
-    {
-        { 'ı', "ıncı" },
-        { 'i', "inci" },
-        { 'u', "uncu" },
-        { 'ü', "üncü" },
-        { 'o', "uncu" },
-        { 'ö', "üncü" },
-        { 'e', "inci" },
-        { 'a', "ıncı" },
-        { 'ə', "inci" },
-    };
+    private static readonly Dictionary<char, string> _ordinalSuffix =
+        new()
+        {
+            { 'ı', "ıncı" },
+            { 'i', "inci" },
+            { 'u', "uncu" },
+            { 'ü', "üncü" },
+            { 'o', "uncu" },
+            { 'ö', "üncü" },
+            { 'e', "inci" },
+            { 'a', "ıncı" },
+            { 'ə', "inci" },
+        };
 
     public override string Convert(long number)
     {

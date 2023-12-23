@@ -37,7 +37,7 @@ public class DateTimeOffsetHumanizeTests
     [Fact]
     public void PrecisionStrategy_SameOffset()
     {
-        Configurator.DateTimeOffsetHumanizeStrategy = new PrecisionDateTimeOffsetHumanizeStrategy(0.75);
+        Configurator.DateTimeOffsetHumanizeStrategy = new PrecisionDateTimeOffsetHumanizeStrategy();
 
         DateTimeOffset inputTime = new(2015, 07, 05, 04, 0, 0, TimeSpan.Zero);
         DateTimeOffset baseTime = new(2015, 07, 04, 05, 0, 0, TimeSpan.Zero);
@@ -51,7 +51,7 @@ public class DateTimeOffsetHumanizeTests
     [Fact]
     public void PrecisionStrategy_DifferentOffsets()
     {
-        Configurator.DateTimeOffsetHumanizeStrategy = new PrecisionDateTimeOffsetHumanizeStrategy(0.75);
+        Configurator.DateTimeOffsetHumanizeStrategy = new PrecisionDateTimeOffsetHumanizeStrategy();
 
         DateTimeOffset inputTime = new(2015, 07, 05, 03, 45, 0, new TimeSpan(2, 0, 0));
         DateTimeOffset baseTime = new(2015, 07, 05, 02, 30, 0, new TimeSpan(-5, 0, 0));

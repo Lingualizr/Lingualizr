@@ -300,12 +300,13 @@ internal class SpanishNumberToWordsConverter : GenderedNumberToWordsConverter
 
         remainder = inputNumber;
 
-        Dictionary<string, long> numbersAndWordsDict = new()
-        {
-            { "trillón", oneTrillion },
-            { "billón", oneBillion },
-            { "millón", oneMillion },
-        };
+        Dictionary<string, long> numbersAndWordsDict =
+            new()
+            {
+                { "trillón", oneTrillion },
+                { "billón", oneBillion },
+                { "millón", oneMillion },
+            };
 
         foreach (KeyValuePair<string, long> numberAndWord in numbersAndWordsDict)
         {

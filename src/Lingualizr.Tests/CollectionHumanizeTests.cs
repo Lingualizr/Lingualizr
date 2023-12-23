@@ -47,12 +47,13 @@ public class CollectionHumanizeTests
         Assert.Equal("A String, Another String, or A Third String", collection.Humanize("or"));
     }
 
-    private readonly List<SomeClass> _testCollection = new()
-    {
-        new SomeClass { SomeInt = 1, SomeString = "One" },
-        new SomeClass { SomeInt = 2, SomeString = "Two" },
-        new SomeClass { SomeInt = 3, SomeString = "Three" },
-    };
+    private readonly List<SomeClass> _testCollection =
+        new()
+        {
+            new SomeClass { SomeInt = 1, SomeString = "One" },
+            new SomeClass { SomeInt = 2, SomeString = "Two" },
+            new SomeClass { SomeInt = 3, SomeString = "Three" },
+        };
 
     [Fact]
     public void HumanizeDefaultsToToString()
@@ -109,13 +110,13 @@ public class CollectionHumanizeTests
     [Fact]
     public void HumanizeRunsStringDisplayFormatterOnNulls()
     {
-        Assert.Equal("1, (null), and 3", new int?[] { 1, null, 3 }.Humanize(_ => _?.ToString() ?? "(null)"));
+        Assert.Equal("1, (null), and 3", new int?[] { 1, null, 3 }.Humanize(i => i?.ToString() ?? "(null)"));
     }
 
     [Fact]
     public void HumanizeRunsObjectDisplayFormatterOnNulls()
     {
-        Assert.Equal("1, 2, and 3", new int?[] { 1, null, 3 }.Humanize(_ => _ ?? 2));
+        Assert.Equal("1, 2, and 3", new int?[] { 1, null, 3 }.Humanize(i => i ?? 2));
     }
 
     [Fact]

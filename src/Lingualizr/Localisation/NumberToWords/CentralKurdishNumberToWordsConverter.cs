@@ -24,15 +24,16 @@ internal class CentralKurdishNumberToWordsConverter : GenderlessNumberToWordsCon
             return "سفر";
         }
 
-        Dictionary<long, Func<long, string>> kurdishGroupsMap = new()
-        {
-            { (long)Math.Pow(10, 15), n => string.Format("{0} کوادریلیۆن", Convert(n)) },
-            { (long)Math.Pow(10, 12), n => string.Format("{0} تریلیۆن", Convert(n)) },
-            { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
-            { (long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
-            { (long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => _kurdishHundredsMap[n] },
-        };
+        Dictionary<long, Func<long, string>> kurdishGroupsMap =
+            new()
+            {
+                { (long)Math.Pow(10, 15), n => string.Format("{0} کوادریلیۆن", Convert(n)) },
+                { (long)Math.Pow(10, 12), n => string.Format("{0} تریلیۆن", Convert(n)) },
+                { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
+                { (long)Math.Pow(10, 6), n => string.Format("{0} میلیۆن", Convert(n)) },
+                { (long)Math.Pow(10, 3), n => string.Format("{0} هەزار", Convert(n)) },
+                { (long)Math.Pow(10, 2), n => _kurdishHundredsMap[n] },
+            };
 
         List<string> parts = new();
         foreach (long group in kurdishGroupsMap.Keys)

@@ -51,7 +51,7 @@ public class DateOnlyHumanizeTests
     [Fact]
     public void PrecisionStrategy_NextDay()
     {
-        Configurator.DateOnlyHumanizeStrategy = new PrecisionDateOnlyHumanizeStrategy(0.75);
+        Configurator.DateOnlyHumanizeStrategy = new PrecisionDateOnlyHumanizeStrategy();
 
         DateOnly inputTime = new(2015, 07, 05);
         DateOnly baseTime = new(2015, 07, 04);

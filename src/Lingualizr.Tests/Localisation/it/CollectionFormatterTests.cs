@@ -6,7 +6,7 @@ public class CollectionFormatterTests
     [Fact]
     public void OneItem()
     {
-        List<int> collection = new(new int[] { 1 });
+        List<int> collection = [1];
         string humanized = "1";
         Assert.Equal(humanized, collection.Humanize());
     }
@@ -14,7 +14,7 @@ public class CollectionFormatterTests
     [Fact]
     public void TwoItems()
     {
-        List<int> collection = new(new int[] { 1, 2 });
+        List<int> collection = [1, 2];
         string humanized = "1 e 2";
         Assert.Equal(humanized, collection.Humanize());
     }
@@ -22,7 +22,7 @@ public class CollectionFormatterTests
     [Fact]
     public void MoreThanTwoItems()
     {
-        List<int> collection = new(new int[] { 1, 2, 3 });
+        List<int> collection = [1, 2, 3];
         string humanized = "1, 2 e 3";
         Assert.Equal(humanized, collection.Humanize());
     }

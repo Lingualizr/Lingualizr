@@ -17,23 +17,6 @@ public class TimeSpanHumanizeTests
     }
 
     [Theory]
-    [InlineData(365, "11 months, 30 days")]
-    [InlineData(365 + 1, "1 year")]
-    [InlineData(365 + 365, "1 year, 11 months, 29 days")]
-    [InlineData(365 + 365 + 1, "2 years")]
-    [InlineData(365 + 365 + 365, "2 years, 11 months, 29 days")]
-    [InlineData(365 + 365 + 365 + 1, "3 years")]
-    [InlineData(365 + 365 + 365 + 365, "3 years, 11 months, 29 days")]
-    [InlineData(365 + 365 + 365 + 365 + 1, "4 years")]
-    [InlineData(365 + 365 + 365 + 365 + 366, "4 years, 11 months, 30 days")]
-    [InlineData(365 + 365 + 365 + 365 + 366 + 1, "5 years")]
-    public void Year(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData(30, "4 weeks, 2 days")]
     [InlineData(30 + 1, "1 month")]
     [InlineData(30 + 30, "1 month, 29 days")]
@@ -46,6 +29,14 @@ public class TimeSpanHumanizeTests
     [InlineData(30 + 30 + 31 + 30 + 31 + 1, "5 months")]
     [InlineData(365, "11 months, 30 days")]
     [InlineData(366, "1 year")]
+    [InlineData(365 + 365, "1 year, 11 months, 29 days")]
+    [InlineData(365 + 365 + 1, "2 years")]
+    [InlineData(365 + 365 + 365, "2 years, 11 months, 29 days")]
+    [InlineData(365 + 365 + 365 + 1, "3 years")]
+    [InlineData(365 + 365 + 365 + 365, "3 years, 11 months, 29 days")]
+    [InlineData(365 + 365 + 365 + 365 + 1, "4 years")]
+    [InlineData(365 + 365 + 365 + 365 + 366, "4 years, 11 months, 30 days")]
+    [InlineData(365 + 365 + 365 + 365 + 366 + 1, "5 years")]
     public void Month(int days, string expected)
     {
         string actual = TimeSpan.FromDays(days).Humanize(precision: 7, maxUnit: TimeUnit.Year);
@@ -58,13 +49,6 @@ public class TimeSpanHumanizeTests
     [InlineData(-14, "2 weeks")]
     [InlineData(-7, "1 week")]
     [InlineData(730, "104 weeks")]
-    public void Weeks(int days, string expected)
-    {
-        string actual = TimeSpan.FromDays(days).Humanize();
-        Assert.Equal(expected, actual);
-    }
-
-    [Theory]
     [InlineData(6, "6 days")]
     [InlineData(2, "2 days")]
     [InlineData(1, "1 day")]
@@ -428,7 +412,7 @@ public class TimeSpanHumanizeTests
     [InlineData(6 * 24 * 60 * 60 * 1000, 1, "ru-RU", "6 дней", ", ")]
     [InlineData(11 * 60 * 60 * 1000, 1, "ar", "11 ساعة", ", ")]
     [InlineData(3603001, 2, "it-IT", "1 ora e 3 secondi", null)]
-    public void CanSpecifyCultureExplicitly(int ms, int precision, string culture, string expected, string collectionSeparator)
+    public void CanSpecifyCultureExplicitly(int ms, int precision, string culture, string expected, string? collectionSeparator)
     {
         string actual = TimeSpan.FromMilliseconds(ms).Humanize(precision: precision, culture: new CultureInfo(culture), collectionSeparator: collectionSeparator);
         Assert.Equal(expected, actual);

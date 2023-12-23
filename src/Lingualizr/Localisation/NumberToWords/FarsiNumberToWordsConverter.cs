@@ -18,16 +18,17 @@ internal class FarsiNumberToWordsConverter : GenderlessNumberToWordsConverter
             return "صفر";
         }
 
-        Dictionary<long, Func<long, string>> farsiGroupsMap = new()
-        {
-            { (long)Math.Pow(10, 18), n => string.Format("{0} تریلیون", Convert(n)) },
-            { (long)Math.Pow(10, 15), n => string.Format("{0} بیلیارد", Convert(n)) },
-            { (long)Math.Pow(10, 12), n => string.Format("{0} بیلیون", Convert(n)) },
-            { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
-            { (long)Math.Pow(10, 6), n => string.Format("{0} میلیون", Convert(n)) },
-            { (long)Math.Pow(10, 3), n => string.Format("{0} هزار", Convert(n)) },
-            { (long)Math.Pow(10, 2), n => _farsiHundredsMap[n] },
-        };
+        Dictionary<long, Func<long, string>> farsiGroupsMap =
+            new()
+            {
+                { (long)Math.Pow(10, 18), n => string.Format("{0} تریلیون", Convert(n)) },
+                { (long)Math.Pow(10, 15), n => string.Format("{0} بیلیارد", Convert(n)) },
+                { (long)Math.Pow(10, 12), n => string.Format("{0} بیلیون", Convert(n)) },
+                { (long)Math.Pow(10, 9), n => string.Format("{0} میلیارد", Convert(n)) },
+                { (long)Math.Pow(10, 6), n => string.Format("{0} میلیون", Convert(n)) },
+                { (long)Math.Pow(10, 3), n => string.Format("{0} هزار", Convert(n)) },
+                { (long)Math.Pow(10, 2), n => _farsiHundredsMap[n] },
+            };
 
         List<string> parts = new();
         foreach (long group in farsiGroupsMap.Keys)

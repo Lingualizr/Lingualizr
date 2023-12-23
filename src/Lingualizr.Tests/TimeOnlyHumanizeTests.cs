@@ -51,7 +51,7 @@ public class TimeOnlyHumanizeTests
     [Fact]
     public void PrecisionStrategy_NextDay()
     {
-        Configurator.TimeOnlyHumanizeStrategy = new PrecisionTimeOnlyHumanizeStrategy(0.75);
+        Configurator.TimeOnlyHumanizeStrategy = new PrecisionTimeOnlyHumanizeStrategy();
 
         TimeOnly inputTime = new(18, 10, 49);
         TimeOnly baseTime = new(13, 07, 04);

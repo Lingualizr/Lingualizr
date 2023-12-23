@@ -29,14 +29,15 @@ internal class ArmenianNumberToWordsConverter : GenderlessNumberToWordsConverter
     };
     private static readonly string[] _tensMap = { "զրո", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն" };
 
-    private static readonly Dictionary<long, string> _ordinalExceptions = new()
-    {
-        { 0, "զրոյական" },
-        { 1, "առաջին" },
-        { 2, "երկրորդ" },
-        { 3, "երրորդ" },
-        { 4, "չորրորդ" },
-    };
+    private static readonly Dictionary<long, string> _ordinalExceptions =
+        new()
+        {
+            { 0, "զրոյական" },
+            { 1, "առաջին" },
+            { 2, "երկրորդ" },
+            { 3, "երրորդ" },
+            { 4, "չորրորդ" },
+        };
 
     public override string Convert(long number)
     {

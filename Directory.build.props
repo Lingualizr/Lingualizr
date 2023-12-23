@@ -1,5 +1,8 @@
 <Project>
-  
-  <Import Project="Analyzer.props" />
 
-  </Project>
+  <Import Project="Analyzer.props" />
+  <PropertyGroup>
+    <CSharpier_Check>false</CSharpier_Check>
+  </PropertyGroup>
+
+</Project>

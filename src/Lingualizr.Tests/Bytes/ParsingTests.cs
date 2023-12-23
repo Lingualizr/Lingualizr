@@ -73,12 +73,13 @@ public class ParsingTests
     [Fact]
     public void TryParseWithNumberFormatInfo()
     {
-        NumberFormatInfo numberFormat = new()
-        {
-            NumberDecimalSeparator = "_",
-            NumberGroupSeparator = ";",
-            NegativeSign = "−", // proper minus, not hyphen-minus
-        };
+        NumberFormatInfo numberFormat =
+            new()
+            {
+                NumberDecimalSeparator = "_",
+                NumberGroupSeparator = ";",
+                NegativeSign = "−", // proper minus, not hyphen-minus
+            };
 
         string value = "−2;000_01KB";
 
